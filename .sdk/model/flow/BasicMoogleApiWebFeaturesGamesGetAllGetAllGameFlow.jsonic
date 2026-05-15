@@ -1,0 +1,22 @@
+# BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow:
+{
+  entity: "moogle_api_web_features_games_get_all_get_all_game",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_games_get_all_get_all_game_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow"
+}

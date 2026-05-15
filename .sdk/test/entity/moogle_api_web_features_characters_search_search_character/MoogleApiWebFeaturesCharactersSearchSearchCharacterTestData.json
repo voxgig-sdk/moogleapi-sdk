@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "moogle_api_web_features_characters_search_search_character": {
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER00": {
+        "description": "s3c",
+        "game_name": "s3d",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER00",
+        "image_url": "s3f",
+        "name": "s40",
+        "role": "s41"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER01": {
+        "description": "s78",
+        "game_name": "s79",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER01",
+        "image_url": "s7b",
+        "name": "s7c",
+        "role": "s7d"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER02": {
+        "description": "sb4",
+        "game_name": "sb5",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER02",
+        "image_url": "sb7",
+        "name": "sb8",
+        "role": "sb9"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_characters_search_search_character": {
+      "moogle_api_web_features_characters_search_search_character_ref01": {
+        "description": "sf0",
+        "game_name": "sf1",
+        "image_url": "sf3",
+        "name": "sf4",
+        "role": "sf5"
+      }
+    }
+  }
+}

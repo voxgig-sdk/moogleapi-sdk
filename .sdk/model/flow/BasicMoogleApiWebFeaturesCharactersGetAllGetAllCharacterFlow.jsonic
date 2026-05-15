@@ -1,0 +1,22 @@
+# BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow:
+{
+  entity: "moogle_api_web_features_characters_get_all_get_all_character",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_characters_get_all_get_all_character_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow"
+}

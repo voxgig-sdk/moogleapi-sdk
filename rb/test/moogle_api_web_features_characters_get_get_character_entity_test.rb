@@ -1,0 +1,119 @@
+# MoogleApiWebFeaturesCharactersGetGetCharacter entity test
+
+require "minitest/autorun"
+require "json"
+require_relative "../Moogleapi_sdk"
+require_relative "runner"
+
+class MoogleApiWebFeaturesCharactersGetGetCharacterEntityTest < Minitest::Test
+  def test_create_instance
+    testsdk = MoogleapiSDK.test(nil, nil)
+    ent = testsdk.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
+    assert !ent.nil?
+  end
+
+  def test_basic_flow
+    setup = moogle_api_web_features_characters_get_get_character_basic_setup(nil)
+    # Per-op sdk-test-control.json skip.
+    _live = setup[:live] || false
+    ["load"].each do |_op|
+      _should_skip, _reason = Runner.is_control_skipped("entityOp", "moogle_api_web_features_characters_get_get_character." + _op, _live ? "live" : "unit")
+      if _should_skip
+        skip(_reason || "skipped via sdk-test-control.json")
+        return
+      end
+    end
+    # The basic flow consumes synthetic IDs from the fixture. In live mode
+    # without an *_ENTID env override, those IDs hit the live API and 4xx.
+    if setup[:synthetic_only]
+      skip "live entity test uses synthetic IDs from fixture — set MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID JSON to run live"
+      return
+    end
+    client = setup[:client]
+
+    # Bootstrap entity data from existing test data.
+    moogle_api_web_features_characters_get_get_character_ref01_data_raw = Vs.items(Helpers.to_map(
+      Vs.getpath(setup[:data], "existing.moogle_api_web_features_characters_get_get_character")))
+    moogle_api_web_features_characters_get_get_character_ref01_data = nil
+    if moogle_api_web_features_characters_get_get_character_ref01_data_raw.length > 0
+      moogle_api_web_features_characters_get_get_character_ref01_data = Helpers.to_map(moogle_api_web_features_characters_get_get_character_ref01_data_raw[0][1])
+    end
+
+    # LOAD
+    moogle_api_web_features_characters_get_get_character_ref01_ent = client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
+    moogle_api_web_features_characters_get_get_character_ref01_match_dt0 = {
+      "id" => moogle_api_web_features_characters_get_get_character_ref01_data["id"],
+    }
+    moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded, err = moogle_api_web_features_characters_get_get_character_ref01_ent.load(moogle_api_web_features_characters_get_get_character_ref01_match_dt0, nil)
+    assert_nil err
+    moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = Helpers.to_map(moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded)
+    assert !moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result.nil?
+    assert_equal moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result["id"], moogle_api_web_features_characters_get_get_character_ref01_data["id"]
+
+  end
+end
+
+def moogle_api_web_features_characters_get_get_character_basic_setup(extra)
+  Runner.load_env_local
+
+  entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "moogle_api_web_features_characters_get_get_character", "MoogleApiWebFeaturesCharactersGetGetCharacterTestData.json")
+  entity_data_source = File.read(entity_data_file)
+  entity_data = JSON.parse(entity_data_source)
+
+  options = {}
+  options["entity"] = entity_data["existing"]
+
+  client = MoogleapiSDK.test(options, extra)
+
+  # Generate idmap via transform.
+  idmap = Vs.transform(
+    ["moogle_api_web_features_characters_get_get_character01", "moogle_api_web_features_characters_get_get_character02", "moogle_api_web_features_characters_get_get_character03"],
+    {
+      "`$PACK`" => ["", {
+        "`$KEY`" => "`$COPY`",
+        "`$VAL`" => ["`$FORMAT`", "upper", "`$COPY`"],
+      }],
+    }
+  )
+
+  # Detect ENTID env override before envOverride consumes it. When live
+  # mode is on without a real override, the basic test runs against synthetic
+  # IDs from the fixture and 4xx's. Surface this so the test can skip.
+  entid_env_raw = ENV["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID"]
+  idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
+
+  env = Runner.env_override({
+    "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID" => idmap,
+    "MOOGLEAPI_TEST_LIVE" => "FALSE",
+    "MOOGLEAPI_TEST_EXPLAIN" => "FALSE",
+    "MOOGLEAPI_APIKEY" => "NONE",
+  })
+
+  idmap_resolved = Helpers.to_map(
+    env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID"])
+  if idmap_resolved.nil?
+    idmap_resolved = Helpers.to_map(idmap)
+  end
+
+  if env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
+    merged_opts = Vs.merge([
+      {
+        "apikey" => env["MOOGLEAPI_APIKEY"],
+      },
+      extra || {},
+    ])
+    client = MoogleapiSDK.new(Helpers.to_map(merged_opts))
+  end
+
+  live = env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
+  {
+    client: client,
+    data: entity_data,
+    idmap: idmap_resolved,
+    env: env,
+    explain: env["MOOGLEAPI_TEST_EXPLAIN"] == "TRUE",
+    live: live,
+    synthetic_only: live && !idmap_overridden,
+    now: (Time.now.to_f * 1000).to_i,
+  }
+end

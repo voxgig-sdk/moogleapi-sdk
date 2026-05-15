@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "moogle_api_web_features_characters_get_get_character": {
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER00": {
+        "affiliation": "s5a",
+        "description": "s5b",
+        "game_name": "s5c",
+        "hometown": "s5d",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER00",
+        "image_url": "s5f",
+        "name": "s60",
+        "race": "s61",
+        "role": "s62"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER01": {
+        "affiliation": "sb4",
+        "description": "sb5",
+        "game_name": "sb6",
+        "hometown": "sb7",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER01",
+        "image_url": "sb9",
+        "name": "sba",
+        "race": "sbb",
+        "role": "sbc"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER02": {
+        "affiliation": "s10e",
+        "description": "s10f",
+        "game_name": "s110",
+        "hometown": "s111",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER02",
+        "image_url": "s113",
+        "name": "s114",
+        "race": "s115",
+        "role": "s116"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_characters_get_get_character": {
+      "moogle_api_web_features_characters_get_get_character_ref01": {
+        "affiliation": "s168",
+        "description": "s169",
+        "game_name": "s16a",
+        "hometown": "s16b",
+        "image_url": "s16d",
+        "name": "s16e",
+        "race": "s16f",
+        "role": "s170"
+      }
+    }
+  }
+}

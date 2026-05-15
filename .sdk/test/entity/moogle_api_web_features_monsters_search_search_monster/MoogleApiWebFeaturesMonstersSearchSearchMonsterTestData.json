@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "moogle_api_web_features_monsters_search_search_monster": {
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER00": {
+        "category": "s3c",
+        "description": "s3d",
+        "game_name": "s3e",
+        "hit_point": "s3f",
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER00",
+        "name": "s41"
+      },
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER01": {
+        "category": "s78",
+        "description": "s79",
+        "game_name": "s7a",
+        "hit_point": "s7b",
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER01",
+        "name": "s7d"
+      },
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER02": {
+        "category": "sb4",
+        "description": "sb5",
+        "game_name": "sb6",
+        "hit_point": "sb7",
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER02",
+        "name": "sb9"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_monsters_search_search_monster": {
+      "moogle_api_web_features_monsters_search_search_monster_ref01": {
+        "category": "sf0",
+        "description": "sf1",
+        "game_name": "sf2",
+        "hit_point": "sf3",
+        "name": "sf5"
+      }
+    }
+  }
+}

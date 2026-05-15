@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "moogle_api_web_features_games_get_get_game": {
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME00": {
+        "character_count": "s46",
+        "description": "s47",
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME00",
+        "monster_count": "s49",
+        "name": "s4a",
+        "platform": "s4b",
+        "release_year": "s4c"
+      },
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME01": {
+        "character_count": "s8c",
+        "description": "s8d",
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME01",
+        "monster_count": "s8f",
+        "name": "s90",
+        "platform": "s91",
+        "release_year": "s92"
+      },
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME02": {
+        "character_count": "sd2",
+        "description": "sd3",
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME02",
+        "monster_count": "sd5",
+        "name": "sd6",
+        "platform": "sd7",
+        "release_year": "sd8"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_games_get_get_game": {
+      "moogle_api_web_features_games_get_get_game_ref01": {
+        "character_count": "s118",
+        "description": "s119",
+        "monster_count": "s11b",
+        "name": "s11c",
+        "platform": "s11d",
+        "release_year": "s11e"
+      }
+    }
+  }
+}

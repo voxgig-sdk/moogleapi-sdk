@@ -1,0 +1,22 @@
+# BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow:
+{
+  entity: "moogle_api_web_features_monsters_search_search_monster",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_monsters_search_search_monster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow"
+}

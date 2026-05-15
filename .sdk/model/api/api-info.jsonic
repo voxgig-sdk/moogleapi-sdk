@@ -1,0 +1,19 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "A Final Fantasy data API — characters, monsters, and games."
+      servers: [
+        {
+          url: "https://www.moogleapi.com"
+        }
+      ]
+      title: "MoogleAPI"
+      version: "v1"
+    }
+  }
+}
+
+}

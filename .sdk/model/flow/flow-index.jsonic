@@ -1,0 +1,10 @@
+# Flows
+
+@"BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow.jsonic"
+@"BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow.jsonic"
+@"BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow.jsonic"
+@"BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow.jsonic"
+@"BasicMoogleApiWebFeaturesGamesGetGetGameFlow.jsonic"
+@"BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow.jsonic"
+@"BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow.jsonic"
+@"BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow.jsonic"

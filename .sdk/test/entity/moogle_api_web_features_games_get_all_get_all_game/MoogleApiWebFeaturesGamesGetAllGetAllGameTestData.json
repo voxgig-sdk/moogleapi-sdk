@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "moogle_api_web_features_games_get_all_get_all_game": {
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME00": {
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME00",
+        "name": "s29",
+        "platform": "s2a",
+        "release_year": "s2b"
+      },
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME01": {
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME01",
+        "name": "s51",
+        "platform": "s52",
+        "release_year": "s53"
+      },
+      "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME02": {
+        "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME02",
+        "name": "s79",
+        "platform": "s7a",
+        "release_year": "s7b"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_games_get_all_get_all_game": {
+      "moogle_api_web_features_games_get_all_get_all_game_ref01": {
+        "name": "sa1",
+        "platform": "sa2",
+        "release_year": "sa3"
+      }
+    }
+  }
+}

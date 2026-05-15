@@ -1,0 +1,56 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 8
+  metrics: count: path: 8
+  metrics: count: method: 8
+
+  entity: moogle_api_web_features_characters_get_all_get_all_character: {
+    path: "/api/characters": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_characters_get_get_character: {
+    path: "/api/characters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_characters_search_search_character: {
+    path: "/api/characters/search": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_games_get_all_get_all_game: {
+    path: "/api/games": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_games_get_get_game: {
+    path: "/api/games/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_monsters_get_all_get_all_monster: {
+    path: "/api/monsters": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_monsters_get_get_monster: {
+    path: "/api/monsters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: moogle_api_web_features_monsters_search_search_monster: {
+    path: "/api/monsters/search": {
+      op: list: method: *GET
+    }
+  }
+
+}

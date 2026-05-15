@@ -1,0 +1,22 @@
+# BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow:
+{
+  entity: "moogle_api_web_features_monsters_get_all_get_all_monster",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_monsters_get_all_get_all_monster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow"
+}

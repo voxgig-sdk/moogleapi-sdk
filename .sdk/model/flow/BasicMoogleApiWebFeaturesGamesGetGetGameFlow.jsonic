@@ -1,0 +1,32 @@
+# BasicMoogleApiWebFeaturesGamesGetGetGameFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesGamesGetGetGameFlow:
+{
+  entity: "moogle_api_web_features_games_get_get_game",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesGamesGetGetGameFlow",
+  step: [
+    {
+      input: {
+        ref: "moogle_api_web_features_games_get_get_game_ref01",
+        srcdatavar: "moogle_api_web_features_games_get_get_game_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "moogle_api_web_features_games_get_get_game01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-moogle_api_web_features_games_get_get_game_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow"
+}
