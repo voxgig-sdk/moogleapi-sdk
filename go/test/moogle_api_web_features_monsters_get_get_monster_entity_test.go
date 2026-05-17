@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/moogleapi-sdk"
-	"github.com/voxgig-sdk/moogleapi-sdk/core"
+	sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
+	"github.com/voxgig-sdk/moogleapi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/moogleapi-sdk/go/utility/struct"
 )
 
 func TestMoogleApiWebFeaturesMonstersGetGetMonsterEntity(t *testing.T) {

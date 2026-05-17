@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/moogleapi-sdk"
-	"github.com/voxgig-sdk/moogleapi-sdk/core"
+	sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
+	"github.com/voxgig-sdk/moogleapi-sdk/go/core"
 )
 
 func TestMoogleApiWebFeaturesCharactersSearchSearchCharacterDirect(t *testing.T) {

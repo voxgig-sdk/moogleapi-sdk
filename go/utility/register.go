@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/moogleapi-sdk/core"
+import "github.com/voxgig-sdk/moogleapi-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

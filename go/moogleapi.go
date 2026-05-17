@@ -1,10 +1,10 @@
 package voxgigmoogleapisdk
 
 import (
-	"github.com/voxgig-sdk/moogleapi-sdk/core"
-	"github.com/voxgig-sdk/moogleapi-sdk/entity"
-	"github.com/voxgig-sdk/moogleapi-sdk/feature"
-	_ "github.com/voxgig-sdk/moogleapi-sdk/utility"
+	"github.com/voxgig-sdk/moogleapi-sdk/go/core"
+	"github.com/voxgig-sdk/moogleapi-sdk/go/entity"
+	"github.com/voxgig-sdk/moogleapi-sdk/go/feature"
+	_ "github.com/voxgig-sdk/moogleapi-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
