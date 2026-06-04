@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from moogleapi_sdk import MoogleapiSDK
 
-client = MoogleapiSDK({
-    "apikey": os.environ.get("MOOGLEAPI_APIKEY"),
-})
+client = MoogleapiSDK({})
 ```
 
 ### 2. List moogleapiwebfeaturescharactersgetallgetallcharacters
@@ -121,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOOGLEAPI_TEST_LIVE=TRUE
-MOOGLEAPI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

@@ -92,7 +92,6 @@ def _moogle_api_web_features_monsters_search_search_monster_basic_setup(extra):
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER_ENTID": idmap,
         "MOOGLEAPI_TEST_LIVE": "FALSE",
         "MOOGLEAPI_TEST_EXPLAIN": "FALSE",
-        "MOOGLEAPI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _moogle_api_web_features_monsters_search_search_monster_basic_setup(extra):
     if env.get("MOOGLEAPI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOOGLEAPI_APIKEY"),
             },
             extra or {},
         ])

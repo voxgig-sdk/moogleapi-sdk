@@ -117,14 +117,12 @@ func moogle_api_web_features_characters_get_get_characterDirectSetup(mockres any
 	env := envOverride(map[string]any{
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID": map[string]any{},
 		"MOOGLEAPI_TEST_LIVE":    "FALSE",
-		"MOOGLEAPI_APIKEY":       "NONE",
 	})
 
 	live := env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MOOGLEAPI_APIKEY"],
 		}
 		client := sdk.NewMoogleapiSDK(mergedOpts)
 

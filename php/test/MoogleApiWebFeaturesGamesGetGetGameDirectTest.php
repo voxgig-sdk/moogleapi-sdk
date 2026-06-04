@@ -77,14 +77,12 @@ function moogle_api_web_features_games_get_get_game_direct_setup($mockres)
     $env = Runner::env_override([
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME_ENTID" => [],
         "MOOGLEAPI_TEST_LIVE" => "FALSE",
-        "MOOGLEAPI_APIKEY" => "NONE",
     ]);
 
     $live = $env["MOOGLEAPI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["MOOGLEAPI_APIKEY"],
         ];
         $client = new MoogleapiSDK($merged_opts);
         return [

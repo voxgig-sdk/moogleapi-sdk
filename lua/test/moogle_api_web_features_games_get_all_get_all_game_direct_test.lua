@@ -63,14 +63,12 @@ function moogle_api_web_features_games_get_all_get_all_game_direct_setup(mockres
   local env = runner.env_override({
     ["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME_ENTID"] = {},
     ["MOOGLEAPI_TEST_LIVE"] = "FALSE",
-    ["MOOGLEAPI_APIKEY"] = "NONE",
   })
 
   local live = env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["MOOGLEAPI_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

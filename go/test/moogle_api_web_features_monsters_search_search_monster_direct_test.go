@@ -93,14 +93,12 @@ func moogle_api_web_features_monsters_search_search_monsterDirectSetup(mockres a
 	env := envOverride(map[string]any{
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER_ENTID": map[string]any{},
 		"MOOGLEAPI_TEST_LIVE":    "FALSE",
-		"MOOGLEAPI_APIKEY":       "NONE",
 	})
 
 	live := env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MOOGLEAPI_APIKEY"],
 		}
 		client := sdk.NewMoogleapiSDK(mergedOpts)
 

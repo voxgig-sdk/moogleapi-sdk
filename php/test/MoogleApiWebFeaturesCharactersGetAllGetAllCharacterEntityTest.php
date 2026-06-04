@@ -86,7 +86,6 @@ function moogle_api_web_features_characters_get_all_get_all_character_basic_setu
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_ALL_GET_ALL_CHARACTER_ENTID" => $idmap,
         "MOOGLEAPI_TEST_LIVE" => "FALSE",
         "MOOGLEAPI_TEST_EXPLAIN" => "FALSE",
-        "MOOGLEAPI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function moogle_api_web_features_characters_get_all_get_all_character_basic_setu
     if ($env["MOOGLEAPI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOOGLEAPI_APIKEY"],
             ],
             $extra ?? [],
         ]);

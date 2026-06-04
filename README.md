@@ -1,9 +1,100 @@
 # Moogleapi SDK
 
+Free REST API for Final Fantasy data — characters, monsters, and games
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About MoogleAPI
 
+[moogleAPI](https://www.moogleapi.com) is a free, open REST API that catalogues data from the Final Fantasy series — playable characters, monsters, and the games they appear in. It is a fan-run project (operated by GitHub user [jackfperryjr](https://github.com/jackfperryjr)) and is not affiliated with Square Enix.
+
+What you get from the API:
+
+- **Characters** — list all, fetch one by id, or search by name/description; filterable by `gameId`.
+- **Monsters** — list all, fetch one by id, or search by name/description; filterable by category.
+- **Games** — list all or fetch one by id, with associated character and monster counts.
+
+Anonymous access is available with a published quota of 60 requests per minute per IP; an optional premium API key passed via the `X-Api-Key` header raises the limit to 600 requests per minute. Interactive documentation is served at `/scalar/v1`.
+
+Note: third-party uptime trackers have reported the public endpoints as intermittently unavailable, so build in retries and treat the service as best-effort.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install moogleapi
+```
+
+**Python**
+```bash
+pip install moogleapi-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/moogleapi-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/moogleapi-sdk/go
+```
+
+**Ruby**
+```bash
+gem install moogleapi-sdk
+```
+
+**Lua**
+```bash
+luarocks install moogleapi-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { MoogleapiSDK } from 'moogleapi'
+
+const client = new MoogleapiSDK({})
+
+// List all moogleapiwebfeaturescharactersgetallgetallcharacters
+const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o moogleapi-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "moogleapi": {
+      "command": "/abs/path/to/moogleapi-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,82 +102,29 @@ The API exposes 8 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **MoogleApiWebFeaturesCharactersGetAllGetAllCharacter** |  | `/api/characters` |
-| **MoogleApiWebFeaturesCharactersGetGetCharacter** |  | `/api/characters/{id}` |
-| **MoogleApiWebFeaturesCharactersSearchSearchCharacter** |  | `/api/characters/search` |
-| **MoogleApiWebFeaturesGamesGetAllGetAllGame** |  | `/api/games` |
-| **MoogleApiWebFeaturesGamesGetGetGame** |  | `/api/games/{id}` |
-| **MoogleApiWebFeaturesMonstersGetAllGetAllMonster** |  | `/api/monsters` |
-| **MoogleApiWebFeaturesMonstersGetGetMonster** |  | `/api/monsters/{id}` |
-| **MoogleApiWebFeaturesMonstersSearchSearchMonster** |  | `/api/monsters/search` |
+| **MoogleApiWebFeaturesCharactersGetAllGetAllCharacter** | List every Final Fantasy character in the database — `GET /api/v1/characters`. | `/api/characters` |
+| **MoogleApiWebFeaturesCharactersGetGetCharacter** | Fetch a single character by id — `GET /api/v1/characters/{id}`. | `/api/characters/{id}` |
+| **MoogleApiWebFeaturesCharactersSearchSearchCharacter** | Search characters by name or description text. | `/api/characters/search` |
+| **MoogleApiWebFeaturesGamesGetAllGetAllGame** | List every Final Fantasy game tracked by the API — `GET /api/v1/games`. | `/api/games` |
+| **MoogleApiWebFeaturesGamesGetGetGame** | Fetch a single game by id, including its character and monster counts. | `/api/games/{id}` |
+| **MoogleApiWebFeaturesMonstersGetAllGetAllMonster** | List every monster across the Final Fantasy series — `GET /api/v1/monsters`. | `/api/monsters` |
+| **MoogleApiWebFeaturesMonstersGetGetMonster** | Fetch a single monster by id. | `/api/monsters/{id}` |
+| **MoogleApiWebFeaturesMonstersSearchSearchMonster** | Search monsters by name or description text. | `/api/monsters/search` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from moogleapi_sdk import MoogleapiSDK
 
-Every SDK call follows the same pipeline:
+client = MoogleapiSDK({})
 
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
-
-
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
-
-client := sdk.NewMoogleapiSDK(map[string]any{
-    "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
-})
-
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
-```
-
-### Lua
-
-```lua
-local sdk = require("moogleapi_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("MOOGLEAPI_APIKEY"),
-})
-
--- List all moogleapiwebfeaturescharactersgetallgetallcharacters
-local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):list(nil, nil)
+# List all moogleapiwebfeaturescharactersgetallgetallcharacters
+moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).list(None, None)
 ```
 
 ### PHP
@@ -95,26 +133,21 @@ local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleA
 <?php
 require_once 'moogleapi_sdk.php';
 
-$client = new MoogleapiSDK([
-    "apikey" => getenv("MOOGLEAPI_APIKEY"),
-]);
+$client = new MoogleapiSDK([]);
 
 // List all moogleapiwebfeaturescharactersgetallgetallcharacters
 [$moogleapiwebfeaturescharactersgetallgetallcharacters, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(null)->list(null, null);
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from moogleapi_sdk import MoogleapiSDK
+```go
+import sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
 
-client = MoogleapiSDK({
-    "apikey": os.environ.get("MOOGLEAPI_APIKEY"),
-})
+client := sdk.NewMoogleapiSDK(map[string]any{})
 
-# List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).list(None, None)
+// List all moogleapiwebfeaturescharactersgetallgetallcharacters
+moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
 ```
 
 ### Ruby
@@ -122,48 +155,42 @@ moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebF
 ```ruby
 require_relative "Moogleapi_sdk"
 
-client = MoogleapiSDK.new({
-  "apikey" => ENV["MOOGLEAPI_APIKEY"],
-})
+client = MoogleapiSDK.new({})
 
 # List all moogleapiwebfeaturescharactersgetallgetallcharacters
 moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).list(nil, nil)
 ```
 
-### TypeScript
-
-```ts
-import { MoogleapiSDK } from 'moogleapi'
-
-const client = new MoogleapiSDK({
-  apikey: process.env.MOOGLEAPI_APIKEY,
-})
-
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters
-const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):load(
-  { id = "test01" }, nil
+local sdk = require("moogleapi_sdk")
+
+local client = sdk.new({})
+
+-- List all moogleapiwebfeaturescharactersgetallgetallcharacters
+local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):list(nil, nil)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = MoogleapiSDK.test()
+const result = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = MoogleapiSDK.test(None, None)
+result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -176,12 +203,12 @@ $client = MoogleapiSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = MoogleapiSDK.test(None, None)
-result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -194,14 +221,46 @@ result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).lo
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = MoogleapiSDK.test()
-const result = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -209,21 +268,22 @@ const result = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -236,12 +296,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -254,25 +314,33 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the MoogleAPI
 
+- Upstream: [https://www.moogleapi.com](https://www.moogleapi.com)
+- API docs: [https://www.moogleapi.com/scalar/v1](https://www.moogleapi.com/scalar/v1)
+
+- Community fan project maintained on GitHub by [jackfperryjr](https://github.com/jackfperryjr).
+- Not affiliated with, endorsed by, or sponsored by Square Enix; Final Fantasy names and data are property of their respective owners.
+- Licence terms are not stated on the homepage — check the upstream repository before redistributing data.
+
+---
+
+Generated from the MoogleAPI OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

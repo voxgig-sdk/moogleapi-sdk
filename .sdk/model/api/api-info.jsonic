@@ -12,8 +12,35 @@ main: {
       ]
       title: "MoogleAPI"
       version: "v1"
+      tagline: "Free REST API for Final Fantasy data — characters, monsters, and games"
+      homepage: "https://www.moogleapi.com"
+      docs_url: "https://www.moogleapi.com/scalar/v1"
+      license_short: "Open-source community project; not affiliated with Square Enix."
+      license_md: `- Community fan project maintained on GitHub by [jackfperryjr](https://github.com/jackfperryjr).
+- Not affiliated with, endorsed by, or sponsored by Square Enix; Final Fantasy names and data are property of their respective owners.
+- Licence terms are not stated on the homepage — check the upstream repository before redistributing data.`
+      about_md: `[moogleAPI](https://www.moogleapi.com) is a free, open REST API that catalogues data from the Final Fantasy series — playable characters, monsters, and the games they appear in. It is a fan-run project (operated by GitHub user [jackfperryjr](https://github.com/jackfperryjr)) and is not affiliated with Square Enix.
+
+What you get from the API:
+
+- **Characters** — list all, fetch one by id, or search by name/description; filterable by \`gameId\`.
+- **Monsters** — list all, fetch one by id, or search by name/description; filterable by category.
+- **Games** — list all or fetch one by id, with associated character and monster counts.
+
+Anonymous access is available with a published quota of 60 requests per minute per IP; an optional premium API key passed via the \`X-Api-Key\` header raises the limit to 600 requests per minute. Interactive documentation is served at \`/scalar/v1\`.
+
+Note: third-party uptime trackers have reported the public endpoints as intermittently unavailable, so build in retries and treat the service as best-effort.`
+      entity_desc: {
+        moogle_api_web_features_characters_get_all_get_all_character: "List every Final Fantasy character in the database — `GET /api/v1/characters`."
+        moogle_api_web_features_characters_get_get_character: "Fetch a single character by id — `GET /api/v1/characters/{id}`."
+        moogle_api_web_features_characters_search_search_character: "Search characters by name or description text."
+        moogle_api_web_features_games_get_all_get_all_game: "List every Final Fantasy game tracked by the API — `GET /api/v1/games`."
+        moogle_api_web_features_games_get_get_game: "Fetch a single game by id, including its character and monster counts."
+        moogle_api_web_features_monsters_get_all_get_all_monster: "List every monster across the Final Fantasy series — `GET /api/v1/monsters`."
+        moogle_api_web_features_monsters_get_get_monster: "Fetch a single monster by id."
+        moogle_api_web_features_monsters_search_search_monster: "Search monsters by name or description text."
+      }
+      auth: false
     }
   }
-}
-
 }

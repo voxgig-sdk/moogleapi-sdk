@@ -114,7 +114,6 @@ function basicSetup(extra?: any) {
     'MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID': idmap,
     'MOOGLEAPI_TEST_LIVE': 'FALSE',
     'MOOGLEAPI_TEST_EXPLAIN': 'FALSE',
-    'MOOGLEAPI_APIKEY': 'NONE',
   })
 
   idmap = env['MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID']
@@ -124,7 +123,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MoogleapiSDK(merge([
       {
-        apikey: env.MOOGLEAPI_APIKEY,
       },
       extra
     ]))

@@ -123,7 +123,6 @@ func moogle_api_web_features_monsters_get_get_monsterBasicSetup(extra map[string
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER_ENTID": idmap,
 		"MOOGLEAPI_TEST_LIVE":      "FALSE",
 		"MOOGLEAPI_TEST_EXPLAIN":   "FALSE",
-		"MOOGLEAPI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER_ENTID"])
@@ -134,7 +133,6 @@ func moogle_api_web_features_monsters_get_get_monsterBasicSetup(extra map[string
 	if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["MOOGLEAPI_APIKEY"],
 			},
 			extra,
 		})

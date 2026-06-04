@@ -63,14 +63,12 @@ function moogle_api_web_features_characters_get_all_get_all_character_direct_set
   local env = runner.env_override({
     ["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_ALL_GET_ALL_CHARACTER_ENTID"] = {},
     ["MOOGLEAPI_TEST_LIVE"] = "FALSE",
-    ["MOOGLEAPI_APIKEY"] = "NONE",
   })
 
   local live = env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["MOOGLEAPI_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
