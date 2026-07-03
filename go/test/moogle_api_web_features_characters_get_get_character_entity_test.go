@@ -123,6 +123,7 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID": idmap,
 		"MOOGLEAPI_TEST_LIVE":      "FALSE",
 		"MOOGLEAPI_TEST_EXPLAIN":   "FALSE",
+		"MOOGLEAPI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID"])
@@ -133,6 +134,7 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 	if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["MOOGLEAPI_APIKEY"],
 			},
 			extra,
 		})

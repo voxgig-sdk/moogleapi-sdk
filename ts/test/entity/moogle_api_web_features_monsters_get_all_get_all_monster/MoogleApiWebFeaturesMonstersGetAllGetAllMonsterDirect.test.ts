@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER_ENTID': {},
     'MOOGLEAPI_TEST_LIVE': 'FALSE',
+    'MOOGLEAPI_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MOOGLEAPI_TEST_LIVE
 
   if (live) {
     const client = new MoogleapiSDK({
+      apikey: env.MOOGLEAPI_APIKEY,
     })
 
     let idmap: any = env['MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER_ENTID']

@@ -1,6 +1,11 @@
 # Moogleapi TypeScript SDK
 
-The TypeScript SDK for the Moogleapi API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { MoogleapiSDK } from 'moogleapi'
 
-const client = new MoogleapiSDK({})
+const client = new MoogleapiSDK({
+  apikey: process.env.MOOGLEAPI_APIKEY,
+})
 ```
 
 ### 2. List moogleapiwebfeaturescharactersgetallgetallcharacters
@@ -82,7 +89,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new MoogleapiSDK()
+const client = new MoogleapiSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -118,6 +125,7 @@ const logger = {
 }
 
 const client = new MoogleapiSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -128,6 +136,7 @@ Create a `.env.local` file at the project root:
 
 ```
 MOOGLEAPI_TEST_LIVE=TRUE
+MOOGLEAPI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,6 +154,7 @@ cd ts && npm test
 
 ```ts
 new MoogleapiSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -155,6 +165,7 @@ new MoogleapiSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

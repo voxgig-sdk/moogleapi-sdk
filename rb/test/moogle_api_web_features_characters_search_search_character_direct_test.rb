@@ -62,12 +62,14 @@ def moogle_api_web_features_characters_search_search_character_direct_setup(mock
   env = Runner.env_override({
     "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID" => {},
     "MOOGLEAPI_TEST_LIVE" => "FALSE",
+    "MOOGLEAPI_APIKEY" => "NONE",
   })
 
   live = env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["MOOGLEAPI_APIKEY"],
     }
     client = MoogleapiSDK.new(merged_opts)
     return {

@@ -93,12 +93,14 @@ func moogle_api_web_features_games_get_all_get_all_gameDirectSetup(mockres any) 
 	env := envOverride(map[string]any{
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME_ENTID": map[string]any{},
 		"MOOGLEAPI_TEST_LIVE":    "FALSE",
+		"MOOGLEAPI_APIKEY":       "NONE",
 	})
 
 	live := env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["MOOGLEAPI_APIKEY"],
 		}
 		client := sdk.NewMoogleapiSDK(mergedOpts)
 

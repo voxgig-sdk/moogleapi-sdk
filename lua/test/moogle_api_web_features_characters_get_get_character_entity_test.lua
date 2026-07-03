@@ -95,6 +95,7 @@ function moogle_api_web_features_characters_get_get_character_basic_setup(extra)
     ["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID"] = idmap,
     ["MOOGLEAPI_TEST_LIVE"] = "FALSE",
     ["MOOGLEAPI_TEST_EXPLAIN"] = "FALSE",
+    ["MOOGLEAPI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -106,6 +107,7 @@ function moogle_api_web_features_characters_get_get_character_basic_setup(extra)
   if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["MOOGLEAPI_APIKEY"],
       },
       extra or {},
     })

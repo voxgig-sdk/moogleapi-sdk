@@ -123,6 +123,7 @@ func moogle_api_web_features_games_get_get_gameBasicSetup(extra map[string]any) 
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME_ENTID": idmap,
 		"MOOGLEAPI_TEST_LIVE":      "FALSE",
 		"MOOGLEAPI_TEST_EXPLAIN":   "FALSE",
+		"MOOGLEAPI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME_ENTID"])
@@ -133,6 +134,7 @@ func moogle_api_web_features_games_get_get_gameBasicSetup(extra map[string]any) 
 	if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["MOOGLEAPI_APIKEY"],
 			},
 			extra,
 		})

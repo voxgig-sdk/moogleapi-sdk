@@ -1,22 +1,8 @@
 # Moogleapi SDK
 
-Free REST API for Final Fantasy data — characters, monsters, and games
+MoogleAPI client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About MoogleAPI
-
-[moogleAPI](https://www.moogleapi.com) is a free, open REST API that catalogues data from the Final Fantasy series — playable characters, monsters, and the games they appear in. It is a fan-run project (operated by GitHub user [jackfperryjr](https://github.com/jackfperryjr)) and is not affiliated with Square Enix.
-
-What you get from the API:
-
-- **Characters** — list all, fetch one by id, or search by name/description; filterable by `gameId`.
-- **Monsters** — list all, fetch one by id, or search by name/description; filterable by category.
-- **Games** — list all or fetch one by id, with associated character and monster counts.
-
-Anonymous access is available with a published quota of 60 requests per minute per IP; an optional premium API key passed via the `X-Api-Key` header raises the limit to 600 requests per minute. Interactive documentation is served at `/scalar/v1`.
-
-Note: third-party uptime trackers have reported the public endpoints as intermittently unavailable, so build in retries and treat the service as best-effort.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install moogleapi-sdk
 luarocks install moogleapi-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { MoogleapiSDK } from 'moogleapi'
 
-const client = new MoogleapiSDK({})
+const client = new MoogleapiSDK({
+  apikey: process.env.MOOGLEAPI_APIKEY,
+})
 
 // List all moogleapiwebfeaturescharactersgetallgetallcharacters
 const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+console.log(moogleapiwebfeaturescharactersgetallgetallcharacters.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,14 +90,14 @@ The API exposes 8 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **MoogleApiWebFeaturesCharactersGetAllGetAllCharacter** | List every Final Fantasy character in the database — `GET /api/v1/characters`. | `/api/characters` |
-| **MoogleApiWebFeaturesCharactersGetGetCharacter** | Fetch a single character by id — `GET /api/v1/characters/{id}`. | `/api/characters/{id}` |
-| **MoogleApiWebFeaturesCharactersSearchSearchCharacter** | Search characters by name or description text. | `/api/characters/search` |
-| **MoogleApiWebFeaturesGamesGetAllGetAllGame** | List every Final Fantasy game tracked by the API — `GET /api/v1/games`. | `/api/games` |
-| **MoogleApiWebFeaturesGamesGetGetGame** | Fetch a single game by id, including its character and monster counts. | `/api/games/{id}` |
-| **MoogleApiWebFeaturesMonstersGetAllGetAllMonster** | List every monster across the Final Fantasy series — `GET /api/v1/monsters`. | `/api/monsters` |
-| **MoogleApiWebFeaturesMonstersGetGetMonster** | Fetch a single monster by id. | `/api/monsters/{id}` |
-| **MoogleApiWebFeaturesMonstersSearchSearchMonster** | Search monsters by name or description text. | `/api/monsters/search` |
+| **MoogleApiWebFeaturesCharactersGetAllGetAllCharacter** |  | `/api/characters` |
+| **MoogleApiWebFeaturesCharactersGetGetCharacter** |  | `/api/characters/{id}` |
+| **MoogleApiWebFeaturesCharactersSearchSearchCharacter** |  | `/api/characters/search` |
+| **MoogleApiWebFeaturesGamesGetAllGetAllGame** |  | `/api/games` |
+| **MoogleApiWebFeaturesGamesGetGetGame** |  | `/api/games/{id}` |
+| **MoogleApiWebFeaturesMonstersGetAllGetAllMonster** |  | `/api/monsters` |
+| **MoogleApiWebFeaturesMonstersGetGetMonster** |  | `/api/monsters/{id}` |
+| **MoogleApiWebFeaturesMonstersSearchSearchMonster** |  | `/api/monsters/search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -119,12 +107,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from moogleapi_sdk import MoogleapiSDK
 
-client = MoogleapiSDK({})
+client = MoogleapiSDK({
+    "apikey": os.environ.get("MOOGLEAPI_APIKEY"),
+})
 
 # List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).list(None, None)
+moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+print(moogleapiwebfeaturescharactersgetallgetallcharacters)
 ```
 
 ### PHP
@@ -133,10 +125,13 @@ moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebF
 <?php
 require_once 'moogleapi_sdk.php';
 
-$client = new MoogleapiSDK([]);
+$client = new MoogleapiSDK([
+    "apikey" => getenv("MOOGLEAPI_APIKEY"),
+]);
 
 // List all moogleapiwebfeaturescharactersgetallgetallcharacters
-[$moogleapiwebfeaturescharactersgetallgetallcharacters, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(null)->list(null, null);
+[$moogleapiwebfeaturescharactersgetallgetallcharacters, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
+print_r($moogleapiwebfeaturescharactersgetallgetallcharacters);
 ```
 
 ### Golang
@@ -144,10 +139,13 @@ $client = new MoogleapiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
 
-client := sdk.NewMoogleapiSDK(map[string]any{})
+client := sdk.NewMoogleapiSDK(map[string]any{
+    "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
+})
 
 // List all moogleapiwebfeaturescharactersgetallgetallcharacters
 moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+fmt.Println(moogleapiwebfeaturescharactersgetallgetallcharacters)
 ```
 
 ### Ruby
@@ -155,10 +153,13 @@ moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWeb
 ```ruby
 require_relative "Moogleapi_sdk"
 
-client = MoogleapiSDK.new({})
+client = MoogleapiSDK.new({
+  "apikey" => ENV["MOOGLEAPI_APIKEY"],
+})
 
 # List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).list(nil, nil)
+moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list
+puts moogleapiwebfeaturescharactersgetallgetallcharacters
 ```
 
 ### Lua
@@ -166,10 +167,13 @@ moogleapiwebfeaturescharactersgetallgetallcharacters, err = client.MoogleApiWebF
 ```lua
 local sdk = require("moogleapi_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MOOGLEAPI_APIKEY"),
+})
 
 -- List all moogleapiwebfeaturescharactersgetallgetallcharacters
-local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):list(nil, nil)
+local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
+print(moogleapiwebfeaturescharactersgetallgetallcharacters)
 ```
 
 ## Unit testing in offline mode
@@ -188,25 +192,21 @@ const result = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(
 ### Python
 
 ```python
-client = MoogleapiSDK.test(None, None)
-result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(None).load(
-    {"id": "test01"}, None
-)
+client = MoogleapiSDK.test()
+result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = MoogleapiSDK::test(null, null);
-[$result, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(null)->load(
-    ["id" => "test01"], null
-);
+$client = MoogleapiSDK::test();
+[$result, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -215,19 +215,15 @@ result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).L
 ### Ruby
 
 ```ruby
-client = MoogleapiSDK.test(nil, nil)
-result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).load(
-  { "id" => "test01" }, nil
-)
+client = MoogleapiSDK.test
+result, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():load({ id = "test01" })
 ```
 
 ## How it works
@@ -331,15 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the MoogleAPI
-
-- Upstream: [https://www.moogleapi.com](https://www.moogleapi.com)
-- API docs: [https://www.moogleapi.com/scalar/v1](https://www.moogleapi.com/scalar/v1)
-
-- Community fan project maintained on GitHub by [jackfperryjr](https://github.com/jackfperryjr).
-- Not affiliated with, endorsed by, or sponsored by Square Enix; Final Fantasy names and data are property of their respective owners.
-- Licence terms are not stated on the homepage — check the upstream repository before redistributing data.
 
 ---
 

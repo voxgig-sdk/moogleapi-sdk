@@ -61,12 +61,14 @@ def _moogle_api_web_features_monsters_search_search_monster_direct_setup(mockres
     env = runner.env_override({
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER_ENTID": {},
         "MOOGLEAPI_TEST_LIVE": "FALSE",
+        "MOOGLEAPI_APIKEY": "NONE",
     })
 
     live = env.get("MOOGLEAPI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("MOOGLEAPI_APIKEY"),
         }
         client = MoogleapiSDK(merged_opts)
         return {
