@@ -10,7 +10,7 @@ The Python SDK for the Moogleapi API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install moogleapi-sdk
+pip install voxgig-sdk-moogleapi
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The PHP SDK for the Moogleapi API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/moogleapi-sdk
+composer require voxgig-sdk/moogleapi
 ```
 
 

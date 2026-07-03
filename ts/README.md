@@ -10,7 +10,7 @@ The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install moogleapi
+npm install @voxgig-sdk/moogleapi
 ```
 ## Tutorial: your first API call
 

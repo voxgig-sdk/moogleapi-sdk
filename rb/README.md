@@ -10,13 +10,13 @@ The Ruby SDK for the Moogleapi API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install moogleapi-sdk
+gem install voxgig-sdk-moogleapi
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "moogleapi-sdk"
+gem "voxgig-sdk-moogleapi"
 ```
 
 Then run:
