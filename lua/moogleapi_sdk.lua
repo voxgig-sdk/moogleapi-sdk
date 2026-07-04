@@ -244,48 +244,152 @@ end
 
 
 
+-- Idiomatic facade: client:moogle_api_web_features_characters_get_all_get_all_character():list() / client:moogle_api_web_features_characters_get_all_get_all_character():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_characters_get_all_get_all_character(data)
+  local EntityMod = require("entity.moogle_api_web_features_characters_get_all_get_all_character_entity")
+  if data == nil then
+    if self._moogle_api_web_features_characters_get_all_get_all_character == nil then
+      self._moogle_api_web_features_characters_get_all_get_all_character = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_characters_get_all_get_all_character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_characters_get_all_get_all_character() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data)
   local EntityMod = require("entity.moogle_api_web_features_characters_get_all_get_all_character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_characters_get_get_character():list() / client:moogle_api_web_features_characters_get_get_character():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_characters_get_get_character(data)
+  local EntityMod = require("entity.moogle_api_web_features_characters_get_get_character_entity")
+  if data == nil then
+    if self._moogle_api_web_features_characters_get_get_character == nil then
+      self._moogle_api_web_features_characters_get_get_character = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_characters_get_get_character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_characters_get_get_character() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesCharactersGetGetCharacter(data)
   local EntityMod = require("entity.moogle_api_web_features_characters_get_get_character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_characters_search_search_character():list() / client:moogle_api_web_features_characters_search_search_character():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_characters_search_search_character(data)
+  local EntityMod = require("entity.moogle_api_web_features_characters_search_search_character_entity")
+  if data == nil then
+    if self._moogle_api_web_features_characters_search_search_character == nil then
+      self._moogle_api_web_features_characters_search_search_character = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_characters_search_search_character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_characters_search_search_character() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesCharactersSearchSearchCharacter(data)
   local EntityMod = require("entity.moogle_api_web_features_characters_search_search_character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_games_get_all_get_all_game():list() / client:moogle_api_web_features_games_get_all_get_all_game():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_games_get_all_get_all_game(data)
+  local EntityMod = require("entity.moogle_api_web_features_games_get_all_get_all_game_entity")
+  if data == nil then
+    if self._moogle_api_web_features_games_get_all_get_all_game == nil then
+      self._moogle_api_web_features_games_get_all_get_all_game = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_games_get_all_get_all_game
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_games_get_all_get_all_game() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesGamesGetAllGetAllGame(data)
   local EntityMod = require("entity.moogle_api_web_features_games_get_all_get_all_game_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_games_get_get_game():list() / client:moogle_api_web_features_games_get_get_game():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_games_get_get_game(data)
+  local EntityMod = require("entity.moogle_api_web_features_games_get_get_game_entity")
+  if data == nil then
+    if self._moogle_api_web_features_games_get_get_game == nil then
+      self._moogle_api_web_features_games_get_get_game = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_games_get_get_game
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_games_get_get_game() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesGamesGetGetGame(data)
   local EntityMod = require("entity.moogle_api_web_features_games_get_get_game_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_monsters_get_all_get_all_monster():list() / client:moogle_api_web_features_monsters_get_all_get_all_monster():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_monsters_get_all_get_all_monster(data)
+  local EntityMod = require("entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity")
+  if data == nil then
+    if self._moogle_api_web_features_monsters_get_all_get_all_monster == nil then
+      self._moogle_api_web_features_monsters_get_all_get_all_monster = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_monsters_get_all_get_all_monster
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_monsters_get_all_get_all_monster() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data)
   local EntityMod = require("entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_monsters_get_get_monster():list() / client:moogle_api_web_features_monsters_get_get_monster():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_monsters_get_get_monster(data)
+  local EntityMod = require("entity.moogle_api_web_features_monsters_get_get_monster_entity")
+  if data == nil then
+    if self._moogle_api_web_features_monsters_get_get_monster == nil then
+      self._moogle_api_web_features_monsters_get_get_monster = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_monsters_get_get_monster
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_monsters_get_get_monster() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesMonstersGetGetMonster(data)
   local EntityMod = require("entity.moogle_api_web_features_monsters_get_get_monster_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:moogle_api_web_features_monsters_search_search_monster():list() / client:moogle_api_web_features_monsters_search_search_monster():load({ id = ... })
+function MoogleapiSDK:moogle_api_web_features_monsters_search_search_monster(data)
+  local EntityMod = require("entity.moogle_api_web_features_monsters_search_search_monster_entity")
+  if data == nil then
+    if self._moogle_api_web_features_monsters_search_search_monster == nil then
+      self._moogle_api_web_features_monsters_search_search_monster = EntityMod.new(self, nil)
+    end
+    return self._moogle_api_web_features_monsters_search_search_monster
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:moogle_api_web_features_monsters_search_search_monster() instead.
 function MoogleapiSDK:MoogleApiWebFeaturesMonstersSearchSearchMonster(data)
   local EntityMod = require("entity.moogle_api_web_features_monsters_search_search_monster_entity")
   return EntityMod.new(self, data)

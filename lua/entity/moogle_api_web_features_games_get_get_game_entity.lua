@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MoogleApiWebFeaturesGamesGetGetGameLoadMatch
+---@param ctrl? table
+---@return MoogleApiWebFeaturesGamesGetGetGame
+---@return string? err
 function MoogleApiWebFeaturesGamesGetGetGameEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

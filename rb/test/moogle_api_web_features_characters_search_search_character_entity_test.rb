@@ -43,8 +43,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntityTest < Minitest::
     moogle_api_web_features_characters_search_search_character_ref01_ent = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
     moogle_api_web_features_characters_search_search_character_ref01_match = {}
 
-    moogle_api_web_features_characters_search_search_character_ref01_list_result, err = moogle_api_web_features_characters_search_search_character_ref01_ent.list(moogle_api_web_features_characters_search_search_character_ref01_match, nil)
-    assert_nil err
+    moogle_api_web_features_characters_search_search_character_ref01_list_result = moogle_api_web_features_characters_search_search_character_ref01_ent.list(moogle_api_web_features_characters_search_search_character_ref01_match, nil)
     assert moogle_api_web_features_characters_search_search_character_ref01_list_result.is_a?(Array)
 
   end

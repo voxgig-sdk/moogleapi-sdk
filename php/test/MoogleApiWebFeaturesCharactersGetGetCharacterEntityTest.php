@@ -51,8 +51,7 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntityTest extends TestCase
         $moogle_api_web_features_characters_get_get_character_ref01_match_dt0 = [
             "id" => $moogle_api_web_features_characters_get_get_character_ref01_data["id"],
         ];
-        [$moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded, $err] = $moogle_api_web_features_characters_get_get_character_ref01_ent->load($moogle_api_web_features_characters_get_get_character_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded = $moogle_api_web_features_characters_get_get_character_ref01_ent->load($moogle_api_web_features_characters_get_get_character_ref01_match_dt0, null);
         $moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = Helpers::to_map($moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded);
         $this->assertNotNull($moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result);
         $this->assertEquals($moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result["id"], $moogle_api_web_features_characters_get_get_character_ref01_data["id"]);

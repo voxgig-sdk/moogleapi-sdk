@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Moogleapi_types'
+
 
 class MoogleapiSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class MoogleapiSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class MoogleapiSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue MoogleapiError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = MoogleapiHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class MoogleapiSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,58 +198,114 @@ class MoogleapiSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_characters_get_all_get_all_character.list / client.moogle_api_web_features_characters_get_all_get_all_character.load({ "id" => ... })
+  def moogle_api_web_features_characters_get_all_get_all_character
+    require_relative 'entity/moogle_api_web_features_characters_get_all_get_all_character_entity'
+    @moogle_api_web_features_characters_get_all_get_all_character ||= MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_characters_get_all_get_all_character instead.
   def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_get_all_get_all_character_entity'
     MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_characters_get_get_character.list / client.moogle_api_web_features_characters_get_get_character.load({ "id" => ... })
+  def moogle_api_web_features_characters_get_get_character
+    require_relative 'entity/moogle_api_web_features_characters_get_get_character_entity'
+    @moogle_api_web_features_characters_get_get_character ||= MoogleApiWebFeaturesCharactersGetGetCharacterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_characters_get_get_character instead.
   def MoogleApiWebFeaturesCharactersGetGetCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_get_get_character_entity'
     MoogleApiWebFeaturesCharactersGetGetCharacterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_characters_search_search_character.list / client.moogle_api_web_features_characters_search_search_character.load({ "id" => ... })
+  def moogle_api_web_features_characters_search_search_character
+    require_relative 'entity/moogle_api_web_features_characters_search_search_character_entity'
+    @moogle_api_web_features_characters_search_search_character ||= MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_characters_search_search_character instead.
   def MoogleApiWebFeaturesCharactersSearchSearchCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_search_search_character_entity'
     MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_games_get_all_get_all_game.list / client.moogle_api_web_features_games_get_all_get_all_game.load({ "id" => ... })
+  def moogle_api_web_features_games_get_all_get_all_game
+    require_relative 'entity/moogle_api_web_features_games_get_all_get_all_game_entity'
+    @moogle_api_web_features_games_get_all_get_all_game ||= MoogleApiWebFeaturesGamesGetAllGetAllGameEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_games_get_all_get_all_game instead.
   def MoogleApiWebFeaturesGamesGetAllGetAllGame(data = nil)
     require_relative 'entity/moogle_api_web_features_games_get_all_get_all_game_entity'
     MoogleApiWebFeaturesGamesGetAllGetAllGameEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_games_get_get_game.list / client.moogle_api_web_features_games_get_get_game.load({ "id" => ... })
+  def moogle_api_web_features_games_get_get_game
+    require_relative 'entity/moogle_api_web_features_games_get_get_game_entity'
+    @moogle_api_web_features_games_get_get_game ||= MoogleApiWebFeaturesGamesGetGetGameEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_games_get_get_game instead.
   def MoogleApiWebFeaturesGamesGetGetGame(data = nil)
     require_relative 'entity/moogle_api_web_features_games_get_get_game_entity'
     MoogleApiWebFeaturesGamesGetGetGameEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_monsters_get_all_get_all_monster.list / client.moogle_api_web_features_monsters_get_all_get_all_monster.load({ "id" => ... })
+  def moogle_api_web_features_monsters_get_all_get_all_monster
+    require_relative 'entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity'
+    @moogle_api_web_features_monsters_get_all_get_all_monster ||= MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_monsters_get_all_get_all_monster instead.
   def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity'
     MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_monsters_get_get_monster.list / client.moogle_api_web_features_monsters_get_get_monster.load({ "id" => ... })
+  def moogle_api_web_features_monsters_get_get_monster
+    require_relative 'entity/moogle_api_web_features_monsters_get_get_monster_entity'
+    @moogle_api_web_features_monsters_get_get_monster ||= MoogleApiWebFeaturesMonstersGetGetMonsterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_monsters_get_get_monster instead.
   def MoogleApiWebFeaturesMonstersGetGetMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_get_get_monster_entity'
     MoogleApiWebFeaturesMonstersGetGetMonsterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.moogle_api_web_features_monsters_search_search_monster.list / client.moogle_api_web_features_monsters_search_search_monster.load({ "id" => ... })
+  def moogle_api_web_features_monsters_search_search_monster
+    require_relative 'entity/moogle_api_web_features_monsters_search_search_monster_entity'
+    @moogle_api_web_features_monsters_search_search_monster ||= MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.moogle_api_web_features_monsters_search_search_monster instead.
   def MoogleApiWebFeaturesMonstersSearchSearchMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_search_search_monster_entity'
     MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity.new(self, data)

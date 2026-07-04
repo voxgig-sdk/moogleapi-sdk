@@ -45,6 +45,7 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntity
     end
   end
 
+  # @return [MoogleApiWebFeaturesCharactersGetGetCharacter, Hash] the current MoogleApiWebFeaturesCharactersGetGetCharacter data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of MoogleApiWebFeaturesCharactersGetGetCharacter fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single MoogleApiWebFeaturesCharactersGetGetCharacter.
+  #
+  # @param reqmatch [MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [MoogleApiWebFeaturesCharactersGetGetCharacter, Hash] the loaded MoogleApiWebFeaturesCharactersGetGetCharacter; raises MoogleapiError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

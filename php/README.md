@@ -9,9 +9,10 @@ The PHP SDK for the Moogleapi API — an entity-oriented client using PHP conven
 
 
 ## Install
-```bash
-composer require voxgig-sdk/moogleapi
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/moogleapi-sdk/releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -33,14 +34,16 @@ $client = new MoogleapiSDK([
 ### 2. List moogleapiwebfeaturescharactersgetallgetallcharacters
 
 ```php
-[$result, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->moogleapiwebfeaturescharactersgetallgetallcharacter()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +55,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +93,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = MoogleapiSDK::test();
 
-[$result, $err] = $client->Moogleapi()->load(["id" => "test01"]);
+$result = $client->moogleapiwebfeaturescharactersgetallgetallcharacter()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -198,8 +204,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -339,7 +349,7 @@ API path: `/api/monsters/search`
 
 ### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
 
-Create an instance: `const moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()`
+Create an instance: `const moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api_web_features_characters_get_all_get_all_character`
 
 #### Operations
 
@@ -360,13 +370,13 @@ Create an instance: `const moogle_api_web_features_characters_get_all_get_all_ch
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_get_all_get_all_characters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const moogle_api_web_features_characters_get_all_get_all_characters = await client.moogle_api_web_features_characters_get_all_get_all_character.list()
 ```
 
 
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
-Create an instance: `const moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()`
+Create an instance: `const moogle_api_web_features_characters_get_get_character = client.moogle_api_web_features_characters_get_get_character`
 
 #### Operations
 
@@ -391,13 +401,13 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_characters_get_get_character = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
+const moogle_api_web_features_characters_get_get_character = await client.moogle_api_web_features_characters_get_get_character.load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
 ```
 
 
 ### MoogleApiWebFeaturesCharactersSearchSearchCharacter
 
-Create an instance: `const moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()`
+Create an instance: `const moogle_api_web_features_characters_search_search_character = client.moogle_api_web_features_characters_search_search_character`
 
 #### Operations
 
@@ -419,13 +429,13 @@ Create an instance: `const moogle_api_web_features_characters_search_search_char
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_search_search_characters = await client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()
+const moogle_api_web_features_characters_search_search_characters = await client.moogle_api_web_features_characters_search_search_character.list()
 ```
 
 
 ### MoogleApiWebFeaturesGamesGetAllGetAllGame
 
-Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()`
+Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_features_games_get_all_get_all_game`
 
 #### Operations
 
@@ -445,13 +455,13 @@ Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = 
 #### Example: List
 
 ```ts
-const moogle_api_web_features_games_get_all_get_all_games = await client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
+const moogle_api_web_features_games_get_all_get_all_games = await client.moogle_api_web_features_games_get_all_get_all_game.list()
 ```
 
 
 ### MoogleApiWebFeaturesGamesGetGetGame
 
-Create an instance: `const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()`
+Create an instance: `const moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_games_get_get_game`
 
 #### Operations
 
@@ -474,13 +484,13 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 'moogle_api_web_features_games_get_get_game_id' })
+const moogle_api_web_features_games_get_get_game = await client.moogle_api_web_features_games_get_get_game.load({ id: 'moogle_api_web_features_games_get_get_game_id' })
 ```
 
 
 ### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
 
-Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()`
+Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web_features_monsters_get_all_get_all_monster`
 
 #### Operations
 
@@ -501,13 +511,13 @@ Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_mons
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_get_all_get_all_monsters = await client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
+const moogle_api_web_features_monsters_get_all_get_all_monsters = await client.moogle_api_web_features_monsters_get_all_get_all_monster.list()
 ```
 
 
 ### MoogleApiWebFeaturesMonstersGetGetMonster
 
-Create an instance: `const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster()`
+Create an instance: `const moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_features_monsters_get_get_monster`
 
 #### Operations
 
@@ -529,13 +539,13 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
+const moogle_api_web_features_monsters_get_get_monster = await client.moogle_api_web_features_monsters_get_get_monster.load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
 ```
 
 
 ### MoogleApiWebFeaturesMonstersSearchSearchMonster
 
-Create an instance: `const moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()`
+Create an instance: `const moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_features_monsters_search_search_monster`
 
 #### Operations
 
@@ -557,7 +567,7 @@ Create an instance: `const moogle_api_web_features_monsters_search_search_monste
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_search_search_monsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+const moogle_api_web_features_monsters_search_search_monsters = await client.moogle_api_web_features_monsters_search_search_monster.list()
 ```
 
 
@@ -632,11 +642,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$moogleapiwebfeaturescharactersgetallgetallcharacter = $client->moogleapiwebfeaturescharactersgetallgetallcharacter();
+$moogleapiwebfeaturescharactersgetallgetallcharacter->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $moogleapiwebfeaturescharactersgetallgetallcharacter->dataGet() now returns the loaded moogleapiwebfeaturescharactersgetallgetallcharacter data
+// $moogleapiwebfeaturescharactersgetallgetallcharacter->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

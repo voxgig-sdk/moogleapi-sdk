@@ -45,6 +45,7 @@ class MoogleApiWebFeaturesGamesGetGetGameEntity
     end
   end
 
+  # @return [MoogleApiWebFeaturesGamesGetGetGame, Hash] the current MoogleApiWebFeaturesGamesGetGetGame data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MoogleApiWebFeaturesGamesGetGetGameEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of MoogleApiWebFeaturesGamesGetGetGame fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single MoogleApiWebFeaturesGamesGetGetGame.
+  #
+  # @param reqmatch [MoogleApiWebFeaturesGamesGetGetGameLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [MoogleApiWebFeaturesGamesGetGetGame, Hash] the loaded MoogleApiWebFeaturesGamesGetGetGame; raises MoogleapiError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -144,16 +144,23 @@ class MoogleapiSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class MoogleapiSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,50 +212,138 @@ class MoogleapiSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def moogle_api_web_features_characters_get_all_get_all_character(self):
+        """Idiomatic facade: client.moogle_api_web_features_characters_get_all_get_all_character.list() / client.moogle_api_web_features_characters_get_all_get_all_character.load({"id": ...})."""
+        from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
+        cached = getattr(self, "_moogle_api_web_features_characters_get_all_get_all_character", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, None)
+            self._moogle_api_web_features_characters_get_all_get_all_character = cached
+        return cached
 
     def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_characters_get_all_get_all_character instead.
         from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
         return MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_characters_get_get_character(self):
+        """Idiomatic facade: client.moogle_api_web_features_characters_get_get_character.list() / client.moogle_api_web_features_characters_get_get_character.load({"id": ...})."""
+        from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
+        cached = getattr(self, "_moogle_api_web_features_characters_get_get_character", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, None)
+            self._moogle_api_web_features_characters_get_get_character = cached
+        return cached
+
     def MoogleApiWebFeaturesCharactersGetGetCharacter(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_characters_get_get_character instead.
         from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
         return MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_characters_search_search_character(self):
+        """Idiomatic facade: client.moogle_api_web_features_characters_search_search_character.list() / client.moogle_api_web_features_characters_search_search_character.load({"id": ...})."""
+        from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
+        cached = getattr(self, "_moogle_api_web_features_characters_search_search_character", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, None)
+            self._moogle_api_web_features_characters_search_search_character = cached
+        return cached
+
     def MoogleApiWebFeaturesCharactersSearchSearchCharacter(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_characters_search_search_character instead.
         from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
         return MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_games_get_all_get_all_game(self):
+        """Idiomatic facade: client.moogle_api_web_features_games_get_all_get_all_game.list() / client.moogle_api_web_features_games_get_all_get_all_game.load({"id": ...})."""
+        from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
+        cached = getattr(self, "_moogle_api_web_features_games_get_all_get_all_game", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, None)
+            self._moogle_api_web_features_games_get_all_get_all_game = cached
+        return cached
+
     def MoogleApiWebFeaturesGamesGetAllGetAllGame(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_games_get_all_get_all_game instead.
         from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
         return MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_games_get_get_game(self):
+        """Idiomatic facade: client.moogle_api_web_features_games_get_get_game.list() / client.moogle_api_web_features_games_get_get_game.load({"id": ...})."""
+        from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
+        cached = getattr(self, "_moogle_api_web_features_games_get_get_game", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesGamesGetGetGameEntity(self, None)
+            self._moogle_api_web_features_games_get_get_game = cached
+        return cached
+
     def MoogleApiWebFeaturesGamesGetGetGame(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_games_get_get_game instead.
         from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
         return MoogleApiWebFeaturesGamesGetGetGameEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_monsters_get_all_get_all_monster(self):
+        """Idiomatic facade: client.moogle_api_web_features_monsters_get_all_get_all_monster.list() / client.moogle_api_web_features_monsters_get_all_get_all_monster.load({"id": ...})."""
+        from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
+        cached = getattr(self, "_moogle_api_web_features_monsters_get_all_get_all_monster", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, None)
+            self._moogle_api_web_features_monsters_get_all_get_all_monster = cached
+        return cached
+
     def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_monsters_get_all_get_all_monster instead.
         from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
         return MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_monsters_get_get_monster(self):
+        """Idiomatic facade: client.moogle_api_web_features_monsters_get_get_monster.list() / client.moogle_api_web_features_monsters_get_get_monster.load({"id": ...})."""
+        from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
+        cached = getattr(self, "_moogle_api_web_features_monsters_get_get_monster", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, None)
+            self._moogle_api_web_features_monsters_get_get_monster = cached
+        return cached
+
     def MoogleApiWebFeaturesMonstersGetGetMonster(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_monsters_get_get_monster instead.
         from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
         return MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, data)
 
 
+    @property
+    def moogle_api_web_features_monsters_search_search_monster(self):
+        """Idiomatic facade: client.moogle_api_web_features_monsters_search_search_monster.list() / client.moogle_api_web_features_monsters_search_search_monster.load({"id": ...})."""
+        from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
+        cached = getattr(self, "_moogle_api_web_features_monsters_search_search_monster", None)
+        if cached is None:
+            cached = MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, None)
+            self._moogle_api_web_features_monsters_search_search_monster = cached
+        return cached
+
     def MoogleApiWebFeaturesMonstersSearchSearchMonster(self, data=None):
+        # Deprecated: use client.moogle_api_web_features_monsters_search_search_monster instead.
         from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
         return MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, data)
 

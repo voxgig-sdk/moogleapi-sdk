@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
+---@param ctrl? table
+---@return MoogleApiWebFeaturesCharactersSearchSearchCharacter[]
+---@return string? err
 function MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

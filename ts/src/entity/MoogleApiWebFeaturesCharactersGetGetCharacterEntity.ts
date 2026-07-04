@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  MoogleApiWebFeaturesCharactersGetGetCharacter,
+  MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch,
+} from '../MoogleapiTypes'
 
 // TODO: needs Entity superclass
-class MoogleApiWebFeaturesCharactersGetGetCharacterEntity extends MoogleapiEntityBase {
+class MoogleApiWebFeaturesCharactersGetGetCharacterEntity extends MoogleapiEntityBase<MoogleApiWebFeaturesCharactersGetGetCharacter> {
 
   constructor(client: MoogleapiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntity extends MoogleapiEntit
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesCharactersGetGetCharacter> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntity extends MoogleapiEntit
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MoogleApiWebFeaturesCharactersGetGetCharacter> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

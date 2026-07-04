@@ -245,41 +245,65 @@ func (sdk *MoogleapiSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// MoogleApiWebFeaturesCharactersGetAllGetAllCharacter returns a MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesCharactersGetGetCharacter returns a MoogleApiWebFeaturesCharactersGetGetCharacter entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesCharactersGetGetCharacter(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesCharactersGetGetCharacterEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesCharactersSearchSearchCharacter returns a MoogleApiWebFeaturesCharactersSearchSearchCharacter entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesCharactersSearchSearchCharacter(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesCharactersSearchSearchCharacterEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesGamesGetAllGetAllGame returns a MoogleApiWebFeaturesGamesGetAllGetAllGame entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesGamesGetAllGetAllGame(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesGamesGetAllGetAllGameEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesGamesGetGetGame returns a MoogleApiWebFeaturesGamesGetGetGame entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesGamesGetGetGame(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesGamesGetGetGame(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesGamesGetGetGameEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesMonstersGetAllGetAllMonster returns a MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesMonstersGetGetMonster returns a MoogleApiWebFeaturesMonstersGetGetMonster entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesMonstersGetGetMonster(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesMonstersGetGetMonsterEntityFunc(sdk, data)
 }
 
 
+// MoogleApiWebFeaturesMonstersSearchSearchMonster returns a MoogleApiWebFeaturesMonstersSearchSearchMonster entity bound to this client.
+// Idiomatic usage: client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil) or
+// client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MoogleapiSDK) MoogleApiWebFeaturesMonstersSearchSearchMonster(data map[string]any) MoogleapiEntity {
 	return NewMoogleApiWebFeaturesMonstersSearchSearchMonsterEntityFunc(sdk, data)
 }

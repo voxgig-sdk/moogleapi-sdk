@@ -82,9 +82,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -98,14 +100,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -113,7 +115,7 @@ same parameters as `direct()`.
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```ruby
-moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api_web_features_characters_get_all_get_all_character
 ```
 
 ### Fields
@@ -128,12 +130,12 @@ moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiW
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list(nil)
+results = client.moogle_api_web_features_characters_get_all_get_all_character.list(nil)
 ```
 
 ### Common Methods
@@ -169,7 +171,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```ruby
-moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter
+moogle_api_web_features_characters_get_get_character = client.moogle_api_web_features_characters_get_get_character
 ```
 
 ### Fields
@@ -188,12 +190,12 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => "moogle_api_web_features_characters_get_get_character_id" })
+result = client.moogle_api_web_features_characters_get_get_character.load({ "id" => "moogle_api_web_features_characters_get_get_character_id" })
 ```
 
 ### Common Methods
@@ -229,7 +231,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```ruby
-moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter
+moogle_api_web_features_characters_search_search_character = client.moogle_api_web_features_characters_search_search_character
 ```
 
 ### Fields
@@ -245,12 +247,12 @@ moogle_api_web_features_characters_search_search_character = client.MoogleApiWeb
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.list(nil)
+results = client.moogle_api_web_features_characters_search_search_character.list(nil)
 ```
 
 ### Common Methods
@@ -286,7 +288,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```ruby
-moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame
+moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_features_games_get_all_get_all_game
 ```
 
 ### Fields
@@ -300,12 +302,12 @@ moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeatures
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.MoogleApiWebFeaturesGamesGetAllGetAllGame.list(nil)
+results = client.moogle_api_web_features_games_get_all_get_all_game.list(nil)
 ```
 
 ### Common Methods
@@ -341,7 +343,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```ruby
-moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame
+moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_games_get_get_game
 ```
 
 ### Fields
@@ -358,12 +360,12 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => "moogle_api_web_features_games_get_get_game_id" })
+result = client.moogle_api_web_features_games_get_get_game.load({ "id" => "moogle_api_web_features_games_get_get_game_id" })
 ```
 
 ### Common Methods
@@ -399,7 +401,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```ruby
-moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web_features_monsters_get_all_get_all_monster
 ```
 
 ### Fields
@@ -414,12 +416,12 @@ moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFe
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.list(nil)
+results = client.moogle_api_web_features_monsters_get_all_get_all_monster.list(nil)
 ```
 
 ### Common Methods
@@ -455,7 +457,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```ruby
-moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster
+moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_features_monsters_get_get_monster
 ```
 
 ### Fields
@@ -471,12 +473,12 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.MoogleApiWebFeaturesMonstersGetGetMonster.load({ "id" => "moogle_api_web_features_monsters_get_get_monster_id" })
+result = client.moogle_api_web_features_monsters_get_get_monster.load({ "id" => "moogle_api_web_features_monsters_get_get_monster_id" })
 ```
 
 ### Common Methods
@@ -512,7 +514,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```ruby
-moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster
+moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_features_monsters_search_search_monster
 ```
 
 ### Fields
@@ -528,12 +530,12 @@ moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeat
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list(nil)
+results = client.moogle_api_web_features_monsters_search_search_monster.list(nil)
 ```
 
 ### Common Methods

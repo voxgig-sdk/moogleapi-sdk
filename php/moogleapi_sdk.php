@@ -103,7 +103,7 @@ class MoogleapiSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class MoogleapiSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class MoogleapiSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,73 +216,161 @@ class MoogleapiSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function MoogleApiWebFeaturesCharactersGetAllGetAllCharacter($data = null)
+    private $_moogle_api_web_features_characters_get_all_get_all_character = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_characters_get_all_get_all_character()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersGetAllGetAllCharacter() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_characters_get_all_get_all_character($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_all_get_all_character_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_characters_get_all_get_all_character === null) {
+                $this->_moogle_api_web_features_characters_get_all_get_all_character = new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_characters_get_all_get_all_character;
+        }
         return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesCharactersGetGetCharacter($data = null)
+    private $_moogle_api_web_features_characters_get_get_character = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_characters_get_get_character()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersGetGetCharacter() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_characters_get_get_character($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_get_character_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_characters_get_get_character === null) {
+                $this->_moogle_api_web_features_characters_get_get_character = new MoogleApiWebFeaturesCharactersGetGetCharacterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_characters_get_get_character;
+        }
         return new MoogleApiWebFeaturesCharactersGetGetCharacterEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesCharactersSearchSearchCharacter($data = null)
+    private $_moogle_api_web_features_characters_search_search_character = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_characters_search_search_character()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersSearchSearchCharacter() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_characters_search_search_character($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_search_search_character_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_characters_search_search_character === null) {
+                $this->_moogle_api_web_features_characters_search_search_character = new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_characters_search_search_character;
+        }
         return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesGamesGetAllGetAllGame($data = null)
+    private $_moogle_api_web_features_games_get_all_get_all_game = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_games_get_all_get_all_game()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesGamesGetAllGetAllGame() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_games_get_all_get_all_game($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_games_get_all_get_all_game_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_games_get_all_get_all_game === null) {
+                $this->_moogle_api_web_features_games_get_all_get_all_game = new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_games_get_all_get_all_game;
+        }
         return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesGamesGetGetGame($data = null)
+    private $_moogle_api_web_features_games_get_get_game = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_games_get_get_game()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesGamesGetGetGame() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_games_get_get_game($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_games_get_get_game_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_games_get_get_game === null) {
+                $this->_moogle_api_web_features_games_get_get_game = new MoogleApiWebFeaturesGamesGetGetGameEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_games_get_get_game;
+        }
         return new MoogleApiWebFeaturesGamesGetGetGameEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesMonstersGetAllGetAllMonster($data = null)
+    private $_moogle_api_web_features_monsters_get_all_get_all_monster = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_monsters_get_all_get_all_monster()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersGetAllGetAllMonster() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_monsters_get_all_get_all_monster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_monsters_get_all_get_all_monster === null) {
+                $this->_moogle_api_web_features_monsters_get_all_get_all_monster = new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_monsters_get_all_get_all_monster;
+        }
         return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesMonstersGetGetMonster($data = null)
+    private $_moogle_api_web_features_monsters_get_get_monster = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_monsters_get_get_monster()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersGetGetMonster() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_monsters_get_get_monster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_get_monster_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_monsters_get_get_monster === null) {
+                $this->_moogle_api_web_features_monsters_get_get_monster = new MoogleApiWebFeaturesMonstersGetGetMonsterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_monsters_get_get_monster;
+        }
         return new MoogleApiWebFeaturesMonstersGetGetMonsterEntity($this, $data);
     }
 
 
-    public function MoogleApiWebFeaturesMonstersSearchSearchMonster($data = null)
+    private $_moogle_api_web_features_monsters_search_search_monster = null;
+
+    // Idiomatic facade: $client->moogle_api_web_features_monsters_search_search_monster()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersSearchSearchMonster() (PHP method
+    // names are case-insensitive).
+    public function moogle_api_web_features_monsters_search_search_monster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_search_search_monster_entity.php';
+        if ($data === null) {
+            if ($this->_moogle_api_web_features_monsters_search_search_monster === null) {
+                $this->_moogle_api_web_features_monsters_search_search_monster = new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity($this, null);
+            }
+            return $this->_moogle_api_web_features_monsters_search_search_monster;
+        }
         return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity($this, $data);
     }
 

@@ -9,9 +9,12 @@ The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/moogleapi
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/moogleapi-sdk/releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,7 +23,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MoogleapiSDK } from 'moogleapi'
+import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
 
 const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
@@ -30,7 +33,7 @@ const client = new MoogleapiSDK({
 ### 2. List moogleapiwebfeaturescharactersgetallgetallcharacters
 
 ```ts
-const result = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const result = await client.moogleapiwebfeaturescharactersgetallgetallcharacter.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MoogleapiSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.moogleapiwebfeaturescharactersgetallgetallcharacter.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -98,7 +101,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.moogleapiwebfeaturescharactersgetallgetallcharacter
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -385,7 +388,7 @@ API path: `/api/monsters/search`
 
 ### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
 
-Create an instance: `const moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()`
+Create an instance: `const moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api_web_features_characters_get_all_get_all_character`
 
 #### Operations
 
@@ -406,13 +409,13 @@ Create an instance: `const moogle_api_web_features_characters_get_all_get_all_ch
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_get_all_get_all_characters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const moogle_api_web_features_characters_get_all_get_all_characters = await client.moogle_api_web_features_characters_get_all_get_all_character.list()
 ```
 
 
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
-Create an instance: `const moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()`
+Create an instance: `const moogle_api_web_features_characters_get_get_character = client.moogle_api_web_features_characters_get_get_character`
 
 #### Operations
 
@@ -437,13 +440,13 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_characters_get_get_character = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
+const moogle_api_web_features_characters_get_get_character = await client.moogle_api_web_features_characters_get_get_character.load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
 ```
 
 
 ### MoogleApiWebFeaturesCharactersSearchSearchCharacter
 
-Create an instance: `const moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()`
+Create an instance: `const moogle_api_web_features_characters_search_search_character = client.moogle_api_web_features_characters_search_search_character`
 
 #### Operations
 
@@ -465,13 +468,13 @@ Create an instance: `const moogle_api_web_features_characters_search_search_char
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_search_search_characters = await client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()
+const moogle_api_web_features_characters_search_search_characters = await client.moogle_api_web_features_characters_search_search_character.list()
 ```
 
 
 ### MoogleApiWebFeaturesGamesGetAllGetAllGame
 
-Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()`
+Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_features_games_get_all_get_all_game`
 
 #### Operations
 
@@ -491,13 +494,13 @@ Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = 
 #### Example: List
 
 ```ts
-const moogle_api_web_features_games_get_all_get_all_games = await client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
+const moogle_api_web_features_games_get_all_get_all_games = await client.moogle_api_web_features_games_get_all_get_all_game.list()
 ```
 
 
 ### MoogleApiWebFeaturesGamesGetGetGame
 
-Create an instance: `const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()`
+Create an instance: `const moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_games_get_get_game`
 
 #### Operations
 
@@ -520,13 +523,13 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 'moogle_api_web_features_games_get_get_game_id' })
+const moogle_api_web_features_games_get_get_game = await client.moogle_api_web_features_games_get_get_game.load({ id: 'moogle_api_web_features_games_get_get_game_id' })
 ```
 
 
 ### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
 
-Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()`
+Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web_features_monsters_get_all_get_all_monster`
 
 #### Operations
 
@@ -547,13 +550,13 @@ Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_mons
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_get_all_get_all_monsters = await client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
+const moogle_api_web_features_monsters_get_all_get_all_monsters = await client.moogle_api_web_features_monsters_get_all_get_all_monster.list()
 ```
 
 
 ### MoogleApiWebFeaturesMonstersGetGetMonster
 
-Create an instance: `const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster()`
+Create an instance: `const moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_features_monsters_get_get_monster`
 
 #### Operations
 
@@ -575,13 +578,13 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
+const moogle_api_web_features_monsters_get_get_monster = await client.moogle_api_web_features_monsters_get_get_monster.load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
 ```
 
 
 ### MoogleApiWebFeaturesMonstersSearchSearchMonster
 
-Create an instance: `const moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()`
+Create an instance: `const moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_features_monsters_search_search_monster`
 
 #### Operations
 
@@ -603,7 +606,7 @@ Create an instance: `const moogle_api_web_features_monsters_search_search_monste
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_search_search_monsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+const moogle_api_web_features_monsters_search_search_monsters = await client.moogle_api_web_features_monsters_search_search_monster.list()
 ```
 
 
@@ -664,7 +667,7 @@ moogleapi/
 Import the SDK from the package root:
 
 ```ts
-import { MoogleapiSDK } from 'moogleapi'
+import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
 ```
 
 ### Entity state
@@ -674,11 +677,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const moogleapiwebfeaturescharactersgetallgetallcharacter = client.moogleapiwebfeaturescharactersgetallgetallcharacter
+await moogleapiwebfeaturescharactersgetallgetallcharacter.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// moogleapiwebfeaturescharactersgetallgetallcharacter.data() now returns the loaded moogleapiwebfeaturescharactersgetallgetallcharacter data
+// moogleapiwebfeaturescharactersgetallgetallcharacter.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

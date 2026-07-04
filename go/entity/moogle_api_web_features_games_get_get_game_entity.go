@@ -85,6 +85,27 @@ func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an MoogleApiWebFeaturesGamesGetGetGame; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) DataTyped(data ...MoogleApiWebFeaturesGamesGetGetGame) MoogleApiWebFeaturesGamesGetGetGame {
+	if len(data) > 0 {
+		return typedFrom[MoogleApiWebFeaturesGamesGetGetGame](e.Data(asMap(data[0])))
+	}
+	return typedFrom[MoogleApiWebFeaturesGamesGetGetGame](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through MoogleApiWebFeaturesGamesGetGetGame (all fields
+// optional at the wire level).
+func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) MatchTyped(match ...MoogleApiWebFeaturesGamesGetGetGame) MoogleApiWebFeaturesGamesGetGetGame {
+	if len(match) > 0 {
+		return typedFrom[MoogleApiWebFeaturesGamesGetGetGame](e.Match(asMap(match[0])))
+	}
+	return typedFrom[MoogleApiWebFeaturesGamesGetGetGame](e.Match())
+}
+
 
 func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) Load(reqmatch map[string]any
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// MoogleApiWebFeaturesGamesGetGetGameLoadMatch and returns an MoogleApiWebFeaturesGamesGetGetGame. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *MoogleApiWebFeaturesGamesGetGetGameEntity) LoadTyped(reqmatch MoogleApiWebFeaturesGamesGetGetGameLoadMatch, ctrl map[string]any) (MoogleApiWebFeaturesGamesGetGetGame, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return MoogleApiWebFeaturesGamesGetGetGame{}, err
+	}
+	return typedFrom[MoogleApiWebFeaturesGamesGetGetGame](res), nil
 }
 
 

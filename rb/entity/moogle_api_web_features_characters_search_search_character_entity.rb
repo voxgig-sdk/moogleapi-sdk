@@ -45,6 +45,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
     end
   end
 
+  # @return [MoogleApiWebFeaturesCharactersSearchSearchCharacter, Hash] the current MoogleApiWebFeaturesCharactersSearchSearchCharacter data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of MoogleApiWebFeaturesCharactersSearchSearchCharacter fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
   
 
   
+  # List MoogleApiWebFeaturesCharactersSearchSearchCharacter items matching the given filter.
+  #
+  # @param reqmatch [MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch, Hash, nil] match filter (any subset of MoogleApiWebFeaturesCharactersSearchSearchCharacter fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<MoogleApiWebFeaturesCharactersSearchSearchCharacter>, Array] the matching MoogleApiWebFeaturesCharactersSearchSearchCharacter items; raises MoogleapiError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

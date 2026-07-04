@@ -43,8 +43,7 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntityTest < Minitest::Test
     moogle_api_web_features_monsters_search_search_monster_ref01_ent = client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
     moogle_api_web_features_monsters_search_search_monster_ref01_match = {}
 
-    moogle_api_web_features_monsters_search_search_monster_ref01_list_result, err = moogle_api_web_features_monsters_search_search_monster_ref01_ent.list(moogle_api_web_features_monsters_search_search_monster_ref01_match, nil)
-    assert_nil err
+    moogle_api_web_features_monsters_search_search_monster_ref01_list_result = moogle_api_web_features_monsters_search_search_monster_ref01_ent.list(moogle_api_web_features_monsters_search_search_monster_ref01_match, nil)
     assert moogle_api_web_features_monsters_search_search_monster_ref01_list_result.is_a?(Array)
 
   end

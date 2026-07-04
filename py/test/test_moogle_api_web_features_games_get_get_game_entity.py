@@ -51,8 +51,7 @@ class TestMoogleApiWebFeaturesGamesGetGetGameEntity:
         moogle_api_web_features_games_get_get_game_ref01_match_dt0 = {
             "id": moogle_api_web_features_games_get_get_game_ref01_data["id"],
         }
-        moogle_api_web_features_games_get_get_game_ref01_data_dt0_loaded, err = moogle_api_web_features_games_get_get_game_ref01_ent.load(moogle_api_web_features_games_get_get_game_ref01_match_dt0, None)
-        assert err is None
+        moogle_api_web_features_games_get_get_game_ref01_data_dt0_loaded = moogle_api_web_features_games_get_get_game_ref01_ent.load(moogle_api_web_features_games_get_get_game_ref01_match_dt0, None)
         moogle_api_web_features_games_get_get_game_ref01_data_dt0_load_result = helpers.to_map(moogle_api_web_features_games_get_get_game_ref01_data_dt0_loaded)
         assert moogle_api_web_features_games_get_get_game_ref01_data_dt0_load_result is not None
         assert moogle_api_web_features_games_get_get_game_ref01_data_dt0_load_result["id"] == moogle_api_web_features_games_get_get_game_ref01_data["id"]

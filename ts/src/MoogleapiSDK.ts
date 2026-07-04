@@ -9,6 +9,8 @@ import { MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity } from './entity/
 import { MoogleApiWebFeaturesMonstersGetGetMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity'
 import { MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity'
 
+export type * from './MoogleapiTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -209,48 +211,112 @@ class MoogleapiSDK {
 
 
 
+  _moogle_api_web_features_characters_get_all_get_all_character?: MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_characters_get_all_get_all_character.list()` / `client.moogle_api_web_features_characters_get_all_get_all_character.load({ id })`.
+  get moogle_api_web_features_characters_get_all_get_all_character(): MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity {
+    return (this._moogle_api_web_features_characters_get_all_get_all_character ??= new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_characters_get_all_get_all_character` instead. */
   MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self,data)
   }
 
 
+  _moogle_api_web_features_characters_get_get_character?: MoogleApiWebFeaturesCharactersGetGetCharacterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_characters_get_get_character.list()` / `client.moogle_api_web_features_characters_get_get_character.load({ id })`.
+  get moogle_api_web_features_characters_get_get_character(): MoogleApiWebFeaturesCharactersGetGetCharacterEntity {
+    return (this._moogle_api_web_features_characters_get_get_character ??= new MoogleApiWebFeaturesCharactersGetGetCharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_characters_get_get_character` instead. */
   MoogleApiWebFeaturesCharactersGetGetCharacter(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self,data)
   }
 
 
+  _moogle_api_web_features_characters_search_search_character?: MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_characters_search_search_character.list()` / `client.moogle_api_web_features_characters_search_search_character.load({ id })`.
+  get moogle_api_web_features_characters_search_search_character(): MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity {
+    return (this._moogle_api_web_features_characters_search_search_character ??= new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_characters_search_search_character` instead. */
   MoogleApiWebFeaturesCharactersSearchSearchCharacter(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self,data)
   }
 
 
+  _moogle_api_web_features_games_get_all_get_all_game?: MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_games_get_all_get_all_game.list()` / `client.moogle_api_web_features_games_get_all_get_all_game.load({ id })`.
+  get moogle_api_web_features_games_get_all_get_all_game(): MoogleApiWebFeaturesGamesGetAllGetAllGameEntity {
+    return (this._moogle_api_web_features_games_get_all_get_all_game ??= new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_games_get_all_get_all_game` instead. */
   MoogleApiWebFeaturesGamesGetAllGetAllGame(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self,data)
   }
 
 
+  _moogle_api_web_features_games_get_get_game?: MoogleApiWebFeaturesGamesGetGetGameEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_games_get_get_game.list()` / `client.moogle_api_web_features_games_get_get_game.load({ id })`.
+  get moogle_api_web_features_games_get_get_game(): MoogleApiWebFeaturesGamesGetGetGameEntity {
+    return (this._moogle_api_web_features_games_get_get_game ??= new MoogleApiWebFeaturesGamesGetGetGameEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_games_get_get_game` instead. */
   MoogleApiWebFeaturesGamesGetGetGame(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesGamesGetGetGameEntity(self,data)
   }
 
 
+  _moogle_api_web_features_monsters_get_all_get_all_monster?: MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_monsters_get_all_get_all_monster.list()` / `client.moogle_api_web_features_monsters_get_all_get_all_monster.load({ id })`.
+  get moogle_api_web_features_monsters_get_all_get_all_monster(): MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity {
+    return (this._moogle_api_web_features_monsters_get_all_get_all_monster ??= new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_monsters_get_all_get_all_monster` instead. */
   MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self,data)
   }
 
 
+  _moogle_api_web_features_monsters_get_get_monster?: MoogleApiWebFeaturesMonstersGetGetMonsterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_monsters_get_get_monster.list()` / `client.moogle_api_web_features_monsters_get_get_monster.load({ id })`.
+  get moogle_api_web_features_monsters_get_get_monster(): MoogleApiWebFeaturesMonstersGetGetMonsterEntity {
+    return (this._moogle_api_web_features_monsters_get_get_monster ??= new MoogleApiWebFeaturesMonstersGetGetMonsterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_monsters_get_get_monster` instead. */
   MoogleApiWebFeaturesMonstersGetGetMonster(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self,data)
   }
 
 
+  _moogle_api_web_features_monsters_search_search_monster?: MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
+
+  // Idiomatic facade: `client.moogle_api_web_features_monsters_search_search_monster.list()` / `client.moogle_api_web_features_monsters_search_search_monster.load({ id })`.
+  get moogle_api_web_features_monsters_search_search_monster(): MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity {
+    return (this._moogle_api_web_features_monsters_search_search_monster ??= new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.moogle_api_web_features_monsters_search_search_monster` instead. */
   MoogleApiWebFeaturesMonstersSearchSearchMonster(data?: any) {
     const self = this
     return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self,data)

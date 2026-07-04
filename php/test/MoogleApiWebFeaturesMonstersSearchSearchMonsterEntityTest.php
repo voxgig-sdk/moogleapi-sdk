@@ -50,8 +50,7 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntityTest extends TestCase
         $moogle_api_web_features_monsters_search_search_monster_ref01_ent = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster(null);
         $moogle_api_web_features_monsters_search_search_monster_ref01_match = [];
 
-        [$moogle_api_web_features_monsters_search_search_monster_ref01_list_result, $err] = $moogle_api_web_features_monsters_search_search_monster_ref01_ent->list($moogle_api_web_features_monsters_search_search_monster_ref01_match, null);
-        $this->assertNull($err);
+        $moogle_api_web_features_monsters_search_search_monster_ref01_list_result = $moogle_api_web_features_monsters_search_search_monster_ref01_ent->list($moogle_api_web_features_monsters_search_search_monster_ref01_match, null);
         $this->assertIsArray($moogle_api_web_features_monsters_search_search_monster_ref01_list_result);
 
     }

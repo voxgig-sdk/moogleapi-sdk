@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch
+---@param ctrl? table
+---@return MoogleApiWebFeaturesMonstersGetGetMonster
+---@return string? err
 function MoogleApiWebFeaturesMonstersGetGetMonsterEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

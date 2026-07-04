@@ -84,7 +84,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -98,11 +101,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -110,7 +114,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```php
-$moogle_api_web_features_characters_get_all_get_all_character = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter();
+$moogle_api_web_features_characters_get_all_get_all_character = $client->moogle_api_web_features_characters_get_all_get_all_character();
 ```
 
 ### Fields
@@ -125,12 +129,12 @@ $moogle_api_web_features_characters_get_all_get_all_character = $client->MoogleA
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list([]);
+$results = $client->moogle_api_web_features_characters_get_all_get_all_character()->list([]);
 ```
 
 ### Common Methods
@@ -166,7 +170,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```php
-$moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFeaturesCharactersGetGetCharacter();
+$moogle_api_web_features_characters_get_get_character = $client->moogle_api_web_features_characters_get_get_character();
 ```
 
 ### Fields
@@ -185,12 +189,12 @@ $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFea
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->load(["id" => "moogle_api_web_features_characters_get_get_character_id"]);
+$result = $client->moogle_api_web_features_characters_get_get_character()->load(["id" => "moogle_api_web_features_characters_get_get_character_id"]);
 ```
 
 ### Common Methods
@@ -226,7 +230,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```php
-$moogle_api_web_features_characters_search_search_character = $client->MoogleApiWebFeaturesCharactersSearchSearchCharacter();
+$moogle_api_web_features_characters_search_search_character = $client->moogle_api_web_features_characters_search_search_character();
 ```
 
 ### Fields
@@ -242,12 +246,12 @@ $moogle_api_web_features_characters_search_search_character = $client->MoogleApi
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->MoogleApiWebFeaturesCharactersSearchSearchCharacter()->list([]);
+$results = $client->moogle_api_web_features_characters_search_search_character()->list([]);
 ```
 
 ### Common Methods
@@ -283,7 +287,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```php
-$moogle_api_web_features_games_get_all_get_all_game = $client->MoogleApiWebFeaturesGamesGetAllGetAllGame();
+$moogle_api_web_features_games_get_all_get_all_game = $client->moogle_api_web_features_games_get_all_get_all_game();
 ```
 
 ### Fields
@@ -297,12 +301,12 @@ $moogle_api_web_features_games_get_all_get_all_game = $client->MoogleApiWebFeatu
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->MoogleApiWebFeaturesGamesGetAllGetAllGame()->list([]);
+$results = $client->moogle_api_web_features_games_get_all_get_all_game()->list([]);
 ```
 
 ### Common Methods
@@ -338,7 +342,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```php
-$moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGamesGetGetGame();
+$moogle_api_web_features_games_get_get_game = $client->moogle_api_web_features_games_get_get_game();
 ```
 
 ### Fields
@@ -355,12 +359,12 @@ $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGames
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->MoogleApiWebFeaturesGamesGetGetGame()->load(["id" => "moogle_api_web_features_games_get_get_game_id"]);
+$result = $client->moogle_api_web_features_games_get_get_game()->load(["id" => "moogle_api_web_features_games_get_get_game_id"]);
 ```
 
 ### Common Methods
@@ -396,7 +400,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```php
-$moogle_api_web_features_monsters_get_all_get_all_monster = $client->MoogleApiWebFeaturesMonstersGetAllGetAllMonster();
+$moogle_api_web_features_monsters_get_all_get_all_monster = $client->moogle_api_web_features_monsters_get_all_get_all_monster();
 ```
 
 ### Fields
@@ -411,12 +415,12 @@ $moogle_api_web_features_monsters_get_all_get_all_monster = $client->MoogleApiWe
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->MoogleApiWebFeaturesMonstersGetAllGetAllMonster()->list([]);
+$results = $client->moogle_api_web_features_monsters_get_all_get_all_monster()->list([]);
 ```
 
 ### Common Methods
@@ -452,7 +456,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```php
-$moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeaturesMonstersGetGetMonster();
+$moogle_api_web_features_monsters_get_get_monster = $client->moogle_api_web_features_monsters_get_get_monster();
 ```
 
 ### Fields
@@ -468,12 +472,12 @@ $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeature
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->load(["id" => "moogle_api_web_features_monsters_get_get_monster_id"]);
+$result = $client->moogle_api_web_features_monsters_get_get_monster()->load(["id" => "moogle_api_web_features_monsters_get_get_monster_id"]);
 ```
 
 ### Common Methods
@@ -509,7 +513,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```php
-$moogle_api_web_features_monsters_search_search_monster = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster();
+$moogle_api_web_features_monsters_search_search_monster = $client->moogle_api_web_features_monsters_search_search_monster();
 ```
 
 ### Fields
@@ -525,12 +529,12 @@ $moogle_api_web_features_monsters_search_search_monster = $client->MoogleApiWebF
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list([]);
+$results = $client->moogle_api_web_features_monsters_search_search_monster()->list([]);
 ```
 
 ### Common Methods

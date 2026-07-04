@@ -50,8 +50,7 @@ class TestMoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity:
         moogle_api_web_features_monsters_get_all_get_all_monster_ref01_ent = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(None)
         moogle_api_web_features_monsters_get_all_get_all_monster_ref01_match = {}
 
-        moogle_api_web_features_monsters_get_all_get_all_monster_ref01_list_result, err = moogle_api_web_features_monsters_get_all_get_all_monster_ref01_ent.list(moogle_api_web_features_monsters_get_all_get_all_monster_ref01_match, None)
-        assert err is None
+        moogle_api_web_features_monsters_get_all_get_all_monster_ref01_list_result = moogle_api_web_features_monsters_get_all_get_all_monster_ref01_ent.list(moogle_api_web_features_monsters_get_all_get_all_monster_ref01_match, None)
         assert isinstance(moogle_api_web_features_monsters_get_all_get_all_monster_ref01_list_result, list)
 
 

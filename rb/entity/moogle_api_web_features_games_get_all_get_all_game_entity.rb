@@ -45,6 +45,7 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
     end
   end
 
+  # @return [MoogleApiWebFeaturesGamesGetAllGetAllGame, Hash] the current MoogleApiWebFeaturesGamesGetAllGetAllGame data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of MoogleApiWebFeaturesGamesGetAllGetAllGame fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
   
 
   
+  # List MoogleApiWebFeaturesGamesGetAllGetAllGame items matching the given filter.
+  #
+  # @param reqmatch [MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch, Hash, nil] match filter (any subset of MoogleApiWebFeaturesGamesGetAllGetAllGame fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<MoogleApiWebFeaturesGamesGetAllGetAllGame>, Array] the matching MoogleApiWebFeaturesGamesGetAllGetAllGame items; raises MoogleapiError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

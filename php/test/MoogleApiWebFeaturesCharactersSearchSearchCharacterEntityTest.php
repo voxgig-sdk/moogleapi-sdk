@@ -50,8 +50,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntityTest extends Test
         $moogle_api_web_features_characters_search_search_character_ref01_ent = $client->MoogleApiWebFeaturesCharactersSearchSearchCharacter(null);
         $moogle_api_web_features_characters_search_search_character_ref01_match = [];
 
-        [$moogle_api_web_features_characters_search_search_character_ref01_list_result, $err] = $moogle_api_web_features_characters_search_search_character_ref01_ent->list($moogle_api_web_features_characters_search_search_character_ref01_match, null);
-        $this->assertNull($err);
+        $moogle_api_web_features_characters_search_search_character_ref01_list_result = $moogle_api_web_features_characters_search_search_character_ref01_ent->list($moogle_api_web_features_characters_search_search_character_ref01_match, null);
         $this->assertIsArray($moogle_api_web_features_characters_search_search_character_ref01_list_result);
 
     }

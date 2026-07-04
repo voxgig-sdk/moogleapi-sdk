@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  MoogleApiWebFeaturesMonstersSearchSearchMonster,
+  MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch,
+} from '../MoogleapiTypes'
 
 // TODO: needs Entity superclass
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity extends MoogleapiEntityBase {
+class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity extends MoogleapiEntityBase<MoogleApiWebFeaturesMonstersSearchSearchMonster> {
 
   constructor(client: MoogleapiSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity extends MoogleapiEnt
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesMonstersSearchSearchMonster[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity extends MoogleapiEnt
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MoogleApiWebFeaturesMonstersSearchSearchMonster[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
