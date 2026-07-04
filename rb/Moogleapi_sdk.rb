@@ -208,104 +208,56 @@ class MoogleapiSDK
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_characters_get_all_get_all_character.list / client.moogle_api_web_features_characters_get_all_get_all_character.load({ "id" => ... })
-  def moogle_api_web_features_characters_get_all_get_all_character
-    require_relative 'entity/moogle_api_web_features_characters_get_all_get_all_character_entity'
-    @moogle_api_web_features_characters_get_all_get_all_character ||= MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_characters_get_all_get_all_character instead.
+  # Canonical facade: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list / client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.load({ "id" => ... })
   def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_get_all_get_all_character_entity'
     MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_characters_get_get_character.list / client.moogle_api_web_features_characters_get_get_character.load({ "id" => ... })
-  def moogle_api_web_features_characters_get_get_character
-    require_relative 'entity/moogle_api_web_features_characters_get_get_character_entity'
-    @moogle_api_web_features_characters_get_get_character ||= MoogleApiWebFeaturesCharactersGetGetCharacterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_characters_get_get_character instead.
+  # Canonical facade: client.MoogleApiWebFeaturesCharactersGetGetCharacter.list / client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => ... })
   def MoogleApiWebFeaturesCharactersGetGetCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_get_get_character_entity'
     MoogleApiWebFeaturesCharactersGetGetCharacterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_characters_search_search_character.list / client.moogle_api_web_features_characters_search_search_character.load({ "id" => ... })
-  def moogle_api_web_features_characters_search_search_character
-    require_relative 'entity/moogle_api_web_features_characters_search_search_character_entity'
-    @moogle_api_web_features_characters_search_search_character ||= MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_characters_search_search_character instead.
+  # Canonical facade: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.list / client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.load({ "id" => ... })
   def MoogleApiWebFeaturesCharactersSearchSearchCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_search_search_character_entity'
     MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_games_get_all_get_all_game.list / client.moogle_api_web_features_games_get_all_get_all_game.load({ "id" => ... })
-  def moogle_api_web_features_games_get_all_get_all_game
-    require_relative 'entity/moogle_api_web_features_games_get_all_get_all_game_entity'
-    @moogle_api_web_features_games_get_all_get_all_game ||= MoogleApiWebFeaturesGamesGetAllGetAllGameEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_games_get_all_get_all_game instead.
+  # Canonical facade: client.MoogleApiWebFeaturesGamesGetAllGetAllGame.list / client.MoogleApiWebFeaturesGamesGetAllGetAllGame.load({ "id" => ... })
   def MoogleApiWebFeaturesGamesGetAllGetAllGame(data = nil)
     require_relative 'entity/moogle_api_web_features_games_get_all_get_all_game_entity'
     MoogleApiWebFeaturesGamesGetAllGetAllGameEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_games_get_get_game.list / client.moogle_api_web_features_games_get_get_game.load({ "id" => ... })
-  def moogle_api_web_features_games_get_get_game
-    require_relative 'entity/moogle_api_web_features_games_get_get_game_entity'
-    @moogle_api_web_features_games_get_get_game ||= MoogleApiWebFeaturesGamesGetGetGameEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_games_get_get_game instead.
+  # Canonical facade: client.MoogleApiWebFeaturesGamesGetGetGame.list / client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => ... })
   def MoogleApiWebFeaturesGamesGetGetGame(data = nil)
     require_relative 'entity/moogle_api_web_features_games_get_get_game_entity'
     MoogleApiWebFeaturesGamesGetGetGameEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_monsters_get_all_get_all_monster.list / client.moogle_api_web_features_monsters_get_all_get_all_monster.load({ "id" => ... })
-  def moogle_api_web_features_monsters_get_all_get_all_monster
-    require_relative 'entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity'
-    @moogle_api_web_features_monsters_get_all_get_all_monster ||= MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_monsters_get_all_get_all_monster instead.
+  # Canonical facade: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.list / client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.load({ "id" => ... })
   def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity'
     MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_monsters_get_get_monster.list / client.moogle_api_web_features_monsters_get_get_monster.load({ "id" => ... })
-  def moogle_api_web_features_monsters_get_get_monster
-    require_relative 'entity/moogle_api_web_features_monsters_get_get_monster_entity'
-    @moogle_api_web_features_monsters_get_get_monster ||= MoogleApiWebFeaturesMonstersGetGetMonsterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_monsters_get_get_monster instead.
+  # Canonical facade: client.MoogleApiWebFeaturesMonstersGetGetMonster.list / client.MoogleApiWebFeaturesMonstersGetGetMonster.load({ "id" => ... })
   def MoogleApiWebFeaturesMonstersGetGetMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_get_get_monster_entity'
     MoogleApiWebFeaturesMonstersGetGetMonsterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.moogle_api_web_features_monsters_search_search_monster.list / client.moogle_api_web_features_monsters_search_search_monster.load({ "id" => ... })
-  def moogle_api_web_features_monsters_search_search_monster
-    require_relative 'entity/moogle_api_web_features_monsters_search_search_monster_entity'
-    @moogle_api_web_features_monsters_search_search_monster ||= MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.moogle_api_web_features_monsters_search_search_monster instead.
+  # Canonical facade: client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list / client.MoogleApiWebFeaturesMonstersSearchSearchMonster.load({ "id" => ... })
   def MoogleApiWebFeaturesMonstersSearchSearchMonster(data = nil)
     require_relative 'entity/moogle_api_web_features_monsters_search_search_monster_entity'
     MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity.new(self, data)

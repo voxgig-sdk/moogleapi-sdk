@@ -28,9 +28,11 @@ const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
 })
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters
-const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.moogleapiwebfeaturescharactersgetallgetallcharacter.list()
-console.log(moogleapiwebfeaturescharactersgetallgetallcharacters.data)
+// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns MoogleApiWebFeaturesCharactersGetAllGetAllCharacter[])
+const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+for (const moogleapiwebfeaturescharactersgetallgetallcharacter of moogleapiwebfeaturescharactersgetallgetallcharacters) {
+  console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -95,9 +97,10 @@ client = MoogleapiSDK({
     "apikey": os.environ.get("MOOGLEAPI_APIKEY"),
 })
 
-# List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.moogleapiwebfeaturescharactersgetallgetallcharacter.list()
-print(moogleapiwebfeaturescharactersgetallgetallcharacters)
+# List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns a list, raises on error)
+moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list({})
+for moogleapiwebfeaturescharactersgetallgetallcharacter in moogleapiwebfeaturescharactersgetallgetallcharacters:
+    print(moogleapiwebfeaturescharactersgetallgetallcharacter)
 ```
 
 ### PHP
@@ -110,8 +113,8 @@ $client = new MoogleapiSDK([
     "apikey" => getenv("MOOGLEAPI_APIKEY"),
 ]);
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters (throws on error)
-$moogleapiwebfeaturescharactersgetallgetallcharacters = $client->moogleapiwebfeaturescharactersgetallgetallcharacter()->list();
+// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns an array; throws on error)
+$moogleapiwebfeaturescharactersgetallgetallcharacters = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
 print_r($moogleapiwebfeaturescharactersgetallgetallcharacters);
 ```
 
@@ -138,8 +141,8 @@ client = MoogleapiSDK.new({
   "apikey" => ENV["MOOGLEAPI_APIKEY"],
 })
 
-# List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.moogleapiwebfeaturescharactersgetallgetallcharacter.list
+# List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns an Array; raises on error)
+moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list
 puts moogleapiwebfeaturescharactersgetallgetallcharacters
 ```
 
@@ -153,7 +156,7 @@ local client = sdk.new({
 })
 
 -- List all moogleapiwebfeaturescharactersgetallgetallcharacters
-local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:moogleapiwebfeaturescharactersgetallgetallcharacter():list()
+local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
 print(moogleapiwebfeaturescharactersgetallgetallcharacters)
 ```
 
@@ -166,22 +169,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MoogleapiSDK.test()
-const result = await client.moogleapiwebfeaturescharactersgetallgetallcharacter.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const moogleapiwebfeaturescharactersgetallgetallcharacter = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id: 1 })
+// moogleapiwebfeaturescharactersgetallgetallcharacter is a bare MoogleApiWebFeaturesCharactersGetAllGetAllCharacter populated with mock data
+console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
 ```
 
 ### Python
 
 ```python
 client = MoogleapiSDK.test()
-result = client.moogleapiwebfeaturescharactersgetallgetallcharacter.load({"id": "test01"})
+moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({"id": "test01"})
+print(moogleapiwebfeaturescharactersgetallgetallcharacter)
 ```
 
 ### PHP
 
 ```php
-$client = MoogleapiSDK::test();
-$result = $client->moogleapiwebfeaturescharactersgetallgetallcharacter()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = MoogleapiSDK::test([
+    "entity" => ["moogleapiwebfeaturescharactersgetallgetallcharacter" => ["test01" => ["id" => "test01"]]],
+]);
+$moogleapiwebfeaturescharactersgetallgetallcharacter = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -196,15 +204,18 @@ result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).L
 ### Ruby
 
 ```ruby
-client = MoogleapiSDK.test
-result = client.moogleapiwebfeaturescharactersgetallgetallcharacter.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = MoogleapiSDK.test({
+  "entity" => { "moogleapiwebfeaturescharactersgetallgetallcharacter" => { "test01" => { "id" => "test01" } } },
+})
+moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:moogleapiwebfeaturescharactersgetallgetallcharacter():load({ id = "test01" })
+local result, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():load({ id = "test01" })
 ```
 
 ## How it works
@@ -252,6 +263,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

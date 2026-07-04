@@ -4,150 +4,138 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter:
-    game_name: Optional[str] = None
-    id: Optional[int] = None
-    image_url: Optional[str] = None
-    name: Optional[str] = None
-    role: Optional[str] = None
+class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(TypedDict, total=False):
+    game_name: str
+    id: int
+    image_url: str
+    name: str
+    role: str
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch:
-    game_name: Optional[str] = None
-    id: Optional[int] = None
-    image_url: Optional[str] = None
-    name: Optional[str] = None
-    role: Optional[str] = None
+class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch(TypedDict, total=False):
+    game_name: str
+    id: int
+    image_url: str
+    name: str
+    role: str
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersGetGetCharacter:
-    affiliation: Optional[str] = None
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    hometown: Optional[str] = None
-    id: Optional[int] = None
-    image_url: Optional[str] = None
-    name: Optional[str] = None
-    race: Optional[str] = None
-    role: Optional[str] = None
+class MoogleApiWebFeaturesCharactersGetGetCharacter(TypedDict, total=False):
+    affiliation: str
+    description: str
+    game_name: str
+    hometown: str
+    id: int
+    image_url: str
+    name: str
+    race: str
+    role: str
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch:
+class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersSearchSearchCharacter:
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    id: Optional[int] = None
-    image_url: Optional[str] = None
-    name: Optional[str] = None
-    role: Optional[str] = None
+class MoogleApiWebFeaturesCharactersSearchSearchCharacter(TypedDict, total=False):
+    description: str
+    game_name: str
+    id: int
+    image_url: str
+    name: str
+    role: str
 
 
-@dataclass
-class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch:
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    id: Optional[int] = None
-    image_url: Optional[str] = None
-    name: Optional[str] = None
-    role: Optional[str] = None
+class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch(TypedDict, total=False):
+    description: str
+    game_name: str
+    id: int
+    image_url: str
+    name: str
+    role: str
 
 
-@dataclass
-class MoogleApiWebFeaturesGamesGetAllGetAllGame:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    platform: Optional[str] = None
-    release_year: Optional[int] = None
+class MoogleApiWebFeaturesGamesGetAllGetAllGame(TypedDict, total=False):
+    id: int
+    name: str
+    platform: str
+    release_year: int
 
 
-@dataclass
-class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    platform: Optional[str] = None
-    release_year: Optional[int] = None
+class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch(TypedDict, total=False):
+    id: int
+    name: str
+    platform: str
+    release_year: int
 
 
-@dataclass
-class MoogleApiWebFeaturesGamesGetGetGame:
-    character_count: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    monster_count: Optional[int] = None
-    name: Optional[str] = None
-    platform: Optional[str] = None
-    release_year: Optional[int] = None
+class MoogleApiWebFeaturesGamesGetGetGame(TypedDict, total=False):
+    character_count: int
+    description: str
+    id: int
+    monster_count: int
+    name: str
+    platform: str
+    release_year: int
 
 
-@dataclass
-class MoogleApiWebFeaturesGamesGetGetGameLoadMatch:
+class MoogleApiWebFeaturesGamesGetGetGameLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonster:
-    category: Optional[str] = None
-    game_name: Optional[str] = None
-    hit_point: Optional[int] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class MoogleApiWebFeaturesMonstersGetAllGetAllMonster(TypedDict, total=False):
+    category: str
+    game_name: str
+    hit_point: int
+    id: int
+    name: str
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch:
-    category: Optional[str] = None
-    game_name: Optional[str] = None
-    hit_point: Optional[int] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch(TypedDict, total=False):
+    category: str
+    game_name: str
+    hit_point: int
+    id: int
+    name: str
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersGetGetMonster:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    hit_point: Optional[int] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class MoogleApiWebFeaturesMonstersGetGetMonster(TypedDict, total=False):
+    category: str
+    description: str
+    game_name: str
+    hit_point: int
+    id: int
+    name: str
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch:
+class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersSearchSearchMonster:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    hit_point: Optional[int] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class MoogleApiWebFeaturesMonstersSearchSearchMonster(TypedDict, total=False):
+    category: str
+    description: str
+    game_name: str
+    hit_point: int
+    id: int
+    name: str
 
 
-@dataclass
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    game_name: Optional[str] = None
-    hit_point: Optional[int] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-
+class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch(TypedDict, total=False):
+    category: str
+    description: str
+    game_name: str
+    hit_point: int
+    id: int
+    name: str

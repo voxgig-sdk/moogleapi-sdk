@@ -233,10 +233,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_characters_get_all_get_all_character = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_characters_get_all_get_all_character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersGetAllGetAllCharacter() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_characters_get_all_get_all_character($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_get_all_get_all_character()
+    // resolves here too.
+    public function MoogleApiWebFeaturesCharactersGetAllGetAllCharacter($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_all_get_all_character_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_characters_get_get_character = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_characters_get_get_character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersGetGetCharacter() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_characters_get_get_character($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_get_get_character()
+    // resolves here too.
+    public function MoogleApiWebFeaturesCharactersGetGetCharacter($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_get_character_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_characters_search_search_character = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_characters_search_search_character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesCharactersSearchSearchCharacter() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_characters_search_search_character($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesCharactersSearchSearchCharacter()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_search_search_character()
+    // resolves here too.
+    public function MoogleApiWebFeaturesCharactersSearchSearchCharacter($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_characters_search_search_character_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_games_get_all_get_all_game = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_games_get_all_get_all_game()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesGamesGetAllGetAllGame() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_games_get_all_get_all_game($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesGamesGetAllGetAllGame()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_games_get_all_get_all_game()
+    // resolves here too.
+    public function MoogleApiWebFeaturesGamesGetAllGetAllGame($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_games_get_all_get_all_game_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_games_get_get_game = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_games_get_get_game()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesGamesGetGetGame() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_games_get_get_game($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesGamesGetGetGame()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_games_get_get_game()
+    // resolves here too.
+    public function MoogleApiWebFeaturesGamesGetGetGame($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_games_get_get_game_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_monsters_get_all_get_all_monster = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_monsters_get_all_get_all_monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersGetAllGetAllMonster() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_monsters_get_all_get_all_monster($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesMonstersGetAllGetAllMonster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_get_all_get_all_monster()
+    // resolves here too.
+    public function MoogleApiWebFeaturesMonstersGetAllGetAllMonster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_monsters_get_get_monster = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_monsters_get_get_monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersGetGetMonster() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_monsters_get_get_monster($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_get_get_monster()
+    // resolves here too.
+    public function MoogleApiWebFeaturesMonstersGetGetMonster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_get_monster_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class MoogleapiSDK
 
     private $_moogle_api_web_features_monsters_search_search_monster = null;
 
-    // Idiomatic facade: $client->moogle_api_web_features_monsters_search_search_monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MoogleApiWebFeaturesMonstersSearchSearchMonster() (PHP method
-    // names are case-insensitive).
-    public function moogle_api_web_features_monsters_search_search_monster($data = null)
+    // Canonical facade: $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_search_search_monster()
+    // resolves here too.
+    public function MoogleApiWebFeaturesMonstersSearchSearchMonster($data = null)
     {
         require_once __DIR__ . '/entity/moogle_api_web_features_monsters_search_search_monster_entity.php';
         if ($data === null) {

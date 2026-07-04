@@ -220,137 +220,57 @@ class MoogleapiSDK:
         }
 
 
-    @property
-    def moogle_api_web_features_characters_get_all_get_all_character(self):
-        """Idiomatic facade: client.moogle_api_web_features_characters_get_all_get_all_character.list() / client.moogle_api_web_features_characters_get_all_get_all_character.load({"id": ...})."""
-        from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
-        cached = getattr(self, "_moogle_api_web_features_characters_get_all_get_all_character", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, None)
-            self._moogle_api_web_features_characters_get_all_get_all_character = cached
-        return cached
-
-    def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_characters_get_all_get_all_character instead.
+    def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list({}) / client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
         return MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_characters_get_get_character(self):
-        """Idiomatic facade: client.moogle_api_web_features_characters_get_get_character.list() / client.moogle_api_web_features_characters_get_get_character.load({"id": ...})."""
-        from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
-        cached = getattr(self, "_moogle_api_web_features_characters_get_get_character", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, None)
-            self._moogle_api_web_features_characters_get_get_character = cached
-        return cached
-
-    def MoogleApiWebFeaturesCharactersGetGetCharacter(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_characters_get_get_character instead.
+    def MoogleApiWebFeaturesCharactersGetGetCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersGetGetCharacterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesCharactersGetGetCharacter().list({}) / client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
         return MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_characters_search_search_character(self):
-        """Idiomatic facade: client.moogle_api_web_features_characters_search_search_character.list() / client.moogle_api_web_features_characters_search_search_character.load({"id": ...})."""
-        from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
-        cached = getattr(self, "_moogle_api_web_features_characters_search_search_character", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, None)
-            self._moogle_api_web_features_characters_search_search_character = cached
-        return cached
-
-    def MoogleApiWebFeaturesCharactersSearchSearchCharacter(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_characters_search_search_character instead.
+    def MoogleApiWebFeaturesCharactersSearchSearchCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({}) / client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
         return MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_games_get_all_get_all_game(self):
-        """Idiomatic facade: client.moogle_api_web_features_games_get_all_get_all_game.list() / client.moogle_api_web_features_games_get_all_get_all_game.load({"id": ...})."""
-        from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
-        cached = getattr(self, "_moogle_api_web_features_games_get_all_get_all_game", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, None)
-            self._moogle_api_web_features_games_get_all_get_all_game = cached
-        return cached
-
-    def MoogleApiWebFeaturesGamesGetAllGetAllGame(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_games_get_all_get_all_game instead.
+    def MoogleApiWebFeaturesGamesGetAllGetAllGame(self, data=None) -> "MoogleApiWebFeaturesGamesGetAllGetAllGameEntity":
+        """Entity factory: client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list({}) / client.MoogleApiWebFeaturesGamesGetAllGetAllGame().load({"id": ...})."""
         from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
         return MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_games_get_get_game(self):
-        """Idiomatic facade: client.moogle_api_web_features_games_get_get_game.list() / client.moogle_api_web_features_games_get_get_game.load({"id": ...})."""
-        from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
-        cached = getattr(self, "_moogle_api_web_features_games_get_get_game", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesGamesGetGetGameEntity(self, None)
-            self._moogle_api_web_features_games_get_get_game = cached
-        return cached
-
-    def MoogleApiWebFeaturesGamesGetGetGame(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_games_get_get_game instead.
+    def MoogleApiWebFeaturesGamesGetGetGame(self, data=None) -> "MoogleApiWebFeaturesGamesGetGetGameEntity":
+        """Entity factory: client.MoogleApiWebFeaturesGamesGetGetGame().list({}) / client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": ...})."""
         from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
         return MoogleApiWebFeaturesGamesGetGetGameEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_monsters_get_all_get_all_monster(self):
-        """Idiomatic facade: client.moogle_api_web_features_monsters_get_all_get_all_monster.list() / client.moogle_api_web_features_monsters_get_all_get_all_monster.load({"id": ...})."""
-        from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
-        cached = getattr(self, "_moogle_api_web_features_monsters_get_all_get_all_monster", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, None)
-            self._moogle_api_web_features_monsters_get_all_get_all_monster = cached
-        return cached
-
-    def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_monsters_get_all_get_all_monster instead.
+    def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list({}) / client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
         return MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_monsters_get_get_monster(self):
-        """Idiomatic facade: client.moogle_api_web_features_monsters_get_get_monster.list() / client.moogle_api_web_features_monsters_get_get_monster.load({"id": ...})."""
-        from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
-        cached = getattr(self, "_moogle_api_web_features_monsters_get_get_monster", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, None)
-            self._moogle_api_web_features_monsters_get_get_monster = cached
-        return cached
-
-    def MoogleApiWebFeaturesMonstersGetGetMonster(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_monsters_get_get_monster instead.
+    def MoogleApiWebFeaturesMonstersGetGetMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersGetGetMonsterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesMonstersGetGetMonster().list({}) / client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
         return MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, data)
 
 
-    @property
-    def moogle_api_web_features_monsters_search_search_monster(self):
-        """Idiomatic facade: client.moogle_api_web_features_monsters_search_search_monster.list() / client.moogle_api_web_features_monsters_search_search_monster.load({"id": ...})."""
-        from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
-        cached = getattr(self, "_moogle_api_web_features_monsters_search_search_monster", None)
-        if cached is None:
-            cached = MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, None)
-            self._moogle_api_web_features_monsters_search_search_monster = cached
-        return cached
-
-    def MoogleApiWebFeaturesMonstersSearchSearchMonster(self, data=None):
-        # Deprecated: use client.moogle_api_web_features_monsters_search_search_monster instead.
+    def MoogleApiWebFeaturesMonstersSearchSearchMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity":
+        """Entity factory: client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({}) / client.MoogleApiWebFeaturesMonstersSearchSearchMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
         return MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "MoogleapiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -370,3 +290,16 @@ class MoogleapiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
+    from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
+    from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
+    from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
+    from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
+    from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
+    from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
+    from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity

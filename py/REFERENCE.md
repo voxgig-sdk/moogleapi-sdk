@@ -109,7 +109,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```python
-moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api_web_features_characters_get_all_get_all_character
+moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
 ```
 
 ### Fields
@@ -129,7 +129,9 @@ moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.moogle_api_web_features_characters_get_all_get_all_character.list({})
+results = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list({})
+for moogle_api_web_features_characters_get_all_get_all_character in results:
+    print(moogle_api_web_features_characters_get_all_get_all_character)
 ```
 
 ### Common Methods
@@ -164,7 +166,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```python
-moogle_api_web_features_characters_get_get_character = client.moogle_api_web_features_characters_get_get_character
+moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()
 ```
 
 ### Fields
@@ -188,7 +190,7 @@ moogle_api_web_features_characters_get_get_character = client.moogle_api_web_fea
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.moogle_api_web_features_characters_get_get_character.load({"id": "moogle_api_web_features_characters_get_get_character_id"})
+result = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": "moogle_api_web_features_characters_get_get_character_id"})
 ```
 
 ### Common Methods
@@ -223,7 +225,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```python
-moogle_api_web_features_characters_search_search_character = client.moogle_api_web_features_characters_search_search_character
+moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()
 ```
 
 ### Fields
@@ -244,7 +246,9 @@ moogle_api_web_features_characters_search_search_character = client.moogle_api_w
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.moogle_api_web_features_characters_search_search_character.list({})
+results = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({})
+for moogle_api_web_features_characters_search_search_character in results:
+    print(moogle_api_web_features_characters_search_search_character)
 ```
 
 ### Common Methods
@@ -279,7 +283,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```python
-moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_features_games_get_all_get_all_game
+moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()
 ```
 
 ### Fields
@@ -298,7 +302,9 @@ moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_featu
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.moogle_api_web_features_games_get_all_get_all_game.list({})
+results = client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list({})
+for moogle_api_web_features_games_get_all_get_all_game in results:
+    print(moogle_api_web_features_games_get_all_get_all_game)
 ```
 
 ### Common Methods
@@ -333,7 +339,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```python
-moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_games_get_get_game
+moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()
 ```
 
 ### Fields
@@ -355,7 +361,7 @@ moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_game
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.moogle_api_web_features_games_get_get_game.load({"id": "moogle_api_web_features_games_get_get_game_id"})
+result = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": "moogle_api_web_features_games_get_get_game_id"})
 ```
 
 ### Common Methods
@@ -390,7 +396,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```python
-moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web_features_monsters_get_all_get_all_monster
+moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()
 ```
 
 ### Fields
@@ -410,7 +416,9 @@ moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.moogle_api_web_features_monsters_get_all_get_all_monster.list({})
+results = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list({})
+for moogle_api_web_features_monsters_get_all_get_all_monster in results:
+    print(moogle_api_web_features_monsters_get_all_get_all_monster)
 ```
 
 ### Common Methods
@@ -445,7 +453,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```python
-moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_features_monsters_get_get_monster
+moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster()
 ```
 
 ### Fields
@@ -466,7 +474,7 @@ moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_feature
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.moogle_api_web_features_monsters_get_get_monster.load({"id": "moogle_api_web_features_monsters_get_get_monster_id"})
+result = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": "moogle_api_web_features_monsters_get_get_monster_id"})
 ```
 
 ### Common Methods
@@ -501,7 +509,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```python
-moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_features_monsters_search_search_monster
+moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
 ```
 
 ### Fields
@@ -522,7 +530,9 @@ moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_f
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.moogle_api_web_features_monsters_search_search_monster.list({})
+results = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({})
+for moogle_api_web_features_monsters_search_search_monster in results:
+    print(moogle_api_web_features_monsters_search_search_monster)
 ```
 
 ### Common Methods

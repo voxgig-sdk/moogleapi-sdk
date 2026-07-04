@@ -30,7 +30,12 @@ go mod edit -replace github.com/voxgig-sdk/moogleapi-sdk/go=../moogleapi-sdk/go
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
@@ -38,32 +43,23 @@ package main
 import (
     "fmt"
     "os"
-
     sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
-    "github.com/voxgig-sdk/moogleapi-sdk/go/core"
 )
 
 func main() {
     client := sdk.NewMoogleapiSDK(map[string]any{
         "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
     })
-```
 
-### 2. List moogleapiwebfeaturescharactersgetallgetallcharacters
-
-```go
-    result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+    // List moogleapiwebfeaturescharactersgetallgetallcharacter records — the value is the array of records itself.
+    moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range moogleapiwebfeaturescharactersgetallgetallcharacters.([]any) {
+        fmt.Println(item)
     }
+}
 ```
 
 
@@ -113,10 +109,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
+moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogleapiwebfeaturescharactersgetallgetallcharacter) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -222,17 +221,24 @@ All entities implement the `MoogleapiEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // moogleapiwebfeaturescharactersgetallgetallcharacter is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -384,7 +390,11 @@ Create an instance: `moogle_api_web_features_characters_get_all_get_all_characte
 #### Example: List
 
 ```go
-results, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+moogle_api_web_features_characters_get_all_get_all_characters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_characters_get_all_get_all_characters) // the array of records
 ```
 
 
@@ -415,7 +425,11 @@ Create an instance: `moogle_api_web_features_characters_get_get_character := cli
 #### Example: Load
 
 ```go
-result, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": "moogle_api_web_features_characters_get_get_character_id"}, nil)
+moogle_api_web_features_characters_get_get_character, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": "moogle_api_web_features_characters_get_get_character_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_characters_get_get_character) // the loaded record
 ```
 
 
@@ -443,7 +457,11 @@ Create an instance: `moogle_api_web_features_characters_search_search_character 
 #### Example: List
 
 ```go
-results, err := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).List(nil, nil)
+moogle_api_web_features_characters_search_search_characters, err := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_characters_search_search_characters) // the array of records
 ```
 
 
@@ -469,7 +487,11 @@ Create an instance: `moogle_api_web_features_games_get_all_get_all_game := clien
 #### Example: List
 
 ```go
-results, err := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).List(nil, nil)
+moogle_api_web_features_games_get_all_get_all_games, err := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_games_get_all_get_all_games) // the array of records
 ```
 
 
@@ -498,7 +520,11 @@ Create an instance: `moogle_api_web_features_games_get_get_game := client.Moogle
 #### Example: Load
 
 ```go
-result, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": "moogle_api_web_features_games_get_get_game_id"}, nil)
+moogle_api_web_features_games_get_get_game, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": "moogle_api_web_features_games_get_get_game_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_games_get_get_game) // the loaded record
 ```
 
 
@@ -525,7 +551,11 @@ Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster :=
 #### Example: List
 
 ```go
-results, err := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).List(nil, nil)
+moogle_api_web_features_monsters_get_all_get_all_monsters, err := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_monsters_get_all_get_all_monsters) // the array of records
 ```
 
 
@@ -553,7 +583,11 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster := client.
 #### Example: Load
 
 ```go
-result, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": "moogle_api_web_features_monsters_get_get_monster_id"}, nil)
+moogle_api_web_features_monsters_get_get_monster, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": "moogle_api_web_features_monsters_get_get_monster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_monsters_get_get_monster) // the loaded record
 ```
 
 
@@ -581,7 +615,11 @@ Create an instance: `moogle_api_web_features_monsters_search_search_monster := c
 #### Example: List
 
 ```go
-results, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil)
+moogle_api_web_features_monsters_search_search_monsters, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogle_api_web_features_monsters_search_search_monsters) // the array of records
 ```
 
 

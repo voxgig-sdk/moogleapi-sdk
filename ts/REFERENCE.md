@@ -194,7 +194,7 @@ Alias for `MoogleapiSDK.test()`.
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```ts
-const moogle_api_web_features_characters_get_all_get_all_character = client.moogle_api_web_features_characters_get_all_get_all_character
+const moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
 ```
 
 ### Fields
@@ -214,7 +214,7 @@ const moogle_api_web_features_characters_get_all_get_all_character = client.moog
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.moogle_api_web_features_characters_get_all_get_all_character.list()
+const results = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
 ```
 
 ### Common Methods
@@ -248,7 +248,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```ts
-const moogle_api_web_features_characters_get_get_character = client.moogle_api_web_features_characters_get_get_character
+const moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()
 ```
 
 ### Fields
@@ -272,7 +272,7 @@ const moogle_api_web_features_characters_get_get_character = client.moogle_api_w
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.moogle_api_web_features_characters_get_get_character.load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
+const result = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
 ```
 
 ### Common Methods
@@ -306,7 +306,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```ts
-const moogle_api_web_features_characters_search_search_character = client.moogle_api_web_features_characters_search_search_character
+const moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()
 ```
 
 ### Fields
@@ -327,7 +327,7 @@ const moogle_api_web_features_characters_search_search_character = client.moogle
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.moogle_api_web_features_characters_search_search_character.list()
+const results = await client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()
 ```
 
 ### Common Methods
@@ -361,7 +361,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```ts
-const moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web_features_games_get_all_get_all_game
+const moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()
 ```
 
 ### Fields
@@ -380,7 +380,7 @@ const moogle_api_web_features_games_get_all_get_all_game = client.moogle_api_web
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.moogle_api_web_features_games_get_all_get_all_game.list()
+const results = await client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
 ```
 
 ### Common Methods
@@ -414,7 +414,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```ts
-const moogle_api_web_features_games_get_get_game = client.moogle_api_web_features_games_get_get_game
+const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()
 ```
 
 ### Fields
@@ -436,7 +436,7 @@ const moogle_api_web_features_games_get_get_game = client.moogle_api_web_feature
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.moogle_api_web_features_games_get_get_game.load({ id: 'moogle_api_web_features_games_get_get_game_id' })
+const result = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 'moogle_api_web_features_games_get_get_game_id' })
 ```
 
 ### Common Methods
@@ -470,7 +470,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```ts
-const moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_api_web_features_monsters_get_all_get_all_monster
+const moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()
 ```
 
 ### Fields
@@ -490,7 +490,7 @@ const moogle_api_web_features_monsters_get_all_get_all_monster = client.moogle_a
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.moogle_api_web_features_monsters_get_all_get_all_monster.list()
+const results = await client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
 ```
 
 ### Common Methods
@@ -524,7 +524,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```ts
-const moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_features_monsters_get_get_monster
+const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster()
 ```
 
 ### Fields
@@ -545,7 +545,7 @@ const moogle_api_web_features_monsters_get_get_monster = client.moogle_api_web_f
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.moogle_api_web_features_monsters_get_get_monster.load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
+const result = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
 ```
 
 ### Common Methods
@@ -579,7 +579,7 @@ Return a copy of the entity options.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```ts
-const moogle_api_web_features_monsters_search_search_monster = client.moogle_api_web_features_monsters_search_search_monster
+const moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
 ```
 
 ### Fields
@@ -600,7 +600,7 @@ const moogle_api_web_features_monsters_search_search_monster = client.moogle_api
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.moogle_api_web_features_monsters_search_search_monster.list()
+const results = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
 ```
 
 ### Common Methods

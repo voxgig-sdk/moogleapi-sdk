@@ -112,7 +112,7 @@ same parameters as `direct()`.
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```lua
-local moogle_api_web_features_characters_get_all_get_all_character = client:moogle_api_web_features_characters_get_all_get_all_character(nil)
+local moogle_api_web_features_characters_get_all_get_all_character = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
 ```
 
 ### Fields
@@ -132,7 +132,7 @@ local moogle_api_web_features_characters_get_all_get_all_character = client:moog
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:moogle_api_web_features_characters_get_all_get_all_character():list()
+local results, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
 ```
 
 ### Common Methods
@@ -168,7 +168,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```lua
-local moogle_api_web_features_characters_get_get_character = client:moogle_api_web_features_characters_get_get_character(nil)
+local moogle_api_web_features_characters_get_get_character = client:MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
 ```
 
 ### Fields
@@ -192,7 +192,7 @@ local moogle_api_web_features_characters_get_get_character = client:moogle_api_w
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:moogle_api_web_features_characters_get_get_character():load({ id = "moogle_api_web_features_characters_get_get_character_id" })
+local result, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = "moogle_api_web_features_characters_get_get_character_id" })
 ```
 
 ### Common Methods
@@ -228,7 +228,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```lua
-local moogle_api_web_features_characters_search_search_character = client:moogle_api_web_features_characters_search_search_character(nil)
+local moogle_api_web_features_characters_search_search_character = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
 ```
 
 ### Fields
@@ -249,7 +249,7 @@ local moogle_api_web_features_characters_search_search_character = client:moogle
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:moogle_api_web_features_characters_search_search_character():list()
+local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter():list()
 ```
 
 ### Common Methods
@@ -285,7 +285,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```lua
-local moogle_api_web_features_games_get_all_get_all_game = client:moogle_api_web_features_games_get_all_get_all_game(nil)
+local moogle_api_web_features_games_get_all_get_all_game = client:MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)
 ```
 
 ### Fields
@@ -304,7 +304,7 @@ local moogle_api_web_features_games_get_all_get_all_game = client:moogle_api_web
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:moogle_api_web_features_games_get_all_get_all_game():list()
+local results, err = client:MoogleApiWebFeaturesGamesGetAllGetAllGame():list()
 ```
 
 ### Common Methods
@@ -340,7 +340,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```lua
-local moogle_api_web_features_games_get_get_game = client:moogle_api_web_features_games_get_get_game(nil)
+local moogle_api_web_features_games_get_get_game = client:MoogleApiWebFeaturesGamesGetGetGame(nil)
 ```
 
 ### Fields
@@ -362,7 +362,7 @@ local moogle_api_web_features_games_get_get_game = client:moogle_api_web_feature
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:moogle_api_web_features_games_get_get_game():load({ id = "moogle_api_web_features_games_get_get_game_id" })
+local result, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = "moogle_api_web_features_games_get_get_game_id" })
 ```
 
 ### Common Methods
@@ -398,7 +398,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```lua
-local moogle_api_web_features_monsters_get_all_get_all_monster = client:moogle_api_web_features_monsters_get_all_get_all_monster(nil)
+local moogle_api_web_features_monsters_get_all_get_all_monster = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)
 ```
 
 ### Fields
@@ -418,7 +418,7 @@ local moogle_api_web_features_monsters_get_all_get_all_monster = client:moogle_a
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:moogle_api_web_features_monsters_get_all_get_all_monster():list()
+local results, err = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster():list()
 ```
 
 ### Common Methods
@@ -454,7 +454,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```lua
-local moogle_api_web_features_monsters_get_get_monster = client:moogle_api_web_features_monsters_get_get_monster(nil)
+local moogle_api_web_features_monsters_get_get_monster = client:MoogleApiWebFeaturesMonstersGetGetMonster(nil)
 ```
 
 ### Fields
@@ -475,7 +475,7 @@ local moogle_api_web_features_monsters_get_get_monster = client:moogle_api_web_f
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:moogle_api_web_features_monsters_get_get_monster():load({ id = "moogle_api_web_features_monsters_get_get_monster_id" })
+local result, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = "moogle_api_web_features_monsters_get_get_monster_id" })
 ```
 
 ### Common Methods
@@ -511,7 +511,7 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```lua
-local moogle_api_web_features_monsters_search_search_monster = client:moogle_api_web_features_monsters_search_search_monster(nil)
+local moogle_api_web_features_monsters_search_search_monster = client:MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
 ```
 
 ### Fields
@@ -532,7 +532,7 @@ local moogle_api_web_features_monsters_search_search_monster = client:moogle_api
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:moogle_api_web_features_monsters_search_search_monster():list()
+local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
 ```
 
 ### Common Methods
