@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -39,6 +44,35 @@ const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.Moogle
 
 for (const moogleapiwebfeaturescharactersgetallgetallcharacter of moogleapiwebfeaturescharactersgetallgetallcharacters) {
   console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+  console.log(moogleapiwebfeaturescharactersgetallgetallcharacters)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -87,7 +121,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MoogleapiSDK.test()
 
-const moogleapiwebfeaturescharactersgetallgetallcharacter = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id: 'test01' })
+const moogleapiwebfeaturescharactersgetallgetallcharacter = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
 // moogleapiwebfeaturescharactersgetallgetallcharacter is a bare entity populated with mock response data
 console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
 ```
@@ -106,12 +140,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -212,11 +246,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): MoogleapiSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -226,10 +257,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -404,11 +434,11 @@ Create an instance: `const moogle_api_web_features_characters_get_all_get_all_ch
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `game_name` | `string` |  |
+| `id` | `number` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: List
 
@@ -431,20 +461,20 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hometown` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `race` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `affiliation` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hometown` | `string` |  |
+| `id` | `number` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `race` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_characters_get_get_character = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
+const moogle_api_web_features_characters_get_get_character = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 1 })
 ```
 
 
@@ -462,12 +492,12 @@ Create an instance: `const moogle_api_web_features_characters_search_search_char
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `id` | `number` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: List
 
@@ -490,10 +520,10 @@ Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = 
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `release_year` | ``$INTEGER`` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `release_year` | `number` |  |
 
 #### Example: List
 
@@ -516,18 +546,18 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `monster_count` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `release_year` | ``$INTEGER`` |  |
+| `character_count` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `monster_count` | `number` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `release_year` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 'moogle_api_web_features_games_get_get_game_id' })
+const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 1 })
 ```
 
 
@@ -545,11 +575,11 @@ Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_mons
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `number` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -572,17 +602,17 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `number` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
+const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 1 })
 ```
 
 
@@ -600,12 +630,12 @@ Create an instance: `const moogle_api_web_features_monsters_search_search_monste
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `number` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -614,12 +644,16 @@ const moogle_api_web_features_monsters_search_search_monsters = await client.Moo
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -636,11 +670,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -676,16 +708,16 @@ import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
-await moogleapiwebfeaturescharactersgetallgetallcharacter.load({ id: "example_id" })
+await moogleapiwebfeaturescharactersgetallgetallcharacter.list()
 
-// moogleapiwebfeaturescharactersgetallgetallcharacter.data() now returns the loaded moogleapiwebfeaturescharactersgetallgetallcharacter data
-// moogleapiwebfeaturescharactersgetallgetallcharacter.match() returns { id: "example_id" }
+// moogleapiwebfeaturescharactersgetallgetallcharacter.data() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last `list`
+// moogleapiwebfeaturescharactersgetallgetallcharacter.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -116,20 +116,20 @@ moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiW
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `game_name` | `str` | No |  |
+| `id` | `int` | No |  |
+| `image_url` | `str` | No |  |
+| `name` | `str` | No |  |
+| `role` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list({})
+results = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
 for moogle_api_web_features_characters_get_all_get_all_character in results:
     print(moogle_api_web_features_characters_get_all_get_all_character)
 ```
@@ -173,15 +173,15 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hometown` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `race` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `affiliation` | `str` | No |  |
+| `description` | `str` | No |  |
+| `game_name` | `str` | No |  |
+| `hometown` | `str` | No |  |
+| `id` | `int` | No |  |
+| `image_url` | `str` | No |  |
+| `name` | `str` | No |  |
+| `race` | `str` | No |  |
+| `role` | `str` | No |  |
 
 ### Operations
 
@@ -232,21 +232,21 @@ moogle_api_web_features_characters_search_search_character = client.MoogleApiWeb
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `game_name` | `str` | No |  |
+| `id` | `int` | No |  |
+| `image_url` | `str` | No |  |
+| `name` | `str` | No |  |
+| `role` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({})
+results = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()
 for moogle_api_web_features_characters_search_search_character in results:
     print(moogle_api_web_features_characters_search_search_character)
 ```
@@ -290,19 +290,19 @@ moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeatures
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `platform` | `str` | No |  |
+| `release_year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list({})
+results = client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
 for moogle_api_web_features_games_get_all_get_all_game in results:
     print(moogle_api_web_features_games_get_all_get_all_game)
 ```
@@ -346,13 +346,13 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character_count` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `monster_count` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `character_count` | `int` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `monster_count` | `int` | No |  |
+| `name` | `str` | No |  |
+| `platform` | `str` | No |  |
+| `release_year` | `int` | No |  |
 
 ### Operations
 
@@ -403,20 +403,20 @@ moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFe
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `str` | No |  |
+| `game_name` | `str` | No |  |
+| `hit_point` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list({})
+results = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
 for moogle_api_web_features_monsters_get_all_get_all_monster in results:
     print(moogle_api_web_features_monsters_get_all_get_all_monster)
 ```
@@ -460,12 +460,12 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `game_name` | `str` | No |  |
+| `hit_point` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
@@ -516,21 +516,21 @@ moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `game_name` | `str` | No |  |
+| `hit_point` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({})
+results = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
 for moogle_api_web_features_monsters_search_search_monster in results:
     print(moogle_api_web_features_monsters_search_search_monster)
 ```

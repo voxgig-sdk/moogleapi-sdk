@@ -8,7 +8,7 @@ Complete API reference for the Moogleapi Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'moogleapi_sdk'
+require_relative 'Moogleapi_sdk'
 
 client = MoogleapiSDK.new(options)
 ```
@@ -122,20 +122,20 @@ moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiW
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `game_name` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image_url` | `String` | No |  |
+| `name` | `String` | No |  |
+| `role` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list(nil)
+results = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list
 ```
 
 ### Common Methods
@@ -178,15 +178,15 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hometown` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `race` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `affiliation` | `String` | No |  |
+| `description` | `String` | No |  |
+| `game_name` | `String` | No |  |
+| `hometown` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image_url` | `String` | No |  |
+| `name` | `String` | No |  |
+| `race` | `String` | No |  |
+| `role` | `String` | No |  |
 
 ### Operations
 
@@ -238,21 +238,21 @@ moogle_api_web_features_characters_search_search_character = client.MoogleApiWeb
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `game_name` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image_url` | `String` | No |  |
+| `name` | `String` | No |  |
+| `role` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.list(nil)
+results = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.list
 ```
 
 ### Common Methods
@@ -295,19 +295,19 @@ moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeatures
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `platform` | `String` | No |  |
+| `release_year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesGamesGetAllGetAllGame.list(nil)
+results = client.MoogleApiWebFeaturesGamesGetAllGetAllGame.list
 ```
 
 ### Common Methods
@@ -350,13 +350,13 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character_count` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `monster_count` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `character_count` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `monster_count` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `platform` | `String` | No |  |
+| `release_year` | `Integer` | No |  |
 
 ### Operations
 
@@ -408,20 +408,20 @@ moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFe
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `String` | No |  |
+| `game_name` | `String` | No |  |
+| `hit_point` | `Integer` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.list(nil)
+results = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.list
 ```
 
 ### Common Methods
@@ -464,12 +464,12 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `game_name` | `String` | No |  |
+| `hit_point` | `Integer` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
@@ -521,21 +521,21 @@ moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `game_name` | `String` | No |  |
+| `hit_point` | `Integer` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list(nil)
+results = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list
 ```
 
 ### Common Methods

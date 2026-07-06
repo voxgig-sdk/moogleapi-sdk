@@ -66,8 +66,12 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameEntity:
     
 
     
-    def list(self, reqmatch: MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch, ctrl=None) -> list[MoogleApiWebFeaturesGamesGetAllGetAllGame]:
+    def list(self, reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesGamesGetAllGetAllGame]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

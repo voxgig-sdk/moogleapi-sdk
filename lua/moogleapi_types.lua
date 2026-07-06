@@ -14,6 +14,11 @@
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
+---@field game_name? string
+---@field id? number
+---@field image_url? string
+---@field name? string
+---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacter
 ---@field affiliation? string
@@ -38,6 +43,12 @@
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
+---@field description? string
+---@field game_name? string
+---@field id? number
+---@field image_url? string
+---@field name? string
+---@field role? string
 
 ---@class MoogleApiWebFeaturesGamesGetAllGetAllGame
 ---@field id? number
@@ -46,6 +57,10 @@
 ---@field release_year? number
 
 ---@class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
+---@field id? number
+---@field name? string
+---@field platform? string
+---@field release_year? number
 
 ---@class MoogleApiWebFeaturesGamesGetGetGame
 ---@field character_count? number
@@ -67,6 +82,11 @@
 ---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
+---@field category? string
+---@field game_name? string
+---@field hit_point? number
+---@field id? number
+---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersGetGetMonster
 ---@field category? string
@@ -88,6 +108,12 @@
 ---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
+---@field category? string
+---@field description? string
+---@field game_name? string
+---@field hit_point? number
+---@field id? number
+---@field name? string
 
 local M = {}
 

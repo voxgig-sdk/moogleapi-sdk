@@ -33,7 +33,7 @@ MoogleApiWebFeaturesCharactersGetAllGetAllCharacter = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list (any subset of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter fields).
+# Request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list.
 #
 # @!attribute [rw] game_name
 #   @return [String, nil]
@@ -137,7 +137,7 @@ MoogleApiWebFeaturesCharactersSearchSearchCharacter = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list (any subset of MoogleApiWebFeaturesCharactersSearchSearchCharacter fields).
+# Request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -187,7 +187,7 @@ MoogleApiWebFeaturesGamesGetAllGetAllGame = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MoogleApiWebFeaturesGamesGetAllGetAllGame#list (any subset of MoogleApiWebFeaturesGamesGetAllGetAllGame fields).
+# Request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame#list.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -275,7 +275,7 @@ MoogleApiWebFeaturesMonstersGetAllGetAllMonster = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list (any subset of MoogleApiWebFeaturesMonstersGetAllGetAllMonster fields).
+# Request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -367,7 +367,7 @@ MoogleApiWebFeaturesMonstersSearchSearchMonster = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MoogleApiWebFeaturesMonstersSearchSearchMonster#list (any subset of MoogleApiWebFeaturesMonstersSearchSearchMonster fields).
+# Request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]

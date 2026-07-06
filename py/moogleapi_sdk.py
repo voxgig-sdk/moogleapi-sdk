@@ -221,49 +221,49 @@ class MoogleapiSDK:
 
 
     def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list({}) / client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list() / client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_get_all_get_all_character_entity import MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
         return MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, data)
 
 
     def MoogleApiWebFeaturesCharactersGetGetCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersGetGetCharacterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesCharactersGetGetCharacter().list({}) / client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesCharactersGetGetCharacter().list() / client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
         return MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, data)
 
 
     def MoogleApiWebFeaturesCharactersSearchSearchCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({}) / client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list() / client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().load({"id": ...})."""
         from entity.moogle_api_web_features_characters_search_search_character_entity import MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
         return MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, data)
 
 
     def MoogleApiWebFeaturesGamesGetAllGetAllGame(self, data=None) -> "MoogleApiWebFeaturesGamesGetAllGetAllGameEntity":
-        """Entity factory: client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list({}) / client.MoogleApiWebFeaturesGamesGetAllGetAllGame().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list() / client.MoogleApiWebFeaturesGamesGetAllGetAllGame().load({"id": ...})."""
         from entity.moogle_api_web_features_games_get_all_get_all_game_entity import MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
         return MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, data)
 
 
     def MoogleApiWebFeaturesGamesGetGetGame(self, data=None) -> "MoogleApiWebFeaturesGamesGetGetGameEntity":
-        """Entity factory: client.MoogleApiWebFeaturesGamesGetGetGame().list({}) / client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesGamesGetGetGame().list() / client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": ...})."""
         from entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
         return MoogleApiWebFeaturesGamesGetGetGameEntity(self, data)
 
 
     def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list({}) / client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list() / client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity import MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
         return MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, data)
 
 
     def MoogleApiWebFeaturesMonstersGetGetMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersGetGetMonsterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesMonstersGetGetMonster().list({}) / client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesMonstersGetGetMonster().list() / client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
         return MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, data)
 
 
     def MoogleApiWebFeaturesMonstersSearchSearchMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity":
-        """Entity factory: client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({}) / client.MoogleApiWebFeaturesMonstersSearchSearchMonster().load({"id": ...})."""
+        """Entity factory: client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list() / client.MoogleApiWebFeaturesMonstersSearchSearchMonster().load({"id": ...})."""
         from entity.moogle_api_web_features_monsters_search_search_monster_entity import MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
         return MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, data)
 

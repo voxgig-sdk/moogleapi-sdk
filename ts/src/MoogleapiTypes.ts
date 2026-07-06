@@ -13,7 +13,13 @@ export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacter {
   role?: string
 }
 
-export type MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch = Partial<MoogleApiWebFeaturesCharactersGetAllGetAllCharacter>
+export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch {
+  game_name?: string
+  id?: number
+  image_url?: string
+  name?: string
+  role?: string
+}
 
 export interface MoogleApiWebFeaturesCharactersGetGetCharacter {
   affiliation?: string
@@ -40,7 +46,14 @@ export interface MoogleApiWebFeaturesCharactersSearchSearchCharacter {
   role?: string
 }
 
-export type MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch = Partial<MoogleApiWebFeaturesCharactersSearchSearchCharacter>
+export interface MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch {
+  description?: string
+  game_name?: string
+  id?: number
+  image_url?: string
+  name?: string
+  role?: string
+}
 
 export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
   id?: number
@@ -49,7 +62,12 @@ export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
   release_year?: number
 }
 
-export type MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch = Partial<MoogleApiWebFeaturesGamesGetAllGetAllGame>
+export interface MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch {
+  id?: number
+  name?: string
+  platform?: string
+  release_year?: number
+}
 
 export interface MoogleApiWebFeaturesGamesGetGetGame {
   character_count?: number
@@ -73,7 +91,13 @@ export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonster {
   name?: string
 }
 
-export type MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch = Partial<MoogleApiWebFeaturesMonstersGetAllGetAllMonster>
+export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch {
+  category?: string
+  game_name?: string
+  hit_point?: number
+  id?: number
+  name?: string
+}
 
 export interface MoogleApiWebFeaturesMonstersGetGetMonster {
   category?: string
@@ -97,5 +121,12 @@ export interface MoogleApiWebFeaturesMonstersSearchSearchMonster {
   name?: string
 }
 
-export type MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch = Partial<MoogleApiWebFeaturesMonstersSearchSearchMonster>
+export interface MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch {
+  category?: string
+  description?: string
+  game_name?: string
+  hit_point?: number
+  id?: number
+  name?: string
+}
 

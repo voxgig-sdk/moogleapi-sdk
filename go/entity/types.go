@@ -17,8 +17,7 @@ type MoogleApiWebFeaturesCharactersGetAllGetAllCharacter struct {
 	Role *string `json:"role,omitempty"`
 }
 
-// MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch mirrors the moogle_api_web_features_characters_get_all_get_all_character fields as an all-optional match
-// filter (Go analog of Partial<MoogleApiWebFeaturesCharactersGetAllGetAllCharacter>).
+// MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch struct {
 	GameName *string `json:"game_name,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -55,8 +54,7 @@ type MoogleApiWebFeaturesCharactersSearchSearchCharacter struct {
 	Role *string `json:"role,omitempty"`
 }
 
-// MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch mirrors the moogle_api_web_features_characters_search_search_character fields as an all-optional match
-// filter (Go analog of Partial<MoogleApiWebFeaturesCharactersSearchSearchCharacter>).
+// MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch struct {
 	Description *string `json:"description,omitempty"`
 	GameName *string `json:"game_name,omitempty"`
@@ -74,8 +72,7 @@ type MoogleApiWebFeaturesGamesGetAllGetAllGame struct {
 	ReleaseYear *int `json:"release_year,omitempty"`
 }
 
-// MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch mirrors the moogle_api_web_features_games_get_all_get_all_game fields as an all-optional match
-// filter (Go analog of Partial<MoogleApiWebFeaturesGamesGetAllGetAllGame>).
+// MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch is the typed request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame.ListTyped.
 type MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -108,8 +105,7 @@ type MoogleApiWebFeaturesMonstersGetAllGetAllMonster struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch mirrors the moogle_api_web_features_monsters_get_all_get_all_monster fields as an all-optional match
-// filter (Go analog of Partial<MoogleApiWebFeaturesMonstersGetAllGetAllMonster>).
+// MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch is the typed request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster.ListTyped.
 type MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
 	GameName *string `json:"game_name,omitempty"`
@@ -143,8 +139,7 @@ type MoogleApiWebFeaturesMonstersSearchSearchMonster struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch mirrors the moogle_api_web_features_monsters_search_search_monster fields as an all-optional match
-// filter (Go analog of Partial<MoogleApiWebFeaturesMonstersSearchSearchMonster>).
+// MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch is the typed request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster.ListTyped.
 type MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`

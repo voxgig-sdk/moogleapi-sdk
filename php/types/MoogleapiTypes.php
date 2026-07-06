@@ -22,7 +22,7 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
     public ?string $role = null;
 }
 
-/** Match filter for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list (any subset of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter fields). */
+/** Request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list. */
 class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
 {
     public ?string $game_name = null;
@@ -63,7 +63,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacter
     public ?string $role = null;
 }
 
-/** Match filter for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list (any subset of MoogleApiWebFeaturesCharactersSearchSearchCharacter fields). */
+/** Request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list. */
 class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
 {
     public ?string $description = null;
@@ -83,7 +83,7 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGame
     public ?int $release_year = null;
 }
 
-/** Match filter for MoogleApiWebFeaturesGamesGetAllGetAllGame#list (any subset of MoogleApiWebFeaturesGamesGetAllGetAllGame fields). */
+/** Request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame#list. */
 class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
 {
     public ?int $id = null;
@@ -120,7 +120,7 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
     public ?string $name = null;
 }
 
-/** Match filter for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list (any subset of MoogleApiWebFeaturesMonstersGetAllGetAllMonster fields). */
+/** Request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list. */
 class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
 {
     public ?string $category = null;
@@ -158,7 +158,7 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonster
     public ?string $name = null;
 }
 
-/** Match filter for MoogleApiWebFeaturesMonstersSearchSearchMonster#list (any subset of MoogleApiWebFeaturesMonstersSearchSearchMonster fields). */
+/** Request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster#list. */
 class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
 {
     public ?string $category = null;

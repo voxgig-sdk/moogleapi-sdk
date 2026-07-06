@@ -66,8 +66,12 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity:
     
 
     
-    def list(self, reqmatch: MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch, ctrl=None) -> list[MoogleApiWebFeaturesCharactersGetAllGetAllCharacter]:
+    def list(self, reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesCharactersGetAllGetAllCharacter]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

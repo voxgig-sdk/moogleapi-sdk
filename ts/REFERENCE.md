@@ -201,11 +201,11 @@ const moogle_api_web_features_characters_get_all_get_all_character = client.Moog
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `game_name` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `role` | `string` | No |  |
 
 ### Operations
 
@@ -255,15 +255,15 @@ const moogle_api_web_features_characters_get_get_character = client.MoogleApiWeb
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `affiliation` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hometown` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `race` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `affiliation` | `string` | No |  |
+| `description` | `string` | No |  |
+| `game_name` | `string` | No |  |
+| `hometown` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `race` | `string` | No |  |
+| `role` | `string` | No |  |
 
 ### Operations
 
@@ -272,7 +272,7 @@ const moogle_api_web_features_characters_get_get_character = client.MoogleApiWeb
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 'moogle_api_web_features_characters_get_get_character_id' })
+const result = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -313,12 +313,12 @@ const moogle_api_web_features_characters_search_search_character = client.Moogle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `role` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `game_name` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `role` | `string` | No |  |
 
 ### Operations
 
@@ -368,10 +368,10 @@ const moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFe
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `release_year` | `number` | No |  |
 
 ### Operations
 
@@ -421,13 +421,13 @@ const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character_count` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `monster_count` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `release_year` | ``$INTEGER`` | No |  |
+| `character_count` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `monster_count` | `number` | No |  |
+| `name` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `release_year` | `number` | No |  |
 
 ### Operations
 
@@ -436,7 +436,7 @@ const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGa
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 'moogle_api_web_features_games_get_get_game_id' })
+const result = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -477,11 +477,11 @@ const moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleAp
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `game_name` | `string` | No |  |
+| `hit_point` | `number` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -531,12 +531,12 @@ const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `game_name` | `string` | No |  |
+| `hit_point` | `number` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -545,7 +545,7 @@ const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeat
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 'moogle_api_web_features_monsters_get_get_monster_id' })
+const result = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -586,12 +586,12 @@ const moogle_api_web_features_monsters_search_search_monster = client.MoogleApiW
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `game_name` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `game_name` | `string` | No |  |
+| `hit_point` | `number` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

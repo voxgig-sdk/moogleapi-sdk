@@ -17,8 +17,6 @@ go build -o moogleapi-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
-./moogleapi-cli load 1 moogle_api_web_features_characters_get_all_get_all_character
-./moogleapi-cli load '{id:1}' moogle_api_web_features_characters_get_all_get_all_character
 
 # REPL
 ./moogleapi-cli
@@ -30,7 +28,6 @@ go build -o moogleapi-cli ./...
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

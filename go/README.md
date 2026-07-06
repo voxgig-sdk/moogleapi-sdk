@@ -4,6 +4,8 @@
 
 The Golang SDK for the Moogleapi API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -63,6 +65,35 @@ func main() {
 ```
 
 
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = moogleapiwebfeaturescharactersgetallgetallcharacters
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -109,13 +140,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleapiwebfeaturescharactersgetallgetallcharacter) // the loaded mock data
+fmt.Println(moogleapiwebfeaturescharactersgetallgetallcharacter) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -211,9 +242,6 @@ All entities implement the `MoogleapiEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -226,16 +254,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).Load(map[string]any{"id": "example_id"}, nil)
+    moogleapiwebfeaturescharactersgetallgetallcharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // moogleapiwebfeaturescharactersgetallgetallcharacter is the loaded record
+    // moogleapiwebfeaturescharactersgetallgetallcharacter is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -381,11 +409,11 @@ Create an instance: `moogle_api_web_features_characters_get_all_get_all_characte
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `game_name` | `string` |  |
+| `id` | `int` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: List
 
@@ -412,15 +440,15 @@ Create an instance: `moogle_api_web_features_characters_get_get_character := cli
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `affiliation` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hometown` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `race` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `affiliation` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hometown` | `string` |  |
+| `id` | `int` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `race` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: Load
 
@@ -447,12 +475,12 @@ Create an instance: `moogle_api_web_features_characters_search_search_character 
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image_url` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `role` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `id` | `int` |  |
+| `image_url` | `string` |  |
+| `name` | `string` |  |
+| `role` | `string` |  |
 
 #### Example: List
 
@@ -479,10 +507,10 @@ Create an instance: `moogle_api_web_features_games_get_all_get_all_game := clien
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `release_year` | ``$INTEGER`` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `release_year` | `int` |  |
 
 #### Example: List
 
@@ -509,13 +537,13 @@ Create an instance: `moogle_api_web_features_games_get_get_game := client.Moogle
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `monster_count` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `release_year` | ``$INTEGER`` |  |
+| `character_count` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `monster_count` | `int` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `release_year` | `int` |  |
 
 #### Example: Load
 
@@ -542,11 +570,11 @@ Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster :=
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `int` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -573,12 +601,12 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster := client.
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `int` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -605,12 +633,12 @@ Create an instance: `moogle_api_web_features_monsters_search_search_monster := c
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `game_name` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `game_name` | `string` |  |
+| `hit_point` | `int` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -623,12 +651,16 @@ fmt.Println(moogle_api_web_features_monsters_search_search_monsters) // the arra
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -645,9 +677,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -688,14 +720,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 moogleapiwebfeaturescharactersgetallgetallcharacter := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
-moogleapiwebfeaturescharactersgetallgetallcharacter.Load(map[string]any{"id": "example_id"}, nil)
+moogleapiwebfeaturescharactersgetallgetallcharacter.List(nil, nil)
 
-// moogleapiwebfeaturescharactersgetallgetallcharacter.Data() now returns the loaded moogleapiwebfeaturescharactersgetallgetallcharacter data
+// moogleapiwebfeaturescharactersgetallgetallcharacter.Data() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last list
 // moogleapiwebfeaturescharactersgetallgetallcharacter.Match() returns the last match criteria
 ```
 
