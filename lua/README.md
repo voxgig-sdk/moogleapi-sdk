@@ -419,7 +419,7 @@ Create an instance: `local moogle_api_web_features_characters_get_get_character 
 #### Example: Load
 
 ```lua
-local moogle_api_web_features_characters_get_get_character, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = "moogle_api_web_features_characters_get_get_character_id" })
+local moogle_api_web_features_characters_get_get_character, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = 1 })
 ```
 
 
@@ -502,7 +502,7 @@ Create an instance: `local moogle_api_web_features_games_get_get_game = client:M
 #### Example: Load
 
 ```lua
-local moogle_api_web_features_games_get_get_game, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = "moogle_api_web_features_games_get_get_game_id" })
+local moogle_api_web_features_games_get_get_game, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = 1 })
 ```
 
 
@@ -557,7 +557,7 @@ Create an instance: `local moogle_api_web_features_monsters_get_get_monster = cl
 #### Example: Load
 
 ```lua
-local moogle_api_web_features_monsters_get_get_monster, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = "moogle_api_web_features_monsters_get_get_monster_id" })
+local moogle_api_web_features_monsters_get_get_monster, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = 1 })
 ```
 
 

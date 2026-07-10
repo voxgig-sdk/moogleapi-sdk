@@ -1,0 +1,10 @@
+# Flows
+
+@"BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow.aontu"
+@"BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow.aontu"
+@"BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow.aontu"
+@"BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow.aontu"
+@"BasicMoogleApiWebFeaturesGamesGetGetGameFlow.aontu"
+@"BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow.aontu"
+@"BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow.aontu"
+@"BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow.aontu"

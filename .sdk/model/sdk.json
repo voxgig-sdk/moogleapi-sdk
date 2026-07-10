@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1158,13 +1155,23 @@
       },
       "info": {
         "description": "A Final Fantasy data API — characters, monsters, and games.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "Authorization",
+          "prefix": "Bearer",
+          "scheme": "JWTBearerAuth",
+          "type": "http"
+        },
         "servers": [
           {
             "url": "https://www.moogleapi.com"
           }
         ],
+        "summary": "A Final Fantasy data API — characters, monsters, and games.",
         "title": "MoogleAPI",
-        "version": "v1"
+        "version": "v1",
+        "website": "https://moogleapi.com"
       },
       "option": {},
       "target": {
@@ -1217,6 +1224,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1267,6 +1277,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

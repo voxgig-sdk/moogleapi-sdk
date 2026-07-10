@@ -119,7 +119,8 @@ same parameters as `Direct()`.
 ## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
 
 ```go
-moogle_api_web_features_characters_get_all_get_all_character := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
+moogleApiWebFeaturesCharactersGetAllGetAllCharacter := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
+fmt.Println(moogleApiWebFeaturesCharactersGetAllGetAllCharacter.GetName()) // "moogle_api_web_features_characters_get_all_get_all_character"
 ```
 
 ### Fields
@@ -140,6 +141,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -169,7 +174,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```go
-moogle_api_web_features_characters_get_get_character := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
+moogleApiWebFeaturesCharactersGetGetCharacter := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
+fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter.GetName()) // "moogle_api_web_features_characters_get_get_character"
 ```
 
 ### Fields
@@ -193,7 +199,11 @@ moogle_api_web_features_characters_get_get_character := client.MoogleApiWebFeatu
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": "moogle_api_web_features_characters_get_get_character_id"}, nil)
+result, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -223,7 +233,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
 
 ```go
-moogle_api_web_features_characters_search_search_character := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
+moogleApiWebFeaturesCharactersSearchSearchCharacter := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
+fmt.Println(moogleApiWebFeaturesCharactersSearchSearchCharacter.GetName()) // "moogle_api_web_features_characters_search_search_character"
 ```
 
 ### Fields
@@ -245,6 +256,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -274,7 +289,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
 
 ```go
-moogle_api_web_features_games_get_all_get_all_game := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)
+moogleApiWebFeaturesGamesGetAllGetAllGame := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)
+fmt.Println(moogleApiWebFeaturesGamesGetAllGetAllGame.GetName()) // "moogle_api_web_features_games_get_all_get_all_game"
 ```
 
 ### Fields
@@ -294,6 +310,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -323,7 +343,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```go
-moogle_api_web_features_games_get_get_game := client.MoogleApiWebFeaturesGamesGetGetGame(nil)
+moogleApiWebFeaturesGamesGetGetGame := client.MoogleApiWebFeaturesGamesGetGetGame(nil)
+fmt.Println(moogleApiWebFeaturesGamesGetGetGame.GetName()) // "moogle_api_web_features_games_get_get_game"
 ```
 
 ### Fields
@@ -345,7 +366,11 @@ moogle_api_web_features_games_get_get_game := client.MoogleApiWebFeaturesGamesGe
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": "moogle_api_web_features_games_get_get_game_id"}, nil)
+result, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -375,7 +400,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
 
 ```go
-moogle_api_web_features_monsters_get_all_get_all_monster := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)
+moogleApiWebFeaturesMonstersGetAllGetAllMonster := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)
+fmt.Println(moogleApiWebFeaturesMonstersGetAllGetAllMonster.GetName()) // "moogle_api_web_features_monsters_get_all_get_all_monster"
 ```
 
 ### Fields
@@ -396,6 +422,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -425,7 +455,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```go
-moogle_api_web_features_monsters_get_get_monster := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil)
+moogleApiWebFeaturesMonstersGetGetMonster := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil)
+fmt.Println(moogleApiWebFeaturesMonstersGetGetMonster.GetName()) // "moogle_api_web_features_monsters_get_get_monster"
 ```
 
 ### Fields
@@ -446,7 +477,11 @@ moogle_api_web_features_monsters_get_get_monster := client.MoogleApiWebFeaturesM
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": "moogle_api_web_features_monsters_get_get_monster_id"}, nil)
+result, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -476,7 +511,8 @@ Return the entity name.
 ## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
 
 ```go
-moogle_api_web_features_monsters_search_search_monster := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
+moogleApiWebFeaturesMonstersSearchSearchMonster := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
+fmt.Println(moogleApiWebFeaturesMonstersSearchSearchMonster.GetName()) // "moogle_api_web_features_monsters_search_search_monster"
 ```
 
 ### Fields
@@ -498,6 +534,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

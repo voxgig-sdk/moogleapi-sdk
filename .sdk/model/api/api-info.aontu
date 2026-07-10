@@ -5,14 +5,21 @@ main: {
   kit: {
     info: {
       description: "A Final Fantasy data API — characters, monsters, and games."
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "JWTBearerAuth"
+        type: "http"
+      }
       servers: [
         {
           url: "https://www.moogleapi.com"
         }
       ]
+      summary: "A Final Fantasy data API — characters, monsters, and games."
       title: "MoogleAPI"
       version: "v1"
+      website: "https://moogleapi.com"
     }
   }
-}
-

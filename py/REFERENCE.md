@@ -190,7 +190,7 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": "moogle_api_web_features_characters_get_get_character_id"})
+result = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": 1})
 ```
 
 ### Common Methods
@@ -361,7 +361,7 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": "moogle_api_web_features_games_get_get_game_id"})
+result = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": 1})
 ```
 
 ### Common Methods
@@ -474,7 +474,7 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": "moogle_api_web_features_monsters_get_get_monster_id"})
+result = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": 1})
 ```
 
 ### Common Methods

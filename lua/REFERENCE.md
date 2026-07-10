@@ -192,7 +192,7 @@ local moogle_api_web_features_characters_get_get_character = client:MoogleApiWeb
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = "moogle_api_web_features_characters_get_get_character_id" })
+local result, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -362,7 +362,7 @@ local moogle_api_web_features_games_get_get_game = client:MoogleApiWebFeaturesGa
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = "moogle_api_web_features_games_get_get_game_id" })
+local result, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -475,7 +475,7 @@ local moogle_api_web_features_monsters_get_get_monster = client:MoogleApiWebFeat
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = "moogle_api_web_features_monsters_get_get_monster_id" })
+local result, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = 1 })
 ```
 
 ### Common Methods

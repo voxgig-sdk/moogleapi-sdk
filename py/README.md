@@ -430,7 +430,7 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 #### Example: Load
 
 ```python
-moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": "moogle_api_web_features_characters_get_get_character_id"})
+moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": 1})
 ```
 
 
@@ -513,7 +513,7 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 #### Example: Load
 
 ```python
-moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": "moogle_api_web_features_games_get_get_game_id"})
+moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": 1})
 ```
 
 
@@ -568,7 +568,7 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 #### Example: Load
 
 ```python
-moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": "moogle_api_web_features_monsters_get_get_monster_id"})
+moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": 1})
 ```
 
 
