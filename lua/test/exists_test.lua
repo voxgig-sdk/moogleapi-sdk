@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Moogleapi SDK exists test
 
 local sdk = require("moogleapi_sdk")
 
