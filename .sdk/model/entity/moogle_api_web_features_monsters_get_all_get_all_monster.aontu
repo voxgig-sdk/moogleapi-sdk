@@ -11,12 +11,12 @@ main: kit: entity: moogle_api_web_features_monsters_get_all_get_all_monster: {
       type: "`$STRING`"
     }
     {
-      name: "game_name"
+      name: "gameName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "hit_point"
+      name: "hitPoints"
       req: false
       type: "`$INTEGER`"
     }
@@ -93,7 +93,7 @@ main: kit: entity: moogle_api_web_features_monsters_get_all_get_all_monster: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.items`"
           }
         }
       ]

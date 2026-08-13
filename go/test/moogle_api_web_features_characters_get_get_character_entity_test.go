@@ -68,7 +68,7 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult := core.ToMapAny(moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0Loaded)
+		moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult := core.ToMapAny(entityData(moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0Loaded))
 		if moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

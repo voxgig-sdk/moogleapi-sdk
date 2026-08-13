@@ -45,7 +45,7 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterEntityTest < Minitest::Test
       "id" => moogle_api_web_features_characters_get_get_character_ref01_data["id"],
     }
     moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded = moogle_api_web_features_characters_get_get_character_ref01_ent.load(moogle_api_web_features_characters_get_get_character_ref01_match_dt0, nil)
-    moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = Helpers.to_map(moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded)
+    moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = Helpers.to_map(moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded.respond_to?(:data_get) ? moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded.data_get : moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded)
     assert !moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result.nil?
     assert_equal moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result["id"], moogle_api_web_features_characters_get_get_character_ref01_data["id"]
 

@@ -6,17 +6,17 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacter {
-  game_name?: string
+  gameName?: string
   id?: number
-  image_url?: string
+  imageUrl?: string
   name?: string
   role?: string
 }
 
 export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch {
-  game_name?: string
+  gameName?: string
   id?: number
-  image_url?: string
+  imageUrl?: string
   name?: string
   role?: string
 }
@@ -24,10 +24,10 @@ export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch {
 export interface MoogleApiWebFeaturesCharactersGetGetCharacter {
   affiliation?: string
   description?: string
-  game_name?: string
+  gameName?: string
   hometown?: string
   id?: number
-  image_url?: string
+  imageUrl?: string
   name?: string
   race?: string
   role?: string
@@ -39,18 +39,18 @@ export interface MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch {
 
 export interface MoogleApiWebFeaturesCharactersSearchSearchCharacter {
   description?: string
-  game_name?: string
+  gameName?: string
   id?: number
-  image_url?: string
+  imageUrl?: string
   name?: string
   role?: string
 }
 
 export interface MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch {
   description?: string
-  game_name?: string
+  gameName?: string
   id?: number
-  image_url?: string
+  imageUrl?: string
   name?: string
   role?: string
 }
@@ -59,24 +59,24 @@ export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
   id?: number
   name?: string
   platform?: string
-  release_year?: number
+  releaseYear?: number
 }
 
 export interface MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch {
   id?: number
   name?: string
   platform?: string
-  release_year?: number
+  releaseYear?: number
 }
 
 export interface MoogleApiWebFeaturesGamesGetGetGame {
-  character_count?: number
+  characterCount?: number
   description?: string
   id?: number
-  monster_count?: number
+  monsterCount?: number
   name?: string
   platform?: string
-  release_year?: number
+  releaseYear?: number
 }
 
 export interface MoogleApiWebFeaturesGamesGetGetGameLoadMatch {
@@ -85,16 +85,16 @@ export interface MoogleApiWebFeaturesGamesGetGetGameLoadMatch {
 
 export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonster {
   category?: string
-  game_name?: string
-  hit_point?: number
+  gameName?: string
+  hitPoints?: number
   id?: number
   name?: string
 }
 
 export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch {
   category?: string
-  game_name?: string
-  hit_point?: number
+  gameName?: string
+  hitPoints?: number
   id?: number
   name?: string
 }
@@ -102,8 +102,8 @@ export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch {
 export interface MoogleApiWebFeaturesMonstersGetGetMonster {
   category?: string
   description?: string
-  game_name?: string
-  hit_point?: number
+  gameName?: string
+  hitPoints?: number
   id?: number
   name?: string
 }
@@ -115,8 +115,8 @@ export interface MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch {
 export interface MoogleApiWebFeaturesMonstersSearchSearchMonster {
   category?: string
   description?: string
-  game_name?: string
-  hit_point?: number
+  gameName?: string
+  hitPoints?: number
   id?: number
   name?: string
 }
@@ -124,8 +124,8 @@ export interface MoogleApiWebFeaturesMonstersSearchSearchMonster {
 export interface MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch {
   category?: string
   description?: string
-  game_name?: string
-  hit_point?: number
+  gameName?: string
+  hitPoints?: number
   id?: number
   name?: string
 }

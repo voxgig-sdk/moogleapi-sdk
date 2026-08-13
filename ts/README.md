@@ -37,7 +37,9 @@ const client = new MoogleapiSDK({
 
 ### 2. List moogleapiwebfeaturescharactersgetallgetallcharacter records
 
-`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter objects — iterate it directly:
+`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
@@ -54,8 +56,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-  console.log(moogleapiwebfeaturescharactersgetallgetallcharacters)
+  const moogleapiwebfeaturesmonsterssearchsearchmonsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+  console.log(moogleapiwebfeaturesmonsterssearchsearchmonsters)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -121,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MoogleapiSDK.test()
 
-const moogleapiwebfeaturescharactersgetallgetallcharacter = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-// moogleapiwebfeaturescharactersgetallgetallcharacter is a bare entity populated with mock response data
-console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
+const moogleapiwebfeaturesmonsterssearchsearchmonster = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+// moogleapiwebfeaturesmonsterssearchsearchmonster is the entity, populated with mock response data
+// — call moogleapiwebfeaturesmonsterssearchsearchmonster.data() for the record itself
+console.log(moogleapiwebfeaturesmonsterssearchsearchmonster)
 ```
 
 You can also use the instance method:
@@ -138,7 +141,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
+const entity = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -299,9 +302,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -315,10 +318,10 @@ API path: `/api/characters`
 | --- | --- |
 | `affiliation` |  |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `hometown` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `race` |  |
 | `role` |  |
@@ -332,9 +335,9 @@ API path: `/api/characters/{id}`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -349,7 +352,7 @@ API path: `/api/characters/search`
 | `id` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: list.
 
@@ -359,13 +362,13 @@ API path: `/api/games`
 
 | Field | Description |
 | --- | --- |
-| `character_count` |  |
+| `characterCount` |  |
 | `description` |  |
 | `id` |  |
-| `monster_count` |  |
+| `monsterCount` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: load.
 
@@ -376,8 +379,8 @@ API path: `/api/games/{id}`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -391,8 +394,8 @@ API path: `/api/monsters`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -406,8 +409,8 @@ API path: `/api/monsters/{id}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -434,9 +437,9 @@ Create an instance: `const moogle_api_web_features_characters_get_all_get_all_ch
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `number` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -463,10 +466,10 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 | --- | --- | --- |
 | `affiliation` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `hometown` | `string` |  |
 | `id` | `number` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `race` | `string` |  |
 | `role` | `string` |  |
@@ -493,9 +496,9 @@ Create an instance: `const moogle_api_web_features_characters_search_search_char
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `number` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -523,7 +526,7 @@ Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = 
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `number` |  |
+| `releaseYear` | `number` |  |
 
 #### Example: List
 
@@ -546,13 +549,13 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | `number` |  |
+| `characterCount` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `monster_count` | `number` |  |
+| `monsterCount` | `number` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `number` |  |
+| `releaseYear` | `number` |  |
 
 #### Example: Load
 
@@ -576,8 +579,8 @@ Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_mons
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `number` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `number` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -604,8 +607,8 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `number` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `number` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -632,8 +635,8 @@ Create an instance: `const moogle_api_web_features_monsters_search_search_monste
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `number` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `number` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 
@@ -713,11 +716,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
-await moogleapiwebfeaturescharactersgetallgetallcharacter.list()
+const moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
+await moogleapiwebfeaturesmonsterssearchsearchmonster.list()
 
-// moogleapiwebfeaturescharactersgetallgetallcharacter.data() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last `list`
-// moogleapiwebfeaturescharactersgetallgetallcharacter.match() returns the last match criteria
+// moogleapiwebfeaturesmonsterssearchsearchmonster.data() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last `list`
+// moogleapiwebfeaturesmonsterssearchsearchmonster.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

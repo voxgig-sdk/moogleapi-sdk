@@ -63,7 +63,7 @@ describe('MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity', async () =
     const moogle_api_web_features_characters_search_search_character_ref01_ent = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()
     const moogle_api_web_features_characters_search_search_character_ref01_match: any = {}
 
-    const moogle_api_web_features_characters_search_search_character_ref01_list = await moogle_api_web_features_characters_search_search_character_ref01_ent.list(moogle_api_web_features_characters_search_search_character_ref01_match)
+    const moogle_api_web_features_characters_search_search_character_ref01_list = (await moogle_api_web_features_characters_search_search_character_ref01_ent.list(moogle_api_web_features_characters_search_search_character_ref01_match)).map((e: any) => e.data())
 
 
   })

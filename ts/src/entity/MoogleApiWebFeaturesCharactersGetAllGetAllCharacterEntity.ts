@@ -37,7 +37,7 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity extends Moogleap
 
 
 
-  async list(this: any, reqmatch?: MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesCharactersGetAllGetAllCharacter[]> {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity[]> {
 
     const utility = this._utility
 

@@ -40,7 +40,7 @@ try {
     // list() returns an array of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter records — iterate directly.
     $moogleapiwebfeaturescharactersgetallgetallcharacters = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
     foreach ($moogleapiwebfeaturescharactersgetallgetallcharacters as $item) {
-        echo $item["id"] . " " . $item["game_name"] . "\n";
+        echo $item["id"] . " " . $item["gameName"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -55,7 +55,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $moogleapiwebfeaturescharactersgetallgetallcharacters = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
+    $moogleapiwebfeaturesmonsterssearchsearchmonsters = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -127,9 +127,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = MoogleapiSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$moogleapiwebfeaturescharactersgetallgetallcharacter = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
-print_r($moogleapiwebfeaturescharactersgetallgetallcharacter);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$moogleapiwebfeaturesmonsterssearchsearchmonster = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list();
+print_r($moogleapiwebfeaturesmonsterssearchsearchmonster);
 ```
 
 ### Use a custom fetch function
@@ -236,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -258,9 +259,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -274,10 +275,10 @@ API path: `/api/characters`
 | --- | --- |
 | `affiliation` |  |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `hometown` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `race` |  |
 | `role` |  |
@@ -291,9 +292,9 @@ API path: `/api/characters/{id}`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -308,7 +309,7 @@ API path: `/api/characters/search`
 | `id` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: List.
 
@@ -318,13 +319,13 @@ API path: `/api/games`
 
 | Field | Description |
 | --- | --- |
-| `character_count` |  |
+| `characterCount` |  |
 | `description` |  |
 | `id` |  |
-| `monster_count` |  |
+| `monsterCount` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: Load.
 
@@ -335,8 +336,8 @@ API path: `/api/games/{id}`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -350,8 +351,8 @@ API path: `/api/monsters`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -365,8 +366,8 @@ API path: `/api/monsters/{id}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -393,9 +394,9 @@ Create an instance: `$moogle_api_web_features_characters_get_all_get_all_charact
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -423,10 +424,10 @@ Create an instance: `$moogle_api_web_features_characters_get_get_character = $cl
 | --- | --- | --- |
 | `affiliation` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `hometown` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `race` | `string` |  |
 | `role` | `string` |  |
@@ -434,7 +435,7 @@ Create an instance: `$moogle_api_web_features_characters_get_get_character = $cl
 #### Example: Load
 
 ```php
-// load() returns the bare MoogleApiWebFeaturesCharactersGetGetCharacter record (throws on error).
+// load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesCharactersGetGetCharacter record (throws on error).
 $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->load(["id" => 1]);
 ```
 
@@ -454,9 +455,9 @@ Create an instance: `$moogle_api_web_features_characters_search_search_character
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -485,7 +486,7 @@ Create an instance: `$moogle_api_web_features_games_get_all_get_all_game = $clie
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: List
 
@@ -509,18 +510,18 @@ Create an instance: `$moogle_api_web_features_games_get_get_game = $client->Moog
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | `int` |  |
+| `characterCount` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `monster_count` | `int` |  |
+| `monsterCount` | `int` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare MoogleApiWebFeaturesGamesGetGetGame record (throws on error).
+// load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesGamesGetGetGame record (throws on error).
 $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGamesGetGetGame()->load(["id" => 1]);
 ```
 
@@ -540,8 +541,8 @@ Create an instance: `$moogle_api_web_features_monsters_get_all_get_all_monster =
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -569,15 +570,15 @@ Create an instance: `$moogle_api_web_features_monsters_get_get_monster = $client
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare MoogleApiWebFeaturesMonstersGetGetMonster record (throws on error).
+// load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesMonstersGetGetMonster record (throws on error).
 $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->load(["id" => 1]);
 ```
 
@@ -598,8 +599,8 @@ Create an instance: `$moogle_api_web_features_monsters_search_search_monster = $
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -687,11 +688,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moogleapiwebfeaturescharactersgetallgetallcharacter = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter();
-$moogleapiwebfeaturescharactersgetallgetallcharacter->list();
+$moogleapiwebfeaturesmonsterssearchsearchmonster = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster();
+$moogleapiwebfeaturesmonsterssearchsearchmonster->list();
 
-// $moogleapiwebfeaturescharactersgetallgetallcharacter->data_get() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last list
-// $moogleapiwebfeaturescharactersgetallgetallcharacter->match_get() returns the last match criteria
+// $moogleapiwebfeaturesmonsterssearchsearchmonster->data_get() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
+// $moogleapiwebfeaturesmonsterssearchsearchmonster->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

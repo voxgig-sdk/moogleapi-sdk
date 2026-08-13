@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MoogleapiSDK.test()
-const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-// moogleapiwebfeaturescharactersgetallgetallcharacters is an array of bare MoogleApiWebFeaturesCharactersGetAllGetAllCharacter records populated with mock data
-console.log(moogleapiwebfeaturescharactersgetallgetallcharacters)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MoogleapiSDK.test({
+  entity: {
+    moogle_api_web_features_monsters_search_search_monster: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const moogleapiwebfeaturesmonsterssearchsearchmonsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+// moogleapiwebfeaturesmonsterssearchsearchmonsters is an array of MoogleApiWebFeaturesMonstersSearchSearchMonster entities, populated with mock data
+// — call moogleapiwebfeaturesmonsterssearchsearchmonsters[0].data() for the record itself
+console.log(moogleapiwebfeaturesmonsterssearchsearchmonsters)
 ```
 
 ### Python
 
 ```python
 client = MoogleapiSDK.test()
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-print(moogleapiwebfeaturescharactersgetallgetallcharacters)
+moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+print(moogleapiwebfeaturesmonsterssearchsearchmonsters)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(moogleapiwebfeaturescharactersgetallgetallcharacters)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = MoogleapiSDK::test([
-    "entity" => ["moogleapiwebfeaturescharactersgetallgetallcharacter" => ["test01" => []]],
+    "entity" => ["moogleapiwebfeaturesmonsterssearchsearchmonster" => ["test01" => []]],
 ]);
-$moogleapiwebfeaturescharactersgetallgetallcharacters = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
+$moogleapiwebfeaturesmonsterssearchsearchmonsters = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(
+result, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).L
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = MoogleapiSDK.test({
-  "entity" => { "moogleapiwebfeaturescharactersgetallgetallcharacter" => { "test01" => {} } },
+  "entity" => { "moogleapiwebfeaturesmonsterssearchsearchmonster" => { "test01" => {} } },
 })
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list()
+moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
+local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
 ```
 
 ## Packages
@@ -112,7 +121,7 @@ const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
 })
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns MoogleApiWebFeaturesCharactersGetAllGetAllCharacter[])
+// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity[] — .data() for the record)
 const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
 for (const moogleapiwebfeaturescharactersgetallgetallcharacter of moogleapiwebfeaturescharactersgetallgetallcharacters) {
   console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
@@ -363,6 +372,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.moogleapi.com](https://www.moogleapi.com)
 

@@ -121,9 +121,9 @@ $moogle_api_web_features_characters_get_all_get_all_character = $client->MoogleA
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `game_name` | `string` | No |  |
+| `gameName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `image_url` | `string` | No |  |
+| `imageUrl` | `string` | No |  |
 | `name` | `string` | No |  |
 | `role` | `string` | No |  |
 
@@ -179,10 +179,10 @@ $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFea
 | --- | --- | --- | --- |
 | `affiliation` | `string` | No |  |
 | `description` | `string` | No |  |
-| `game_name` | `string` | No |  |
+| `gameName` | `string` | No |  |
 | `hometown` | `string` | No |  |
 | `id` | `int` | No |  |
-| `image_url` | `string` | No |  |
+| `imageUrl` | `string` | No |  |
 | `name` | `string` | No |  |
 | `race` | `string` | No |  |
 | `role` | `string` | No |  |
@@ -238,9 +238,9 @@ $moogle_api_web_features_characters_search_search_character = $client->MoogleApi
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `game_name` | `string` | No |  |
+| `gameName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `image_url` | `string` | No |  |
+| `imageUrl` | `string` | No |  |
 | `name` | `string` | No |  |
 | `role` | `string` | No |  |
 
@@ -297,7 +297,7 @@ $moogle_api_web_features_games_get_all_get_all_game = $client->MoogleApiWebFeatu
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `release_year` | `int` | No |  |
+| `releaseYear` | `int` | No |  |
 
 ### Operations
 
@@ -349,13 +349,13 @@ $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGames
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character_count` | `int` | No |  |
+| `characterCount` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `monster_count` | `int` | No |  |
+| `monsterCount` | `int` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `release_year` | `int` | No |  |
+| `releaseYear` | `int` | No |  |
 
 ### Operations
 
@@ -408,8 +408,8 @@ $moogle_api_web_features_monsters_get_all_get_all_monster = $client->MoogleApiWe
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
-| `game_name` | `string` | No |  |
-| `hit_point` | `int` | No |  |
+| `gameName` | `string` | No |  |
+| `hitPoints` | `int` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -465,8 +465,8 @@ $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeature
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
-| `game_name` | `string` | No |  |
-| `hit_point` | `int` | No |  |
+| `gameName` | `string` | No |  |
+| `hitPoints` | `int` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 
@@ -522,8 +522,8 @@ $moogle_api_web_features_monsters_search_search_monster = $client->MoogleApiWebF
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
-| `game_name` | `string` | No |  |
-| `hit_point` | `int` | No |  |
+| `gameName` | `string` | No |  |
+| `hitPoints` | `int` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 

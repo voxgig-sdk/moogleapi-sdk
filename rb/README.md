@@ -39,7 +39,7 @@ begin
   # list returns an Array of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter records — iterate directly.
   moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list
   moogleapiwebfeaturescharactersgetallgetallcharacters.each do |item|
-    puts "#{item["id"]} #{item["game_name"]}"
+    puts "#{item["id"]} #{item["gameName"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -53,7 +53,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list()
+  moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -121,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = MoogleapiSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list()
-puts moogleapiwebfeaturescharactersgetallgetallcharacter
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list()
+puts moogleapiwebfeaturesmonsterssearchsearchmonster
 ```
 
 ### Use a custom fetch function
@@ -248,9 +249,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -264,10 +265,10 @@ API path: `/api/characters`
 | --- | --- |
 | `affiliation` |  |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `hometown` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `race` |  |
 | `role` |  |
@@ -281,9 +282,9 @@ API path: `/api/characters/{id}`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -298,7 +299,7 @@ API path: `/api/characters/search`
 | `id` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: List.
 
@@ -308,13 +309,13 @@ API path: `/api/games`
 
 | Field | Description |
 | --- | --- |
-| `character_count` |  |
+| `characterCount` |  |
 | `description` |  |
 | `id` |  |
-| `monster_count` |  |
+| `monsterCount` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: Load.
 
@@ -325,8 +326,8 @@ API path: `/api/games/{id}`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -340,8 +341,8 @@ API path: `/api/monsters`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -355,8 +356,8 @@ API path: `/api/monsters/{id}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -383,9 +384,9 @@ Create an instance: `moogle_api_web_features_characters_get_all_get_all_characte
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | `String` |  |
+| `gameName` | `String` |  |
 | `id` | `Integer` |  |
-| `image_url` | `String` |  |
+| `imageUrl` | `String` |  |
 | `name` | `String` |  |
 | `role` | `String` |  |
 
@@ -413,10 +414,10 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 | --- | --- | --- |
 | `affiliation` | `String` |  |
 | `description` | `String` |  |
-| `game_name` | `String` |  |
+| `gameName` | `String` |  |
 | `hometown` | `String` |  |
 | `id` | `Integer` |  |
-| `image_url` | `String` |  |
+| `imageUrl` | `String` |  |
 | `name` | `String` |  |
 | `race` | `String` |  |
 | `role` | `String` |  |
@@ -424,7 +425,7 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 #### Example: Load
 
 ```ruby
-# load returns the bare MoogleApiWebFeaturesCharactersGetGetCharacter record (raises on error).
+# load returns the ENTITY — call data_get for the MoogleApiWebFeaturesCharactersGetGetCharacter record (raises on error).
 moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => 1 })
 ```
 
@@ -444,9 +445,9 @@ Create an instance: `moogle_api_web_features_characters_search_search_character 
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `game_name` | `String` |  |
+| `gameName` | `String` |  |
 | `id` | `Integer` |  |
-| `image_url` | `String` |  |
+| `imageUrl` | `String` |  |
 | `name` | `String` |  |
 | `role` | `String` |  |
 
@@ -475,7 +476,7 @@ Create an instance: `moogle_api_web_features_games_get_all_get_all_game = client
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `platform` | `String` |  |
-| `release_year` | `Integer` |  |
+| `releaseYear` | `Integer` |  |
 
 #### Example: List
 
@@ -499,18 +500,18 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | `Integer` |  |
+| `characterCount` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `monster_count` | `Integer` |  |
+| `monsterCount` | `Integer` |  |
 | `name` | `String` |  |
 | `platform` | `String` |  |
-| `release_year` | `Integer` |  |
+| `releaseYear` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare MoogleApiWebFeaturesGamesGetGetGame record (raises on error).
+# load returns the ENTITY — call data_get for the MoogleApiWebFeaturesGamesGetGetGame record (raises on error).
 moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => 1 })
 ```
 
@@ -530,8 +531,8 @@ Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster = 
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `String` |  |
-| `game_name` | `String` |  |
-| `hit_point` | `Integer` |  |
+| `gameName` | `String` |  |
+| `hitPoints` | `Integer` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
@@ -559,15 +560,15 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 | --- | --- | --- |
 | `category` | `String` |  |
 | `description` | `String` |  |
-| `game_name` | `String` |  |
-| `hit_point` | `Integer` |  |
+| `gameName` | `String` |  |
+| `hitPoints` | `Integer` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare MoogleApiWebFeaturesMonstersGetGetMonster record (raises on error).
+# load returns the ENTITY — call data_get for the MoogleApiWebFeaturesMonstersGetGetMonster record (raises on error).
 moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster.load({ "id" => 1 })
 ```
 
@@ -588,8 +589,8 @@ Create an instance: `moogle_api_web_features_monsters_search_search_monster = cl
 | --- | --- | --- |
 | `category` | `String` |  |
 | `description` | `String` |  |
-| `game_name` | `String` |  |
-| `hit_point` | `Integer` |  |
+| `gameName` | `String` |  |
+| `hitPoints` | `Integer` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 
@@ -677,11 +678,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
-moogleapiwebfeaturescharactersgetallgetallcharacter.list()
+moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster
+moogleapiwebfeaturesmonsterssearchsearchmonster.list()
 
-# moogleapiwebfeaturescharactersgetallgetallcharacter.data_get now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last list
-# moogleapiwebfeaturescharactersgetallgetallcharacter.match_get returns the last match criteria
+# moogleapiwebfeaturesmonsterssearchsearchmonster.data_get now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
+# moogleapiwebfeaturesmonsterssearchsearchmonster.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

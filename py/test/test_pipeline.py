@@ -16,11 +16,11 @@
 import pytest
 
 from moogleapi_sdk import MoogleapiSDK
-from core.error import MoogleapiError
-from core.result import MoogleapiResult
-from core.response import MoogleapiResponse
-from core.spec import MoogleapiSpec
-from feature.base_feature import MoogleapiBaseFeature
+from moogleapi_sdk.core.error import MoogleapiError
+from moogleapi_sdk.core.result import MoogleapiResult
+from moogleapi_sdk.core.response import MoogleapiResponse
+from moogleapi_sdk.core.spec import MoogleapiSpec
+from moogleapi_sdk.feature.base_feature import MoogleapiBaseFeature
 
 
 def _client():

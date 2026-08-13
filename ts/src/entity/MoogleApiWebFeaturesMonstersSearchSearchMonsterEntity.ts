@@ -37,7 +37,7 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity extends MoogleapiEnt
 
 
 
-  async list(this: any, reqmatch?: MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesMonstersSearchSearchMonster[]> {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity[]> {
 
     const utility = this._utility
 

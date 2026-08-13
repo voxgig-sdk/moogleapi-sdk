@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MoogleapiControl
-from core.error import MoogleapiError
-from core.result import MoogleapiResult
-from core.spec import MoogleapiSpec
+from moogleapi_sdk.config import make_config
+from moogleapi_sdk.features import _make_feature
+from moogleapi_sdk.core.control import MoogleapiControl
+from moogleapi_sdk.core.error import MoogleapiError
+from moogleapi_sdk.core.result import MoogleapiResult
+from moogleapi_sdk.core.spec import MoogleapiSpec
 
 
 # True when this SDK was generated with the named feature.

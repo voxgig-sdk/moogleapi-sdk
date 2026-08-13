@@ -37,7 +37,7 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity extends Moogleap
 
 
 
-  async list(this: any, reqmatch?: MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesCharactersSearchSearchCharacter[]> {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity[]> {
 
     const utility = this._utility
 

@@ -60,8 +60,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-    print(moogleapiwebfeaturescharactersgetallgetallcharacters)
+    moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+    print(moogleapiwebfeaturesmonsterssearchsearchmonsters)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -127,9 +127,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MoogleapiSDK.test()
 
-# Entity ops return the bare record and raise on error.
-moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-# moogleapiwebfeaturescharactersgetallgetallcharacter contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
+# moogleapiwebfeaturesmonsterssearchsearchmonster contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -233,7 +234,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -255,9 +256,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -271,10 +272,10 @@ API path: `/api/characters`
 | --- | --- |
 | `affiliation` |  |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `hometown` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `race` |  |
 | `role` |  |
@@ -288,9 +289,9 @@ API path: `/api/characters/{id}`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `game_name` |  |
+| `gameName` |  |
 | `id` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `name` |  |
 | `role` |  |
 
@@ -305,7 +306,7 @@ API path: `/api/characters/search`
 | `id` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: List.
 
@@ -315,13 +316,13 @@ API path: `/api/games`
 
 | Field | Description |
 | --- | --- |
-| `character_count` |  |
+| `characterCount` |  |
 | `description` |  |
 | `id` |  |
-| `monster_count` |  |
+| `monsterCount` |  |
 | `name` |  |
 | `platform` |  |
-| `release_year` |  |
+| `releaseYear` |  |
 
 Operations: Load.
 
@@ -332,8 +333,8 @@ API path: `/api/games/{id}`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -347,8 +348,8 @@ API path: `/api/monsters`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -362,8 +363,8 @@ API path: `/api/monsters/{id}`
 | --- | --- |
 | `category` |  |
 | `description` |  |
-| `game_name` |  |
-| `hit_point` |  |
+| `gameName` |  |
+| `hitPoints` |  |
 | `id` |  |
 | `name` |  |
 
@@ -390,9 +391,9 @@ Create an instance: `moogle_api_web_features_characters_get_all_get_all_characte
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | `str` |  |
+| `gameName` | `str` |  |
 | `id` | `int` |  |
-| `image_url` | `str` |  |
+| `imageUrl` | `str` |  |
 | `name` | `str` |  |
 | `role` | `str` |  |
 
@@ -419,10 +420,10 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 | --- | --- | --- |
 | `affiliation` | `str` |  |
 | `description` | `str` |  |
-| `game_name` | `str` |  |
+| `gameName` | `str` |  |
 | `hometown` | `str` |  |
 | `id` | `int` |  |
-| `image_url` | `str` |  |
+| `imageUrl` | `str` |  |
 | `name` | `str` |  |
 | `race` | `str` |  |
 | `role` | `str` |  |
@@ -449,9 +450,9 @@ Create an instance: `moogle_api_web_features_characters_search_search_character 
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `game_name` | `str` |  |
+| `gameName` | `str` |  |
 | `id` | `int` |  |
-| `image_url` | `str` |  |
+| `imageUrl` | `str` |  |
 | `name` | `str` |  |
 | `role` | `str` |  |
 
@@ -479,7 +480,7 @@ Create an instance: `moogle_api_web_features_games_get_all_get_all_game = client
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `platform` | `str` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: List
 
@@ -502,13 +503,13 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | `int` |  |
+| `characterCount` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `monster_count` | `int` |  |
+| `monsterCount` | `int` |  |
 | `name` | `str` |  |
 | `platform` | `str` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: Load
 
@@ -532,8 +533,8 @@ Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster = 
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `str` |  |
-| `game_name` | `str` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `str` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -560,8 +561,8 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 | --- | --- | --- |
 | `category` | `str` |  |
 | `description` | `str` |  |
-| `game_name` | `str` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `str` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -588,8 +589,8 @@ Create an instance: `moogle_api_web_features_monsters_search_search_monster = cl
 | --- | --- | --- |
 | `category` | `str` |  |
 | `description` | `str` |  |
-| `game_name` | `str` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `str` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 
@@ -675,11 +676,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moogleapiwebfeaturescharactersgetallgetallcharacter = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
-moogleapiwebfeaturescharactersgetallgetallcharacter.list()
+moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
+moogleapiwebfeaturesmonsterssearchsearchmonster.list()
 
-# moogleapiwebfeaturescharactersgetallgetallcharacter.data_get() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last list
-# moogleapiwebfeaturescharactersgetallgetallcharacter.match_get() returns the last match criteria
+# moogleapiwebfeaturesmonsterssearchsearchmonster.data_get() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
+# moogleapiwebfeaturesmonsterssearchsearchmonster.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

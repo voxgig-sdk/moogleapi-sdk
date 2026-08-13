@@ -63,7 +63,7 @@ describe('MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity', async () =
     const moogle_api_web_features_characters_get_all_get_all_character_ref01_ent = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()
     const moogle_api_web_features_characters_get_all_get_all_character_ref01_match: any = {}
 
-    const moogle_api_web_features_characters_get_all_get_all_character_ref01_list = await moogle_api_web_features_characters_get_all_get_all_character_ref01_ent.list(moogle_api_web_features_characters_get_all_get_all_character_ref01_match)
+    const moogle_api_web_features_characters_get_all_get_all_character_ref01_list = (await moogle_api_web_features_characters_get_all_get_all_character_ref01_ent.list(moogle_api_web_features_characters_get_all_get_all_character_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -37,7 +37,7 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity extends MoogleapiEnt
 
 
 
-  async list(this: any, reqmatch?: MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesMonstersGetAllGetAllMonster[]> {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity[]> {
 
     const utility = this._utility
 

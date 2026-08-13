@@ -68,7 +68,7 @@ func TestMoogleApiWebFeaturesGamesGetGetGameEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		moogleApiWebFeaturesGamesGetGetGameRef01DataDt0LoadResult := core.ToMapAny(moogleApiWebFeaturesGamesGetGetGameRef01DataDt0Loaded)
+		moogleApiWebFeaturesGamesGetGetGameRef01DataDt0LoadResult := core.ToMapAny(entityData(moogleApiWebFeaturesGamesGetGetGameRef01DataDt0Loaded))
 		if moogleApiWebFeaturesGamesGetGetGameRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

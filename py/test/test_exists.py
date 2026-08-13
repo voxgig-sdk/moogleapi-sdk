@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Moogleapi SDK exists test
 
 import pytest
 from moogleapi_sdk import MoogleapiSDK

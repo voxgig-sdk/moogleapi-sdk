@@ -6,7 +6,7 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
 
   fields: [
     {
-      name: "character_count"
+      name: "characterCount"
       req: false
       type: "`$INTEGER`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
       type: "`$INTEGER`"
     }
     {
-      name: "monster_count"
+      name: "monsterCount"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
       type: "`$STRING`"
     }
     {
-      name: "release_year"
+      name: "releaseYear"
       req: false
       type: "`$INTEGER`"
     }

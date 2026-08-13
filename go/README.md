@@ -71,12 +71,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-moogleapiwebfeaturescharactersgetallgetallcharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+moogleapiwebfeaturesmonsterssearchsearchmonsters, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = moogleapiwebfeaturescharactersgetallgetallcharacters
+_ = moogleapiwebfeaturesmonsterssearchsearchmonsters
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -140,13 +140,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-moogleApiWebFeaturesCharactersGetAllGetAllCharacter, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(
+moogleApiWebFeaturesMonstersSearchSearchMonster, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersGetAllGetAllCharacter) // the returned mock data
+fmt.Println(moogleApiWebFeaturesMonstersSearchSearchMonster) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -274,9 +274,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"game_name"` |  |
+| `"gameName"` |  |
 | `"id"` |  |
-| `"image_url"` |  |
+| `"imageUrl"` |  |
 | `"name"` |  |
 | `"role"` |  |
 
@@ -290,10 +290,10 @@ API path: `/api/characters`
 | --- | --- |
 | `"affiliation"` |  |
 | `"description"` |  |
-| `"game_name"` |  |
+| `"gameName"` |  |
 | `"hometown"` |  |
 | `"id"` |  |
-| `"image_url"` |  |
+| `"imageUrl"` |  |
 | `"name"` |  |
 | `"race"` |  |
 | `"role"` |  |
@@ -307,9 +307,9 @@ API path: `/api/characters/{id}`
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"game_name"` |  |
+| `"gameName"` |  |
 | `"id"` |  |
-| `"image_url"` |  |
+| `"imageUrl"` |  |
 | `"name"` |  |
 | `"role"` |  |
 
@@ -324,7 +324,7 @@ API path: `/api/characters/search`
 | `"id"` |  |
 | `"name"` |  |
 | `"platform"` |  |
-| `"release_year"` |  |
+| `"releaseYear"` |  |
 
 Operations: List.
 
@@ -334,13 +334,13 @@ API path: `/api/games`
 
 | Field | Description |
 | --- | --- |
-| `"character_count"` |  |
+| `"characterCount"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"monster_count"` |  |
+| `"monsterCount"` |  |
 | `"name"` |  |
 | `"platform"` |  |
-| `"release_year"` |  |
+| `"releaseYear"` |  |
 
 Operations: Load.
 
@@ -351,8 +351,8 @@ API path: `/api/games/{id}`
 | Field | Description |
 | --- | --- |
 | `"category"` |  |
-| `"game_name"` |  |
-| `"hit_point"` |  |
+| `"gameName"` |  |
+| `"hitPoints"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -366,8 +366,8 @@ API path: `/api/monsters`
 | --- | --- |
 | `"category"` |  |
 | `"description"` |  |
-| `"game_name"` |  |
-| `"hit_point"` |  |
+| `"gameName"` |  |
+| `"hitPoints"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -381,8 +381,8 @@ API path: `/api/monsters/{id}`
 | --- | --- |
 | `"category"` |  |
 | `"description"` |  |
-| `"game_name"` |  |
-| `"hit_point"` |  |
+| `"gameName"` |  |
+| `"hitPoints"` |  |
 | `"id"` |  |
 | `"name"` |  |
 
@@ -409,9 +409,9 @@ Create an instance: `moogleApiWebFeaturesCharactersGetAllGetAllCharacter := clie
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -442,10 +442,10 @@ Create an instance: `moogleApiWebFeaturesCharactersGetGetCharacter := client.Moo
 | --- | --- | --- |
 | `affiliation` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `hometown` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `race` | `string` |  |
 | `role` | `string` |  |
@@ -476,9 +476,9 @@ Create an instance: `moogleApiWebFeaturesCharactersSearchSearchCharacter := clie
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
+| `gameName` | `string` |  |
 | `id` | `int` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `name` | `string` |  |
 | `role` | `string` |  |
 
@@ -510,7 +510,7 @@ Create an instance: `moogleApiWebFeaturesGamesGetAllGetAllGame := client.MoogleA
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: List
 
@@ -537,13 +537,13 @@ Create an instance: `moogleApiWebFeaturesGamesGetGetGame := client.MoogleApiWebF
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character_count` | `int` |  |
+| `characterCount` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `monster_count` | `int` |  |
+| `monsterCount` | `int` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `release_year` | `int` |  |
+| `releaseYear` | `int` |  |
 
 #### Example: Load
 
@@ -571,8 +571,8 @@ Create an instance: `moogleApiWebFeaturesMonstersGetAllGetAllMonster := client.M
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -603,8 +603,8 @@ Create an instance: `moogleApiWebFeaturesMonstersGetGetMonster := client.MoogleA
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -635,8 +635,8 @@ Create an instance: `moogleApiWebFeaturesMonstersSearchSearchMonster := client.M
 | --- | --- | --- |
 | `category` | `string` |  |
 | `description` | `string` |  |
-| `game_name` | `string` |  |
-| `hit_point` | `int` |  |
+| `gameName` | `string` |  |
+| `hitPoints` | `int` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 
@@ -724,11 +724,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-moogleapiwebfeaturescharactersgetallgetallcharacter := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
-moogleapiwebfeaturescharactersgetallgetallcharacter.List(nil, nil)
+moogleapiwebfeaturesmonsterssearchsearchmonster := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
+moogleapiwebfeaturesmonsterssearchsearchmonster.List(nil, nil)
 
-// moogleapiwebfeaturescharactersgetallgetallcharacter.Data() now returns the moogleapiwebfeaturescharactersgetallgetallcharacter data from the last list
-// moogleapiwebfeaturescharactersgetallgetallcharacter.Match() returns the last match criteria
+// moogleapiwebfeaturesmonsterssearchsearchmonster.Data() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
+// moogleapiwebfeaturesmonsterssearchsearchmonster.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

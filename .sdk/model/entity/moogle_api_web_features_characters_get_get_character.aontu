@@ -16,7 +16,7 @@ main: kit: entity: moogle_api_web_features_characters_get_get_character: {
       type: "`$STRING`"
     }
     {
-      name: "game_name"
+      name: "gameName"
       req: false
       type: "`$STRING`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: moogle_api_web_features_characters_get_get_character: {
       type: "`$INTEGER`"
     }
     {
-      name: "image_url"
+      name: "imageUrl"
       req: false
       type: "`$STRING`"
     }

@@ -63,7 +63,7 @@ describe('MoogleApiWebFeaturesMonstersGetGetMonsterEntity', async () => {
     const moogle_api_web_features_monsters_get_get_monster_ref01_ent = client.MoogleApiWebFeaturesMonstersGetGetMonster()
     const moogle_api_web_features_monsters_get_get_monster_ref01_match_dt0: any = {}
     moogle_api_web_features_monsters_get_get_monster_ref01_match_dt0.id = moogle_api_web_features_monsters_get_get_monster_ref01_data.id
-    const moogle_api_web_features_monsters_get_get_monster_ref01_data_dt0 = await moogle_api_web_features_monsters_get_get_monster_ref01_ent.load(moogle_api_web_features_monsters_get_get_monster_ref01_match_dt0)
+    const moogle_api_web_features_monsters_get_get_monster_ref01_data_dt0 = (await moogle_api_web_features_monsters_get_get_monster_ref01_ent.load(moogle_api_web_features_monsters_get_get_monster_ref01_match_dt0)).data()
     assert(moogle_api_web_features_monsters_get_get_monster_ref01_data_dt0.id === moogle_api_web_features_monsters_get_get_monster_ref01_data.id)
 
 

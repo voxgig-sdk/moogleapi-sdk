@@ -15,9 +15,9 @@ declare(strict_types=1);
 /** MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity data model. */
 class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
 {
-    public ?string $game_name = null;
+    public ?string $gameName = null;
     public ?int $id = null;
-    public ?string $image_url = null;
+    public ?string $imageUrl = null;
     public ?string $name = null;
     public ?string $role = null;
 }
@@ -25,9 +25,9 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
 /** Request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list. */
 class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
 {
-    public ?string $game_name = null;
+    public ?string $gameName = null;
     public ?int $id = null;
-    public ?string $image_url = null;
+    public ?string $imageUrl = null;
     public ?string $name = null;
     public ?string $role = null;
 }
@@ -37,10 +37,10 @@ class MoogleApiWebFeaturesCharactersGetGetCharacter
 {
     public ?string $affiliation = null;
     public ?string $description = null;
-    public ?string $game_name = null;
+    public ?string $gameName = null;
     public ?string $hometown = null;
     public ?int $id = null;
-    public ?string $image_url = null;
+    public ?string $imageUrl = null;
     public ?string $name = null;
     public ?string $race = null;
     public ?string $role = null;
@@ -56,9 +56,9 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch
 class MoogleApiWebFeaturesCharactersSearchSearchCharacter
 {
     public ?string $description = null;
-    public ?string $game_name = null;
+    public ?string $gameName = null;
     public ?int $id = null;
-    public ?string $image_url = null;
+    public ?string $imageUrl = null;
     public ?string $name = null;
     public ?string $role = null;
 }
@@ -67,9 +67,9 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacter
 class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
 {
     public ?string $description = null;
-    public ?string $game_name = null;
+    public ?string $gameName = null;
     public ?int $id = null;
-    public ?string $image_url = null;
+    public ?string $imageUrl = null;
     public ?string $name = null;
     public ?string $role = null;
 }
@@ -80,7 +80,7 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGame
     public ?int $id = null;
     public ?string $name = null;
     public ?string $platform = null;
-    public ?int $release_year = null;
+    public ?int $releaseYear = null;
 }
 
 /** Request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame#list. */
@@ -89,19 +89,19 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
     public ?int $id = null;
     public ?string $name = null;
     public ?string $platform = null;
-    public ?int $release_year = null;
+    public ?int $releaseYear = null;
 }
 
 /** MoogleApiWebFeaturesGamesGetGetGame entity data model. */
 class MoogleApiWebFeaturesGamesGetGetGame
 {
-    public ?int $character_count = null;
+    public ?int $characterCount = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?int $monster_count = null;
+    public ?int $monsterCount = null;
     public ?string $name = null;
     public ?string $platform = null;
-    public ?int $release_year = null;
+    public ?int $releaseYear = null;
 }
 
 /** Request payload for MoogleApiWebFeaturesGamesGetGetGame#load. */
@@ -114,8 +114,8 @@ class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
 class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
 {
     public ?string $category = null;
-    public ?string $game_name = null;
-    public ?int $hit_point = null;
+    public ?string $gameName = null;
+    public ?int $hitPoints = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -124,8 +124,8 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
 class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
 {
     public ?string $category = null;
-    public ?string $game_name = null;
-    public ?int $hit_point = null;
+    public ?string $gameName = null;
+    public ?int $hitPoints = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -135,8 +135,8 @@ class MoogleApiWebFeaturesMonstersGetGetMonster
 {
     public ?string $category = null;
     public ?string $description = null;
-    public ?string $game_name = null;
-    public ?int $hit_point = null;
+    public ?string $gameName = null;
+    public ?int $hitPoints = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -152,8 +152,8 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonster
 {
     public ?string $category = null;
     public ?string $description = null;
-    public ?string $game_name = null;
-    public ?int $hit_point = null;
+    public ?string $gameName = null;
+    public ?int $hitPoints = null;
     public ?int $id = null;
     public ?string $name = null;
 }
@@ -163,8 +163,8 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
 {
     public ?string $category = null;
     public ?string $description = null;
-    public ?string $game_name = null;
-    public ?int $hit_point = null;
+    public ?string $gameName = null;
+    public ?int $hitPoints = null;
     public ?int $id = null;
     public ?string $name = null;
 }

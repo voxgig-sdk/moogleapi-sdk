@@ -16,12 +16,12 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
       type: "`$STRING`"
     }
     {
-      name: "game_name"
+      name: "gameName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "hit_point"
+      name: "hitPoints"
       req: false
       type: "`$INTEGER`"
     }

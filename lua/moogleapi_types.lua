@@ -7,26 +7,26 @@
 -- edit by hand.
 
 ---@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
----@field game_name? string
+---@field gameName? string
 ---@field id? number
----@field image_url? string
+---@field imageUrl? string
 ---@field name? string
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
----@field game_name? string
+---@field gameName? string
 ---@field id? number
----@field image_url? string
+---@field imageUrl? string
 ---@field name? string
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacter
 ---@field affiliation? string
 ---@field description? string
----@field game_name? string
+---@field gameName? string
 ---@field hometown? string
 ---@field id? number
----@field image_url? string
+---@field imageUrl? string
 ---@field name? string
 ---@field race? string
 ---@field role? string
@@ -36,17 +36,17 @@
 
 ---@class MoogleApiWebFeaturesCharactersSearchSearchCharacter
 ---@field description? string
----@field game_name? string
+---@field gameName? string
 ---@field id? number
----@field image_url? string
+---@field imageUrl? string
 ---@field name? string
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
 ---@field description? string
----@field game_name? string
+---@field gameName? string
 ---@field id? number
----@field image_url? string
+---@field imageUrl? string
 ---@field name? string
 ---@field role? string
 
@@ -54,45 +54,45 @@
 ---@field id? number
 ---@field name? string
 ---@field platform? string
----@field release_year? number
+---@field releaseYear? number
 
 ---@class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
 ---@field id? number
 ---@field name? string
 ---@field platform? string
----@field release_year? number
+---@field releaseYear? number
 
 ---@class MoogleApiWebFeaturesGamesGetGetGame
----@field character_count? number
+---@field characterCount? number
 ---@field description? string
 ---@field id? number
----@field monster_count? number
+---@field monsterCount? number
 ---@field name? string
 ---@field platform? string
----@field release_year? number
+---@field releaseYear? number
 
 ---@class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
 ---@field id number
 
 ---@class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
 ---@field category? string
----@field game_name? string
----@field hit_point? number
+---@field gameName? string
+---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
 ---@field category? string
----@field game_name? string
----@field hit_point? number
+---@field gameName? string
+---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersGetGetMonster
 ---@field category? string
 ---@field description? string
----@field game_name? string
----@field hit_point? number
+---@field gameName? string
+---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 
@@ -102,16 +102,16 @@
 ---@class MoogleApiWebFeaturesMonstersSearchSearchMonster
 ---@field category? string
 ---@field description? string
----@field game_name? string
----@field hit_point? number
+---@field gameName? string
+---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 
 ---@class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
 ---@field category? string
 ---@field description? string
----@field game_name? string
----@field hit_point? number
+---@field gameName? string
+---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 

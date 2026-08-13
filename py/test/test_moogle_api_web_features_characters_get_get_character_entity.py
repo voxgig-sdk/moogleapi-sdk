@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from moogleapi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from moogleapi_sdk import MoogleapiSDK
-from core import helpers
+from moogleapi_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -52,7 +52,7 @@ class TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity:
             "id": moogle_api_web_features_characters_get_get_character_ref01_data["id"],
         }
         moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded = moogle_api_web_features_characters_get_get_character_ref01_ent.load(moogle_api_web_features_characters_get_get_character_ref01_match_dt0, None)
-        moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = helpers.to_map(moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded)
+        moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(moogle_api_web_features_characters_get_get_character_ref01_data_dt0_loaded))
         assert moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result is not None
         assert moogle_api_web_features_characters_get_get_character_ref01_data_dt0_load_result["id"] == moogle_api_web_features_characters_get_get_character_ref01_data["id"]
 

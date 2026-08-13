@@ -37,7 +37,7 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGameEntity extends MoogleapiEntityBas
 
 
 
-  async list(this: any, reqmatch?: MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesGamesGetAllGetAllGame[]> {
+  async list(this: any, reqmatch?: MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch, ctrl?: Control): Promise<MoogleApiWebFeaturesGamesGetAllGetAllGameEntity[]> {
 
     const utility = this._utility
 

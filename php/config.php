@@ -42,7 +42,7 @@ class MoogleapiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -56,7 +56,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'image_url',
+              'name' => 'imageUrl',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -114,6 +114,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters',
                   'parts' => [
@@ -129,7 +130,7 @@ class MoogleapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.items`',
                   ],
                   'index$' => 0,
                 ],
@@ -159,7 +160,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -180,7 +181,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'image_url',
+              'name' => 'imageUrl',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 5,
@@ -228,6 +229,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters/{id}',
                   'parts' => [
@@ -265,7 +267,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -279,7 +281,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'image_url',
+              'name' => 'imageUrl',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -327,6 +329,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters/search',
                   'parts' => [
@@ -342,7 +345,7 @@ class MoogleapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -379,7 +382,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'release_year',
+              'name' => 'releaseYear',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -415,6 +418,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/games',
                   'parts' => [
@@ -429,7 +433,7 @@ class MoogleapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.items`',
                   ],
                   'index$' => 0,
                 ],
@@ -445,7 +449,7 @@ class MoogleapiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'character_count',
+              'name' => 'characterCount',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 0,
@@ -466,7 +470,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'monster_count',
+              'name' => 'monsterCount',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -487,7 +491,7 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'release_year',
+              'name' => 'releaseYear',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 6,
@@ -514,6 +518,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/games/{id}',
                   'parts' => [
@@ -551,14 +556,14 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'hit_point',
+              'name' => 'hitPoints',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 2,
@@ -624,6 +629,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters',
                   'parts' => [
@@ -640,7 +646,7 @@ class MoogleapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.items`',
                   ],
                   'index$' => 0,
                 ],
@@ -670,14 +676,14 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'hit_point',
+              'name' => 'hitPoints',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -718,6 +724,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters/{id}',
                   'parts' => [
@@ -762,14 +769,14 @@ class MoogleapiConfig
             ],
             [
               'active' => true,
-              'name' => 'game_name',
+              'name' => 'gameName',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'hit_point',
+              'name' => 'hitPoints',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -825,6 +832,7 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters/search',
                   'parts' => [
@@ -841,7 +849,7 @@ class MoogleapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],

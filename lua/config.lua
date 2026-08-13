@@ -36,7 +36,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -50,7 +50,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "image_url",
+            ["name"] = "imageUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -108,6 +108,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/characters",
                 ["parts"] = {
@@ -123,7 +124,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.items`",
                 },
                 ["index$"] = 0,
               },
@@ -153,7 +154,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -174,7 +175,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "image_url",
+            ["name"] = "imageUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -222,6 +223,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/characters/{id}",
                 ["parts"] = {
@@ -259,7 +261,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -273,7 +275,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "image_url",
+            ["name"] = "imageUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -321,6 +323,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/characters/search",
                 ["parts"] = {
@@ -336,7 +339,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -373,7 +376,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_year",
+            ["name"] = "releaseYear",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -409,6 +412,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/games",
                 ["parts"] = {
@@ -423,7 +427,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.items`",
                 },
                 ["index$"] = 0,
               },
@@ -439,7 +443,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "character_count",
+            ["name"] = "characterCount",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -460,7 +464,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "monster_count",
+            ["name"] = "monsterCount",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -481,7 +485,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_year",
+            ["name"] = "releaseYear",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -508,6 +512,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/games/{id}",
                 ["parts"] = {
@@ -545,14 +550,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "hit_point",
+            ["name"] = "hitPoints",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -618,6 +623,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/monsters",
                 ["parts"] = {
@@ -634,7 +640,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.items`",
                 },
                 ["index$"] = 0,
               },
@@ -664,14 +670,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "hit_point",
+            ["name"] = "hitPoints",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -712,6 +718,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/monsters/{id}",
                 ["parts"] = {
@@ -756,14 +763,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "game_name",
+            ["name"] = "gameName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "hit_point",
+            ["name"] = "hitPoints",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -819,6 +826,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/monsters/search",
                 ["parts"] = {
@@ -835,7 +843,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },

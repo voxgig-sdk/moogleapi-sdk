@@ -6,7 +6,7 @@ main: kit: entity: moogle_api_web_features_characters_get_all_get_all_character:
 
   fields: [
     {
-      name: "game_name"
+      name: "gameName"
       req: false
       type: "`$STRING`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: moogle_api_web_features_characters_get_all_get_all_character:
       type: "`$INTEGER`"
     }
     {
-      name: "image_url"
+      name: "imageUrl"
       req: false
       type: "`$STRING`"
     }
@@ -85,7 +85,7 @@ main: kit: entity: moogle_api_web_features_characters_get_all_get_all_character:
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.items`"
           }
         }
       ]

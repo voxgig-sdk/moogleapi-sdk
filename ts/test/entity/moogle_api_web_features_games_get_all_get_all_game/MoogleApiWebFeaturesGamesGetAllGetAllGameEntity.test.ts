@@ -63,7 +63,7 @@ describe('MoogleApiWebFeaturesGamesGetAllGetAllGameEntity', async () => {
     const moogle_api_web_features_games_get_all_get_all_game_ref01_ent = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()
     const moogle_api_web_features_games_get_all_get_all_game_ref01_match: any = {}
 
-    const moogle_api_web_features_games_get_all_get_all_game_ref01_list = await moogle_api_web_features_games_get_all_get_all_game_ref01_ent.list(moogle_api_web_features_games_get_all_get_all_game_ref01_match)
+    const moogle_api_web_features_games_get_all_get_all_game_ref01_list = (await moogle_api_web_features_games_get_all_get_all_game_ref01_ent.list(moogle_api_web_features_games_get_all_get_all_game_ref01_match)).map((e: any) => e.data())
 
 
   })

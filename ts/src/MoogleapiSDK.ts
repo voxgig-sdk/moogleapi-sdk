@@ -153,8 +153,29 @@ class MoogleapiSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('MoogleapiSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -215,59 +236,129 @@ class MoogleapiSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('MoogleapiSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('MoogleapiSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id })`.
-  MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self,data)
+    return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id })`.
-  MoogleApiWebFeaturesCharactersGetGetCharacter(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesCharactersGetGetCharacter(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self,data)
+    return new MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()` / `client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().load({ id })`.
-  MoogleApiWebFeaturesCharactersSearchSearchCharacter(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesCharactersSearchSearchCharacter(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self,data)
+    return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()` / `client.MoogleApiWebFeaturesGamesGetAllGetAllGame().load({ id })`.
-  MoogleApiWebFeaturesGamesGetAllGetAllGame(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesGamesGetAllGetAllGame(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self,data)
+    return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesGamesGetGetGame().list()` / `client.MoogleApiWebFeaturesGamesGetGetGame().load({ id })`.
-  MoogleApiWebFeaturesGamesGetGetGame(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesGamesGetGetGame(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesGamesGetGetGameEntity(self,data)
+    return new MoogleApiWebFeaturesGamesGetGetGameEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()` / `client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().load({ id })`.
-  MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesMonstersGetAllGetAllMonster(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self,data)
+    return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesMonstersGetGetMonster().list()` / `client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id })`.
-  MoogleApiWebFeaturesMonstersGetGetMonster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesMonstersGetGetMonster(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self,data)
+    return new MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()` / `client.MoogleApiWebFeaturesMonstersSearchSearchMonster().load({ id })`.
-  MoogleApiWebFeaturesMonstersSearchSearchMonster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MoogleApiWebFeaturesMonstersSearchSearchMonster(entopts?: Record<string, any>) {
     const self = this
-    return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self,data)
+    return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, entopts)
   }
 
 

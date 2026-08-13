@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "moogle_api_web_features_characters_get_all_get_all_character": {
           "active": true,
@@ -27,7 +32,7 @@
           "fields": [
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
@@ -39,7 +44,7 @@
             },
             {
               "active": true,
-              "name": "image_url",
+              "name": "imageUrl",
               "req": false,
               "type": "`$STRING`"
             },
@@ -98,6 +103,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/characters",
                   "parts": [
@@ -113,7 +119,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.items`"
                   }
                 }
               ]
@@ -143,7 +149,7 @@
             },
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
@@ -161,7 +167,7 @@
             },
             {
               "active": true,
-              "name": "image_url",
+              "name": "imageUrl",
               "req": false,
               "type": "`$STRING`"
             },
@@ -208,6 +214,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/characters/{id}",
                   "parts": [
@@ -246,7 +253,7 @@
             },
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
@@ -258,7 +265,7 @@
             },
             {
               "active": true,
-              "name": "image_url",
+              "name": "imageUrl",
               "req": false,
               "type": "`$STRING`"
             },
@@ -307,6 +314,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/characters/search",
                   "parts": [
@@ -322,7 +330,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -358,7 +366,7 @@
             },
             {
               "active": true,
-              "name": "release_year",
+              "name": "releaseYear",
               "req": false,
               "type": "`$INTEGER`"
             }
@@ -397,6 +405,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/games",
                   "parts": [
@@ -411,7 +420,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.items`"
                   }
                 }
               ]
@@ -429,7 +438,7 @@
           "fields": [
             {
               "active": true,
-              "name": "character_count",
+              "name": "characterCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -447,7 +456,7 @@
             },
             {
               "active": true,
-              "name": "monster_count",
+              "name": "monsterCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -465,7 +474,7 @@
             },
             {
               "active": true,
-              "name": "release_year",
+              "name": "releaseYear",
               "req": false,
               "type": "`$INTEGER`"
             }
@@ -494,6 +503,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/games/{id}",
                   "parts": [
@@ -532,13 +542,13 @@
             },
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "hit_point",
+              "name": "hitPoints",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -605,6 +615,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/monsters",
                   "parts": [
@@ -621,7 +632,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.items`"
                   }
                 }
               ]
@@ -651,13 +662,13 @@
             },
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "hit_point",
+              "name": "hitPoints",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -698,6 +709,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/monsters/{id}",
                   "parts": [
@@ -742,13 +754,13 @@
             },
             {
               "active": true,
-              "name": "game_name",
+              "name": "gameName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "hit_point",
+              "name": "hitPoints",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -805,6 +817,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/monsters/search",
                   "parts": [
@@ -821,7 +834,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -1174,18 +1187,41 @@
         "website": "https://moogleapi.com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1207,22 +1243,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1261,21 +1315,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1314,12 +1386,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1331,10 +1408,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1356,22 +1446,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1393,13 +1501,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1411,10 +1524,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1436,13 +1562,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1459,10 +1590,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1484,13 +1628,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1513,10 +1662,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "moogleapi"
+            "goversion": "",
+            "name": "moogleapi",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1538,9 +1700,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

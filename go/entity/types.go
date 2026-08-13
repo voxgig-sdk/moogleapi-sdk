@@ -6,22 +6,26 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/moogleapi-sdk/go/core"
+)
 
 // MoogleApiWebFeaturesCharactersGetAllGetAllCharacter is the typed data model for the moogle_api_web_features_characters_get_all_get_all_character entity.
 type MoogleApiWebFeaturesCharactersGetAllGetAllCharacter struct {
-	GameName *string `json:"game_name,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"image_url,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Role *string `json:"role,omitempty"`
 }
 
 // MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch struct {
-	GameName *string `json:"game_name,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"image_url,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Role *string `json:"role,omitempty"`
 }
@@ -30,10 +34,10 @@ type MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch struct {
 type MoogleApiWebFeaturesCharactersGetGetCharacter struct {
 	Affiliation *string `json:"affiliation,omitempty"`
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
 	Hometown *string `json:"hometown,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"image_url,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Race *string `json:"race,omitempty"`
 	Role *string `json:"role,omitempty"`
@@ -47,9 +51,9 @@ type MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch struct {
 // MoogleApiWebFeaturesCharactersSearchSearchCharacter is the typed data model for the moogle_api_web_features_characters_search_search_character entity.
 type MoogleApiWebFeaturesCharactersSearchSearchCharacter struct {
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"image_url,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Role *string `json:"role,omitempty"`
 }
@@ -57,9 +61,9 @@ type MoogleApiWebFeaturesCharactersSearchSearchCharacter struct {
 // MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch struct {
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"image_url,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Role *string `json:"role,omitempty"`
 }
@@ -69,7 +73,7 @@ type MoogleApiWebFeaturesGamesGetAllGetAllGame struct {
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Platform *string `json:"platform,omitempty"`
-	ReleaseYear *int `json:"release_year,omitempty"`
+	ReleaseYear *int `json:"releaseYear,omitempty"`
 }
 
 // MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch is the typed request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame.ListTyped.
@@ -77,18 +81,18 @@ type MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Platform *string `json:"platform,omitempty"`
-	ReleaseYear *int `json:"release_year,omitempty"`
+	ReleaseYear *int `json:"releaseYear,omitempty"`
 }
 
 // MoogleApiWebFeaturesGamesGetGetGame is the typed data model for the moogle_api_web_features_games_get_get_game entity.
 type MoogleApiWebFeaturesGamesGetGetGame struct {
-	CharacterCount *int `json:"character_count,omitempty"`
+	CharacterCount *int `json:"characterCount,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	MonsterCount *int `json:"monster_count,omitempty"`
+	MonsterCount *int `json:"monsterCount,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Platform *string `json:"platform,omitempty"`
-	ReleaseYear *int `json:"release_year,omitempty"`
+	ReleaseYear *int `json:"releaseYear,omitempty"`
 }
 
 // MoogleApiWebFeaturesGamesGetGetGameLoadMatch is the typed request payload for MoogleApiWebFeaturesGamesGetGetGame.LoadTyped.
@@ -99,8 +103,8 @@ type MoogleApiWebFeaturesGamesGetGetGameLoadMatch struct {
 // MoogleApiWebFeaturesMonstersGetAllGetAllMonster is the typed data model for the moogle_api_web_features_monsters_get_all_get_all_monster entity.
 type MoogleApiWebFeaturesMonstersGetAllGetAllMonster struct {
 	Category *string `json:"category,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
-	HitPoint *int `json:"hit_point,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
+	HitPoints *int `json:"hitPoints,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -108,8 +112,8 @@ type MoogleApiWebFeaturesMonstersGetAllGetAllMonster struct {
 // MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch is the typed request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster.ListTyped.
 type MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
-	HitPoint *int `json:"hit_point,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
+	HitPoints *int `json:"hitPoints,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -118,8 +122,8 @@ type MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch struct {
 type MoogleApiWebFeaturesMonstersGetGetMonster struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
-	HitPoint *int `json:"hit_point,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
+	HitPoints *int `json:"hitPoints,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -133,8 +137,8 @@ type MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch struct {
 type MoogleApiWebFeaturesMonstersSearchSearchMonster struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
-	HitPoint *int `json:"hit_point,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
+	HitPoints *int `json:"hitPoints,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -143,8 +147,8 @@ type MoogleApiWebFeaturesMonstersSearchSearchMonster struct {
 type MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
-	GameName *string `json:"game_name,omitempty"`
-	HitPoint *int `json:"hit_point,omitempty"`
+	GameName *string `json:"gameName,omitempty"`
+	HitPoints *int `json:"hitPoints,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -161,12 +165,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -178,12 +196,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

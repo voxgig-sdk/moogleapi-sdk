@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MoogleapiUtility.registrar = ->(u) {
   u.prepare_params = MoogleapiUtilities::PrepareParams
   u.prepare_path = MoogleapiUtilities::PreparePath
   u.prepare_query = MoogleapiUtilities::PrepareQuery
+  u.graphql_body = MoogleapiUtilities::GraphqlBody
+  u.graphql_errors = MoogleapiUtilities::GraphqlErrors
   u.result_basic = MoogleapiUtilities::ResultBasic
   u.result_body = MoogleapiUtilities::ResultBody
   u.result_headers = MoogleapiUtilities::ResultHeaders
