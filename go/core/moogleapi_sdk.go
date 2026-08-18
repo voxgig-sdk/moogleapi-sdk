@@ -23,7 +23,7 @@ func NewMoogleapiSDK(options map[string]any) *MoogleapiSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,

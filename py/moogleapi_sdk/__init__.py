@@ -23,8 +23,8 @@ class MoogleapiSDK:
         utility = MoogleapiUtility()
         self._utility = utility
 
-        from moogleapi_sdk.config import make_config
-        config = make_config()
+        from moogleapi_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

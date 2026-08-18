@@ -28,7 +28,7 @@ class MoogleapiSDK
     utility = MoogleapiUtility.new
     @_utility = utility
 
-    config = MoogleapiConfig.make_config
+    config = MoogleapiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

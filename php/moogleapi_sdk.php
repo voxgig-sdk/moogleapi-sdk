@@ -40,7 +40,7 @@ class MoogleapiSDK
         $utility = new MoogleapiUtility();
         $this->_utility = $utility;
 
-        $config = MoogleapiConfig::make_config();
+        $config = MoogleapiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
