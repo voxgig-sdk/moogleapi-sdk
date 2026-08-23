@@ -1,0 +1,10 @@
+# Entity Models
+
+@"moogle_api_web_features_characters_get_all_get_all_character.aon"
+@"moogle_api_web_features_characters_get_get_character.aon"
+@"moogle_api_web_features_characters_search_search_character.aon"
+@"moogle_api_web_features_games_get_all_get_all_game.aon"
+@"moogle_api_web_features_games_get_get_game.aon"
+@"moogle_api_web_features_monsters_get_all_get_all_monster.aon"
+@"moogle_api_web_features_monsters_get_get_monster.aon"
+@"moogle_api_web_features_monsters_search_search_monster.aon"
