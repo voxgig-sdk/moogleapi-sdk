@@ -42,6 +42,7 @@ class MoogleapiConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
