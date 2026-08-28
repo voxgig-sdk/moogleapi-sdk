@@ -23,11 +23,9 @@ type MoogleApiWebFeaturesCharactersGetAllGetAllCharacter struct {
 
 // MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch struct {
-	GameName *string `json:"gameName,omitempty"`
-	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"imageUrl,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Role *string `json:"role,omitempty"`
+	GameId *int `json:"game_id,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
 }
 
 // MoogleApiWebFeaturesCharactersGetGetCharacter is the typed data model for the moogle_api_web_features_characters_get_get_character entity.
@@ -60,12 +58,8 @@ type MoogleApiWebFeaturesCharactersSearchSearchCharacter struct {
 
 // MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch is the typed request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter.ListTyped.
 type MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch struct {
-	Description *string `json:"description,omitempty"`
-	GameName *string `json:"gameName,omitempty"`
-	Id *int `json:"id,omitempty"`
-	ImageUrl *string `json:"imageUrl,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Role *string `json:"role,omitempty"`
+	GameId *int `json:"game_id,omitempty"`
+	Query string `json:"query"`
 }
 
 // MoogleApiWebFeaturesGamesGetAllGetAllGame is the typed data model for the moogle_api_web_features_games_get_all_get_all_game entity.
@@ -78,10 +72,8 @@ type MoogleApiWebFeaturesGamesGetAllGetAllGame struct {
 
 // MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch is the typed request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame.ListTyped.
 type MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch struct {
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	ReleaseYear *int `json:"releaseYear,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
 }
 
 // MoogleApiWebFeaturesGamesGetGetGame is the typed data model for the moogle_api_web_features_games_get_get_game entity.
@@ -112,10 +104,9 @@ type MoogleApiWebFeaturesMonstersGetAllGetAllMonster struct {
 // MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch is the typed request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster.ListTyped.
 type MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
-	GameName *string `json:"gameName,omitempty"`
-	HitPoints *int `json:"hitPoints,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	GameId *int `json:"game_id,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
 }
 
 // MoogleApiWebFeaturesMonstersGetGetMonster is the typed data model for the moogle_api_web_features_monsters_get_get_monster entity.
@@ -146,11 +137,8 @@ type MoogleApiWebFeaturesMonstersSearchSearchMonster struct {
 // MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch is the typed request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster.ListTyped.
 type MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch struct {
 	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	GameName *string `json:"gameName,omitempty"`
-	HitPoints *int `json:"hitPoints,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	GameId *int `json:"game_id,omitempty"`
+	Query string `json:"query"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

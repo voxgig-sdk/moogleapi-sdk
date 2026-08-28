@@ -14,11 +14,9 @@
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
----@field gameName? string
----@field id? number
----@field imageUrl? string
----@field name? string
----@field role? string
+---@field game_id? number
+---@field page? number
+---@field page_size? number
 
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacter
 ---@field affiliation? string
@@ -43,12 +41,8 @@
 ---@field role? string
 
 ---@class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
----@field description? string
----@field gameName? string
----@field id? number
----@field imageUrl? string
----@field name? string
----@field role? string
+---@field game_id? number
+---@field query string
 
 ---@class MoogleApiWebFeaturesGamesGetAllGetAllGame
 ---@field id? number
@@ -57,10 +51,8 @@
 ---@field releaseYear? number
 
 ---@class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
----@field id? number
----@field name? string
----@field platform? string
----@field releaseYear? number
+---@field page? number
+---@field page_size? number
 
 ---@class MoogleApiWebFeaturesGamesGetGetGame
 ---@field characterCount? number
@@ -83,10 +75,9 @@
 
 ---@class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
 ---@field category? string
----@field gameName? string
----@field hitPoints? number
----@field id? number
----@field name? string
+---@field game_id? number
+---@field page? number
+---@field page_size? number
 
 ---@class MoogleApiWebFeaturesMonstersGetGetMonster
 ---@field category? string
@@ -109,11 +100,8 @@
 
 ---@class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
 ---@field category? string
----@field description? string
----@field gameName? string
----@field hitPoints? number
----@field id? number
----@field name? string
+---@field game_id? number
+---@field query string
 
 local M = {}
 

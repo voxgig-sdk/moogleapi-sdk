@@ -25,11 +25,9 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(TypedDict, total=False
 
 
 class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch(TypedDict, total=False):
-    gameName: str
-    id: int
-    imageUrl: str
-    name: str
-    role: str
+    game_id: int
+    page: int
+    page_size: int
 
 
 class MoogleApiWebFeaturesCharactersGetGetCharacter(TypedDict, total=False):
@@ -57,13 +55,12 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacter(TypedDict, total=False
     role: str
 
 
-class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch(TypedDict, total=False):
-    description: str
-    gameName: str
-    id: int
-    imageUrl: str
-    name: str
-    role: str
+class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatchRequired(TypedDict):
+    query: str
+
+
+class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch(MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatchRequired, total=False):
+    game_id: int
 
 
 class MoogleApiWebFeaturesGamesGetAllGetAllGame(TypedDict, total=False):
@@ -74,10 +71,8 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGame(TypedDict, total=False):
 
 
 class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch(TypedDict, total=False):
-    id: int
-    name: str
-    platform: str
-    releaseYear: int
+    page: int
+    page_size: int
 
 
 class MoogleApiWebFeaturesGamesGetGetGame(TypedDict, total=False):
@@ -104,10 +99,9 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonster(TypedDict, total=False):
 
 class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch(TypedDict, total=False):
     category: str
-    gameName: str
-    hitPoints: int
-    id: int
-    name: str
+    game_id: int
+    page: int
+    page_size: int
 
 
 class MoogleApiWebFeaturesMonstersGetGetMonster(TypedDict, total=False):
@@ -132,10 +126,10 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonster(TypedDict, total=False):
     name: str
 
 
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch(TypedDict, total=False):
+class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatchRequired(TypedDict):
+    query: str
+
+
+class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch(MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatchRequired, total=False):
     category: str
-    description: str
-    gameName: str
-    hitPoints: int
-    id: int
-    name: str
+    game_id: int

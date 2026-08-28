@@ -14,11 +14,9 @@ export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacter {
 }
 
 export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch {
-  gameName?: string
-  id?: number
-  imageUrl?: string
-  name?: string
-  role?: string
+  game_id?: number
+  page?: number
+  page_size?: number
 }
 
 export interface MoogleApiWebFeaturesCharactersGetGetCharacter {
@@ -47,12 +45,8 @@ export interface MoogleApiWebFeaturesCharactersSearchSearchCharacter {
 }
 
 export interface MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch {
-  description?: string
-  gameName?: string
-  id?: number
-  imageUrl?: string
-  name?: string
-  role?: string
+  game_id?: number
+  query: string
 }
 
 export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
@@ -63,10 +57,8 @@ export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
 }
 
 export interface MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch {
-  id?: number
-  name?: string
-  platform?: string
-  releaseYear?: number
+  page?: number
+  page_size?: number
 }
 
 export interface MoogleApiWebFeaturesGamesGetGetGame {
@@ -93,10 +85,9 @@ export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonster {
 
 export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch {
   category?: string
-  gameName?: string
-  hitPoints?: number
-  id?: number
-  name?: string
+  game_id?: number
+  page?: number
+  page_size?: number
 }
 
 export interface MoogleApiWebFeaturesMonstersGetGetMonster {
@@ -123,10 +114,7 @@ export interface MoogleApiWebFeaturesMonstersSearchSearchMonster {
 
 export interface MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch {
   category?: string
-  description?: string
-  gameName?: string
-  hitPoints?: number
-  id?: number
-  name?: string
+  game_id?: number
+  query: string
 }
 
