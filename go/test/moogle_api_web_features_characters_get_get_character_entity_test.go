@@ -50,7 +50,7 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		moogleApiWebFeaturesCharactersGetGetCharacterRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.moogle_api_web_features_characters_get_get_character", setup.data)))
+		moogleApiWebFeaturesCharactersGetGetCharacterRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.moogle_api_web_features_characters_get_get_character")))
 		var moogleApiWebFeaturesCharactersGetGetCharacterRef01Data map[string]any
 		if len(moogleApiWebFeaturesCharactersGetGetCharacterRef01DataRaw) > 0 {
 			moogleApiWebFeaturesCharactersGetGetCharacterRef01Data = core.ToMapAny(moogleApiWebFeaturesCharactersGetGetCharacterRef01DataRaw[0][1])
@@ -103,7 +103,7 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"moogle_api_web_features_characters_get_get_character01", "moogle_api_web_features_characters_get_get_character02", "moogle_api_web_features_characters_get_get_character03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -123,7 +123,7 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID": idmap,
 		"MOOGLEAPI_TEST_LIVE":      "FALSE",
 		"MOOGLEAPI_TEST_EXPLAIN":   "FALSE",
-		"MOOGLEAPI_APIKEY":         "NONE",
+		"MOOGLEAPI_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID"])
@@ -132,11 +132,23 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 	}
 
 	if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["MOOGLEAPI_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewMoogleapiSDK(core.ToMapAny(mergedOpts))
 	}

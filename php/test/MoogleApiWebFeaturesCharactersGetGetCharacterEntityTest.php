@@ -88,7 +88,7 @@ function moogle_api_web_features_characters_get_get_character_basic_setup($extra
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID" => $idmap,
         "MOOGLEAPI_TEST_LIVE" => "FALSE",
         "MOOGLEAPI_TEST_EXPLAIN" => "FALSE",
-        "MOOGLEAPI_APIKEY" => "NONE",
+        "MOOGLEAPI_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -99,10 +99,17 @@ function moogle_api_web_features_characters_get_get_character_basic_setup($extra
 
     if ($env["MOOGLEAPI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["MOOGLEAPI_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new MoogleapiSDK(Helpers::to_map($merged_opts));
     }

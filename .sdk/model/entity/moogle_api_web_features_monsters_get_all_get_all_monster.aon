@@ -16,11 +16,13 @@ main: kit: entity: moogle_api_web_features_monsters_get_all_get_all_monster: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "hitPoints"
       req: false
       type: "`$INTEGER`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -79,9 +81,13 @@ main: kit: entity: moogle_api_web_features_monsters_get_all_get_all_monster: {
           }
           method: "GET"
           orig: "/api/monsters"
-          parts: [
-            "api"
-            "monsters"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "monsters"
+            }
           ]
           select: {
             exist: [

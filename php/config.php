@@ -72,6 +72,7 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -87,6 +88,10 @@ class MoogleapiConfig
               'name' => 'role',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_characters_get_all_get_all_character',
           'op' => [
@@ -122,9 +127,13 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters',
-                  'parts' => [
-                    'api',
-                    'characters',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'characters',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -136,6 +145,10 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.items`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'characters',
                   ],
                 ],
               ],
@@ -164,6 +177,7 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -183,6 +197,10 @@ class MoogleapiConfig
               'name' => 'role',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_characters_get_get_character',
           'op' => [
@@ -205,10 +223,16 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters/{id}',
-                  'parts' => [
-                    'api',
-                    'characters',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'characters',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -218,6 +242,11 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'characters',
+                    '{id}',
                   ],
                 ],
               ],
@@ -238,6 +267,7 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -253,6 +283,10 @@ class MoogleapiConfig
               'name' => 'role',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_characters_search_search_character',
           'op' => [
@@ -281,10 +315,16 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/characters/search',
-                  'parts' => [
-                    'api',
-                    'characters',
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'characters',
+                    ],
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -295,6 +335,11 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'characters',
+                    'search',
                   ],
                 ],
               ],
@@ -307,6 +352,7 @@ class MoogleapiConfig
         'moogle_api_web_features_games_get_all_get_all_game' => [
           'fields' => [
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -319,9 +365,14 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'releaseYear',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_games_get_all_get_all_game',
           'op' => [
@@ -351,9 +402,13 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/games',
-                  'parts' => [
-                    'api',
-                    'games',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'games',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -364,6 +419,10 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.items`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'games',
                   ],
                 ],
               ],
@@ -376,6 +435,7 @@ class MoogleapiConfig
         'moogle_api_web_features_games_get_get_game' => [
           'fields' => [
             [
+              'format' => 'int32',
               'name' => 'characterCount',
               'type' => '`$INTEGER`',
             ],
@@ -384,10 +444,12 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'int32',
               'name' => 'monsterCount',
               'type' => '`$INTEGER`',
             ],
@@ -400,9 +462,14 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'releaseYear',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_games_get_get_game',
           'op' => [
@@ -425,10 +492,16 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/games/{id}',
-                  'parts' => [
-                    'api',
-                    'games',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'games',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -438,6 +511,11 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'games',
+                    '{id}',
                   ],
                 ],
               ],
@@ -458,10 +536,12 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'hitPoints',
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -469,6 +549,10 @@ class MoogleapiConfig
               'name' => 'name',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_monsters_get_all_get_all_monster',
           'op' => [
@@ -510,9 +594,13 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters',
-                  'parts' => [
-                    'api',
-                    'monsters',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'monsters',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -525,6 +613,10 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.items`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'monsters',
                   ],
                 ],
               ],
@@ -549,10 +641,12 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'hitPoints',
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -560,6 +654,10 @@ class MoogleapiConfig
               'name' => 'name',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_monsters_get_get_monster',
           'op' => [
@@ -582,10 +680,16 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters/{id}',
-                  'parts' => [
-                    'api',
-                    'monsters',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'monsters',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -595,6 +699,11 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'monsters',
+                    '{id}',
                   ],
                 ],
               ],
@@ -619,10 +728,12 @@ class MoogleapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'int32',
               'name' => 'hitPoints',
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'int32',
               'name' => 'id',
               'type' => '`$INTEGER`',
             ],
@@ -630,6 +741,10 @@ class MoogleapiConfig
               'name' => 'name',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'moogle_api_web_features_monsters_search_search_monster',
           'op' => [
@@ -664,10 +779,16 @@ class MoogleapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/monsters/search',
-                  'parts' => [
-                    'api',
-                    'monsters',
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'monsters',
+                    ],
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -679,6 +800,11 @@ class MoogleapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'monsters',
+                    'search',
                   ],
                 ],
               ],

@@ -68,15 +68,17 @@ function moogle_api_web_features_characters_search_search_character_direct_setup
     $env = Runner::env_override([
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID" => [],
         "MOOGLEAPI_TEST_LIVE" => "FALSE",
-        "MOOGLEAPI_APIKEY" => "NONE",
+        "MOOGLEAPI_APIKEY" => "",
     ]);
 
     $live = $env["MOOGLEAPI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["MOOGLEAPI_APIKEY"],
-        ];
+        ]);
         $client = new MoogleapiSDK($merged_opts);
         return [
             "client" => $client,

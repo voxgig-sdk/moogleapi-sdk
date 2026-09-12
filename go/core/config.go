@@ -50,6 +50,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -65,6 +66,10 @@ func MakeConfig() map[string]any {
 						"name": "role",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_characters_get_all_get_all_character",
 				"op": map[string]any{
@@ -100,9 +105,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/characters",
-								"parts": []any{
-									"api",
-									"characters",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "characters",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -114,6 +123,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.items`",
+								},
+								"parts": []any{
+									"api",
+									"characters",
 								},
 							},
 						},
@@ -142,6 +155,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -161,6 +175,10 @@ func MakeConfig() map[string]any {
 						"name": "role",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_characters_get_get_character",
 				"op": map[string]any{
@@ -183,10 +201,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/characters/{id}",
-								"parts": []any{
-									"api",
-									"characters",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "characters",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -196,6 +220,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"characters",
+									"{id}",
 								},
 							},
 						},
@@ -216,6 +245,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -231,6 +261,10 @@ func MakeConfig() map[string]any {
 						"name": "role",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_characters_search_search_character",
 				"op": map[string]any{
@@ -259,10 +293,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/characters/search",
-								"parts": []any{
-									"api",
-									"characters",
-									"search",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "characters",
+									},
+									map[string]any{
+										"lit": "search",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -273,6 +313,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.results`",
+								},
+								"parts": []any{
+									"api",
+									"characters",
+									"search",
 								},
 							},
 						},
@@ -285,6 +330,7 @@ func MakeConfig() map[string]any {
 			"moogle_api_web_features_games_get_all_get_all_game": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -297,9 +343,14 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "releaseYear",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_games_get_all_get_all_game",
 				"op": map[string]any{
@@ -329,9 +380,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/games",
-								"parts": []any{
-									"api",
-									"games",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "games",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -342,6 +397,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.items`",
+								},
+								"parts": []any{
+									"api",
+									"games",
 								},
 							},
 						},
@@ -354,6 +413,7 @@ func MakeConfig() map[string]any {
 			"moogle_api_web_features_games_get_get_game": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "int32",
 						"name": "characterCount",
 						"type": "`$INTEGER`",
 					},
@@ -362,10 +422,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "monsterCount",
 						"type": "`$INTEGER`",
 					},
@@ -378,9 +440,14 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "releaseYear",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_games_get_get_game",
 				"op": map[string]any{
@@ -403,10 +470,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/games/{id}",
-								"parts": []any{
-									"api",
-									"games",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "games",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -416,6 +489,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"games",
+									"{id}",
 								},
 							},
 						},
@@ -436,10 +514,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "hitPoints",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -447,6 +527,10 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_monsters_get_all_get_all_monster",
 				"op": map[string]any{
@@ -488,9 +572,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/monsters",
-								"parts": []any{
-									"api",
-									"monsters",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "monsters",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -503,6 +591,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.items`",
+								},
+								"parts": []any{
+									"api",
+									"monsters",
 								},
 							},
 						},
@@ -527,10 +619,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "hitPoints",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -538,6 +632,10 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_monsters_get_get_monster",
 				"op": map[string]any{
@@ -560,10 +658,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/monsters/{id}",
-								"parts": []any{
-									"api",
-									"monsters",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "monsters",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -573,6 +677,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"monsters",
+									"{id}",
 								},
 							},
 						},
@@ -597,10 +706,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "hitPoints",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "int32",
 						"name": "id",
 						"type": "`$INTEGER`",
 					},
@@ -608,6 +719,10 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "moogle_api_web_features_monsters_search_search_monster",
 				"op": map[string]any{
@@ -642,10 +757,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/monsters/search",
-								"parts": []any{
-									"api",
-									"monsters",
-									"search",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "monsters",
+									},
+									map[string]any{
+										"lit": "search",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -658,6 +779,11 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.results`",
 								},
+								"parts": []any{
+									"api",
+									"monsters",
+									"search",
+								},
 							},
 						},
 					},
@@ -668,6 +794,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

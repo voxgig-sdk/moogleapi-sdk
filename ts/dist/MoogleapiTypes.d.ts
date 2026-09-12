@@ -1,0 +1,97 @@
+export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacter {
+    gameName?: string;
+    id?: number;
+    imageUrl?: string;
+    name?: string;
+    role?: string;
+}
+export interface MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch {
+    game_id?: number;
+    page?: number;
+    page_size?: number;
+}
+export interface MoogleApiWebFeaturesCharactersGetGetCharacter {
+    affiliation?: string;
+    description?: string;
+    gameName?: string;
+    hometown?: string;
+    id?: number;
+    imageUrl?: string;
+    name?: string;
+    race?: string;
+    role?: string;
+}
+export interface MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch {
+    id: number;
+}
+export interface MoogleApiWebFeaturesCharactersSearchSearchCharacter {
+    description?: string;
+    gameName?: string;
+    id?: number;
+    imageUrl?: string;
+    name?: string;
+    role?: string;
+}
+export interface MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch {
+    game_id?: number;
+    query: string;
+}
+export interface MoogleApiWebFeaturesGamesGetAllGetAllGame {
+    id?: number;
+    name?: string;
+    platform?: string;
+    releaseYear?: number;
+}
+export interface MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch {
+    page?: number;
+    page_size?: number;
+}
+export interface MoogleApiWebFeaturesGamesGetGetGame {
+    characterCount?: number;
+    description?: string;
+    id?: number;
+    monsterCount?: number;
+    name?: string;
+    platform?: string;
+    releaseYear?: number;
+}
+export interface MoogleApiWebFeaturesGamesGetGetGameLoadMatch {
+    id: number;
+}
+export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonster {
+    category?: string;
+    gameName?: string;
+    hitPoints?: number;
+    id?: number;
+    name?: string;
+}
+export interface MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch {
+    category?: string;
+    game_id?: number;
+    page?: number;
+    page_size?: number;
+}
+export interface MoogleApiWebFeaturesMonstersGetGetMonster {
+    category?: string;
+    description?: string;
+    gameName?: string;
+    hitPoints?: number;
+    id?: number;
+    name?: string;
+}
+export interface MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch {
+    id: number;
+}
+export interface MoogleApiWebFeaturesMonstersSearchSearchMonster {
+    category?: string;
+    description?: string;
+    gameName?: string;
+    hitPoints?: number;
+    id?: number;
+    name?: string;
+}
+export interface MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch {
+    category?: string;
+    game_id?: number;
+    query: string;
+}

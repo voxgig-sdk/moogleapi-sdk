@@ -94,14 +94,22 @@ func moogle_api_web_features_games_get_all_get_all_gameDirectSetup(mockres any) 
 	env := envOverride(map[string]any{
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME_ENTID": map[string]any{},
 		"MOOGLEAPI_TEST_LIVE":    "FALSE",
-		"MOOGLEAPI_APIKEY":       "NONE",
+		"MOOGLEAPI_APIKEY":       "",
 	})
 
 	live := env["MOOGLEAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["MOOGLEAPI_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewMoogleapiSDK(mergedOpts)
 

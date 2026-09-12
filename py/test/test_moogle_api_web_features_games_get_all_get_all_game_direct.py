@@ -60,15 +60,18 @@ def _moogle_api_web_features_games_get_all_get_all_game_direct_setup(mockres):
     env = runner.env_override({
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_ALL_GET_ALL_GAME_ENTID": {},
         "MOOGLEAPI_TEST_LIVE": "FALSE",
-        "MOOGLEAPI_APIKEY": "NONE",
+        "MOOGLEAPI_APIKEY": "",
     })
 
     live = env.get("MOOGLEAPI_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("MOOGLEAPI_APIKEY"),
-        }
+        })
         client = MoogleapiSDK(merged_opts)
         return {
             "client": client,

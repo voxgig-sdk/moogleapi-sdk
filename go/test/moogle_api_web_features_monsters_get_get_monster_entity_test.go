@@ -50,7 +50,7 @@ func TestMoogleApiWebFeaturesMonstersGetGetMonsterEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		moogleApiWebFeaturesMonstersGetGetMonsterRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.moogle_api_web_features_monsters_get_get_monster", setup.data)))
+		moogleApiWebFeaturesMonstersGetGetMonsterRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.moogle_api_web_features_monsters_get_get_monster")))
 		var moogleApiWebFeaturesMonstersGetGetMonsterRef01Data map[string]any
 		if len(moogleApiWebFeaturesMonstersGetGetMonsterRef01DataRaw) > 0 {
 			moogleApiWebFeaturesMonstersGetGetMonsterRef01Data = core.ToMapAny(moogleApiWebFeaturesMonstersGetGetMonsterRef01DataRaw[0][1])
@@ -103,7 +103,7 @@ func moogle_api_web_features_monsters_get_get_monsterBasicSetup(extra map[string
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"moogle_api_web_features_monsters_get_get_monster01", "moogle_api_web_features_monsters_get_get_monster02", "moogle_api_web_features_monsters_get_get_monster03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -123,7 +123,7 @@ func moogle_api_web_features_monsters_get_get_monsterBasicSetup(extra map[string
 		"MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER_ENTID": idmap,
 		"MOOGLEAPI_TEST_LIVE":      "FALSE",
 		"MOOGLEAPI_TEST_EXPLAIN":   "FALSE",
-		"MOOGLEAPI_APIKEY":         "NONE",
+		"MOOGLEAPI_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER_ENTID"])
@@ -132,11 +132,23 @@ func moogle_api_web_features_monsters_get_get_monsterBasicSetup(extra map[string
 	}
 
 	if env["MOOGLEAPI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["MOOGLEAPI_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewMoogleapiSDK(core.ToMapAny(mergedOpts))
 	}

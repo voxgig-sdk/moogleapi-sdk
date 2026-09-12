@@ -94,7 +94,7 @@ def _moogle_api_web_features_characters_get_get_character_basic_setup(extra):
         "MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID": idmap,
         "MOOGLEAPI_TEST_LIVE": "FALSE",
         "MOOGLEAPI_TEST_EXPLAIN": "FALSE",
-        "MOOGLEAPI_APIKEY": "NONE",
+        "MOOGLEAPI_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -104,6 +104,10 @@ def _moogle_api_web_features_characters_get_get_character_basic_setup(extra):
 
     if env.get("MOOGLEAPI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("MOOGLEAPI_APIKEY"),
             },

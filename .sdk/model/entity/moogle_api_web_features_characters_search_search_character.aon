@@ -16,6 +16,7 @@ main: kit: entity: moogle_api_web_features_characters_search_search_character: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -68,10 +69,16 @@ main: kit: entity: moogle_api_web_features_characters_search_search_character: {
           }
           method: "GET"
           orig: "/api/characters/search"
-          parts: [
-            "api"
-            "characters"
-            "search"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "characters"
+            }
+            {
+              lit: "search"
+            }
           ]
           select: {
             exist: [

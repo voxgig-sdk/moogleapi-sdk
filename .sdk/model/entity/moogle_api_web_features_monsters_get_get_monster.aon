@@ -21,11 +21,13 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "hitPoints"
       req: false
       type: "`$INTEGER`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -61,10 +63,16 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
           }
           method: "GET"
           orig: "/api/monsters/{id}"
-          parts: [
-            "api"
-            "monsters"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "monsters"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

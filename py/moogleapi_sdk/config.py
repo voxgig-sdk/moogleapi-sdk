@@ -1,6 +1,14 @@
 # Moogleapi SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -67,6 +75,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -83,6 +92,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_characters_get_all_get_all_character",
         "op": {
           "list": {
@@ -117,9 +130,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/characters",
-                "parts": [
-                  "api",
-                  "characters",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "characters",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -132,6 +149,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
+                "parts": [
+                  "api",
+                  "characters",
+                ],
               },
             ],
           },
@@ -159,6 +180,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -179,6 +201,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_characters_get_get_character",
         "op": {
           "load": {
@@ -200,10 +226,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/characters/{id}",
-                "parts": [
-                  "api",
-                  "characters",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "characters",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -214,6 +246,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "characters",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -233,6 +270,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -249,6 +287,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_characters_search_search_character",
         "op": {
           "list": {
@@ -276,10 +318,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/characters/search",
-                "parts": [
-                  "api",
-                  "characters",
-                  "search",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "characters",
+                  },
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -291,6 +339,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "api",
+                  "characters",
+                  "search",
+                ],
               },
             ],
           },
@@ -302,6 +355,7 @@ def make_config():
       "moogle_api_web_features_games_get_all_get_all_game": {
         "fields": [
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -314,10 +368,15 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "releaseYear",
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_games_get_all_get_all_game",
         "op": {
           "list": {
@@ -346,9 +405,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/games",
-                "parts": [
-                  "api",
-                  "games",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "games",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -360,6 +423,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
+                "parts": [
+                  "api",
+                  "games",
+                ],
               },
             ],
           },
@@ -371,6 +438,7 @@ def make_config():
       "moogle_api_web_features_games_get_get_game": {
         "fields": [
           {
+            "format": "int32",
             "name": "characterCount",
             "type": "`$INTEGER`",
           },
@@ -379,10 +447,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
           {
+            "format": "int32",
             "name": "monsterCount",
             "type": "`$INTEGER`",
           },
@@ -395,10 +465,15 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "releaseYear",
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_games_get_get_game",
         "op": {
           "load": {
@@ -420,10 +495,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/games/{id}",
-                "parts": [
-                  "api",
-                  "games",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "games",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -434,6 +515,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "games",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -453,10 +539,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "hitPoints",
             "type": "`$INTEGER`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -465,6 +553,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_monsters_get_all_get_all_monster",
         "op": {
           "list": {
@@ -505,9 +597,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/monsters",
-                "parts": [
-                  "api",
-                  "monsters",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "monsters",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -521,6 +617,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
+                "parts": [
+                  "api",
+                  "monsters",
+                ],
               },
             ],
           },
@@ -544,10 +644,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "hitPoints",
             "type": "`$INTEGER`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -556,6 +658,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_monsters_get_get_monster",
         "op": {
           "load": {
@@ -577,10 +683,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/monsters/{id}",
-                "parts": [
-                  "api",
-                  "monsters",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "monsters",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -591,6 +703,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "monsters",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -614,10 +731,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "int32",
             "name": "hitPoints",
             "type": "`$INTEGER`",
           },
           {
+            "format": "int32",
             "name": "id",
             "type": "`$INTEGER`",
           },
@@ -626,6 +745,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "moogle_api_web_features_monsters_search_search_monster",
         "op": {
           "list": {
@@ -659,10 +782,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/monsters/search",
-                "parts": [
-                  "api",
-                  "monsters",
-                  "search",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "monsters",
+                  },
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -675,6 +804,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "api",
+                  "monsters",
+                  "search",
+                ],
               },
             ],
           },
