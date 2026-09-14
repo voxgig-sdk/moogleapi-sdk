@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
+import { MoogleapiSDK } from '@voxgig-sdk/moogleapi-sdk'
 
 const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
@@ -729,7 +729,7 @@ moogleapi/
 Import the SDK from the package root:
 
 ```ts
-import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
+import { MoogleapiSDK } from '@voxgig-sdk/moogleapi-sdk'
 ```
 
 ### Entity state

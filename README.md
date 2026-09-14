@@ -105,7 +105,7 @@ local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():li
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/moogleapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
 | Python | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
 | PHP | `voxgig-sdk/moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/moogleapi-sdk/go` | `go get github.com/voxgig-sdk/moogleapi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():li
 ### TypeScript
 
 ```ts
-import { MoogleapiSDK } from '@voxgig-sdk/moogleapi'
+import { MoogleapiSDK } from '@voxgig-sdk/moogleapi-sdk'
 
 const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
