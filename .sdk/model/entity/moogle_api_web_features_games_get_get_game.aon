@@ -68,6 +68,12 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/games/{id}"
+            json: "{\"operationId\":\"GetGame\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int32\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"characterCount\":{\"format\":\"int32\",\"type\":\"integer\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"monsterCount\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"releaseYear\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/games/{id}"
           segments: [

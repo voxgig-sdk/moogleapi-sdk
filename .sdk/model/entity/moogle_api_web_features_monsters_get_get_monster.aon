@@ -61,6 +61,12 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/monsters/{id}"
+            json: "{\"operationId\":\"GetMonster\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int32\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"category\":{\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"hitPoints\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/monsters/{id}"
           segments: [

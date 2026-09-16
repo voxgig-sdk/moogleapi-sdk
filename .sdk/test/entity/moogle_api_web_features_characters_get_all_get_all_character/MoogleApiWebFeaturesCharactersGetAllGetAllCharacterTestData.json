@@ -33,5 +33,108 @@
         "role": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /api/characters": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "GetAllCharacters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gameId",
+            "schema": {
+              "format": "int32",
+              "nullable": true,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "nullable": false,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 20,
+              "format": "int32",
+              "nullable": false,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "gameName": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "imageUrl": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "page": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "totalCount": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

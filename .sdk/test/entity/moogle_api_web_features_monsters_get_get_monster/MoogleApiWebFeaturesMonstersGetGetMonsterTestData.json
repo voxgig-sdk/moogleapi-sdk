@@ -5,7 +5,7 @@
         "category": "s3c",
         "description": "s3d",
         "gameName": "s3e",
-        "hitPoints": "s3f",
+        "hitPoints": 63,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER00",
         "name": "s41"
       },
@@ -13,7 +13,7 @@
         "category": "s78",
         "description": "s79",
         "gameName": "s7a",
-        "hitPoints": "s7b",
+        "hitPoints": 123,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER01",
         "name": "s7d"
       },
@@ -21,7 +21,7 @@
         "category": "sb4",
         "description": "sb5",
         "gameName": "sb6",
-        "hitPoints": "sb7",
+        "hitPoints": 183,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_GET_MONSTER02",
         "name": "sb9"
       }
@@ -33,8 +33,75 @@
         "category": "sf0",
         "description": "sf1",
         "gameName": "sf2",
-        "hitPoints": "sf3",
+        "hitPoints": 243,
         "name": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/monsters/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "GetMonster",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "category": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "description": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "gameName": {
+                      "type": "string"
+                    },
+                    "hitPoints": {
+                      "format": "int32",
+                      "nullable": true,
+                      "type": "integer"
+                    },
+                    "id": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

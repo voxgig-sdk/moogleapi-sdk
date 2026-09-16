@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Moogleapi SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class MoogleapiFeatures
@@ -14,8 +17,14 @@ class MoogleapiFeatures
         switch ($name) {
             case "base":
                 return new MoogleapiBaseFeature();
+            case "ratelimit":
+                return new MoogleapiRatelimitFeature();
+            case "retry":
+                return new MoogleapiRetryFeature();
             case "test":
                 return new MoogleapiTestFeature();
+            case "timeout":
+                return new MoogleapiTimeoutFeature();
             default:
                 return new MoogleapiBaseFeature();
         }
@@ -31,7 +40,10 @@ class MoogleapiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

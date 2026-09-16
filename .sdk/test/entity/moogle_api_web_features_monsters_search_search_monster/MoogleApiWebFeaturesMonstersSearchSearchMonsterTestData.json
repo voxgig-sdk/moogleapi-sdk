@@ -5,7 +5,7 @@
         "category": "s3c",
         "description": "s3d",
         "gameName": "s3e",
-        "hitPoints": "s3f",
+        "hitPoints": 63,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER00",
         "name": "s41"
       },
@@ -13,7 +13,7 @@
         "category": "s78",
         "description": "s79",
         "gameName": "s7a",
-        "hitPoints": "s7b",
+        "hitPoints": 123,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER01",
         "name": "s7d"
       },
@@ -21,7 +21,7 @@
         "category": "sb4",
         "description": "sb5",
         "gameName": "sb6",
-        "hitPoints": "sb7",
+        "hitPoints": 183,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_SEARCH_MONSTER02",
         "name": "sb9"
       }
@@ -33,8 +33,163 @@
         "category": "sf0",
         "description": "sf1",
         "gameName": "sf2",
-        "hitPoints": "sf3",
+        "hitPoints": 243,
         "name": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/monsters/search": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "SearchMonsters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "gameId",
+            "schema": {
+              "format": "int32",
+              "nullable": true,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "results": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "category": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "description": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "gameName": {
+                            "type": "string"
+                          },
+                          "hitPoints": {
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                          },
+                          "id": {
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "detail": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "errors": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "name": {
+                            "default": "Error or field name",
+                            "type": "string"
+                          },
+                          "reason": {
+                            "default": "Error reason",
+                            "type": "string"
+                          },
+                          "severity": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "instance": {
+                      "default": "/api/route",
+                      "type": "string"
+                    },
+                    "status": {
+                      "default": 400,
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "title": {
+                      "default": "One or more validation errors occurred.",
+                      "type": "string"
+                    },
+                    "traceId": {
+                      "default": "0HMPNHL0JHL76:00000001",
+                      "type": "string"
+                    },
+                    "type": {
+                      "default": "https://www.rfc-editor.org/rfc/rfc7231#section-6.5.1",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

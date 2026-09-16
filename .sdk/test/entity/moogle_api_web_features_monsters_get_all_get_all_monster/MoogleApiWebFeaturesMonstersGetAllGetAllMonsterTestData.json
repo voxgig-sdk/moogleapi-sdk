@@ -4,21 +4,21 @@
       "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER00": {
         "category": "s32",
         "gameName": "s33",
-        "hitPoints": "s34",
+        "hitPoints": 52,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER00",
         "name": "s36"
       },
       "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER01": {
         "category": "s64",
         "gameName": "s65",
-        "hitPoints": "s66",
+        "hitPoints": 102,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER01",
         "name": "s68"
       },
       "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER02": {
         "category": "s96",
         "gameName": "s97",
-        "hitPoints": "s98",
+        "hitPoints": 152,
         "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_GET_ALL_GET_ALL_MONSTER02",
         "name": "s9a"
       }
@@ -29,8 +29,120 @@
       "moogle_api_web_features_monsters_get_all_get_all_monster_ref01": {
         "category": "sc8",
         "gameName": "sc9",
-        "hitPoints": "sca",
+        "hitPoints": 202,
         "name": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/monsters": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "GetAllMonsters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gameId",
+            "schema": {
+              "format": "int32",
+              "nullable": true,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "nullable": false,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 20,
+              "format": "int32",
+              "nullable": false,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "category": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "gameName": {
+                            "type": "string"
+                          },
+                          "hitPoints": {
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                          },
+                          "id": {
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "page": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "totalCount": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

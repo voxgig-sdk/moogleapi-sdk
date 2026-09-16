@@ -49,5 +49,83 @@
         "role": "s170"
       }
     }
+  },
+  "requests": {
+    "GET /api/characters/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "GetCharacter",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "affiliation": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "description": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "gameName": {
+                      "type": "string"
+                    },
+                    "hometown": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "id": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "imageUrl": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "race": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "role": {
+                      "nullable": true,
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

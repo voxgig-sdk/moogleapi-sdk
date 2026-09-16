@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MOOGLEAPI_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'moogle_api_web_features_characters_search_search_character.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'moogle_api_web_features_characters_search_search_character.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "description", "req": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "gameName", "req": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "format": "int32", "name": "id", "req": false, "type": "`$INTEGER`", "index$": 2 }, { "active": true, "name": "imageUrl", "req": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "name", "req": false, "type": "`$STRING`", "index$": 4 }, { "active": true, "name": "role", "req": false, "type": "`$STRING`", "index$": 5 }], "id": { "field": "id", "name": "id" }, "name": "moogle_api_web_features_characters_search_search_character", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "game_id", "orig": "game_id", "reqd": false, "type": "`$INTEGER`", "index$": 0 }, { "active": true, "kind": "query", "name": "query", "orig": "query", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /api/characters/search", "json": "{\"operationId\":\"SearchCharacters\",\"parameters\":[{\"in\":\"query\",\"name\":\"query\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"gameId\",\"schema\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"results\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"imageUrl\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"role\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"400\":{\"content\":{\"application/problem+json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"detail\":{\"nullable\":true,\"type\":\"string\"},\"errors\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"default\":\"Error or field name\",\"type\":\"string\"},\"reason\":{\"default\":\"Error reason\",\"type\":\"string\"},\"severity\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"instance\":{\"default\":\"/api/route\",\"type\":\"string\"},\"status\":{\"default\":400,\"format\":\"int32\",\"type\":\"integer\"},\"title\":{\"default\":\"One or more validation errors occurred.\",\"type\":\"string\"},\"traceId\":{\"default\":\"0HMPNHL0JHL76:00000001\",\"type\":\"string\"},\"type\":{\"default\":\"https://www.rfc-editor.org/rfc/rfc7231#section-6.5.1\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad Request\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/characters/search", "segments": [{ "lit": "api" }, { "lit": "characters" }, { "lit": "search" }], "select": { "exist": ["game_id", "query"] }, "transform": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "moogle_api_web_features_characters_search_search_character", "name__orig": "moogle_api_web_features_characters_search_search_character", "Name": "MoogleApiWebFeaturesCharactersSearchSearchCharacter", "name_": "moogle_api_web_features_characters_search_search_character", "name-": "moogle-api-web-features-characters-search-search-character", "NAME": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER", "index$": 2 }, { "active": true, "entity": "moogle_api_web_features_characters_search_search_character", "key$": "BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow", "kind": "basic", "name": "BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "moogle_api_web_features_characters_search_search_character_ref01" } }], "index$": 0 }] }, 'MoogleApiWebFeaturesCharactersSearchSearchCharacter');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID': idmap,
         'MOOGLEAPI_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID'];
     const live = 'TRUE' === env.MOOGLEAPI_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_CHARACTER_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.MoogleapiSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -128,7 +126,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -140,7 +139,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.MOOGLEAPI_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

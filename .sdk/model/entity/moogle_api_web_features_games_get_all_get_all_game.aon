@@ -60,6 +60,12 @@ main: kit: entity: moogle_api_web_features_games_get_all_get_all_game: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/games"
+            json: "{\"operationId\":\"GetAllGames\",\"parameters\":[{\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"pageSize\",\"schema\":{\"default\":20,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"items\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"releaseYear\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"format\":\"int32\",\"type\":\"integer\"},\"pageSize\":{\"format\":\"int32\",\"type\":\"integer\"},\"totalCount\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/games"
           segments: [

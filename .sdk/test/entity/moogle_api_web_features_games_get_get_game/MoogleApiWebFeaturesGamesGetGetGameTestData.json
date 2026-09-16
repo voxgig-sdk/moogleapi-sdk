@@ -2,43 +2,113 @@
   "existing": {
     "moogle_api_web_features_games_get_get_game": {
       "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME00": {
-        "characterCount": "s46",
+        "characterCount": 70,
         "description": "s47",
         "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME00",
-        "monsterCount": "s49",
+        "monsterCount": 73,
         "name": "s4a",
         "platform": "s4b",
-        "releaseYear": "s4c"
+        "releaseYear": 76
       },
       "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME01": {
-        "characterCount": "s8c",
+        "characterCount": 140,
         "description": "s8d",
         "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME01",
-        "monsterCount": "s8f",
+        "monsterCount": 143,
         "name": "s90",
         "platform": "s91",
-        "releaseYear": "s92"
+        "releaseYear": 146
       },
       "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME02": {
-        "characterCount": "sd2",
+        "characterCount": 210,
         "description": "sd3",
         "id": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME02",
-        "monsterCount": "sd5",
+        "monsterCount": 213,
         "name": "sd6",
         "platform": "sd7",
-        "releaseYear": "sd8"
+        "releaseYear": 216
       }
     }
   },
   "new": {
     "moogle_api_web_features_games_get_get_game": {
       "moogle_api_web_features_games_get_get_game_ref01": {
-        "characterCount": "s118",
+        "characterCount": 280,
         "description": "s119",
-        "monsterCount": "s11b",
+        "monsterCount": 283,
         "name": "s11c",
         "platform": "s11d",
-        "releaseYear": "s11e"
+        "releaseYear": 286
+      }
+    }
+  },
+  "requests": {
+    "GET /api/games/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "GetGame",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "characterCount": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "description": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "id": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "monsterCount": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string"
+                    },
+                    "releaseYear": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "securitySchemes": {
+          "JWTBearerAuth": {
+            "bearerFormat": "JWT",
+            "description": "Enter a JWT token to authorize the requests...",
+            "scheme": "Bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }
