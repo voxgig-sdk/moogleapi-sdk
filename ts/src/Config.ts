@@ -131,30 +131,30 @@ class Config {
 
     entity: {
       
-      moogle_api_web_features_characters_get_all_get_all_character: {
-      },
-
-      moogle_api_web_features_characters_get_get_character: {
-      },
-
-      moogle_api_web_features_characters_search_search_character: {
-      },
-
-      moogle_api_web_features_games_get_all_get_all_game: {
-      },
-
-      moogle_api_web_features_games_get_get_game: {
-      },
-
-      moogle_api_web_features_monsters_get_all_get_all_monster: {
-      },
-
-      moogle_api_web_features_monsters_get_get_monster: {
-      },
-
-      moogle_api_web_features_monsters_search_search_monster: {
-      },
-
+        moogle_api_web_features_characters_get_all_get_all_character: {
+        },
+  
+        moogle_api_web_features_characters_get_get_character: {
+        },
+  
+        moogle_api_web_features_characters_search_search_character: {
+        },
+  
+        moogle_api_web_features_games_get_all_get_all_game: {
+        },
+  
+        moogle_api_web_features_games_get_get_game: {
+        },
+  
+        moogle_api_web_features_monsters_get_all_get_all_monster: {
+        },
+  
+        moogle_api_web_features_monsters_get_get_monster: {
+        },
+  
+        moogle_api_web_features_monsters_search_search_monster: {
+        },
+  
     }
   }
 

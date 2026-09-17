@@ -1,10 +1,10 @@
 # Flows
 
-@"BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow.aon"
-@"BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow.aon"
-@"BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow.aon"
-@"BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow.aon"
-@"BasicMoogleApiWebFeaturesGamesGetGetGameFlow.aon"
-@"BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow.aon"
-@"BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow.aon"
-@"BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow.aon"
+@"./BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow.aon"
+@"./BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow.aon"
+@"./BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow.aon"
+@"./BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow.aon"
+@"./BasicMoogleApiWebFeaturesGamesGetGetGameFlow.aon"
+@"./BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow.aon"
+@"./BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow.aon"
+@"./BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow.aon"

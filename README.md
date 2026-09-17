@@ -105,12 +105,12 @@ local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():li
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/moogleapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
-| Python | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
-| PHP | `voxgig-sdk/moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/moogleapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/tags) |
+| Python | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/tags) |
+| PHP | `voxgig-sdk/moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/moogleapi-sdk/go` | `go get github.com/voxgig-sdk/moogleapi-sdk/go@latest` |
-| Ruby | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
-| Lua | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/releases) |
+| Ruby | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/tags) |
+| Lua | `voxgig-sdk-moogleapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/moogleapi-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/moogleapi-sdk/go-cli` | `go install github.com/voxgig-sdk/moogleapi-sdk/go-cli/cmd/moogleapi@latest` |
 | Go MCP server | `github.com/voxgig-sdk/moogleapi-sdk/go-mcp` | `go get github.com/voxgig-sdk/moogleapi-sdk/go-mcp@latest` |
 
