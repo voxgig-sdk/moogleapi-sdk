@@ -1,19 +1,19 @@
 -- Typed models for the Moogleapi SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
 
----@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+---@class MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 ---@field gameName? string
 ---@field id? number
 ---@field imageUrl? string
 ---@field name? string
 ---@field role? string
 
----@class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
+---@class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch
 ---@field game_id? number
 ---@field page? number
 ---@field page_size? number
@@ -32,7 +32,7 @@
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch
 ---@field id number
 
----@class MoogleApiWebFeaturesCharactersSearchSearchCharacter
+---@class MoogleApiWebFeaturesCharactersSearchSearchResult
 ---@field description? string
 ---@field gameName? string
 ---@field id? number
@@ -40,17 +40,17 @@
 ---@field name? string
 ---@field role? string
 
----@class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
+---@class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch
 ---@field game_id? number
 ---@field query string
 
----@class MoogleApiWebFeaturesGamesGetAllGetAllGame
+---@class MoogleApiWebFeaturesGamesGetAllGameSummary
 ---@field id? number
 ---@field name? string
 ---@field platform? string
 ---@field releaseYear? number
 
----@class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
+---@class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch
 ---@field page? number
 ---@field page_size? number
 
@@ -66,14 +66,14 @@
 ---@class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
 ---@field id number
 
----@class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+---@class MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 ---@field category? string
 ---@field gameName? string
 ---@field hitPoints? number
 ---@field id? number
 ---@field name? string
 
----@class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
+---@class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch
 ---@field category? string
 ---@field game_id? number
 ---@field page? number
@@ -90,7 +90,7 @@
 ---@class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch
 ---@field id number
 
----@class MoogleApiWebFeaturesMonstersSearchSearchMonster
+---@class MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 ---@field category? string
 ---@field description? string
 ---@field gameName? string
@@ -98,7 +98,7 @@
 ---@field id? number
 ---@field name? string
 
----@class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
+---@class MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatch
 ---@field category? string
 ---@field game_id? number
 ---@field query string

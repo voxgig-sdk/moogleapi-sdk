@@ -94,38 +94,43 @@ module MoogleapiConfig
           "content-type" => "application/json",
         },
         "entity" => {
-          "moogle_api_web_features_characters_get_all_get_all_character" => {},
+          "moogle_api_web_features_characters_get_all_character_summary" => {},
           "moogle_api_web_features_characters_get_get_character" => {},
-          "moogle_api_web_features_characters_search_search_character" => {},
-          "moogle_api_web_features_games_get_all_get_all_game" => {},
+          "moogle_api_web_features_characters_search_search_result" => {},
+          "moogle_api_web_features_games_get_all_game_summary" => {},
           "moogle_api_web_features_games_get_get_game" => {},
-          "moogle_api_web_features_monsters_get_all_get_all_monster" => {},
+          "moogle_api_web_features_monsters_get_all_monster_summary" => {},
           "moogle_api_web_features_monsters_get_get_monster" => {},
-          "moogle_api_web_features_monsters_search_search_monster" => {},
+          "moogle_api_web_features_monsters_search_monster_search_result" => {},
         },
       },
       "entity" => {
-        "moogle_api_web_features_characters_get_all_get_all_character" => {
+        "moogle_api_web_features_characters_get_all_character_summary" => {
           "fields" => [
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "imageUrl",
+              "title" => "Image Url",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "role",
+              "title" => "Role",
               "type" => "`$STRING`",
             },
           ],
@@ -133,37 +138,13 @@ module MoogleapiConfig
             "field" => "id",
             "name" => "id",
           },
-          "name" => "moogle_api_web_features_characters_get_all_get_all_character",
+          "name" => "moogle_api_web_features_characters_get_all_character_summary",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "game_id",
-                        "orig" => "game_id",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "page_size",
-                        "orig" => "page_size",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/characters",
@@ -175,6 +156,39 @@ module MoogleapiConfig
                       "lit" => "characters",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "characters",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.items`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "game_id",
+                        "orig" => "game_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "page_size",
+                        "orig" => "page_size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "game_id",
@@ -182,14 +196,6 @@ module MoogleapiConfig
                       "page_size",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.items`",
-                  },
-                  "parts" => [
-                    "api",
-                    "characters",
-                  ],
                 },
               ],
             },
@@ -202,39 +208,48 @@ module MoogleapiConfig
           "fields" => [
             {
               "name" => "affiliation",
+              "title" => "Affiliation",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "hometown",
+              "title" => "Hometown",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "imageUrl",
+              "title" => "Image Url",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "race",
+              "title" => "Race",
               "type" => "`$STRING`",
             },
             {
               "name" => "role",
+              "title" => "Role",
               "type" => "`$STRING`",
             },
           ],
@@ -249,17 +264,6 @@ module MoogleapiConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/characters/{id}",
@@ -274,20 +278,32 @@ module MoogleapiConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "characters",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -296,31 +312,37 @@ module MoogleapiConfig
             "ancestors" => [],
           },
         },
-        "moogle_api_web_features_characters_search_search_character" => {
+        "moogle_api_web_features_characters_search_search_result" => {
           "fields" => [
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "imageUrl",
+              "title" => "Image Url",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "role",
+              "title" => "Role",
               "type" => "`$STRING`",
             },
           ],
@@ -328,30 +350,13 @@ module MoogleapiConfig
             "field" => "id",
             "name" => "id",
           },
-          "name" => "moogle_api_web_features_characters_search_search_character",
+          "name" => "moogle_api_web_features_characters_search_search_result",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "game_id",
-                        "orig" => "game_id",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "query",
-                        "orig" => "query",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/characters/search",
@@ -366,21 +371,39 @@ module MoogleapiConfig
                       "lit" => "search",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "characters",
+                    "search",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.results`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "game_id",
+                        "orig" => "game_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "query",
+                        "orig" => "query",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "game_id",
                       "query",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.results`",
-                  },
-                  "parts" => [
-                    "api",
-                    "characters",
-                    "search",
-                  ],
                 },
               ],
             },
@@ -389,56 +412,42 @@ module MoogleapiConfig
             "ancestors" => [],
           },
         },
-        "moogle_api_web_features_games_get_all_get_all_game" => {
+        "moogle_api_web_features_games_get_all_game_summary" => {
           "fields" => [
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "platform",
+              "title" => "Platform",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "releaseYear",
+              "title" => "Release Year",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
           ],
           "id" => {
             "field" => "id",
             "name" => "id",
           },
-          "name" => "moogle_api_web_features_games_get_all_get_all_game",
+          "name" => "moogle_api_web_features_games_get_all_game_summary",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "page_size",
-                        "orig" => "page_size",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/games",
@@ -450,20 +459,39 @@ module MoogleapiConfig
                       "lit" => "games",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "games",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.items`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "page_size",
+                        "orig" => "page_size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "page",
                       "page_size",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.items`",
-                  },
-                  "parts" => [
-                    "api",
-                    "games",
-                  ],
                 },
               ],
             },
@@ -475,36 +503,43 @@ module MoogleapiConfig
         "moogle_api_web_features_games_get_get_game" => {
           "fields" => [
             {
-              "format" => "int32",
               "name" => "characterCount",
+              "title" => "Character Count",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
-              "format" => "int32",
               "name" => "monsterCount",
+              "title" => "Monster Count",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "platform",
+              "title" => "Platform",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "releaseYear",
+              "title" => "Release Year",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
           ],
           "id" => {
@@ -518,17 +553,6 @@ module MoogleapiConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/games/{id}",
@@ -543,20 +567,32 @@ module MoogleapiConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "games",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -565,28 +601,33 @@ module MoogleapiConfig
             "ancestors" => [],
           },
         },
-        "moogle_api_web_features_monsters_get_all_get_all_monster" => {
+        "moogle_api_web_features_monsters_get_all_monster_summary" => {
           "fields" => [
             {
               "name" => "category",
+              "title" => "Category",
               "type" => "`$STRING`",
             },
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "hitPoints",
+              "title" => "Hit Points",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
           ],
@@ -594,43 +635,13 @@ module MoogleapiConfig
             "field" => "id",
             "name" => "id",
           },
-          "name" => "moogle_api_web_features_monsters_get_all_get_all_monster",
+          "name" => "moogle_api_web_features_monsters_get_all_monster_summary",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "game_id",
-                        "orig" => "game_id",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "page_size",
-                        "orig" => "page_size",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/monsters",
@@ -642,6 +653,45 @@ module MoogleapiConfig
                       "lit" => "monsters",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "monsters",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.items`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "game_id",
+                        "orig" => "game_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "page_size",
+                        "orig" => "page_size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "category",
@@ -650,14 +700,6 @@ module MoogleapiConfig
                       "page_size",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.items`",
-                  },
-                  "parts" => [
-                    "api",
-                    "monsters",
-                  ],
                 },
               ],
             },
@@ -670,28 +712,34 @@ module MoogleapiConfig
           "fields" => [
             {
               "name" => "category",
+              "title" => "Category",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "hitPoints",
+              "title" => "Hit Points",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
           ],
@@ -706,17 +754,6 @@ module MoogleapiConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/monsters/{id}",
@@ -731,20 +768,32 @@ module MoogleapiConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "monsters",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -753,32 +802,38 @@ module MoogleapiConfig
             "ancestors" => [],
           },
         },
-        "moogle_api_web_features_monsters_search_search_monster" => {
+        "moogle_api_web_features_monsters_search_monster_search_result" => {
           "fields" => [
             {
               "name" => "category",
+              "title" => "Category",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "gameName",
+              "title" => "Game Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "int32",
               "name" => "hitPoints",
+              "title" => "Hit Points",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
-              "format" => "int32",
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "format" => "int32",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
           ],
@@ -786,36 +841,13 @@ module MoogleapiConfig
             "field" => "id",
             "name" => "id",
           },
-          "name" => "moogle_api_web_features_monsters_search_search_monster",
+          "name" => "moogle_api_web_features_monsters_search_monster_search_result",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "game_id",
-                        "orig" => "game_id",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "query",
-                        "orig" => "query",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/monsters/search",
@@ -830,6 +862,39 @@ module MoogleapiConfig
                       "lit" => "search",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "monsters",
+                    "search",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.results`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "game_id",
+                        "orig" => "game_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "query",
+                        "orig" => "query",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "category",
@@ -837,15 +902,6 @@ module MoogleapiConfig
                       "query",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.results`",
-                  },
-                  "parts" => [
-                    "api",
-                    "monsters",
-                    "search",
-                  ],
                 },
               ],
             },

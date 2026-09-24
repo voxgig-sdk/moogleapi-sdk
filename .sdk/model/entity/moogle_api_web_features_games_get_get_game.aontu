@@ -1,0 +1,112 @@
+# Entity: moogle_api_web_features_games_get_get_game
+
+main: kit: entity: moogle_api_web_features_games_get_get_game: {
+
+  alias: field: {}
+
+  fields: {
+    characterCount: {
+      fo: "int32"
+      h: "Character Count"
+      n: "characterCount"
+      r: false
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    monsterCount: {
+      fo: "int32"
+      h: "Monster Count"
+      n: "monsterCount"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      t: "`$STRING`"
+    }
+    releaseYear: {
+      fo: "int32"
+      h: "Release Year"
+      n: "releaseYear"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "moogle_api_web_features_games_get_get_game"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/games/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/games/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "games"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

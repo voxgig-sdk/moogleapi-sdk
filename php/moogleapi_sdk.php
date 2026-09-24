@@ -341,21 +341,21 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_characters_get_all_get_all_character = null;
+    private $_moogle_api_web_features_characters_get_all_character_summary = null;
 
-    // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_get_all_get_all_character()
+    // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_get_all_character_summary()
     // resolves here too.
-    public function MoogleApiWebFeaturesCharactersGetAllGetAllCharacter($data = null)
+    public function MoogleApiWebFeaturesCharactersGetAllCharacterSummary($data = null)
     {
-        require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_all_get_all_character_entity.php';
+        require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_all_character_summary_entity.php';
         if ($data === null) {
-            if ($this->_moogle_api_web_features_characters_get_all_get_all_character === null) {
-                $this->_moogle_api_web_features_characters_get_all_get_all_character = new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity($this, null);
+            if ($this->_moogle_api_web_features_characters_get_all_character_summary === null) {
+                $this->_moogle_api_web_features_characters_get_all_character_summary = new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity($this, null);
             }
-            return $this->_moogle_api_web_features_characters_get_all_get_all_character;
+            return $this->_moogle_api_web_features_characters_get_all_character_summary;
         }
-        return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity($this, $data);
+        return new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity($this, $data);
     }
 
 
@@ -377,39 +377,39 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_characters_search_search_character = null;
+    private $_moogle_api_web_features_characters_search_search_result = null;
 
-    // Canonical facade: $client->MoogleApiWebFeaturesCharactersSearchSearchCharacter()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_search_search_character()
+    // Canonical facade: $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_search_search_result()
     // resolves here too.
-    public function MoogleApiWebFeaturesCharactersSearchSearchCharacter($data = null)
+    public function MoogleApiWebFeaturesCharactersSearchSearchResult($data = null)
     {
-        require_once __DIR__ . '/entity/moogle_api_web_features_characters_search_search_character_entity.php';
+        require_once __DIR__ . '/entity/moogle_api_web_features_characters_search_search_result_entity.php';
         if ($data === null) {
-            if ($this->_moogle_api_web_features_characters_search_search_character === null) {
-                $this->_moogle_api_web_features_characters_search_search_character = new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity($this, null);
+            if ($this->_moogle_api_web_features_characters_search_search_result === null) {
+                $this->_moogle_api_web_features_characters_search_search_result = new MoogleApiWebFeaturesCharactersSearchSearchResultEntity($this, null);
             }
-            return $this->_moogle_api_web_features_characters_search_search_character;
+            return $this->_moogle_api_web_features_characters_search_search_result;
         }
-        return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity($this, $data);
+        return new MoogleApiWebFeaturesCharactersSearchSearchResultEntity($this, $data);
     }
 
 
-    private $_moogle_api_web_features_games_get_all_get_all_game = null;
+    private $_moogle_api_web_features_games_get_all_game_summary = null;
 
-    // Canonical facade: $client->MoogleApiWebFeaturesGamesGetAllGetAllGame()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_games_get_all_get_all_game()
+    // Canonical facade: $client->MoogleApiWebFeaturesGamesGetAllGameSummary()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_games_get_all_game_summary()
     // resolves here too.
-    public function MoogleApiWebFeaturesGamesGetAllGetAllGame($data = null)
+    public function MoogleApiWebFeaturesGamesGetAllGameSummary($data = null)
     {
-        require_once __DIR__ . '/entity/moogle_api_web_features_games_get_all_get_all_game_entity.php';
+        require_once __DIR__ . '/entity/moogle_api_web_features_games_get_all_game_summary_entity.php';
         if ($data === null) {
-            if ($this->_moogle_api_web_features_games_get_all_get_all_game === null) {
-                $this->_moogle_api_web_features_games_get_all_get_all_game = new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity($this, null);
+            if ($this->_moogle_api_web_features_games_get_all_game_summary === null) {
+                $this->_moogle_api_web_features_games_get_all_game_summary = new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity($this, null);
             }
-            return $this->_moogle_api_web_features_games_get_all_get_all_game;
+            return $this->_moogle_api_web_features_games_get_all_game_summary;
         }
-        return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity($this, $data);
+        return new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity($this, $data);
     }
 
 
@@ -431,21 +431,21 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_monsters_get_all_get_all_monster = null;
+    private $_moogle_api_web_features_monsters_get_all_monster_summary = null;
 
-    // Canonical facade: $client->MoogleApiWebFeaturesMonstersGetAllGetAllMonster()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_get_all_get_all_monster()
+    // Canonical facade: $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_get_all_monster_summary()
     // resolves here too.
-    public function MoogleApiWebFeaturesMonstersGetAllGetAllMonster($data = null)
+    public function MoogleApiWebFeaturesMonstersGetAllMonsterSummary($data = null)
     {
-        require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity.php';
+        require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_all_monster_summary_entity.php';
         if ($data === null) {
-            if ($this->_moogle_api_web_features_monsters_get_all_get_all_monster === null) {
-                $this->_moogle_api_web_features_monsters_get_all_get_all_monster = new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity($this, null);
+            if ($this->_moogle_api_web_features_monsters_get_all_monster_summary === null) {
+                $this->_moogle_api_web_features_monsters_get_all_monster_summary = new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity($this, null);
             }
-            return $this->_moogle_api_web_features_monsters_get_all_get_all_monster;
+            return $this->_moogle_api_web_features_monsters_get_all_monster_summary;
         }
-        return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity($this, $data);
+        return new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity($this, $data);
     }
 
 
@@ -467,21 +467,21 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_monsters_search_search_monster = null;
+    private $_moogle_api_web_features_monsters_search_monster_search_result = null;
 
-    // Canonical facade: $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_search_search_monster()
+    // Canonical facade: $client->MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_search_monster_search_result()
     // resolves here too.
-    public function MoogleApiWebFeaturesMonstersSearchSearchMonster($data = null)
+    public function MoogleApiWebFeaturesMonstersSearchMonsterSearchResult($data = null)
     {
-        require_once __DIR__ . '/entity/moogle_api_web_features_monsters_search_search_monster_entity.php';
+        require_once __DIR__ . '/entity/moogle_api_web_features_monsters_search_monster_search_result_entity.php';
         if ($data === null) {
-            if ($this->_moogle_api_web_features_monsters_search_search_monster === null) {
-                $this->_moogle_api_web_features_monsters_search_search_monster = new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity($this, null);
+            if ($this->_moogle_api_web_features_monsters_search_monster_search_result === null) {
+                $this->_moogle_api_web_features_monsters_search_monster_search_result = new MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity($this, null);
             }
-            return $this->_moogle_api_web_features_monsters_search_search_monster;
+            return $this->_moogle_api_web_features_monsters_search_monster_search_result;
         }
-        return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity($this, $data);
+        return new MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity($this, $data);
     }
 
 

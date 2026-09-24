@@ -1,0 +1,120 @@
+# Entity: moogle_api_web_features_monsters_search_monster_search_result
+
+main: kit: entity: moogle_api_web_features_monsters_search_monster_search_result: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    gameName: {
+      h: "Game Name"
+      n: "gameName"
+      r: false
+      t: "`$STRING`"
+    }
+    hitPoints: {
+      fo: "int32"
+      h: "Hit Points"
+      n: "hitPoints"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "moogle_api_web_features_monsters_search_monster_search_result"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/monsters/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "game_id"
+                or: "game_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "query"
+                or: "query"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/monsters/search"
+          q: {
+            exist: [
+              "category"
+              "game_id"
+              "query"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "monsters"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

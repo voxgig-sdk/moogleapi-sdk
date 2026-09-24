@@ -2,14 +2,14 @@
 // Moogleapi Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.MoogleapiSDK = exports.MoogleapiEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
-const MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity");
+const MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity");
 const MoogleApiWebFeaturesCharactersGetGetCharacterEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersGetGetCharacterEntity");
-const MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity");
-const MoogleApiWebFeaturesGamesGetAllGetAllGameEntity_1 = require("./entity/MoogleApiWebFeaturesGamesGetAllGetAllGameEntity");
+const MoogleApiWebFeaturesCharactersSearchSearchResultEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersSearchSearchResultEntity");
+const MoogleApiWebFeaturesGamesGetAllGameSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesGamesGetAllGameSummaryEntity");
 const MoogleApiWebFeaturesGamesGetGetGameEntity_1 = require("./entity/MoogleApiWebFeaturesGamesGetGetGameEntity");
-const MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity");
+const MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity");
 const MoogleApiWebFeaturesMonstersGetGetMonsterEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity");
-const MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity");
+const MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
 Object.defineProperty(exports, "config", { enumerable: true, get: function () { return Config_1.config; } });
@@ -91,7 +91,6 @@ class MoogleapiSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -105,14 +104,12 @@ class MoogleapiSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -187,18 +184,6 @@ class MoogleapiSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -232,12 +217,12 @@ class MoogleapiSDK {
         }
         return res;
     }
-    // Entity access: `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().load({ id })`.
+    // Entity access: `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()` / `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(entopts) {
+    MoogleApiWebFeaturesCharactersGetAllCharacterSummary(entopts) {
         const self = this;
-        return new MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity_1.MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity(self, entopts);
+        return new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity_1.MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity(self, entopts);
     }
     // Entity access: `client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -246,19 +231,19 @@ class MoogleapiSDK {
         const self = this;
         return new MoogleApiWebFeaturesCharactersGetGetCharacterEntity_1.MoogleApiWebFeaturesCharactersGetGetCharacterEntity(self, entopts);
     }
-    // Entity access: `client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list()` / `client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().load({ id })`.
+    // Entity access: `client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()` / `client.MoogleApiWebFeaturesCharactersSearchSearchResult().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesCharactersSearchSearchCharacter(entopts) {
+    MoogleApiWebFeaturesCharactersSearchSearchResult(entopts) {
         const self = this;
-        return new MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity_1.MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity(self, entopts);
+        return new MoogleApiWebFeaturesCharactersSearchSearchResultEntity_1.MoogleApiWebFeaturesCharactersSearchSearchResultEntity(self, entopts);
     }
-    // Entity access: `client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()` / `client.MoogleApiWebFeaturesGamesGetAllGetAllGame().load({ id })`.
+    // Entity access: `client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()` / `client.MoogleApiWebFeaturesGamesGetAllGameSummary().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesGamesGetAllGetAllGame(entopts) {
+    MoogleApiWebFeaturesGamesGetAllGameSummary(entopts) {
         const self = this;
-        return new MoogleApiWebFeaturesGamesGetAllGetAllGameEntity_1.MoogleApiWebFeaturesGamesGetAllGetAllGameEntity(self, entopts);
+        return new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity_1.MoogleApiWebFeaturesGamesGetAllGameSummaryEntity(self, entopts);
     }
     // Entity access: `client.MoogleApiWebFeaturesGamesGetGetGame().list()` / `client.MoogleApiWebFeaturesGamesGetGetGame().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -267,12 +252,12 @@ class MoogleapiSDK {
         const self = this;
         return new MoogleApiWebFeaturesGamesGetGetGameEntity_1.MoogleApiWebFeaturesGamesGetGetGameEntity(self, entopts);
     }
-    // Entity access: `client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()` / `client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().load({ id })`.
+    // Entity access: `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()` / `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesMonstersGetAllGetAllMonster(entopts) {
+    MoogleApiWebFeaturesMonstersGetAllMonsterSummary(entopts) {
         const self = this;
-        return new MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity_1.MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity(self, entopts);
+        return new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity_1.MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity(self, entopts);
     }
     // Entity access: `client.MoogleApiWebFeaturesMonstersGetGetMonster().list()` / `client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -281,12 +266,12 @@ class MoogleapiSDK {
         const self = this;
         return new MoogleApiWebFeaturesMonstersGetGetMonsterEntity_1.MoogleApiWebFeaturesMonstersGetGetMonsterEntity(self, entopts);
     }
-    // Entity access: `client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()` / `client.MoogleApiWebFeaturesMonstersSearchSearchMonster().load({ id })`.
+    // Entity access: `client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list()` / `client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesMonstersSearchSearchMonster(entopts) {
+    MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(entopts) {
         const self = this;
-        return new MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity_1.MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity(self, entopts);
+        return new MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity_1.MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity(self, entopts);
     }
     static test(testoptsarg, sdkoptsarg) {
         const struct = stdutil.struct;

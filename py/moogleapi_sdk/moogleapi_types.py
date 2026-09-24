@@ -1,7 +1,7 @@
 # Typed models for the Moogleapi SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -16,7 +16,7 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(TypedDict, total=False):
+class MoogleApiWebFeaturesCharactersGetAllCharacterSummary(TypedDict, total=False):
     gameName: str
     id: int
     imageUrl: str
@@ -24,7 +24,7 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(TypedDict, total=False
     role: str
 
 
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch(TypedDict, total=False):
+class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch(TypedDict, total=False):
     game_id: int
     page: int
     page_size: int
@@ -46,7 +46,7 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch(TypedDict):
     id: int
 
 
-class MoogleApiWebFeaturesCharactersSearchSearchCharacter(TypedDict, total=False):
+class MoogleApiWebFeaturesCharactersSearchSearchResult(TypedDict, total=False):
     description: str
     gameName: str
     id: int
@@ -55,22 +55,22 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacter(TypedDict, total=False
     role: str
 
 
-class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatchRequired(TypedDict):
+class MoogleApiWebFeaturesCharactersSearchSearchResultListMatchRequired(TypedDict):
     query: str
 
 
-class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch(MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatchRequired, total=False):
+class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch(MoogleApiWebFeaturesCharactersSearchSearchResultListMatchRequired, total=False):
     game_id: int
 
 
-class MoogleApiWebFeaturesGamesGetAllGetAllGame(TypedDict, total=False):
+class MoogleApiWebFeaturesGamesGetAllGameSummary(TypedDict, total=False):
     id: int
     name: str
     platform: str
     releaseYear: int
 
 
-class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch(TypedDict, total=False):
+class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch(TypedDict, total=False):
     page: int
     page_size: int
 
@@ -89,7 +89,7 @@ class MoogleApiWebFeaturesGamesGetGetGameLoadMatch(TypedDict):
     id: int
 
 
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonster(TypedDict, total=False):
+class MoogleApiWebFeaturesMonstersGetAllMonsterSummary(TypedDict, total=False):
     category: str
     gameName: str
     hitPoints: int
@@ -97,7 +97,7 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonster(TypedDict, total=False):
     name: str
 
 
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch(TypedDict, total=False):
+class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch(TypedDict, total=False):
     category: str
     game_id: int
     page: int
@@ -117,7 +117,7 @@ class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch(TypedDict):
     id: int
 
 
-class MoogleApiWebFeaturesMonstersSearchSearchMonster(TypedDict, total=False):
+class MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(TypedDict, total=False):
     category: str
     description: str
     gameName: str
@@ -126,10 +126,10 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonster(TypedDict, total=False):
     name: str
 
 
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatchRequired(TypedDict):
+class MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatchRequired(TypedDict):
     query: str
 
 
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch(MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatchRequired, total=False):
+class MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatch(MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatchRequired, total=False):
     category: str
     game_id: int

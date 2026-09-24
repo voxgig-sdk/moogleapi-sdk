@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -27,7 +27,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new MoogleapiSDK()
-const items = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const items = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -46,23 +46,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = MoogleapiSDK.test({
   entity: {
-    moogle_api_web_features_monsters_search_search_monster: {
+    moogle_api_web_features_characters_search_search_result: {
       test01: { id: 'test01' },
     },
   },
 })
-const moogleapiwebfeaturesmonsterssearchsearchmonsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-// moogleapiwebfeaturesmonsterssearchsearchmonsters is an array of MoogleApiWebFeaturesMonstersSearchSearchMonster entities, populated with mock data
-// — call moogleapiwebfeaturesmonsterssearchsearchmonsters[0].data() for the record itself
-console.log(moogleapiwebfeaturesmonsterssearchsearchmonsters)
+const moogleapiwebfeaturescharacterssearchsearchresults = await client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+// moogleapiwebfeaturescharacterssearchsearchresults is an array of MoogleApiWebFeaturesCharactersSearchSearchResult entities, populated with mock data
+// — call moogleapiwebfeaturescharacterssearchsearchresults[0].data() for the record itself
+console.log(moogleapiwebfeaturescharacterssearchsearchresults)
 ```
 
 ### Python
 
 ```python
 client = MoogleapiSDK.test()
-moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-print(moogleapiwebfeaturesmonsterssearchsearchmonsters)
+moogleapiwebfeaturescharacterssearchsearchresults = client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+print(moogleapiwebfeaturescharacterssearchsearchresults)
 ```
 
 ### PHP
@@ -70,16 +70,16 @@ print(moogleapiwebfeaturesmonsterssearchsearchmonsters)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = MoogleapiSDK::test([
-    "entity" => ["moogleapiwebfeaturesmonsterssearchsearchmonster" => ["test01" => []]],
+    "entity" => ["moogleapiwebfeaturescharacterssearchsearchresult" => ["test01" => []]],
 ]);
-$moogleapiwebfeaturesmonsterssearchsearchmonsters = $client->MoogleApiWebFeaturesMonstersSearchSearchMonster()->list();
+$moogleapiwebfeaturescharacterssearchsearchresults = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(
+result, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(
     nil, nil,
 )
 ```
@@ -89,16 +89,16 @@ result, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = MoogleapiSDK.test({
-  "entity" => { "moogleapiwebfeaturesmonsterssearchsearchmonster" => { "test01" => {} } },
+  "entity" => { "moogleapiwebfeaturescharacterssearchsearchresult" => { "test01" => {} } },
 })
-moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list()
+moogleapiwebfeaturescharacterssearchsearchresults = client.MoogleApiWebFeaturesCharactersSearchSearchResult.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
+local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
 ```
 
 ## Packages
@@ -125,10 +125,10 @@ const client = new MoogleapiSDK({
   apikey: process.env.MOOGLEAPI_APIKEY,
 })
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity[] — .data() for the record)
-const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-for (const moogleapiwebfeaturescharactersgetallgetallcharacter of moogleapiwebfeaturescharactersgetallgetallcharacters) {
-  console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
+// List all moogleapiwebfeaturescharactersgetallcharactersummarys (returns MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity[] — .data() for the record)
+const moogleapiwebfeaturescharactersgetallcharactersummarys = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
+for (const moogleapiwebfeaturescharactersgetallcharactersummary of moogleapiwebfeaturescharactersgetallcharactersummarys) {
+  console.log(moogleapiwebfeaturescharactersgetallcharactersummary)
 }
 ```
 
@@ -170,14 +170,14 @@ The API exposes 8 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **MoogleApiWebFeaturesCharactersGetAllGetAllCharacter** | The MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity (list). | `/api/characters` |
+| **MoogleApiWebFeaturesCharactersGetAllCharacterSummary** | The MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity (list). | `/api/characters` |
 | **MoogleApiWebFeaturesCharactersGetGetCharacter** | The MoogleApiWebFeaturesCharactersGetGetCharacter entity (load). | `/api/characters/{id}` |
-| **MoogleApiWebFeaturesCharactersSearchSearchCharacter** | The MoogleApiWebFeaturesCharactersSearchSearchCharacter entity (list). | `/api/characters/search` |
-| **MoogleApiWebFeaturesGamesGetAllGetAllGame** | The MoogleApiWebFeaturesGamesGetAllGetAllGame entity (list). | `/api/games` |
+| **MoogleApiWebFeaturesCharactersSearchSearchResult** | The MoogleApiWebFeaturesCharactersSearchSearchResult entity (list). | `/api/characters/search` |
+| **MoogleApiWebFeaturesGamesGetAllGameSummary** | The MoogleApiWebFeaturesGamesGetAllGameSummary entity (list). | `/api/games` |
 | **MoogleApiWebFeaturesGamesGetGetGame** | The MoogleApiWebFeaturesGamesGetGetGame entity (load). | `/api/games/{id}` |
-| **MoogleApiWebFeaturesMonstersGetAllGetAllMonster** | The MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity (list). | `/api/monsters` |
+| **MoogleApiWebFeaturesMonstersGetAllMonsterSummary** | The MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity (list). | `/api/monsters` |
 | **MoogleApiWebFeaturesMonstersGetGetMonster** | The MoogleApiWebFeaturesMonstersGetGetMonster entity (load). | `/api/monsters/{id}` |
-| **MoogleApiWebFeaturesMonstersSearchSearchMonster** | The MoogleApiWebFeaturesMonstersSearchSearchMonster entity (list). | `/api/monsters/search` |
+| **MoogleApiWebFeaturesMonstersSearchMonsterSearchResult** | The MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity (list). | `/api/monsters/search` |
 
 The operations available across these entities are **load**, **list** — see each entity's
 own list above for exactly which it supports.
@@ -194,10 +194,10 @@ client = MoogleapiSDK({
     "apikey": os.environ.get("MOOGLEAPI_APIKEY"),
 })
 
-# List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns a list, raises on error)
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-for moogleapiwebfeaturescharactersgetallgetallcharacter in moogleapiwebfeaturescharactersgetallgetallcharacters:
-    print(moogleapiwebfeaturescharactersgetallgetallcharacter)
+# List all moogleapiwebfeaturescharactersgetallcharactersummarys (returns a list, raises on error)
+moogleapiwebfeaturescharactersgetallcharactersummarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
+for moogleapiwebfeaturescharactersgetallcharactersummary in moogleapiwebfeaturescharactersgetallcharactersummarys:
+    print(moogleapiwebfeaturescharactersgetallcharactersummary)
 ```
 
 ### PHP
@@ -210,9 +210,9 @@ $client = new MoogleapiSDK([
     "apikey" => getenv("MOOGLEAPI_APIKEY"),
 ]);
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns an array; throws on error)
-$moogleapiwebfeaturescharactersgetallgetallcharacters = $client->MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()->list();
-print_r(array_map(fn($item) => $item->data_get(), $moogleapiwebfeaturescharactersgetallgetallcharacters));
+// List all moogleapiwebfeaturescharactersgetallcharactersummarys (returns an array; throws on error)
+$moogleapiwebfeaturescharactersgetallcharactersummarys = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list();
+print_r(array_map(fn($item) => $item->data_get(), $moogleapiwebfeaturescharactersgetallcharactersummarys));
 ```
 
 ### Golang
@@ -224,12 +224,12 @@ client := sdk.NewMoogleapiSDK(map[string]any{
     "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
 })
 
-// List all moogleapiwebfeaturescharactersgetallgetallcharacters
-moogleApiWebFeaturesCharactersGetAllGetAllCharacters, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+// List all moogleapiwebfeaturescharactersgetallcharactersummarys
+moogleApiWebFeaturesCharactersGetAllCharacterSummarys, err := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersGetAllGetAllCharacters)
+fmt.Println(moogleApiWebFeaturesCharactersGetAllCharacterSummarys)
 ```
 
 ### Ruby
@@ -241,9 +241,9 @@ client = MoogleapiSDK.new({
   "apikey" => ENV["MOOGLEAPI_APIKEY"],
 })
 
-# List all moogleapiwebfeaturescharactersgetallgetallcharacters (returns an Array; raises on error)
-moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list
-puts moogleapiwebfeaturescharactersgetallgetallcharacters
+# List all moogleapiwebfeaturescharactersgetallcharactersummarys (returns an Array; raises on error)
+moogleapiwebfeaturescharactersgetallcharactersummarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list
+puts moogleapiwebfeaturescharactersgetallcharactersummarys
 ```
 
 ### Lua
@@ -255,9 +255,9 @@ local client = sdk.new({
   apikey = os.getenv("MOOGLEAPI_APIKEY"),
 })
 
--- List all moogleapiwebfeaturescharactersgetallgetallcharacters
-local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
-print(moogleapiwebfeaturescharactersgetallgetallcharacters)
+-- List all moogleapiwebfeaturescharactersgetallcharactersummarys
+local moogleapiwebfeaturescharactersgetallcharactersummarys, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
+print(moogleapiwebfeaturescharactersgetallcharactersummarys)
 ```
 
 ## Direct and prepare

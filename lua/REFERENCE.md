@@ -41,37 +41,37 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data)`
+#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data)`
 
-Create a new `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesCharactersSearchSearchCharacter(data)`
+#### `MoogleApiWebFeaturesCharactersSearchSearchResult(data)`
 
-Create a new `MoogleApiWebFeaturesCharactersSearchSearchCharacter` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGetAllGame(data)`
+#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data)`
 
-Create a new `MoogleApiWebFeaturesGamesGetAllGetAllGame` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesGamesGetAllGameSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesGamesGetGetGame(data)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data)`
+#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data)`
 
-Create a new `MoogleApiWebFeaturesMonstersGetAllGetAllMonster` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data)`
 
 Create a new `MoogleApiWebFeaturesMonstersGetGetMonster` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersSearchSearchMonster(data)`
+#### `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data)`
 
-Create a new `MoogleApiWebFeaturesMonstersSearchSearchMonster` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -109,10 +109,10 @@ same parameters as `direct()`.
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
+## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
 
 ```lua
-local moogle_api_web_features_characters_get_all_get_all_character = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
+local moogle_api_web_features_characters_get_all_character_summary = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)
 ```
 
 ### Fields
@@ -132,7 +132,7 @@ local moogle_api_web_features_characters_get_all_get_all_character = client:Moog
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
+local results, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
 ```
 
 ### Common Methods
@@ -155,7 +155,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -225,10 +225,10 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
+## MoogleApiWebFeaturesCharactersSearchSearchResultEntity
 
 ```lua
-local moogle_api_web_features_characters_search_search_character = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
+local moogle_api_web_features_characters_search_search_result = client:MoogleApiWebFeaturesCharactersSearchSearchResult(nil)
 ```
 
 ### Fields
@@ -249,7 +249,7 @@ local moogle_api_web_features_characters_search_search_character = client:Moogle
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter():list()
+local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
 ```
 
 ### Common Methods
@@ -272,7 +272,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -282,10 +282,10 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
+## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
 
 ```lua
-local moogle_api_web_features_games_get_all_get_all_game = client:MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)
+local moogle_api_web_features_games_get_all_game_summary = client:MoogleApiWebFeaturesGamesGetAllGameSummary(nil)
 ```
 
 ### Fields
@@ -304,7 +304,7 @@ local moogle_api_web_features_games_get_all_get_all_game = client:MoogleApiWebFe
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesGamesGetAllGetAllGame():list()
+local results, err = client:MoogleApiWebFeaturesGamesGetAllGameSummary():list()
 ```
 
 ### Common Methods
@@ -327,7 +327,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MoogleApiWebFeaturesGamesGetAllGetAllGameEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -395,10 +395,10 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
+## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
 
 ```lua
-local moogle_api_web_features_monsters_get_all_get_all_monster = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)
+local moogle_api_web_features_monsters_get_all_monster_summary = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)
 ```
 
 ### Fields
@@ -418,7 +418,7 @@ local moogle_api_web_features_monsters_get_all_get_all_monster = client:MoogleAp
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster():list()
+local results, err = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():list()
 ```
 
 ### Common Methods
@@ -441,7 +441,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -508,10 +508,10 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
+## MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity
 
 ```lua
-local moogle_api_web_features_monsters_search_search_monster = client:MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
+local moogle_api_web_features_monsters_search_monster_search_result = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil)
 ```
 
 ### Fields
@@ -532,7 +532,7 @@ local moogle_api_web_features_monsters_search_search_monster = client:MoogleApiW
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
+local results, err = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():list()
 ```
 
 ### Common Methods
@@ -555,7 +555,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

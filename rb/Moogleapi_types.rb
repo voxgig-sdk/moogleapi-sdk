@@ -2,13 +2,13 @@
 
 # Typed models for the Moogleapi SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
 
-# MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity data model.
+# MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity data model.
 #
 # @!attribute [rw] gameName
 #   @return [String, nil]
@@ -24,7 +24,7 @@
 #
 # @!attribute [rw] role
 #   @return [String, nil]
-MoogleApiWebFeaturesCharactersGetAllGetAllCharacter = Struct.new(
+MoogleApiWebFeaturesCharactersGetAllCharacterSummary = Struct.new(
   :gameName,
   :id,
   :imageUrl,
@@ -33,7 +33,7 @@ MoogleApiWebFeaturesCharactersGetAllGetAllCharacter = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list.
+# Request payload for MoogleApiWebFeaturesCharactersGetAllCharacterSummary#list.
 #
 # @!attribute [rw] game_id
 #   @return [Integer, nil]
@@ -43,7 +43,7 @@ MoogleApiWebFeaturesCharactersGetAllGetAllCharacter = Struct.new(
 #
 # @!attribute [rw] page_size
 #   @return [Integer, nil]
-MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch = Struct.new(
+MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch = Struct.new(
   :game_id,
   :page,
   :page_size,
@@ -100,7 +100,7 @@ MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# MoogleApiWebFeaturesCharactersSearchSearchCharacter entity data model.
+# MoogleApiWebFeaturesCharactersSearchSearchResult entity data model.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -119,7 +119,7 @@ MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch = Struct.new(
 #
 # @!attribute [rw] role
 #   @return [String, nil]
-MoogleApiWebFeaturesCharactersSearchSearchCharacter = Struct.new(
+MoogleApiWebFeaturesCharactersSearchSearchResult = Struct.new(
   :description,
   :gameName,
   :id,
@@ -129,20 +129,20 @@ MoogleApiWebFeaturesCharactersSearchSearchCharacter = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list.
+# Request payload for MoogleApiWebFeaturesCharactersSearchSearchResult#list.
 #
 # @!attribute [rw] game_id
 #   @return [Integer, nil]
 #
 # @!attribute [rw] query
 #   @return [String]
-MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch = Struct.new(
+MoogleApiWebFeaturesCharactersSearchSearchResultListMatch = Struct.new(
   :game_id,
   :query,
   keyword_init: true
 )
 
-# MoogleApiWebFeaturesGamesGetAllGetAllGame entity data model.
+# MoogleApiWebFeaturesGamesGetAllGameSummary entity data model.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -155,7 +155,7 @@ MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch = Struct.new(
 #
 # @!attribute [rw] releaseYear
 #   @return [Integer, nil]
-MoogleApiWebFeaturesGamesGetAllGetAllGame = Struct.new(
+MoogleApiWebFeaturesGamesGetAllGameSummary = Struct.new(
   :id,
   :name,
   :platform,
@@ -163,14 +163,14 @@ MoogleApiWebFeaturesGamesGetAllGetAllGame = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame#list.
+# Request payload for MoogleApiWebFeaturesGamesGetAllGameSummary#list.
 #
 # @!attribute [rw] page
 #   @return [Integer, nil]
 #
 # @!attribute [rw] page_size
 #   @return [Integer, nil]
-MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch = Struct.new(
+MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch = Struct.new(
   :page,
   :page_size,
   keyword_init: true
@@ -218,7 +218,7 @@ MoogleApiWebFeaturesGamesGetGetGameLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity data model.
+# MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity data model.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -234,7 +234,7 @@ MoogleApiWebFeaturesGamesGetGetGameLoadMatch = Struct.new(
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-MoogleApiWebFeaturesMonstersGetAllGetAllMonster = Struct.new(
+MoogleApiWebFeaturesMonstersGetAllMonsterSummary = Struct.new(
   :category,
   :gameName,
   :hitPoints,
@@ -243,7 +243,7 @@ MoogleApiWebFeaturesMonstersGetAllGetAllMonster = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list.
+# Request payload for MoogleApiWebFeaturesMonstersGetAllMonsterSummary#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -256,7 +256,7 @@ MoogleApiWebFeaturesMonstersGetAllGetAllMonster = Struct.new(
 #
 # @!attribute [rw] page_size
 #   @return [Integer, nil]
-MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch = Struct.new(
+MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch = Struct.new(
   :category,
   :game_id,
   :page,
@@ -302,7 +302,7 @@ MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# MoogleApiWebFeaturesMonstersSearchSearchMonster entity data model.
+# MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity data model.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -321,7 +321,7 @@ MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch = Struct.new(
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-MoogleApiWebFeaturesMonstersSearchSearchMonster = Struct.new(
+MoogleApiWebFeaturesMonstersSearchMonsterSearchResult = Struct.new(
   :category,
   :description,
   :gameName,
@@ -331,7 +331,7 @@ MoogleApiWebFeaturesMonstersSearchSearchMonster = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster#list.
+# Request payload for MoogleApiWebFeaturesMonstersSearchMonsterSearchResult#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -341,7 +341,7 @@ MoogleApiWebFeaturesMonstersSearchSearchMonster = Struct.new(
 #
 # @!attribute [rw] query
 #   @return [String]
-MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch = Struct.new(
+MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatch = Struct.new(
   :category,
   :game_id,
   :query,

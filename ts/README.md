@@ -5,7 +5,7 @@
 The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()` — each with a small set of operations (`list`, `load`)
+`client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each with a small set of operations (`list`, `load`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -35,17 +35,17 @@ const client = new MoogleapiSDK({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallgetallcharacter records
+### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
 
-`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetAllGetAllCharacter ENTITIES — every operation
+`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetAllCharacterSummary ENTITIES — every operation
 resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const moogleapiwebfeaturescharactersgetallgetallcharacters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const moogleapiwebfeaturescharactersgetallcharactersummarys = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
 
-for (const moogleapiwebfeaturescharactersgetallgetallcharacter of moogleapiwebfeaturescharactersgetallgetallcharacters) {
-  console.log(moogleapiwebfeaturescharactersgetallgetallcharacter)
+for (const moogleapiwebfeaturescharactersgetallcharactersummary of moogleapiwebfeaturescharactersgetallcharactersummarys) {
+  console.log(moogleapiwebfeaturescharactersgetallcharactersummary)
 }
 ```
 
@@ -56,8 +56,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const moogleapiwebfeaturesmonsterssearchsearchmonsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-  console.log(moogleapiwebfeaturesmonsterssearchsearchmonsters)
+  const moogleapiwebfeaturescharacterssearchsearchresults = await client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+  console.log(moogleapiwebfeaturescharacterssearchsearchresults)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -123,10 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MoogleapiSDK.test()
 
-const moogleapiwebfeaturesmonsterssearchsearchmonster = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-// moogleapiwebfeaturesmonsterssearchsearchmonster is the entity, populated with mock response data
-// — call moogleapiwebfeaturesmonsterssearchsearchmonster.data() for the record itself
-console.log(moogleapiwebfeaturesmonsterssearchsearchmonster)
+const moogleapiwebfeaturescharacterssearchsearchresult = await client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+// moogleapiwebfeaturescharacterssearchsearchresult is the entity, populated with mock response data
+// — call moogleapiwebfeaturescharacterssearchsearchresult.data() for the record itself
+console.log(moogleapiwebfeaturescharacterssearchsearchresult)
 ```
 
 You can also use the instance method:
@@ -141,7 +141,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
+const entity = client.MoogleApiWebFeaturesCharactersSearchSearchResult()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -228,14 +228,14 @@ new MoogleapiSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data?)` | `MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity instance. |
+| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data?)` | `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter(data?)` | `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
-| `MoogleApiWebFeaturesCharactersSearchSearchCharacter(data?)` | `MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchCharacter entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGetAllGame(data?)` | `MoogleApiWebFeaturesGamesGetAllGetAllGameEntity` | Create a MoogleApiWebFeaturesGamesGetAllGetAllGame entity instance. |
+| `MoogleApiWebFeaturesCharactersSearchSearchResult(data?)` | `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
+| `MoogleApiWebFeaturesGamesGetAllGameSummary(data?)` | `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame(data?)` | `MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data?)` | `MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data?)` | `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster(data?)` | `MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
-| `MoogleApiWebFeaturesMonstersSearchSearchMonster(data?)` | `MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity` | Create a MoogleApiWebFeaturesMonstersSearchSearchMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data?)` | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 | `tester(testopts?, sdkopts?)` | `MoogleapiSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -303,7 +303,7 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
 | Field | Description |
 | --- | --- |
@@ -335,7 +335,7 @@ Operations: load.
 
 API path: `/api/characters/{id}`
 
-#### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+#### MoogleApiWebFeaturesCharactersSearchSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -350,7 +350,7 @@ Operations: list.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGetAllGame
+#### MoogleApiWebFeaturesGamesGetAllGameSummary
 
 | Field | Description |
 | --- | --- |
@@ -379,7 +379,7 @@ Operations: load.
 
 API path: `/api/games/{id}`
 
-#### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
 | Field | Description |
 | --- | --- |
@@ -408,7 +408,7 @@ Operations: load.
 
 API path: `/api/monsters/{id}`
 
-#### MoogleApiWebFeaturesMonstersSearchSearchMonster
+#### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -428,9 +428,9 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
-Create an instance: `const moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()`
+Create an instance: `const moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()`
 
 #### Operations
 
@@ -451,7 +451,7 @@ Create an instance: `const moogle_api_web_features_characters_get_all_get_all_ch
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_get_all_get_all_characters = await client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+const moogle_api_web_features_characters_get_all_character_summarys = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
 ```
 
 
@@ -486,9 +486,9 @@ const moogle_api_web_features_characters_get_get_character = await client.Moogle
 ```
 
 
-### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+### MoogleApiWebFeaturesCharactersSearchSearchResult
 
-Create an instance: `const moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()`
+Create an instance: `const moogle_api_web_features_characters_search_search_result = client.MoogleApiWebFeaturesCharactersSearchSearchResult()`
 
 #### Operations
 
@@ -510,13 +510,13 @@ Create an instance: `const moogle_api_web_features_characters_search_search_char
 #### Example: List
 
 ```ts
-const moogle_api_web_features_characters_search_search_characters = await client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({ query: "example" })
+const moogle_api_web_features_characters_search_search_results = await client.MoogleApiWebFeaturesCharactersSearchSearchResult().list({ query: "example" })
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGetAllGame
+### MoogleApiWebFeaturesGamesGetAllGameSummary
 
-Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()`
+Create an instance: `const moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()`
 
 #### Operations
 
@@ -536,7 +536,7 @@ Create an instance: `const moogle_api_web_features_games_get_all_get_all_game = 
 #### Example: List
 
 ```ts
-const moogle_api_web_features_games_get_all_get_all_games = await client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
+const moogle_api_web_features_games_get_all_game_summarys = await client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
 ```
 
 
@@ -569,9 +569,9 @@ const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeat
 ```
 
 
-### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
-Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()`
+Create an instance: `const moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()`
 
 #### Operations
 
@@ -592,7 +592,7 @@ Create an instance: `const moogle_api_web_features_monsters_get_all_get_all_mons
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_get_all_get_all_monsters = await client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
+const moogle_api_web_features_monsters_get_all_monster_summarys = await client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
 ```
 
 
@@ -624,9 +624,9 @@ const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiW
 ```
 
 
-### MoogleApiWebFeaturesMonstersSearchSearchMonster
+### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
-Create an instance: `const moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()`
+Create an instance: `const moogle_api_web_features_monsters_search_monster_search_result = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()`
 
 #### Operations
 
@@ -648,7 +648,7 @@ Create an instance: `const moogle_api_web_features_monsters_search_search_monste
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_search_search_monsters = await client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({ query: "example" })
+const moogle_api_web_features_monsters_search_monster_search_results = await client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list({ query: "example" })
 ```
 
 ## Features
@@ -805,11 +805,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
-await moogleapiwebfeaturesmonsterssearchsearchmonster.list()
+const moogleapiwebfeaturescharacterssearchsearchresult = client.MoogleApiWebFeaturesCharactersSearchSearchResult()
+await moogleapiwebfeaturescharacterssearchsearchresult.list()
 
-// moogleapiwebfeaturesmonsterssearchsearchmonster.data() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last `list`
-// moogleapiwebfeaturesmonsterssearchsearchmonster.match() returns the last match criteria
+// moogleapiwebfeaturescharacterssearchsearchresult.data() now returns the moogleapiwebfeaturescharacterssearchsearchresult data from the last `list`
+// moogleapiwebfeaturescharacterssearchsearchresult.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

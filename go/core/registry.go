@@ -12,19 +12,19 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewMoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
+var NewMoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
 var NewMoogleApiWebFeaturesCharactersGetGetCharacterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
-var NewMoogleApiWebFeaturesCharactersSearchSearchCharacterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
+var NewMoogleApiWebFeaturesCharactersSearchSearchResultEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
-var NewMoogleApiWebFeaturesGamesGetAllGetAllGameEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
+var NewMoogleApiWebFeaturesGamesGetAllGameSummaryEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
 var NewMoogleApiWebFeaturesGamesGetGetGameEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
-var NewMoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
+var NewMoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
 var NewMoogleApiWebFeaturesMonstersGetGetMonsterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 
-var NewMoogleApiWebFeaturesMonstersSearchSearchMonsterEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
+var NewMoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntityFunc func(client *MoogleapiSDK, entopts map[string]any) MoogleapiEntity
 

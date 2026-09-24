@@ -1,0 +1,32 @@
+# BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow:
+{
+  entity: "moogle_api_web_features_characters_get_get_character",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
+  step: [
+    {
+      i: {
+        ref: "moogle_api_web_features_characters_get_get_character_ref01",
+        srcdatavar: "moogle_api_web_features_characters_get_get_character_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "moogle_api_web_features_characters_get_get_character01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-moogle_api_web_features_characters_get_get_character_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow"
+}

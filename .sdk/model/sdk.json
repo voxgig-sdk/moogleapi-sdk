@@ -24,97 +24,175 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
-        "moogle_api_web_features_characters_get_all_get_all_character": {
+        "moogle_api_web_features_characters_get_all_character_summary": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "imageUrl",
-              "req": false,
-              "type": "`$STRING`"
+            "imageUrl": {
+              "a": true,
+              "h": "Image Url",
+              "n": "imageUrl",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "role",
-              "req": false,
-              "type": "`$STRING`"
+            "role": {
+              "a": true,
+              "h": "Role",
+              "n": "role",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "moogle_api_web_features_characters_get_all_get_all_character",
+          "name": "moogle_api_web_features_characters_get_all_character_summary",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/characters",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "game_id",
-                        "orig": "game_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "game_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/characters",
-                    "json": "{\"operationId\":\"GetAllCharacters\",\"parameters\":[{\"in\":\"query\",\"name\":\"gameId\",\"schema\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"pageSize\",\"schema\":{\"default\":20,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"items\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"gameName\":{\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"imageUrl\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"role\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"format\":\"int32\",\"type\":\"integer\"},\"pageSize\":{\"format\":\"int32\",\"type\":\"integer\"},\"totalCount\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/characters",
+                  "q": {
+                    "exist": [
+                      "game_id",
+                      "page",
+                      "page_size"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/characters",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -122,14 +200,7 @@
                       "lit": "characters"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "game_id",
-                      "page",
-                      "page_size"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.items`"
                   }
@@ -146,63 +217,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "affiliation",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "affiliation": {
+              "a": true,
+              "h": "Affiliation",
+              "n": "affiliation",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "hometown",
-              "req": false,
-              "type": "`$STRING`"
+            "hometown": {
+              "a": true,
+              "h": "Hometown",
+              "n": "hometown",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "imageUrl",
-              "req": false,
-              "type": "`$STRING`"
+            "imageUrl": {
+              "a": true,
+              "h": "Image Url",
+              "n": "imageUrl",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "race",
-              "req": false,
-              "type": "`$STRING`"
+            "race": {
+              "a": true,
+              "h": "Race",
+              "n": "race",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "role",
-              "req": false,
-              "type": "`$STRING`"
+            "role": {
+              "a": true,
+              "h": "Role",
+              "n": "role",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -214,29 +294,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/characters/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/characters/{id}",
-                    "json": "{\"operationId\":\"GetCharacter\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int32\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"affiliation\":{\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"hometown\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"imageUrl\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"race\":{\"nullable\":true,\"type\":\"string\"},\"role\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/characters/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/characters/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -247,12 +332,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -264,92 +344,104 @@
             "ancestors": []
           }
         },
-        "moogle_api_web_features_characters_search_search_character": {
+        "moogle_api_web_features_characters_search_search_result": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "imageUrl",
-              "req": false,
-              "type": "`$STRING`"
+            "imageUrl": {
+              "a": true,
+              "h": "Image Url",
+              "n": "imageUrl",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "role",
-              "req": false,
-              "type": "`$STRING`"
+            "role": {
+              "a": true,
+              "h": "Role",
+              "n": "role",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "moogle_api_web_features_characters_search_search_character",
+          "name": "moogle_api_web_features_characters_search_search_result",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/characters/search",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "game_id",
-                        "orig": "game_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "game_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "query",
-                        "orig": "query",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "query",
+                        "or": "query",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/characters/search",
-                    "json": "{\"operationId\":\"SearchCharacters\",\"parameters\":[{\"in\":\"query\",\"name\":\"query\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"gameId\",\"schema\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"results\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"imageUrl\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"role\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"400\":{\"content\":{\"application/problem+json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"detail\":{\"nullable\":true,\"type\":\"string\"},\"errors\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"default\":\"Error or field name\",\"type\":\"string\"},\"reason\":{\"default\":\"Error reason\",\"type\":\"string\"},\"severity\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"instance\":{\"default\":\"/api/route\",\"type\":\"string\"},\"status\":{\"default\":400,\"format\":\"int32\",\"type\":\"integer\"},\"title\":{\"default\":\"One or more validation errors occurred.\",\"type\":\"string\"},\"traceId\":{\"default\":\"0HMPNHL0JHL76:00000001\",\"type\":\"string\"},\"type\":{\"default\":\"https://www.rfc-editor.org/rfc/rfc7231#section-6.5.1\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad Request\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/characters/search",
+                  "q": {
+                    "exist": [
+                      "game_id",
+                      "query"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/characters/search",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -360,13 +452,7 @@
                       "lit": "search"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "game_id",
-                      "query"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -378,83 +464,93 @@
             "ancestors": []
           }
         },
-        "moogle_api_web_features_games_get_all_get_all_game": {
+        "moogle_api_web_features_games_get_all_game_summary": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "platform",
-              "req": false,
-              "type": "`$STRING`"
+            "platform": {
+              "a": true,
+              "h": "Platform",
+              "n": "platform",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "releaseYear",
-              "req": false,
-              "type": "`$INTEGER`"
+            "releaseYear": {
+              "a": true,
+              "fo": "int32",
+              "h": "Release Year",
+              "n": "releaseYear",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "moogle_api_web_features_games_get_all_get_all_game",
+          "name": "moogle_api_web_features_games_get_all_game_summary",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/games",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/games",
-                    "json": "{\"operationId\":\"GetAllGames\",\"parameters\":[{\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"pageSize\",\"schema\":{\"default\":20,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"items\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"releaseYear\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"format\":\"int32\",\"type\":\"integer\"},\"pageSize\":{\"format\":\"int32\",\"type\":\"integer\"},\"totalCount\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/games",
+                  "q": {
+                    "exist": [
+                      "page",
+                      "page_size"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/games",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -462,13 +558,7 @@
                       "lit": "games"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "page",
-                      "page_size"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.items`"
                   }
@@ -485,54 +575,61 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "int32",
-              "name": "characterCount",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "characterCount": {
+              "a": true,
+              "fo": "int32",
+              "h": "Character Count",
+              "n": "characterCount",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "monsterCount",
-              "req": false,
-              "type": "`$INTEGER`"
+            "monsterCount": {
+              "a": true,
+              "fo": "int32",
+              "h": "Monster Count",
+              "n": "monsterCount",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "platform",
-              "req": false,
-              "type": "`$STRING`"
+            "platform": {
+              "a": true,
+              "h": "Platform",
+              "n": "platform",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "releaseYear",
-              "req": false,
-              "type": "`$INTEGER`"
+            "releaseYear": {
+              "a": true,
+              "fo": "int32",
+              "h": "Release Year",
+              "n": "releaseYear",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -544,29 +641,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/games/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/games/{id}",
-                    "json": "{\"operationId\":\"GetGame\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int32\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"characterCount\":{\"format\":\"int32\",\"type\":\"integer\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"monsterCount\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"releaseYear\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/games/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/games/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -577,12 +679,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -594,113 +691,109 @@
             "ancestors": []
           }
         },
-        "moogle_api_web_features_monsters_get_all_get_all_monster": {
+        "moogle_api_web_features_monsters_get_all_monster_summary": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "hitPoints",
-              "req": false,
-              "type": "`$INTEGER`"
+            "hitPoints": {
+              "a": true,
+              "fo": "int32",
+              "h": "Hit Points",
+              "n": "hitPoints",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "moogle_api_web_features_monsters_get_all_get_all_monster",
+          "name": "moogle_api_web_features_monsters_get_all_monster_summary",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/monsters",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "game_id",
-                        "orig": "game_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "game_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/monsters",
-                    "json": "{\"operationId\":\"GetAllMonsters\",\"parameters\":[{\"in\":\"query\",\"name\":\"gameId\",\"schema\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"category\",\"schema\":{\"nullable\":true,\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"pageSize\",\"schema\":{\"default\":20,\"format\":\"int32\",\"nullable\":false,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"items\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"category\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"hitPoints\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"page\":{\"format\":\"int32\",\"type\":\"integer\"},\"pageSize\":{\"format\":\"int32\",\"type\":\"integer\"},\"totalCount\":{\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/monsters",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "monsters"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/monsters",
+                  "q": {
                     "exist": [
                       "category",
                       "game_id",
@@ -708,7 +801,16 @@
                       "page_size"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "monsters"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.items`"
                   }
@@ -725,46 +827,52 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "hitPoints",
-              "req": false,
-              "type": "`$INTEGER`"
+            "hitPoints": {
+              "a": true,
+              "fo": "int32",
+              "h": "Hit Points",
+              "n": "hitPoints",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -776,29 +884,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/monsters/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/monsters/{id}",
-                    "json": "{\"operationId\":\"GetMonster\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int32\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"category\":{\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"hitPoints\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/monsters/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/monsters/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -809,12 +922,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -826,101 +934,114 @@
             "ancestors": []
           }
         },
-        "moogle_api_web_features_monsters_search_search_monster": {
+        "moogle_api_web_features_monsters_search_monster_search_result": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gameName",
-              "req": false,
-              "type": "`$STRING`"
+            "gameName": {
+              "a": true,
+              "h": "Game Name",
+              "n": "gameName",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "hitPoints",
-              "req": false,
-              "type": "`$INTEGER`"
+            "hitPoints": {
+              "a": true,
+              "fo": "int32",
+              "h": "Hit Points",
+              "n": "hitPoints",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "int32",
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "fo": "int32",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "moogle_api_web_features_monsters_search_search_monster",
+          "name": "moogle_api_web_features_monsters_search_monster_search_result",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/monsters/search",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "game_id",
-                        "orig": "game_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "game_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "query",
-                        "orig": "query",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "query",
+                        "or": "query",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/monsters/search",
-                    "json": "{\"operationId\":\"SearchMonsters\",\"parameters\":[{\"in\":\"query\",\"name\":\"query\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"gameId\",\"schema\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"category\",\"schema\":{\"nullable\":true,\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"results\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"category\":{\"nullable\":true,\"type\":\"string\"},\"description\":{\"nullable\":true,\"type\":\"string\"},\"gameName\":{\"type\":\"string\"},\"hitPoints\":{\"format\":\"int32\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"400\":{\"content\":{\"application/problem+json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"detail\":{\"nullable\":true,\"type\":\"string\"},\"errors\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"nullable\":true,\"type\":\"string\"},\"name\":{\"default\":\"Error or field name\",\"type\":\"string\"},\"reason\":{\"default\":\"Error reason\",\"type\":\"string\"},\"severity\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"instance\":{\"default\":\"/api/route\",\"type\":\"string\"},\"status\":{\"default\":400,\"format\":\"int32\",\"type\":\"integer\"},\"title\":{\"default\":\"One or more validation errors occurred.\",\"type\":\"string\"},\"traceId\":{\"default\":\"0HMPNHL0JHL76:00000001\",\"type\":\"string\"},\"type\":{\"default\":\"https://www.rfc-editor.org/rfc/rfc7231#section-6.5.1\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad Request\"}},\"securitySchemes\":{\"JWTBearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"Enter a JWT token to authorize the requests...\",\"scheme\":\"Bearer\",\"type\":\"http\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/monsters/search",
+                  "q": {
+                    "exist": [
+                      "category",
+                      "game_id",
+                      "query"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/monsters/search",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -931,14 +1052,7 @@
                       "lit": "search"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "category",
-                      "game_id",
-                      "query"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -1358,26 +1472,26 @@
         }
       },
       "flow": {
-        "BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow": {
+        "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_characters_get_all_get_all_character",
-          "key$": "BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow",
+          "entity": "moogle_api_web_features_characters_get_all_character_summary",
+          "key$": "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesCharactersGetAllGetAllCharacterFlow",
+          "name": "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_characters_get_all_get_all_character_ref01"
+                    "ref": "moogle_api_web_features_characters_get_all_character_summary_ref01"
                   }
                 }
               ]
@@ -1393,19 +1507,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "moogle_api_web_features_characters_get_get_character_ref01",
                 "srcdatavar": "moogle_api_web_features_characters_get_get_character_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "moogle_api_web_features_characters_get_get_character01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1416,52 +1530,52 @@
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow": {
+        "BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_characters_search_search_character",
-          "key$": "BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow",
+          "entity": "moogle_api_web_features_characters_search_search_result",
+          "key$": "BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesCharactersSearchSearchCharacterFlow",
+          "name": "BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_characters_search_search_character_ref01"
+                    "ref": "moogle_api_web_features_characters_search_search_result_ref01"
                   }
                 }
               ]
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow": {
+        "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_games_get_all_get_all_game",
-          "key$": "BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow",
+          "entity": "moogle_api_web_features_games_get_all_game_summary",
+          "key$": "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesGamesGetAllGetAllGameFlow",
+          "name": "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_games_get_all_get_all_game_ref01"
+                    "ref": "moogle_api_web_features_games_get_all_game_summary_ref01"
                   }
                 }
               ]
@@ -1477,19 +1591,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "moogle_api_web_features_games_get_get_game_ref01",
                 "srcdatavar": "moogle_api_web_features_games_get_get_game_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "moogle_api_web_features_games_get_get_game01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1500,26 +1614,26 @@
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow": {
+        "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_monsters_get_all_get_all_monster",
-          "key$": "BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow",
+          "entity": "moogle_api_web_features_monsters_get_all_monster_summary",
+          "key$": "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesMonstersGetAllGetAllMonsterFlow",
+          "name": "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_monsters_get_all_get_all_monster_ref01"
+                    "ref": "moogle_api_web_features_monsters_get_all_monster_summary_ref01"
                   }
                 }
               ]
@@ -1535,19 +1649,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "moogle_api_web_features_monsters_get_get_monster_ref01",
                 "srcdatavar": "moogle_api_web_features_monsters_get_get_monster_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "moogle_api_web_features_monsters_get_get_monster01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1558,26 +1672,26 @@
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow": {
+        "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_monsters_search_search_monster",
-          "key$": "BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow",
+          "entity": "moogle_api_web_features_monsters_search_monster_search_result",
+          "key$": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesMonstersSearchSearchMonsterFlow",
+          "name": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_monsters_search_search_monster_ref01"
+                    "ref": "moogle_api_web_features_monsters_search_monster_search_result_ref01"
                   }
                 }
               ]

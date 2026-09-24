@@ -9,18 +9,6 @@ import (
 	sdk "github.com/voxgig-sdk/moogleapi-sdk/go"
 )
 
-// registerSDKWords installs three native boru words bound to the SDK:
-// list / load / update. Each is declared with two overloads matching
-// the signature  [query?:(Node or Scalar) entity:atom]:
-//
-//   [entity:Atom]            — no query (e.g. `list book`)
-//   [query:Any entity:Atom]  — query is any Node or Scalar (e.g.
-//                              `load {id:1} book`, `load 1 book`)
-//
-// The entity slot is /q-quoted so a bareword `book` parses as the
-// Atom "book" rather than dispatching as an undefined word. Both
-// overloads are all-forward (BarrierAllForward), so args are collected
-// from the tokens following the word.
 func registerSDKWords(r *eng.Registry, client *sdk.MoogleapiSDK) {
 	for _, op := range []string{"list", "load", "update"} {
 		op := op
@@ -89,22 +77,22 @@ func runOp(client *sdk.MoogleapiSDK, op string, query *eng.Value, entityAtom eng
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.MoogleapiSDK, name string) (sdk.MoogleapiEntity, error) {
 	switch strings.ToLower(name) {
-	case "moogle_api_web_features_characters_get_all_get_all_character":
-		return client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil), nil
+	case "moogle_api_web_features_characters_get_all_character_summary":
+		return client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil), nil
 	case "moogle_api_web_features_characters_get_get_character":
 		return client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil), nil
-	case "moogle_api_web_features_characters_search_search_character":
-		return client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil), nil
-	case "moogle_api_web_features_games_get_all_get_all_game":
-		return client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil), nil
+	case "moogle_api_web_features_characters_search_search_result":
+		return client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil), nil
+	case "moogle_api_web_features_games_get_all_game_summary":
+		return client.MoogleApiWebFeaturesGamesGetAllGameSummary(nil), nil
 	case "moogle_api_web_features_games_get_get_game":
 		return client.MoogleApiWebFeaturesGamesGetGetGame(nil), nil
-	case "moogle_api_web_features_monsters_get_all_get_all_monster":
-		return client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil), nil
+	case "moogle_api_web_features_monsters_get_all_monster_summary":
+		return client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil), nil
 	case "moogle_api_web_features_monsters_get_get_monster":
 		return client.MoogleApiWebFeaturesMonstersGetGetMonster(nil), nil
-	case "moogle_api_web_features_monsters_search_search_monster":
-		return client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil), nil
+	case "moogle_api_web_features_monsters_search_monster_search_result":
+		return client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

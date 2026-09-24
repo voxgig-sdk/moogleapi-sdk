@@ -1,0 +1,121 @@
+# Entity: moogle_api_web_features_monsters_get_all_monster_summary
+
+main: kit: entity: moogle_api_web_features_monsters_get_all_monster_summary: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    gameName: {
+      h: "Game Name"
+      n: "gameName"
+      r: false
+      t: "`$STRING`"
+    }
+    hitPoints: {
+      fo: "int32"
+      h: "Hit Points"
+      n: "hitPoints"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "moogle_api_web_features_monsters_get_all_monster_summary"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/monsters"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "game_id"
+                or: "game_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/monsters"
+          q: {
+            exist: [
+              "category"
+              "game_id"
+              "page"
+              "page_size"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "monsters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -27,8 +27,8 @@ Tool-call arguments (what an agent sends):
 
 ```jsonc
 // moogleapi_list: first page of records
-{ "entity": "moogle_api_web_features_characters_get_all_get_all_character" }
-{ "entity": "moogle_api_web_features_characters_get_all_get_all_character", "query": { } }
+{ "entity": "moogle_api_web_features_characters_get_all_character_summary" }
+{ "entity": "moogle_api_web_features_characters_get_all_character_summary", "query": { } }
 
 // moogleapi_load: one record by id
 { "entity": "moogle_api_web_features_characters_get_get_character", "query": { "id": 1 } }
@@ -60,8 +60,8 @@ Tool-call arguments (what an agent sends):
    ```
 
 4. **Restart Claude Code.** The `moogleapi_list` and `moogleapi_load` tools now appear
-   in new sessions. Ask the agent to *"list moogle_api_web_features_characters_get_all_get_all_character using moogleapi"*
-   and it calls `moogleapi_list` with `{"entity":"moogle_api_web_features_characters_get_all_get_all_character"}`.
+   in new sessions. Ask the agent to *"list moogle_api_web_features_characters_get_all_character_summary using moogleapi"*
+   and it calls `moogleapi_list` with `{"entity":"moogle_api_web_features_characters_get_all_character_summary"}`.
 
 ## How-to guides
 
@@ -92,7 +92,7 @@ Args: `entity` (required), `query` (optional filter map). Returns the first
 page of records as JSON:
 
 ```jsonc
-{ "entity": "moogle_api_web_features_characters_get_all_get_all_character" }
+{ "entity": "moogle_api_web_features_characters_get_all_character_summary" }
 ```
 
 ### Call the `moogleapi_load` tool
@@ -153,7 +153,7 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 The 8 entities valid as the `entity` argument:
 
-moogle_api_web_features_characters_get_all_get_all_character | moogle_api_web_features_characters_get_get_character | moogle_api_web_features_characters_search_search_character | moogle_api_web_features_games_get_all_get_all_game | moogle_api_web_features_games_get_get_game | moogle_api_web_features_monsters_get_all_get_all_monster | moogle_api_web_features_monsters_get_get_monster | moogle_api_web_features_monsters_search_search_monster
+moogle_api_web_features_characters_get_all_character_summary | moogle_api_web_features_characters_get_get_character | moogle_api_web_features_characters_search_search_result | moogle_api_web_features_games_get_all_game_summary | moogle_api_web_features_games_get_get_game | moogle_api_web_features_monsters_get_all_monster_summary | moogle_api_web_features_monsters_get_get_monster | moogle_api_web_features_monsters_search_monster_search_result
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

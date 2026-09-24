@@ -349,15 +349,15 @@ end
 
 
 
--- Idiomatic facade: client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list() / client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():load({ id = ... })
+-- Idiomatic facade: client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list() / client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MoogleapiSDK:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data)
-  local EntityMod = require("entity.moogle_api_web_features_characters_get_all_get_all_character_entity")
+function MoogleapiSDK:MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data)
+  local EntityMod = require("entity.moogle_api_web_features_characters_get_all_character_summary_entity")
   if data == nil then
-    if self._moogle_api_web_features_characters_get_all_get_all_character == nil then
-      self._moogle_api_web_features_characters_get_all_get_all_character = EntityMod.new(self, nil)
+    if self._moogle_api_web_features_characters_get_all_character_summary == nil then
+      self._moogle_api_web_features_characters_get_all_character_summary = EntityMod.new(self, nil)
     end
-    return self._moogle_api_web_features_characters_get_all_get_all_character
+    return self._moogle_api_web_features_characters_get_all_character_summary
   end
   return EntityMod.new(self, data)
 end
@@ -377,29 +377,29 @@ function MoogleapiSDK:MoogleApiWebFeaturesCharactersGetGetCharacter(data)
 end
 
 
--- Idiomatic facade: client:MoogleApiWebFeaturesCharactersSearchSearchCharacter():list() / client:MoogleApiWebFeaturesCharactersSearchSearchCharacter():load({ id = ... })
+-- Idiomatic facade: client:MoogleApiWebFeaturesCharactersSearchSearchResult():list() / client:MoogleApiWebFeaturesCharactersSearchSearchResult():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MoogleapiSDK:MoogleApiWebFeaturesCharactersSearchSearchCharacter(data)
-  local EntityMod = require("entity.moogle_api_web_features_characters_search_search_character_entity")
+function MoogleapiSDK:MoogleApiWebFeaturesCharactersSearchSearchResult(data)
+  local EntityMod = require("entity.moogle_api_web_features_characters_search_search_result_entity")
   if data == nil then
-    if self._moogle_api_web_features_characters_search_search_character == nil then
-      self._moogle_api_web_features_characters_search_search_character = EntityMod.new(self, nil)
+    if self._moogle_api_web_features_characters_search_search_result == nil then
+      self._moogle_api_web_features_characters_search_search_result = EntityMod.new(self, nil)
     end
-    return self._moogle_api_web_features_characters_search_search_character
+    return self._moogle_api_web_features_characters_search_search_result
   end
   return EntityMod.new(self, data)
 end
 
 
--- Idiomatic facade: client:MoogleApiWebFeaturesGamesGetAllGetAllGame():list() / client:MoogleApiWebFeaturesGamesGetAllGetAllGame():load({ id = ... })
+-- Idiomatic facade: client:MoogleApiWebFeaturesGamesGetAllGameSummary():list() / client:MoogleApiWebFeaturesGamesGetAllGameSummary():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MoogleapiSDK:MoogleApiWebFeaturesGamesGetAllGetAllGame(data)
-  local EntityMod = require("entity.moogle_api_web_features_games_get_all_get_all_game_entity")
+function MoogleapiSDK:MoogleApiWebFeaturesGamesGetAllGameSummary(data)
+  local EntityMod = require("entity.moogle_api_web_features_games_get_all_game_summary_entity")
   if data == nil then
-    if self._moogle_api_web_features_games_get_all_get_all_game == nil then
-      self._moogle_api_web_features_games_get_all_get_all_game = EntityMod.new(self, nil)
+    if self._moogle_api_web_features_games_get_all_game_summary == nil then
+      self._moogle_api_web_features_games_get_all_game_summary = EntityMod.new(self, nil)
     end
-    return self._moogle_api_web_features_games_get_all_get_all_game
+    return self._moogle_api_web_features_games_get_all_game_summary
   end
   return EntityMod.new(self, data)
 end
@@ -419,15 +419,15 @@ function MoogleapiSDK:MoogleApiWebFeaturesGamesGetGetGame(data)
 end
 
 
--- Idiomatic facade: client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster():list() / client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster():load({ id = ... })
+-- Idiomatic facade: client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():list() / client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MoogleapiSDK:MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data)
-  local EntityMod = require("entity.moogle_api_web_features_monsters_get_all_get_all_monster_entity")
+function MoogleapiSDK:MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data)
+  local EntityMod = require("entity.moogle_api_web_features_monsters_get_all_monster_summary_entity")
   if data == nil then
-    if self._moogle_api_web_features_monsters_get_all_get_all_monster == nil then
-      self._moogle_api_web_features_monsters_get_all_get_all_monster = EntityMod.new(self, nil)
+    if self._moogle_api_web_features_monsters_get_all_monster_summary == nil then
+      self._moogle_api_web_features_monsters_get_all_monster_summary = EntityMod.new(self, nil)
     end
-    return self._moogle_api_web_features_monsters_get_all_get_all_monster
+    return self._moogle_api_web_features_monsters_get_all_monster_summary
   end
   return EntityMod.new(self, data)
 end
@@ -447,15 +447,15 @@ function MoogleapiSDK:MoogleApiWebFeaturesMonstersGetGetMonster(data)
 end
 
 
--- Idiomatic facade: client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list() / client:MoogleApiWebFeaturesMonstersSearchSearchMonster():load({ id = ... })
+-- Idiomatic facade: client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():list() / client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MoogleapiSDK:MoogleApiWebFeaturesMonstersSearchSearchMonster(data)
-  local EntityMod = require("entity.moogle_api_web_features_monsters_search_search_monster_entity")
+function MoogleapiSDK:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data)
+  local EntityMod = require("entity.moogle_api_web_features_monsters_search_monster_search_result_entity")
   if data == nil then
-    if self._moogle_api_web_features_monsters_search_search_monster == nil then
-      self._moogle_api_web_features_monsters_search_search_monster = EntityMod.new(self, nil)
+    if self._moogle_api_web_features_monsters_search_monster_search_result == nil then
+      self._moogle_api_web_features_monsters_search_monster_search_result = EntityMod.new(self, nil)
     end
-    return self._moogle_api_web_features_monsters_search_search_monster
+    return self._moogle_api_web_features_monsters_search_monster_search_result
   end
   return EntityMod.new(self, data)
 end

@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "moogle_api_web_features_characters_search_search_result": {
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT00": {
+        "description": "s3c",
+        "gameName": "s3d",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT00",
+        "imageUrl": "s3f",
+        "name": "s40",
+        "role": "s41"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT01": {
+        "description": "s78",
+        "gameName": "s79",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT01",
+        "imageUrl": "s7b",
+        "name": "s7c",
+        "role": "s7d"
+      },
+      "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT02": {
+        "description": "sb4",
+        "gameName": "sb5",
+        "id": "MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT02",
+        "imageUrl": "sb7",
+        "name": "sb8",
+        "role": "sb9"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_characters_search_search_result": {
+      "moogle_api_web_features_characters_search_search_result_ref01": {
+        "description": "sf0",
+        "gameName": "sf1",
+        "imageUrl": "sf3",
+        "name": "sf4",
+        "role": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/characters/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

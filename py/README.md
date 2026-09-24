@@ -4,7 +4,7 @@
 
 The Python SDK for the Moogleapi API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each
 carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -39,16 +39,16 @@ client = MoogleapiSDK({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallgetallcharacter records
+### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
 
 `list()` returns a `list` of records (each a `dict`) and raises on
 error — iterate it directly.
 
 ```python
 try:
-    moogleapiwebfeaturescharactersgetallgetallcharacters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
-    for moogleapiwebfeaturescharactersgetallgetallcharacter in moogleapiwebfeaturescharactersgetallgetallcharacters:
-        print(moogleapiwebfeaturescharactersgetallgetallcharacter)
+    moogleapiwebfeaturescharactersgetallcharactersummarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
+    for moogleapiwebfeaturescharactersgetallcharactersummary in moogleapiwebfeaturescharactersgetallcharactersummarys:
+        print(moogleapiwebfeaturescharactersgetallcharactersummary)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -60,8 +60,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    moogleapiwebfeaturesmonsterssearchsearchmonsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-    print(moogleapiwebfeaturesmonsterssearchsearchmonsters)
+    moogleapiwebfeaturescharacterssearchsearchresults = client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+    print(moogleapiwebfeaturescharacterssearchsearchresults)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -129,8 +129,8 @@ client = MoogleapiSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list()
-# moogleapiwebfeaturesmonsterssearchsearchmonster contains the mock response record
+moogleapiwebfeaturescharacterssearchsearchresult = client.MoogleApiWebFeaturesCharactersSearchSearchResult().list()
+# moogleapiwebfeaturescharacterssearchsearchresult contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -208,14 +208,14 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity instance. |
+| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data) -> MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
-| `MoogleApiWebFeaturesCharactersSearchSearchCharacter` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchCharacter entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGetAllGame` | `(data) -> MoogleApiWebFeaturesGamesGetAllGetAllGameEntity` | Create a MoogleApiWebFeaturesGamesGetAllGetAllGame entity instance. |
+| `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
+| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data) -> MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data) -> MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllGetAllMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data) -> MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
-| `MoogleApiWebFeaturesMonstersSearchSearchMonster` | `(data) -> MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity` | Create a MoogleApiWebFeaturesMonstersSearchSearchMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data) -> MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
 ### Entity interface
 
@@ -252,7 +252,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
 | Field | Description |
 | --- | --- |
@@ -284,7 +284,7 @@ Operations: Load.
 
 API path: `/api/characters/{id}`
 
-#### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+#### MoogleApiWebFeaturesCharactersSearchSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -299,7 +299,7 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGetAllGame
+#### MoogleApiWebFeaturesGamesGetAllGameSummary
 
 | Field | Description |
 | --- | --- |
@@ -328,7 +328,7 @@ Operations: Load.
 
 API path: `/api/games/{id}`
 
-#### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
 | Field | Description |
 | --- | --- |
@@ -357,7 +357,7 @@ Operations: Load.
 
 API path: `/api/monsters/{id}`
 
-#### MoogleApiWebFeaturesMonstersSearchSearchMonster
+#### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -377,9 +377,9 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
-Create an instance: `moogle_api_web_features_characters_get_all_get_all_character = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()`
+Create an instance: `moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()`
 
 #### Operations
 
@@ -400,7 +400,7 @@ Create an instance: `moogle_api_web_features_characters_get_all_get_all_characte
 #### Example: List
 
 ```python
-moogle_api_web_features_characters_get_all_get_all_characters = client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter().list()
+moogle_api_web_features_characters_get_all_character_summarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
 ```
 
 
@@ -435,9 +435,9 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 ```
 
 
-### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+### MoogleApiWebFeaturesCharactersSearchSearchResult
 
-Create an instance: `moogle_api_web_features_characters_search_search_character = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter()`
+Create an instance: `moogle_api_web_features_characters_search_search_result = client.MoogleApiWebFeaturesCharactersSearchSearchResult()`
 
 #### Operations
 
@@ -459,13 +459,13 @@ Create an instance: `moogle_api_web_features_characters_search_search_character 
 #### Example: List
 
 ```python
-moogle_api_web_features_characters_search_search_characters = client.MoogleApiWebFeaturesCharactersSearchSearchCharacter().list({"query": "example"})
+moogle_api_web_features_characters_search_search_results = client.MoogleApiWebFeaturesCharactersSearchSearchResult().list({"query": "example"})
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGetAllGame
+### MoogleApiWebFeaturesGamesGetAllGameSummary
 
-Create an instance: `moogle_api_web_features_games_get_all_get_all_game = client.MoogleApiWebFeaturesGamesGetAllGetAllGame()`
+Create an instance: `moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()`
 
 #### Operations
 
@@ -485,7 +485,7 @@ Create an instance: `moogle_api_web_features_games_get_all_get_all_game = client
 #### Example: List
 
 ```python
-moogle_api_web_features_games_get_all_get_all_games = client.MoogleApiWebFeaturesGamesGetAllGetAllGame().list()
+moogle_api_web_features_games_get_all_game_summarys = client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
 ```
 
 
@@ -518,9 +518,9 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 ```
 
 
-### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
-Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster()`
+Create an instance: `moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()`
 
 #### Operations
 
@@ -541,7 +541,7 @@ Create an instance: `moogle_api_web_features_monsters_get_all_get_all_monster = 
 #### Example: List
 
 ```python
-moogle_api_web_features_monsters_get_all_get_all_monsters = client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster().list()
+moogle_api_web_features_monsters_get_all_monster_summarys = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
 ```
 
 
@@ -573,9 +573,9 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 ```
 
 
-### MoogleApiWebFeaturesMonstersSearchSearchMonster
+### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
-Create an instance: `moogle_api_web_features_monsters_search_search_monster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()`
+Create an instance: `moogle_api_web_features_monsters_search_monster_search_result = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()`
 
 #### Operations
 
@@ -597,7 +597,7 @@ Create an instance: `moogle_api_web_features_monsters_search_search_monster = cl
 #### Example: List
 
 ```python
-moogle_api_web_features_monsters_search_search_monsters = client.MoogleApiWebFeaturesMonstersSearchSearchMonster().list({"query": "example"})
+moogle_api_web_features_monsters_search_monster_search_results = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list({"query": "example"})
 ```
 
 ## Features
@@ -761,11 +761,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moogleapiwebfeaturesmonsterssearchsearchmonster = client.MoogleApiWebFeaturesMonstersSearchSearchMonster()
-moogleapiwebfeaturesmonsterssearchsearchmonster.list()
+moogleapiwebfeaturescharacterssearchsearchresult = client.MoogleApiWebFeaturesCharactersSearchSearchResult()
+moogleapiwebfeaturescharacterssearchsearchresult.list()
 
-# moogleapiwebfeaturesmonsterssearchsearchmonster.data_get() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
-# moogleapiwebfeaturesmonsterssearchsearchmonster.match_get() returns the last match criteria
+# moogleapiwebfeaturescharacterssearchsearchresult.data_get() now returns the moogleapiwebfeaturescharacterssearchsearchresult data from the last list
+# moogleapiwebfeaturescharacterssearchsearchresult.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

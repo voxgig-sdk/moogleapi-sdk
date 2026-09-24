@@ -4,7 +4,7 @@
 
 The Lua SDK for the Moogleapi API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -35,17 +35,17 @@ local client = sdk.new({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallgetallcharacter records
+### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
 
 Entity operations return `(value, err)`. For `list`, `value` is the
 array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local moogleapiwebfeaturescharactersgetallgetallcharacters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
+local moogleapiwebfeaturescharactersgetallcharactersummarys, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
 if err then error(err) end
 
-for _, item in ipairs(moogleapiwebfeaturescharactersgetallgetallcharacters) do
-  print(item["id"], item["gameName"])
+for _, item in ipairs(moogleapiwebfeaturescharactersgetallcharactersummarys) do
+  print(item["id"])
 end
 ```
 
@@ -56,7 +56,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local moogleapiwebfeaturesmonsterssearchsearchmonsters, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
+local moogleapiwebfeaturescharacterssearchsearchresults, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
 if err then error(err) end
 ```
 
@@ -114,7 +114,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
+local result, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -195,14 +195,14 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity instance. |
+| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data) -> MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
-| `MoogleApiWebFeaturesCharactersSearchSearchCharacter` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchCharacter entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGetAllGame` | `(data) -> MoogleApiWebFeaturesGamesGetAllGetAllGameEntity` | Create a MoogleApiWebFeaturesGamesGetAllGetAllGame entity instance. |
+| `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
+| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data) -> MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data) -> MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllGetAllMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data) -> MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
-| `MoogleApiWebFeaturesMonstersSearchSearchMonster` | `(data) -> MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity` | Create a MoogleApiWebFeaturesMonstersSearchSearchMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data) -> MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
 ### Entity interface
 
@@ -240,7 +240,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
 | Field | Description |
 | --- | --- |
@@ -272,7 +272,7 @@ Operations: Load.
 
 API path: `/api/characters/{id}`
 
-#### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+#### MoogleApiWebFeaturesCharactersSearchSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -287,7 +287,7 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGetAllGame
+#### MoogleApiWebFeaturesGamesGetAllGameSummary
 
 | Field | Description |
 | --- | --- |
@@ -316,7 +316,7 @@ Operations: Load.
 
 API path: `/api/games/{id}`
 
-#### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
 | Field | Description |
 | --- | --- |
@@ -345,7 +345,7 @@ Operations: Load.
 
 API path: `/api/monsters/{id}`
 
-#### MoogleApiWebFeaturesMonstersSearchSearchMonster
+#### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
 | Field | Description |
 | --- | --- |
@@ -365,9 +365,9 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 
-Create an instance: `local moogle_api_web_features_characters_get_all_get_all_character = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)`
+Create an instance: `local moogle_api_web_features_characters_get_all_character_summary = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)`
 
 #### Operations
 
@@ -388,7 +388,7 @@ Create an instance: `local moogle_api_web_features_characters_get_all_get_all_ch
 #### Example: List
 
 ```lua
-local moogle_api_web_features_characters_get_all_get_all_characters, err = client:MoogleApiWebFeaturesCharactersGetAllGetAllCharacter():list()
+local moogle_api_web_features_characters_get_all_character_summarys, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
 ```
 
 
@@ -423,9 +423,9 @@ local moogle_api_web_features_characters_get_get_character, err = client:MoogleA
 ```
 
 
-### MoogleApiWebFeaturesCharactersSearchSearchCharacter
+### MoogleApiWebFeaturesCharactersSearchSearchResult
 
-Create an instance: `local moogle_api_web_features_characters_search_search_character = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)`
+Create an instance: `local moogle_api_web_features_characters_search_search_result = client:MoogleApiWebFeaturesCharactersSearchSearchResult(nil)`
 
 #### Operations
 
@@ -447,13 +447,13 @@ Create an instance: `local moogle_api_web_features_characters_search_search_char
 #### Example: List
 
 ```lua
-local moogle_api_web_features_characters_search_search_characters, err = client:MoogleApiWebFeaturesCharactersSearchSearchCharacter():list()
+local moogle_api_web_features_characters_search_search_results, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGetAllGame
+### MoogleApiWebFeaturesGamesGetAllGameSummary
 
-Create an instance: `local moogle_api_web_features_games_get_all_get_all_game = client:MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)`
+Create an instance: `local moogle_api_web_features_games_get_all_game_summary = client:MoogleApiWebFeaturesGamesGetAllGameSummary(nil)`
 
 #### Operations
 
@@ -473,7 +473,7 @@ Create an instance: `local moogle_api_web_features_games_get_all_get_all_game = 
 #### Example: List
 
 ```lua
-local moogle_api_web_features_games_get_all_get_all_games, err = client:MoogleApiWebFeaturesGamesGetAllGetAllGame():list()
+local moogle_api_web_features_games_get_all_game_summarys, err = client:MoogleApiWebFeaturesGamesGetAllGameSummary():list()
 ```
 
 
@@ -506,9 +506,9 @@ local moogle_api_web_features_games_get_get_game, err = client:MoogleApiWebFeatu
 ```
 
 
-### MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 
-Create an instance: `local moogle_api_web_features_monsters_get_all_get_all_monster = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)`
+Create an instance: `local moogle_api_web_features_monsters_get_all_monster_summary = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)`
 
 #### Operations
 
@@ -529,7 +529,7 @@ Create an instance: `local moogle_api_web_features_monsters_get_all_get_all_mons
 #### Example: List
 
 ```lua
-local moogle_api_web_features_monsters_get_all_get_all_monsters, err = client:MoogleApiWebFeaturesMonstersGetAllGetAllMonster():list()
+local moogle_api_web_features_monsters_get_all_monster_summarys, err = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():list()
 ```
 
 
@@ -561,9 +561,9 @@ local moogle_api_web_features_monsters_get_get_monster, err = client:MoogleApiWe
 ```
 
 
-### MoogleApiWebFeaturesMonstersSearchSearchMonster
+### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
-Create an instance: `local moogle_api_web_features_monsters_search_search_monster = client:MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)`
+Create an instance: `local moogle_api_web_features_monsters_search_monster_search_result = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil)`
 
 #### Operations
 
@@ -585,7 +585,7 @@ Create an instance: `local moogle_api_web_features_monsters_search_search_monste
 #### Example: List
 
 ```lua
-local moogle_api_web_features_monsters_search_search_monsters, err = client:MoogleApiWebFeaturesMonstersSearchSearchMonster():list()
+local moogle_api_web_features_monsters_search_monster_search_results, err = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():list()
 ```
 
 ## Features
@@ -750,11 +750,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moogleapiwebfeaturesmonsterssearchsearchmonster = client:MoogleApiWebFeaturesMonstersSearchSearchMonster()
-moogleapiwebfeaturesmonsterssearchsearchmonster:list()
+local moogleapiwebfeaturescharacterssearchsearchresult = client:MoogleApiWebFeaturesCharactersSearchSearchResult()
+moogleapiwebfeaturescharacterssearchsearchresult:list()
 
--- moogleapiwebfeaturesmonsterssearchsearchmonster:data_get() now returns the moogleapiwebfeaturesmonsterssearchsearchmonster data from the last list
--- moogleapiwebfeaturesmonsterssearchsearchmonster:match_get() returns the last match criteria
+-- moogleapiwebfeaturescharacterssearchsearchresult:data_get() now returns the moogleapiwebfeaturescharacterssearchsearchresult data from the last list
+-- moogleapiwebfeaturescharacterssearchsearchresult:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

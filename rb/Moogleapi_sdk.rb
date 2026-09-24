@@ -289,10 +289,10 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.list / client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter.load({ "id" => ... })
-  def MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data = nil)
-    require_relative 'entity/moogle_api_web_features_characters_get_all_get_all_character_entity'
-    MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity.new(self, data)
+  # Canonical facade: client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list / client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.load({ "id" => ... })
+  def MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data = nil)
+    require_relative 'entity/moogle_api_web_features_characters_get_all_character_summary_entity'
+    MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity.new(self, data)
   end
 
 
@@ -303,17 +303,17 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.list / client.MoogleApiWebFeaturesCharactersSearchSearchCharacter.load({ "id" => ... })
-  def MoogleApiWebFeaturesCharactersSearchSearchCharacter(data = nil)
-    require_relative 'entity/moogle_api_web_features_characters_search_search_character_entity'
-    MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity.new(self, data)
+  # Canonical facade: client.MoogleApiWebFeaturesCharactersSearchSearchResult.list / client.MoogleApiWebFeaturesCharactersSearchSearchResult.load({ "id" => ... })
+  def MoogleApiWebFeaturesCharactersSearchSearchResult(data = nil)
+    require_relative 'entity/moogle_api_web_features_characters_search_search_result_entity'
+    MoogleApiWebFeaturesCharactersSearchSearchResultEntity.new(self, data)
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesGamesGetAllGetAllGame.list / client.MoogleApiWebFeaturesGamesGetAllGetAllGame.load({ "id" => ... })
-  def MoogleApiWebFeaturesGamesGetAllGetAllGame(data = nil)
-    require_relative 'entity/moogle_api_web_features_games_get_all_get_all_game_entity'
-    MoogleApiWebFeaturesGamesGetAllGetAllGameEntity.new(self, data)
+  # Canonical facade: client.MoogleApiWebFeaturesGamesGetAllGameSummary.list / client.MoogleApiWebFeaturesGamesGetAllGameSummary.load({ "id" => ... })
+  def MoogleApiWebFeaturesGamesGetAllGameSummary(data = nil)
+    require_relative 'entity/moogle_api_web_features_games_get_all_game_summary_entity'
+    MoogleApiWebFeaturesGamesGetAllGameSummaryEntity.new(self, data)
   end
 
 
@@ -324,10 +324,10 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.list / client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster.load({ "id" => ... })
-  def MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data = nil)
-    require_relative 'entity/moogle_api_web_features_monsters_get_all_get_all_monster_entity'
-    MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity.new(self, data)
+  # Canonical facade: client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.list / client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.load({ "id" => ... })
+  def MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data = nil)
+    require_relative 'entity/moogle_api_web_features_monsters_get_all_monster_summary_entity'
+    MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity.new(self, data)
   end
 
 
@@ -338,10 +338,10 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesMonstersSearchSearchMonster.list / client.MoogleApiWebFeaturesMonstersSearchSearchMonster.load({ "id" => ... })
-  def MoogleApiWebFeaturesMonstersSearchSearchMonster(data = nil)
-    require_relative 'entity/moogle_api_web_features_monsters_search_search_monster_entity'
-    MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity.new(self, data)
+  # Canonical facade: client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult.list / client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult.load({ "id" => ... })
+  def MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data = nil)
+    require_relative 'entity/moogle_api_web_features_monsters_search_monster_search_result_entity'
+    MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity.new(self, data)
   end
 
 

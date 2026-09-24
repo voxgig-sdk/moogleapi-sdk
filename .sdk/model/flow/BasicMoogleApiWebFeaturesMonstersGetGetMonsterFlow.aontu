@@ -1,0 +1,32 @@
+# BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow:
+{
+  entity: "moogle_api_web_features_monsters_get_get_monster",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
+  step: [
+    {
+      i: {
+        ref: "moogle_api_web_features_monsters_get_get_monster_ref01",
+        srcdatavar: "moogle_api_web_features_monsters_get_get_monster_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "moogle_api_web_features_monsters_get_get_monster01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-moogle_api_web_features_monsters_get_get_monster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow"
+}

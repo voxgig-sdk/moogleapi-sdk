@@ -1,11 +1,11 @@
-import { MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity } from './entity/MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity';
+import { MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity } from './entity/MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity';
 import { MoogleApiWebFeaturesCharactersGetGetCharacterEntity } from './entity/MoogleApiWebFeaturesCharactersGetGetCharacterEntity';
-import { MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity } from './entity/MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity';
-import { MoogleApiWebFeaturesGamesGetAllGetAllGameEntity } from './entity/MoogleApiWebFeaturesGamesGetAllGetAllGameEntity';
+import { MoogleApiWebFeaturesCharactersSearchSearchResultEntity } from './entity/MoogleApiWebFeaturesCharactersSearchSearchResultEntity';
+import { MoogleApiWebFeaturesGamesGetAllGameSummaryEntity } from './entity/MoogleApiWebFeaturesGamesGetAllGameSummaryEntity';
 import { MoogleApiWebFeaturesGamesGetGetGameEntity } from './entity/MoogleApiWebFeaturesGamesGetGetGameEntity';
-import { MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity';
+import { MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity } from './entity/MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity';
 import { MoogleApiWebFeaturesMonstersGetGetMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity';
-import { MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity';
+import { MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity } from './entity/MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity';
 export type * from './MoogleapiTypes';
 import { inspect } from 'node:util';
 import type { Context, Feature } from './types';
@@ -51,14 +51,14 @@ declare class MoogleapiSDK {
         data?: undefined;
     }>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
-    MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity;
+    MoogleApiWebFeaturesCharactersGetAllCharacterSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity;
     MoogleApiWebFeaturesCharactersGetGetCharacter(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersGetGetCharacterEntity;
-    MoogleApiWebFeaturesCharactersSearchSearchCharacter(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity;
-    MoogleApiWebFeaturesGamesGetAllGetAllGame(entopts?: Record<string, any>): MoogleApiWebFeaturesGamesGetAllGetAllGameEntity;
+    MoogleApiWebFeaturesCharactersSearchSearchResult(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersSearchSearchResultEntity;
+    MoogleApiWebFeaturesGamesGetAllGameSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesGamesGetAllGameSummaryEntity;
     MoogleApiWebFeaturesGamesGetGetGame(entopts?: Record<string, any>): MoogleApiWebFeaturesGamesGetGetGameEntity;
-    MoogleApiWebFeaturesMonstersGetAllGetAllMonster(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity;
+    MoogleApiWebFeaturesMonstersGetAllMonsterSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity;
     MoogleApiWebFeaturesMonstersGetGetMonster(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersGetGetMonsterEntity;
-    MoogleApiWebFeaturesMonstersSearchSearchMonster(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity;
+    MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): MoogleapiSDK;
     tester(testopts?: any, sdkopts?: any): MoogleapiSDK;
     toJSON(): {

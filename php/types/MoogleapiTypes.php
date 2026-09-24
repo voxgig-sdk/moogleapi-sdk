@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the Moogleapi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -12,8 +12,8 @@ declare(strict_types=1);
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
 
-/** MoogleApiWebFeaturesCharactersGetAllGetAllCharacter entity data model. */
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
+/** MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity data model. */
+class MoogleApiWebFeaturesCharactersGetAllCharacterSummary
 {
     public ?string $gameName = null;
     public ?int $id = null;
@@ -22,8 +22,8 @@ class MoogleApiWebFeaturesCharactersGetAllGetAllCharacter
     public ?string $role = null;
 }
 
-/** Request payload for MoogleApiWebFeaturesCharactersGetAllGetAllCharacter#list. */
-class MoogleApiWebFeaturesCharactersGetAllGetAllCharacterListMatch
+/** Request payload for MoogleApiWebFeaturesCharactersGetAllCharacterSummary#list. */
+class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch
 {
     public ?int $game_id = null;
     public ?int $page = null;
@@ -50,8 +50,8 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch
     public int $id;
 }
 
-/** MoogleApiWebFeaturesCharactersSearchSearchCharacter entity data model. */
-class MoogleApiWebFeaturesCharactersSearchSearchCharacter
+/** MoogleApiWebFeaturesCharactersSearchSearchResult entity data model. */
+class MoogleApiWebFeaturesCharactersSearchSearchResult
 {
     public ?string $description = null;
     public ?string $gameName = null;
@@ -61,15 +61,15 @@ class MoogleApiWebFeaturesCharactersSearchSearchCharacter
     public ?string $role = null;
 }
 
-/** Request payload for MoogleApiWebFeaturesCharactersSearchSearchCharacter#list. */
-class MoogleApiWebFeaturesCharactersSearchSearchCharacterListMatch
+/** Request payload for MoogleApiWebFeaturesCharactersSearchSearchResult#list. */
+class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch
 {
     public ?int $game_id = null;
     public string $query;
 }
 
-/** MoogleApiWebFeaturesGamesGetAllGetAllGame entity data model. */
-class MoogleApiWebFeaturesGamesGetAllGetAllGame
+/** MoogleApiWebFeaturesGamesGetAllGameSummary entity data model. */
+class MoogleApiWebFeaturesGamesGetAllGameSummary
 {
     public ?int $id = null;
     public ?string $name = null;
@@ -77,8 +77,8 @@ class MoogleApiWebFeaturesGamesGetAllGetAllGame
     public ?int $releaseYear = null;
 }
 
-/** Request payload for MoogleApiWebFeaturesGamesGetAllGetAllGame#list. */
-class MoogleApiWebFeaturesGamesGetAllGetAllGameListMatch
+/** Request payload for MoogleApiWebFeaturesGamesGetAllGameSummary#list. */
+class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch
 {
     public ?int $page = null;
     public ?int $page_size = null;
@@ -102,8 +102,8 @@ class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
     public int $id;
 }
 
-/** MoogleApiWebFeaturesMonstersGetAllGetAllMonster entity data model. */
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
+/** MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity data model. */
+class MoogleApiWebFeaturesMonstersGetAllMonsterSummary
 {
     public ?string $category = null;
     public ?string $gameName = null;
@@ -112,8 +112,8 @@ class MoogleApiWebFeaturesMonstersGetAllGetAllMonster
     public ?string $name = null;
 }
 
-/** Request payload for MoogleApiWebFeaturesMonstersGetAllGetAllMonster#list. */
-class MoogleApiWebFeaturesMonstersGetAllGetAllMonsterListMatch
+/** Request payload for MoogleApiWebFeaturesMonstersGetAllMonsterSummary#list. */
+class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch
 {
     public ?string $category = null;
     public ?int $game_id = null;
@@ -138,8 +138,8 @@ class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch
     public int $id;
 }
 
-/** MoogleApiWebFeaturesMonstersSearchSearchMonster entity data model. */
-class MoogleApiWebFeaturesMonstersSearchSearchMonster
+/** MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity data model. */
+class MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 {
     public ?string $category = null;
     public ?string $description = null;
@@ -149,8 +149,8 @@ class MoogleApiWebFeaturesMonstersSearchSearchMonster
     public ?string $name = null;
 }
 
-/** Request payload for MoogleApiWebFeaturesMonstersSearchSearchMonster#list. */
-class MoogleApiWebFeaturesMonstersSearchSearchMonsterListMatch
+/** Request payload for MoogleApiWebFeaturesMonstersSearchMonsterSearchResult#list. */
+class MoogleApiWebFeaturesMonstersSearchMonsterSearchResultListMatch
 {
     public ?string $category = null;
     public ?int $game_id = null;

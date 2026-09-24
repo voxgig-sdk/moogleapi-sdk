@@ -1,0 +1,22 @@
+# BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow
+
+main: kit: flow: BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow:
+{
+  entity: "moogle_api_web_features_characters_search_search_result",
+  kind: "basic",
+  name: "BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_characters_search_search_result_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow"
+}

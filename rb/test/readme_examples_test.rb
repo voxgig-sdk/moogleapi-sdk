@@ -43,14 +43,14 @@ class ReadmeExamplesTest < Minitest::Test
 
   # Entity accessor (client.<Name>) => fixture storage key (lowercase name).
   ENTITIES = {
-    "MoogleApiWebFeaturesCharactersGetAllGetAllCharacter" => "moogle_api_web_features_characters_get_all_get_all_character",
+    "MoogleApiWebFeaturesCharactersGetAllCharacterSummary" => "moogle_api_web_features_characters_get_all_character_summary",
     "MoogleApiWebFeaturesCharactersGetGetCharacter" => "moogle_api_web_features_characters_get_get_character",
-    "MoogleApiWebFeaturesCharactersSearchSearchCharacter" => "moogle_api_web_features_characters_search_search_character",
-    "MoogleApiWebFeaturesGamesGetAllGetAllGame" => "moogle_api_web_features_games_get_all_get_all_game",
+    "MoogleApiWebFeaturesCharactersSearchSearchResult" => "moogle_api_web_features_characters_search_search_result",
+    "MoogleApiWebFeaturesGamesGetAllGameSummary" => "moogle_api_web_features_games_get_all_game_summary",
     "MoogleApiWebFeaturesGamesGetGetGame" => "moogle_api_web_features_games_get_get_game",
-    "MoogleApiWebFeaturesMonstersGetAllGetAllMonster" => "moogle_api_web_features_monsters_get_all_get_all_monster",
+    "MoogleApiWebFeaturesMonstersGetAllMonsterSummary" => "moogle_api_web_features_monsters_get_all_monster_summary",
     "MoogleApiWebFeaturesMonstersGetGetMonster" => "moogle_api_web_features_monsters_get_get_monster",
-    "MoogleApiWebFeaturesMonstersSearchSearchMonster" => "moogle_api_web_features_monsters_search_search_monster",
+    "MoogleApiWebFeaturesMonstersSearchMonsterSearchResult" => "moogle_api_web_features_monsters_search_monster_search_result",
   }
 
   # Documented SDK method names — used only to recognise the NARROW

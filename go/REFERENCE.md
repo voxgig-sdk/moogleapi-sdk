@@ -48,37 +48,37 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data map[string]any) MoogleapiEntity`
 
-Create a new `MoogleApiWebFeaturesCharactersGetAllGetAllCharacter` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data map[string]any) MoogleapiEntity`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesCharactersSearchSearchCharacter(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesCharactersSearchSearchResult(data map[string]any) MoogleapiEntity`
 
-Create a new `MoogleApiWebFeaturesCharactersSearchSearchCharacter` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGetAllGame(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data map[string]any) MoogleapiEntity`
 
-Create a new `MoogleApiWebFeaturesGamesGetAllGetAllGame` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesGamesGetAllGameSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesGamesGetGetGame(data map[string]any) MoogleapiEntity`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersGetAllGetAllMonster(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data map[string]any) MoogleapiEntity`
 
-Create a new `MoogleApiWebFeaturesMonstersGetAllGetAllMonster` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data map[string]any) MoogleapiEntity`
 
 Create a new `MoogleApiWebFeaturesMonstersGetGetMonster` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersSearchSearchMonster(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data map[string]any) MoogleapiEntity`
 
-Create a new `MoogleApiWebFeaturesMonstersSearchSearchMonster` entity instance. Pass `nil` for no initial data.
+Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -116,11 +116,11 @@ same parameters as `Direct()`.
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity
+## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
 
 ```go
-moogleApiWebFeaturesCharactersGetAllGetAllCharacter := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil)
-fmt.Println(moogleApiWebFeaturesCharactersGetAllGetAllCharacter.GetName()) // "moogle_api_web_features_characters_get_all_get_all_character"
+moogleApiWebFeaturesCharactersGetAllCharacterSummary := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)
+fmt.Println(moogleApiWebFeaturesCharactersGetAllCharacterSummary.GetName()) // "moogle_api_web_features_characters_get_all_character_summary"
 ```
 
 ### Fields
@@ -140,7 +140,7 @@ fmt.Println(moogleApiWebFeaturesCharactersGetAllGetAllCharacter.GetName()) // "m
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.MoogleApiWebFeaturesCharactersGetAllGetAllCharacter(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -161,7 +161,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MoogleApiWebFeaturesCharactersGetAllGetAllCharacterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -230,11 +230,11 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity
+## MoogleApiWebFeaturesCharactersSearchSearchResultEntity
 
 ```go
-moogleApiWebFeaturesCharactersSearchSearchCharacter := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil)
-fmt.Println(moogleApiWebFeaturesCharactersSearchSearchCharacter.GetName()) // "moogle_api_web_features_characters_search_search_character"
+moogleApiWebFeaturesCharactersSearchSearchResult := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil)
+fmt.Println(moogleApiWebFeaturesCharactersSearchSearchResult.GetName()) // "moogle_api_web_features_characters_search_search_result"
 ```
 
 ### Fields
@@ -255,7 +255,7 @@ fmt.Println(moogleApiWebFeaturesCharactersSearchSearchCharacter.GetName()) // "m
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.MoogleApiWebFeaturesCharactersSearchSearchCharacter(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -276,7 +276,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MoogleApiWebFeaturesCharactersSearchSearchCharacterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -286,11 +286,11 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGetAllGameEntity
+## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
 
 ```go
-moogleApiWebFeaturesGamesGetAllGetAllGame := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil)
-fmt.Println(moogleApiWebFeaturesGamesGetAllGetAllGame.GetName()) // "moogle_api_web_features_games_get_all_get_all_game"
+moogleApiWebFeaturesGamesGetAllGameSummary := client.MoogleApiWebFeaturesGamesGetAllGameSummary(nil)
+fmt.Println(moogleApiWebFeaturesGamesGetAllGameSummary.GetName()) // "moogle_api_web_features_games_get_all_game_summary"
 ```
 
 ### Fields
@@ -309,7 +309,7 @@ fmt.Println(moogleApiWebFeaturesGamesGetAllGetAllGame.GetName()) // "moogle_api_
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.MoogleApiWebFeaturesGamesGetAllGetAllGame(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesGamesGetAllGameSummary(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -330,7 +330,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MoogleApiWebFeaturesGamesGetAllGetAllGameEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -397,11 +397,11 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity
+## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
 
 ```go
-moogleApiWebFeaturesMonstersGetAllGetAllMonster := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil)
-fmt.Println(moogleApiWebFeaturesMonstersGetAllGetAllMonster.GetName()) // "moogle_api_web_features_monsters_get_all_get_all_monster"
+moogleApiWebFeaturesMonstersGetAllMonsterSummary := client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)
+fmt.Println(moogleApiWebFeaturesMonstersGetAllMonsterSummary.GetName()) // "moogle_api_web_features_monsters_get_all_monster_summary"
 ```
 
 ### Fields
@@ -421,7 +421,7 @@ fmt.Println(moogleApiWebFeaturesMonstersGetAllGetAllMonster.GetName()) // "moogl
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.MoogleApiWebFeaturesMonstersGetAllGetAllMonster(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -442,7 +442,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MoogleApiWebFeaturesMonstersGetAllGetAllMonsterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -508,11 +508,11 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity
+## MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity
 
 ```go
-moogleApiWebFeaturesMonstersSearchSearchMonster := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil)
-fmt.Println(moogleApiWebFeaturesMonstersSearchSearchMonster.GetName()) // "moogle_api_web_features_monsters_search_search_monster"
+moogleApiWebFeaturesMonstersSearchMonsterSearchResult := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil)
+fmt.Println(moogleApiWebFeaturesMonstersSearchMonsterSearchResult.GetName()) // "moogle_api_web_features_monsters_search_monster_search_result"
 ```
 
 ### Fields
@@ -533,7 +533,7 @@ fmt.Println(moogleApiWebFeaturesMonstersSearchSearchMonster.GetName()) // "moogl
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.MoogleApiWebFeaturesMonstersSearchSearchMonster(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -554,7 +554,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MoogleApiWebFeaturesMonstersSearchSearchMonsterEntity` instance with the same client and
+Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` instance with the same client and
 options.
 
 #### `GetName() string`

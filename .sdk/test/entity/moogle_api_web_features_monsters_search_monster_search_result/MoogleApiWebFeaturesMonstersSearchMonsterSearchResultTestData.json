@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "moogle_api_web_features_monsters_search_monster_search_result": {
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT00": {
+        "category": "s3c",
+        "description": "s3d",
+        "gameName": "s3e",
+        "hitPoints": 63,
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT00",
+        "name": "s41"
+      },
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT01": {
+        "category": "s78",
+        "description": "s79",
+        "gameName": "s7a",
+        "hitPoints": 123,
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT01",
+        "name": "s7d"
+      },
+      "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT02": {
+        "category": "sb4",
+        "description": "sb5",
+        "gameName": "sb6",
+        "hitPoints": 183,
+        "id": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT02",
+        "name": "sb9"
+      }
+    }
+  },
+  "new": {
+    "moogle_api_web_features_monsters_search_monster_search_result": {
+      "moogle_api_web_features_monsters_search_monster_search_result_ref01": {
+        "category": "sf0",
+        "description": "sf1",
+        "gameName": "sf2",
+        "hitPoints": 243,
+        "name": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/monsters/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

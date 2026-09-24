@@ -19,15 +19,15 @@ make build
 export MOOGLEAPI_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
+./moogleapi-cli list moogle_api_web_features_characters_get_all_character_summary
 ./moogleapi-cli list moogle_api_web_features_characters_get_get_character
 
 # 5. Override the API base URL for a single call
-MOOGLEAPI_BASE=https://api.example.com ./moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
+MOOGLEAPI_BASE=https://api.example.com ./moogleapi-cli list moogle_api_web_features_characters_get_all_character_summary
 
 # 6. No arguments -> interactive REPL
 ./moogleapi-cli
-moogleapi> list moogle_api_web_features_characters_get_all_get_all_character
+moogleapi> list moogle_api_web_features_characters_get_all_character_summary
 moogleapi> /quit
 ```
 
@@ -53,7 +53,7 @@ moogleapi> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
+   ./dist/*/moogleapi-cli list moogle_api_web_features_characters_get_all_character_summary
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -66,7 +66,7 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### List the records of an entity
 
 ```sh
-./moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
+./moogleapi-cli list moogle_api_web_features_characters_get_all_character_summary
 ```
 
 `list <entity>` returns the first page of records. `<entity>` is a bareword —
@@ -79,7 +79,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export MOOGLEAPI_APIKEY=sk_live_xxx            # API key
 export MOOGLEAPI_BASE=https://api.example.com  # optional: override the API base URL
-./moogleapi-cli list moogle_api_web_features_characters_get_all_get_all_character
+./moogleapi-cli list moogle_api_web_features_characters_get_all_character_summary
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -91,7 +91,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./moogleapi-cli
-moogleapi> list moogle_api_web_features_characters_get_all_get_all_character
+moogleapi> list moogle_api_web_features_characters_get_all_character_summary
 moogleapi> /help
 moogleapi> /quit
 ```
@@ -119,7 +119,7 @@ The CLI registers these boru words, each bound to the SDK:
 | `list`   | `list <entity>` · `list <query> <entity>`     | First page of records          |
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `moogle_api_web_features_characters_get_all_get_all_character`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `moogle_api_web_features_characters_get_all_character_summary`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -162,7 +162,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 8 entities this SDK exposes (any is valid as `<entity>`):
 
-moogle_api_web_features_characters_get_all_get_all_character moogle_api_web_features_characters_get_get_character moogle_api_web_features_characters_search_search_character moogle_api_web_features_games_get_all_get_all_game moogle_api_web_features_games_get_get_game moogle_api_web_features_monsters_get_all_get_all_monster moogle_api_web_features_monsters_get_get_monster moogle_api_web_features_monsters_search_search_monster
+moogle_api_web_features_characters_get_all_character_summary moogle_api_web_features_characters_get_get_character moogle_api_web_features_characters_search_search_result moogle_api_web_features_games_get_all_game_summary moogle_api_web_features_games_get_get_game moogle_api_web_features_monsters_get_all_monster_summary moogle_api_web_features_monsters_get_get_monster moogle_api_web_features_monsters_search_monster_search_result
 
 ## Explanation
 
