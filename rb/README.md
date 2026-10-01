@@ -4,7 +4,7 @@
 
 The Ruby SDK for the Moogleapi API — an entity-oriented client using idiomatic Ruby conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetGetCharacter` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/moogleapi-sdk/releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/moogleapi-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-moogleapi-sdk", path: "./moogleapi-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -32,17 +41,29 @@ client = MoogleapiSDK.new({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
+### 2. List moogleapiwebfeaturescharactersgetgetcharacter records
 
 ```ruby
 begin
-  # list returns an Array of MoogleApiWebFeaturesCharactersGetAllCharacterSummary records — iterate directly.
-  moogleapiwebfeaturescharactersgetallcharactersummarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list
-  moogleapiwebfeaturescharactersgetallcharactersummarys.each do |item|
-    puts "#{item["id"]} #{item["gameName"]}"
+  # list returns an Array of MoogleApiWebFeaturesCharactersGetGetCharacter records — iterate directly.
+  moogleapiwebfeaturescharactersgetgetcharacters = client.MoogleApiWebFeaturesCharactersGetGetCharacter.list
+  moogleapiwebfeaturescharactersgetgetcharacters.each do |item|
+    puts "#{item["id"]} #{item["affiliation"]}"
   end
 rescue => err
   warn "list failed: #{err}"
+end
+```
+
+### 3. Load a moogleapiwebfeaturescharactersgetgetcharacter
+
+```ruby
+begin
+  # load returns the ENTITY — call data_get for the MoogleApiWebFeaturesCharactersGetGetCharacter record (raises on error).
+  moogleapiwebfeaturescharactersgetgetcharacter = client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => 1 })
+  puts moogleapiwebfeaturescharactersgetgetcharacter
+rescue => err
+  warn "load failed: #{err}"
 end
 ```
 
@@ -202,12 +223,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data) -> MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data) -> MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data) -> MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data) -> MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data) -> MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
@@ -245,20 +263,6 @@ returns a result `Hash` with these keys:
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `gameName` |  |
-| `id` |  |
-| `imageUrl` |  |
-| `name` |  |
-| `role` |  |
-
-Operations: List.
-
-API path: `/api/characters`
-
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 | Field | Description |
@@ -273,9 +277,9 @@ API path: `/api/characters`
 | `race` |  |
 | `role` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -292,19 +296,6 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-| `name` |  |
-| `platform` |  |
-| `releaseYear` |  |
-
-Operations: List.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -317,23 +308,9 @@ API path: `/api/games`
 | `platform` |  |
 | `releaseYear` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `category` |  |
-| `gameName` |  |
-| `hitPoints` |  |
-| `id` |  |
-| `name` |  |
-
-Operations: List.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -346,9 +323,9 @@ API path: `/api/monsters`
 | `id` |  |
 | `name` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -370,34 +347,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `String` |  |
-| `id` | `Integer` |  |
-| `imageUrl` | `String` |  |
-| `name` | `String` |  |
-| `role` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of MoogleApiWebFeaturesCharactersGetAllCharacterSummary records (raises on error).
-moogle_api_web_features_characters_get_all_character_summarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter`
@@ -406,6 +355,7 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -427,6 +377,13 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 ```ruby
 # load returns the ENTITY — call data_get for the MoogleApiWebFeaturesCharactersGetGetCharacter record (raises on error).
 moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of MoogleApiWebFeaturesCharactersGetGetCharacter records (raises on error).
+moogle_api_web_features_characters_get_get_characters = client.MoogleApiWebFeaturesCharactersGetGetCharacter.list
 ```
 
 
@@ -459,33 +416,6 @@ moogle_api_web_features_characters_search_search_results = client.MoogleApiWebFe
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `platform` | `String` |  |
-| `releaseYear` | `Integer` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of MoogleApiWebFeaturesGamesGetAllGameSummary records (raises on error).
-moogle_api_web_features_games_get_all_game_summarys = client.MoogleApiWebFeaturesGamesGetAllGameSummary.list
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame`
@@ -494,6 +424,7 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -515,32 +446,11 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => 1 })
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `String` |  |
-| `gameName` | `String` |  |
-| `hitPoints` | `Integer` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-
 #### Example: List
 
 ```ruby
-# list returns an Array of MoogleApiWebFeaturesMonstersGetAllMonsterSummary records (raises on error).
-moogle_api_web_features_monsters_get_all_monster_summarys = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.list
+# list returns an Array of MoogleApiWebFeaturesGamesGetGetGame records (raises on error).
+moogle_api_web_features_games_get_get_games = client.MoogleApiWebFeaturesGamesGetGetGame.list
 ```
 
 
@@ -552,6 +462,7 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -570,6 +481,13 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 ```ruby
 # load returns the ENTITY — call data_get for the MoogleApiWebFeaturesMonstersGetGetMonster record (raises on error).
 moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster.load({ "id" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of MoogleApiWebFeaturesMonstersGetGetMonster records (raises on error).
+moogle_api_web_features_monsters_get_get_monsters = client.MoogleApiWebFeaturesMonstersGetGetMonster.list
 ```
 
 

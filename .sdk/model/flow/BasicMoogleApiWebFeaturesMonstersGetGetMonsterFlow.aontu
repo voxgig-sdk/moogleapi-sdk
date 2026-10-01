@@ -7,6 +7,18 @@ main: kit: flow: BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow:
   name: "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
   step: [
     {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_monsters_get_get_monster_ref01"
+          }
+        }
+      ]
+    }
+
+    {
       i: {
         ref: "moogle_api_web_features_monsters_get_get_monster_ref01",
         srcdatavar: "moogle_api_web_features_monsters_get_get_monster_ref01_data",

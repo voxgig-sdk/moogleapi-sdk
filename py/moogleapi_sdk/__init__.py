@@ -14,11 +14,15 @@ from moogleapi_sdk.features import _has_feature, _make_feature
 
 
 class MoogleapiSDK:
+    # The options hold the credential. A slot keeps them reachable as
+    # `client.options` and out of `vars(client)` and every attribute dump;
+    # the dict entry keeps the instance open for everything else.
+    __slots__ = ("_options", "__dict__")
 
     def __init__(self, options=None):
         self.mode = "live"
         self.features = []
-        self.options = None
+        self._options = None
 
         utility = MoogleapiUtility()
         self._utility = utility
@@ -86,6 +90,17 @@ class MoogleapiSDK:
         utility.feature_hook(self._rootctx, "PostConstruct")
 
         # #BuildFeatures
+
+    @property
+    def options(self):
+        return self._options
+
+    @options.setter
+    def options(self, value):
+        self._options = value
+
+    def __repr__(self):
+        return "MoogleapiSDK(mode=" + repr(self.mode) + ")"
 
     def options_map(self):
         out = vs.clone(self.options)
@@ -207,7 +222,8 @@ class MoogleapiSDK:
         except Exception as err:
             # direct() is the raw-HTTP escape hatch: it never raises, it
             # returns a result object callers branch on via result["ok"].
-            return {"ok": False, "err": err}
+            # That error never passes through make_error, so it is cleaned.
+            return {"ok": False, "err": utility.clean(self._rootctx, err)}
 
         if fetchargs is None:
             fetchargs = {}
@@ -224,7 +240,7 @@ class MoogleapiSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}
+            return {"ok": False, "err": utility.clean(ctx, fetch_err)}
 
         if fetched is None:
             return {
@@ -307,12 +323,6 @@ class MoogleapiSDK:
         return res
 
 
-    def MoogleApiWebFeaturesCharactersGetAllCharacterSummary(self, data=None) -> "MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity":
-        """Entity factory: client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list() / client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().load({"id": ...})."""
-        from moogleapi_sdk.entity.moogle_api_web_features_characters_get_all_character_summary_entity import MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-        return MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity(self, data)
-
-
     def MoogleApiWebFeaturesCharactersGetGetCharacter(self, data=None) -> "MoogleApiWebFeaturesCharactersGetGetCharacterEntity":
         """Entity factory: client.MoogleApiWebFeaturesCharactersGetGetCharacter().list() / client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": ...})."""
         from moogleapi_sdk.entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
@@ -325,22 +335,10 @@ class MoogleapiSDK:
         return MoogleApiWebFeaturesCharactersSearchSearchResultEntity(self, data)
 
 
-    def MoogleApiWebFeaturesGamesGetAllGameSummary(self, data=None) -> "MoogleApiWebFeaturesGamesGetAllGameSummaryEntity":
-        """Entity factory: client.MoogleApiWebFeaturesGamesGetAllGameSummary().list() / client.MoogleApiWebFeaturesGamesGetAllGameSummary().load({"id": ...})."""
-        from moogleapi_sdk.entity.moogle_api_web_features_games_get_all_game_summary_entity import MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-        return MoogleApiWebFeaturesGamesGetAllGameSummaryEntity(self, data)
-
-
     def MoogleApiWebFeaturesGamesGetGetGame(self, data=None) -> "MoogleApiWebFeaturesGamesGetGetGameEntity":
         """Entity factory: client.MoogleApiWebFeaturesGamesGetGetGame().list() / client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": ...})."""
         from moogleapi_sdk.entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
         return MoogleApiWebFeaturesGamesGetGetGameEntity(self, data)
-
-
-    def MoogleApiWebFeaturesMonstersGetAllMonsterSummary(self, data=None) -> "MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity":
-        """Entity factory: client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list() / client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().load({"id": ...})."""
-        from moogleapi_sdk.entity.moogle_api_web_features_monsters_get_all_monster_summary_entity import MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-        return MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity(self, data)
 
 
     def MoogleApiWebFeaturesMonstersGetGetMonster(self, data=None) -> "MoogleApiWebFeaturesMonstersGetGetMonsterEntity":
@@ -382,11 +380,8 @@ class MoogleapiSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from moogleapi_sdk.entity.moogle_api_web_features_characters_get_all_character_summary_entity import MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
     from moogleapi_sdk.entity.moogle_api_web_features_characters_get_get_character_entity import MoogleApiWebFeaturesCharactersGetGetCharacterEntity
     from moogleapi_sdk.entity.moogle_api_web_features_characters_search_search_result_entity import MoogleApiWebFeaturesCharactersSearchSearchResultEntity
-    from moogleapi_sdk.entity.moogle_api_web_features_games_get_all_game_summary_entity import MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
     from moogleapi_sdk.entity.moogle_api_web_features_games_get_get_game_entity import MoogleApiWebFeaturesGamesGetGetGameEntity
-    from moogleapi_sdk.entity.moogle_api_web_features_monsters_get_all_monster_summary_entity import MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
     from moogleapi_sdk.entity.moogle_api_web_features_monsters_get_get_monster_entity import MoogleApiWebFeaturesMonstersGetGetMonsterEntity
     from moogleapi_sdk.entity.moogle_api_web_features_monsters_search_monster_search_result_entity import MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity

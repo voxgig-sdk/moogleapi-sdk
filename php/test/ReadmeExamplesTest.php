@@ -40,12 +40,9 @@ class ReadmeExamplesTest extends TestCase
 
     // Entity accessor (\$client->Name()) => fixture storage key (lowercase name).
     private const ENTITIES = [
-        "MoogleApiWebFeaturesCharactersGetAllCharacterSummary" => "moogle_api_web_features_characters_get_all_character_summary",
         "MoogleApiWebFeaturesCharactersGetGetCharacter" => "moogle_api_web_features_characters_get_get_character",
         "MoogleApiWebFeaturesCharactersSearchSearchResult" => "moogle_api_web_features_characters_search_search_result",
-        "MoogleApiWebFeaturesGamesGetAllGameSummary" => "moogle_api_web_features_games_get_all_game_summary",
         "MoogleApiWebFeaturesGamesGetGetGame" => "moogle_api_web_features_games_get_get_game",
-        "MoogleApiWebFeaturesMonstersGetAllMonsterSummary" => "moogle_api_web_features_monsters_get_all_monster_summary",
         "MoogleApiWebFeaturesMonstersGetGetMonster" => "moogle_api_web_features_monsters_get_get_monster",
         "MoogleApiWebFeaturesMonstersSearchMonsterSearchResult" => "moogle_api_web_features_monsters_search_monster_search_result",
     ];

@@ -16,20 +16,6 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class MoogleApiWebFeaturesCharactersGetAllCharacterSummary(TypedDict, total=False):
-    gameName: str
-    id: int
-    imageUrl: str
-    name: str
-    role: str
-
-
-class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch(TypedDict, total=False):
-    game_id: int
-    page: int
-    page_size: int
-
-
 class MoogleApiWebFeaturesCharactersGetGetCharacter(TypedDict, total=False):
     affiliation: str
     description: str
@@ -44,6 +30,12 @@ class MoogleApiWebFeaturesCharactersGetGetCharacter(TypedDict, total=False):
 
 class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch(TypedDict):
     id: int
+
+
+class MoogleApiWebFeaturesCharactersGetGetCharacterListMatch(TypedDict, total=False):
+    game_id: int
+    page: int
+    page_size: int
 
 
 class MoogleApiWebFeaturesCharactersSearchSearchResult(TypedDict, total=False):
@@ -63,18 +55,6 @@ class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch(MoogleApiWebFeat
     game_id: int
 
 
-class MoogleApiWebFeaturesGamesGetAllGameSummary(TypedDict, total=False):
-    id: int
-    name: str
-    platform: str
-    releaseYear: int
-
-
-class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch(TypedDict, total=False):
-    page: int
-    page_size: int
-
-
 class MoogleApiWebFeaturesGamesGetGetGame(TypedDict, total=False):
     characterCount: int
     description: str
@@ -89,17 +69,7 @@ class MoogleApiWebFeaturesGamesGetGetGameLoadMatch(TypedDict):
     id: int
 
 
-class MoogleApiWebFeaturesMonstersGetAllMonsterSummary(TypedDict, total=False):
-    category: str
-    gameName: str
-    hitPoints: int
-    id: int
-    name: str
-
-
-class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch(TypedDict, total=False):
-    category: str
-    game_id: int
+class MoogleApiWebFeaturesGamesGetGetGameListMatch(TypedDict, total=False):
     page: int
     page_size: int
 
@@ -115,6 +85,13 @@ class MoogleApiWebFeaturesMonstersGetGetMonster(TypedDict, total=False):
 
 class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch(TypedDict):
     id: int
+
+
+class MoogleApiWebFeaturesMonstersGetGetMonsterListMatch(TypedDict, total=False):
+    category: str
+    game_id: int
+    page: int
+    page_size: int
 
 
 class MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(TypedDict, total=False):

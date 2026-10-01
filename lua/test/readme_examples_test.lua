@@ -20,7 +20,7 @@ local SDK_MODULE = "moogleapi_sdk"
 -- A test-mode client seeded with a fixture for every entity. The constructor
 -- of each runnable snippet is rewritten to this form so the offline mock has
 -- data to return.
-local TEST_SEED = '{ entity = { ["moogle_api_web_features_characters_get_all_character_summary"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_characters_get_get_character"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_characters_search_search_result"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_games_get_all_game_summary"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_games_get_get_game"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_monsters_get_all_monster_summary"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_monsters_get_get_monster"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_monsters_search_monster_search_result"] = { ["test01"] = { id = "test01" } } } }'
+local TEST_SEED = '{ entity = { ["moogle_api_web_features_characters_get_get_character"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_characters_search_search_result"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_games_get_get_game"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_monsters_get_get_monster"] = { ["test01"] = { id = "test01" } }, ["moogle_api_web_features_monsters_search_monster_search_result"] = { ["test01"] = { id = "test01" } } } }'
 local TEST_CTOR = "sdk.test(" .. TEST_SEED .. ")"
 
 local function script_dir()

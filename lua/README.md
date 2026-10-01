@@ -4,7 +4,7 @@
 
 The Lua SDK for the Moogleapi API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:MoogleApiWebFeaturesCharactersGetGetCharacter()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -35,18 +35,26 @@ local client = sdk.new({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
+### 2. List moogleapiwebfeaturescharactersgetgetcharacter records
 
 Entity operations return `(value, err)`. For `list`, `value` is the
 array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local moogleapiwebfeaturescharactersgetallcharactersummarys, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
+local moogleapiwebfeaturescharactersgetgetcharacters, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():list()
 if err then error(err) end
 
-for _, item in ipairs(moogleapiwebfeaturescharactersgetallcharactersummarys) do
+for _, item in ipairs(moogleapiwebfeaturescharactersgetgetcharacters) do
   print(item["id"])
 end
+```
+
+### 3. Load a moogleapiwebfeaturescharactersgetgetcharacter
+
+```lua
+local moogleapiwebfeaturescharactersgetgetcharacter, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = 1 })
+if err then error(err) end
+print(moogleapiwebfeaturescharactersgetgetcharacter)
 ```
 
 
@@ -195,12 +203,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data) -> MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data) -> MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data) -> MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data) -> MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data) -> MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
@@ -240,20 +245,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `gameName` |  |
-| `id` |  |
-| `imageUrl` |  |
-| `name` |  |
-| `role` |  |
-
-Operations: List.
-
-API path: `/api/characters`
-
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 | Field | Description |
@@ -268,9 +259,9 @@ API path: `/api/characters`
 | `race` |  |
 | `role` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -287,19 +278,6 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-| `name` |  |
-| `platform` |  |
-| `releaseYear` |  |
-
-Operations: List.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -312,23 +290,9 @@ API path: `/api/games`
 | `platform` |  |
 | `releaseYear` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `category` |  |
-| `gameName` |  |
-| `hitPoints` |  |
-| `id` |  |
-| `name` |  |
-
-Operations: List.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -341,9 +305,9 @@ API path: `/api/monsters`
 | `id` |  |
 | `name` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -365,33 +329,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `local moogle_api_web_features_characters_get_all_character_summary = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `string` |  |
-| `id` | `number` |  |
-| `imageUrl` | `string` |  |
-| `name` | `string` |  |
-| `role` | `string` |  |
-
-#### Example: List
-
-```lua
-local moogle_api_web_features_characters_get_all_character_summarys, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `local moogle_api_web_features_characters_get_get_character = client:MoogleApiWebFeaturesCharactersGetGetCharacter(nil)`
@@ -400,6 +337,7 @@ Create an instance: `local moogle_api_web_features_characters_get_get_character 
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -420,6 +358,12 @@ Create an instance: `local moogle_api_web_features_characters_get_get_character 
 
 ```lua
 local moogle_api_web_features_characters_get_get_character, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = 1 })
+```
+
+#### Example: List
+
+```lua
+local moogle_api_web_features_characters_get_get_characters, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():list()
 ```
 
 
@@ -451,32 +395,6 @@ local moogle_api_web_features_characters_search_search_results, err = client:Moo
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `local moogle_api_web_features_games_get_all_game_summary = client:MoogleApiWebFeaturesGamesGetAllGameSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `releaseYear` | `number` |  |
-
-#### Example: List
-
-```lua
-local moogle_api_web_features_games_get_all_game_summarys, err = client:MoogleApiWebFeaturesGamesGetAllGameSummary():list()
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `local moogle_api_web_features_games_get_get_game = client:MoogleApiWebFeaturesGamesGetGetGame(nil)`
@@ -485,6 +403,7 @@ Create an instance: `local moogle_api_web_features_games_get_get_game = client:M
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -505,31 +424,10 @@ Create an instance: `local moogle_api_web_features_games_get_get_game = client:M
 local moogle_api_web_features_games_get_get_game, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = 1 })
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `local moogle_api_web_features_monsters_get_all_monster_summary = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `string` |  |
-| `gameName` | `string` |  |
-| `hitPoints` | `number` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-
 #### Example: List
 
 ```lua
-local moogle_api_web_features_monsters_get_all_monster_summarys, err = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():list()
+local moogle_api_web_features_games_get_get_games, err = client:MoogleApiWebFeaturesGamesGetGetGame():list()
 ```
 
 
@@ -541,6 +439,7 @@ Create an instance: `local moogle_api_web_features_monsters_get_get_monster = cl
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -558,6 +457,12 @@ Create an instance: `local moogle_api_web_features_monsters_get_get_monster = cl
 
 ```lua
 local moogle_api_web_features_monsters_get_get_monster, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = 1 })
+```
+
+#### Example: List
+
+```lua
+local moogle_api_web_features_monsters_get_get_monsters, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():list()
 ```
 
 

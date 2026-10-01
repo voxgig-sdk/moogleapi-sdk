@@ -42,10 +42,6 @@ client = MoogleapiSDK.test
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data = nil)`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` entity instance. Pass `nil` for no initial data.
-
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data = nil)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pass `nil` for no initial data.
@@ -54,17 +50,9 @@ Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pa
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data = nil)`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummary` entity instance. Pass `nil` for no initial data.
-
 #### `MoogleApiWebFeaturesGamesGetGetGame(data = nil)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance. Pass `nil` for no initial data.
-
-#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data = nil)`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data = nil)`
 
@@ -112,62 +100,6 @@ same parameters as `direct()`. Raises on error.
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-
-```ruby
-moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `gameName` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `imageUrl` | `String` | No |  |
-| `name` | `String` | No |  |
-| `role` | `String` | No |  |
-
-### Operations
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
-
-```ruby
-results = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```ruby
@@ -189,6 +121,14 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 | `role` | `String` | No |  |
 
 ### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+
+```ruby
+results = client.MoogleApiWebFeaturesCharactersGetGetCharacter.list
+```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
@@ -285,61 +225,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-
-```ruby
-moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `platform` | `String` | No |  |
-| `releaseYear` | `Integer` | No |  |
-
-### Operations
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
-
-```ruby
-results = client.MoogleApiWebFeaturesGamesGetAllGameSummary.list
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```ruby
@@ -359,6 +244,14 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 | `releaseYear` | `Integer` | No |  |
 
 ### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+
+```ruby
+results = client.MoogleApiWebFeaturesGamesGetGetGame.list
+```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
@@ -398,62 +291,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-
-```ruby
-moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `category` | `String` | No |  |
-| `gameName` | `String` | No |  |
-| `hitPoints` | `Integer` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-
-### Operations
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
-
-```ruby
-results = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.list
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```ruby
@@ -472,6 +309,14 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 | `name` | `String` | No |  |
 
 ### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+
+```ruby
+results = client.MoogleApiWebFeaturesMonstersGetGetMonster.list
+```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 

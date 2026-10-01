@@ -43,6 +43,11 @@
     }
   },
   "requests": {
+    "GET /api/games": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/games/{id}": {
       "provenance": "operation-contract",
       "version": 2,

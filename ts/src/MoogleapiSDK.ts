@@ -1,11 +1,8 @@
 // Moogleapi Ts SDK
 
-import { MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity } from './entity/MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity'
 import { MoogleApiWebFeaturesCharactersGetGetCharacterEntity } from './entity/MoogleApiWebFeaturesCharactersGetGetCharacterEntity'
 import { MoogleApiWebFeaturesCharactersSearchSearchResultEntity } from './entity/MoogleApiWebFeaturesCharactersSearchSearchResultEntity'
-import { MoogleApiWebFeaturesGamesGetAllGameSummaryEntity } from './entity/MoogleApiWebFeaturesGamesGetAllGameSummaryEntity'
 import { MoogleApiWebFeaturesGamesGetGetGameEntity } from './entity/MoogleApiWebFeaturesGamesGetGetGameEntity'
-import { MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity } from './entity/MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity'
 import { MoogleApiWebFeaturesMonstersGetGetMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity'
 import { MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity } from './entity/MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity'
 
@@ -47,6 +44,12 @@ class MoogleapiSDK {
     })
 
     this._options = this._utility.makeOptions(this._rootctx)
+
+    for (const key of ['_options', '_rootctx', '_features']) {
+      Object.defineProperty(this, key, {
+        value: (this as any)[key], enumerable: false, writable: true, configurable: true
+      })
+    }
 
     const struct = this._utility.struct
     const getpath = struct.getpath
@@ -207,7 +210,7 @@ class MoogleapiSDK {
         return { ok: false, err: ctx.error('direct_no_response', 'response: undefined') }
       }
       else if (fetched instanceof Error) {
-        return { ok: false, err: fetched }
+        return { ok: false, err: utility.clean(ctx, fetched) }
       }
 
       const status = fetched.status
@@ -241,7 +244,7 @@ class MoogleapiSDK {
       }
     }
     catch (err: any) {
-      return { ok: false, err }
+      return { ok: false, err: utility.clean(ctx, err) }
     }
   }
 
@@ -289,15 +292,6 @@ class MoogleapiSDK {
 
 
 
-  // Entity access: `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()` / `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MoogleApiWebFeaturesCharactersGetAllCharacterSummary(entopts?: Record<string, any>) {
-    const self = this
-    return new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity(self, entopts)
-  }
-
-
   // Entity access: `client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -316,30 +310,12 @@ class MoogleapiSDK {
   }
 
 
-  // Entity access: `client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()` / `client.MoogleApiWebFeaturesGamesGetAllGameSummary().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MoogleApiWebFeaturesGamesGetAllGameSummary(entopts?: Record<string, any>) {
-    const self = this
-    return new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity(self, entopts)
-  }
-
-
   // Entity access: `client.MoogleApiWebFeaturesGamesGetGetGame().list()` / `client.MoogleApiWebFeaturesGamesGetGetGame().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   MoogleApiWebFeaturesGamesGetGetGame(entopts?: Record<string, any>) {
     const self = this
     return new MoogleApiWebFeaturesGamesGetGetGameEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()` / `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MoogleApiWebFeaturesMonstersGetAllMonsterSummary(entopts?: Record<string, any>) {
-    const self = this
-    return new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity(self, entopts)
   }
 
 

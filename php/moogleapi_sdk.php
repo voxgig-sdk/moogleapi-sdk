@@ -22,7 +22,7 @@ use Voxgig\Struct\Struct;
 // (_retry, _cache, _metrics, ...); allow them explicitly (PHP 8.2+
 // deprecates implicit dynamic properties).
 #[\AllowDynamicProperties]
-class MoogleapiSDK
+class MoogleapiSDK implements \JsonSerializable
 {
     public string $mode;
     public array $features;
@@ -115,6 +115,19 @@ class MoogleapiSDK
     {
         $out = Struct::clone($this->options);
         return is_array($out) ? $out : [];
+    }
+
+    // The options hold the credential, so the default print and json form
+    // name the client and nothing more; options_map() is the way to read
+    // them back.
+    public function jsonSerialize(): array
+    {
+        return ['name' => 'Moogleapi'];
+    }
+
+    public function __debugInfo(): array
+    {
+        return $this->jsonSerialize();
     }
 
     public function get_utility()
@@ -242,7 +255,7 @@ class MoogleapiSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return ["ok" => false, "err" => $fetch_err];
+            return ["ok" => false, "err" => ($utility->clean)($ctx, $fetch_err)];
         }
 
         if ($fetched === null) {
@@ -341,24 +354,6 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_characters_get_all_character_summary = null;
-
-    // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_characters_get_all_character_summary()
-    // resolves here too.
-    public function MoogleApiWebFeaturesCharactersGetAllCharacterSummary($data = null)
-    {
-        require_once __DIR__ . '/entity/moogle_api_web_features_characters_get_all_character_summary_entity.php';
-        if ($data === null) {
-            if ($this->_moogle_api_web_features_characters_get_all_character_summary === null) {
-                $this->_moogle_api_web_features_characters_get_all_character_summary = new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity($this, null);
-            }
-            return $this->_moogle_api_web_features_characters_get_all_character_summary;
-        }
-        return new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity($this, $data);
-    }
-
-
     private $_moogle_api_web_features_characters_get_get_character = null;
 
     // Canonical facade: $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list() / ->load(["id" => ...]).
@@ -395,24 +390,6 @@ class MoogleapiSDK
     }
 
 
-    private $_moogle_api_web_features_games_get_all_game_summary = null;
-
-    // Canonical facade: $client->MoogleApiWebFeaturesGamesGetAllGameSummary()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_games_get_all_game_summary()
-    // resolves here too.
-    public function MoogleApiWebFeaturesGamesGetAllGameSummary($data = null)
-    {
-        require_once __DIR__ . '/entity/moogle_api_web_features_games_get_all_game_summary_entity.php';
-        if ($data === null) {
-            if ($this->_moogle_api_web_features_games_get_all_game_summary === null) {
-                $this->_moogle_api_web_features_games_get_all_game_summary = new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity($this, null);
-            }
-            return $this->_moogle_api_web_features_games_get_all_game_summary;
-        }
-        return new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity($this, $data);
-    }
-
-
     private $_moogle_api_web_features_games_get_get_game = null;
 
     // Canonical facade: $client->MoogleApiWebFeaturesGamesGetGetGame()->list() / ->load(["id" => ...]).
@@ -428,24 +405,6 @@ class MoogleapiSDK
             return $this->_moogle_api_web_features_games_get_get_game;
         }
         return new MoogleApiWebFeaturesGamesGetGetGameEntity($this, $data);
-    }
-
-
-    private $_moogle_api_web_features_monsters_get_all_monster_summary = null;
-
-    // Canonical facade: $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->moogle_api_web_features_monsters_get_all_monster_summary()
-    // resolves here too.
-    public function MoogleApiWebFeaturesMonstersGetAllMonsterSummary($data = null)
-    {
-        require_once __DIR__ . '/entity/moogle_api_web_features_monsters_get_all_monster_summary_entity.php';
-        if ($data === null) {
-            if ($this->_moogle_api_web_features_monsters_get_all_monster_summary === null) {
-                $this->_moogle_api_web_features_monsters_get_all_monster_summary = new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity($this, null);
-            }
-            return $this->_moogle_api_web_features_monsters_get_all_monster_summary;
-        }
-        return new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity($this, $data);
     }
 
 

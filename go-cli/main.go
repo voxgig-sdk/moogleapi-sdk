@@ -20,7 +20,7 @@ import (
 const prompt = "moogleapi"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "moogle_api_web_features_characters_get_all_character_summary moogle_api_web_features_characters_get_get_character moogle_api_web_features_characters_search_search_result moogle_api_web_features_games_get_all_game_summary moogle_api_web_features_games_get_get_game moogle_api_web_features_monsters_get_all_monster_summary moogle_api_web_features_monsters_get_get_monster moogle_api_web_features_monsters_search_monster_search_result"
+const entitiesHelp = "moogle_api_web_features_characters_get_get_character moogle_api_web_features_characters_search_search_result moogle_api_web_features_games_get_get_game moogle_api_web_features_monsters_get_get_monster moogle_api_web_features_monsters_search_monster_search_result"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

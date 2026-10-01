@@ -49,18 +49,6 @@ const client = MoogleapiSDK.test()
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data?: object)`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance.
-
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data?: object)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance.
@@ -85,18 +73,6 @@ Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance.
 
 **Returns:** `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance.
 
-#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data?: object)`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummary` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance.
-
 #### `MoogleApiWebFeaturesGamesGetGetGame(data?: object)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance.
@@ -108,18 +84,6 @@ Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `MoogleApiWebFeaturesGamesGetGetGameEntity` instance.
-
-#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data?: object)`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data?: object)`
 
@@ -191,60 +155,6 @@ Alias for `MoogleapiSDK.test()`.
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-
-```ts
-const moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `gameName` | `string` | No |  |
-| `id` | `number` | No |  |
-| `imageUrl` | `string` | No |  |
-| `name` | `string` | No |  |
-| `role` | `string` | No |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `MoogleapiSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```ts
@@ -266,6 +176,14 @@ const moogle_api_web_features_characters_get_get_character = client.MoogleApiWeb
 | `role` | `string` | No |  |
 
 ### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
+```
 
 #### `load(match: object, ctrl?: object)`
 
@@ -358,59 +276,6 @@ Return a copy of the entity options.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-
-```ts
-const moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `releaseYear` | `number` | No |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `MoogleapiSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```ts
@@ -430,6 +295,14 @@ const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGa
 | `releaseYear` | `number` | No |  |
 
 ### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.MoogleApiWebFeaturesGamesGetGetGame().list()
+```
 
 #### `load(match: object, ctrl?: object)`
 
@@ -467,60 +340,6 @@ Return a copy of the entity options.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-
-```ts
-const moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `gameName` | `string` | No |  |
-| `hitPoints` | `number` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `MoogleapiSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```ts
@@ -539,6 +358,14 @@ const moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeat
 | `name` | `string` | No |  |
 
 ### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.MoogleApiWebFeaturesMonstersGetGetMonster().list()
+```
 
 #### `load(match: object, ctrl?: object)`
 

@@ -52,6 +52,74 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
 
   name: "moogle_api_web_features_monsters_get_get_monster"
   op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/monsters"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "game_id"
+                or: "gameId"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "pageSize"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/monsters"
+          q: {
+            exist: [
+              "category"
+              "game_id"
+              "page"
+              "page_size"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "monsters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
     load: {
       name: "load"
       points: [

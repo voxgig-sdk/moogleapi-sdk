@@ -82,116 +82,14 @@ local function make_config()
         ["content-type"] = "application/json",
       },
       entity = {
-        ["moogle_api_web_features_characters_get_all_character_summary"] = {},
         ["moogle_api_web_features_characters_get_get_character"] = {},
         ["moogle_api_web_features_characters_search_search_result"] = {},
-        ["moogle_api_web_features_games_get_all_game_summary"] = {},
         ["moogle_api_web_features_games_get_get_game"] = {},
-        ["moogle_api_web_features_monsters_get_all_monster_summary"] = {},
         ["moogle_api_web_features_monsters_get_get_monster"] = {},
         ["moogle_api_web_features_monsters_search_monster_search_result"] = {},
       },
     },
     entity = {
-      ["moogle_api_web_features_characters_get_all_character_summary"] = {
-        ["fields"] = {
-          {
-            ["name"] = "gameName",
-            ["title"] = "Game Name",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$INTEGER`",
-            ["format"] = "int32",
-          },
-          {
-            ["name"] = "imageUrl",
-            ["title"] = "Image Url",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "name",
-            ["title"] = "Name",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "role",
-            ["title"] = "Role",
-            ["type"] = "`$STRING`",
-          },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
-        },
-        ["name"] = "moogle_api_web_features_characters_get_all_character_summary",
-        ["op"] = {
-          ["list"] = {
-            ["input"] = "data",
-            ["name"] = "list",
-            ["points"] = {
-              {
-                ["kind"] = "http",
-                ["method"] = "GET",
-                ["orig"] = "/api/characters",
-                ["segments"] = {
-                  {
-                    ["lit"] = "api",
-                  },
-                  {
-                    ["lit"] = "characters",
-                  },
-                },
-                ["parts"] = {
-                  "api",
-                  "characters",
-                },
-                ["rename"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.items`",
-                },
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["name"] = "game_id",
-                      ["orig"] = "game_id",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                    },
-                    {
-                      ["name"] = "page",
-                      ["orig"] = "page",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 1,
-                    },
-                    {
-                      ["name"] = "page_size",
-                      ["orig"] = "page_size",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 20,
-                    },
-                  },
-                },
-                ["select"] = {
-                  ["exist"] = {
-                    "game_id",
-                    "page",
-                    "page_size",
-                  },
-                },
-              },
-            },
-          },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
       ["moogle_api_web_features_characters_get_get_character"] = {
         ["fields"] = {
           {
@@ -247,6 +145,65 @@ local function make_config()
         },
         ["name"] = "moogle_api_web_features_characters_get_get_character",
         ["op"] = {
+          ["list"] = {
+            ["input"] = "data",
+            ["name"] = "list",
+            ["points"] = {
+              {
+                ["kind"] = "http",
+                ["method"] = "GET",
+                ["orig"] = "/api/characters",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "characters",
+                  },
+                },
+                ["parts"] = {
+                  "api",
+                  "characters",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.items`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "game_id",
+                      ["orig"] = "gameId",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "page",
+                      ["orig"] = "page",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 1,
+                    },
+                    {
+                      ["name"] = "page_size",
+                      ["orig"] = "pageSize",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 20,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "game_id",
+                    "page",
+                    "page_size",
+                  },
+                },
+              },
+            },
+          },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -373,7 +330,7 @@ local function make_config()
                   ["query"] = {
                     {
                       ["name"] = "game_id",
-                      ["orig"] = "game_id",
+                      ["orig"] = "gameId",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                     },
@@ -390,94 +347,6 @@ local function make_config()
                   ["exist"] = {
                     "game_id",
                     "query",
-                  },
-                },
-              },
-            },
-          },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["moogle_api_web_features_games_get_all_game_summary"] = {
-        ["fields"] = {
-          {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$INTEGER`",
-            ["format"] = "int32",
-          },
-          {
-            ["name"] = "name",
-            ["title"] = "Name",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "platform",
-            ["title"] = "Platform",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "releaseYear",
-            ["title"] = "Release Year",
-            ["type"] = "`$INTEGER`",
-            ["format"] = "int32",
-          },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
-        },
-        ["name"] = "moogle_api_web_features_games_get_all_game_summary",
-        ["op"] = {
-          ["list"] = {
-            ["input"] = "data",
-            ["name"] = "list",
-            ["points"] = {
-              {
-                ["kind"] = "http",
-                ["method"] = "GET",
-                ["orig"] = "/api/games",
-                ["segments"] = {
-                  {
-                    ["lit"] = "api",
-                  },
-                  {
-                    ["lit"] = "games",
-                  },
-                },
-                ["parts"] = {
-                  "api",
-                  "games",
-                },
-                ["rename"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.items`",
-                },
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["name"] = "page",
-                      ["orig"] = "page",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 1,
-                    },
-                    {
-                      ["name"] = "page_size",
-                      ["orig"] = "page_size",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 20,
-                    },
-                  },
-                },
-                ["select"] = {
-                  ["exist"] = {
-                    "page",
-                    "page_size",
                   },
                 },
               },
@@ -536,6 +405,58 @@ local function make_config()
         },
         ["name"] = "moogle_api_web_features_games_get_get_game",
         ["op"] = {
+          ["list"] = {
+            ["input"] = "data",
+            ["name"] = "list",
+            ["points"] = {
+              {
+                ["kind"] = "http",
+                ["method"] = "GET",
+                ["orig"] = "/api/games",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "games",
+                  },
+                },
+                ["parts"] = {
+                  "api",
+                  "games",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.items`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "page",
+                      ["orig"] = "page",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 1,
+                    },
+                    {
+                      ["name"] = "page_size",
+                      ["orig"] = "pageSize",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 20,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "page",
+                    "page_size",
+                  },
+                },
+              },
+            },
+          },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -589,113 +510,6 @@ local function make_config()
           ["ancestors"] = {},
         },
       },
-      ["moogle_api_web_features_monsters_get_all_monster_summary"] = {
-        ["fields"] = {
-          {
-            ["name"] = "category",
-            ["title"] = "Category",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "gameName",
-            ["title"] = "Game Name",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "hitPoints",
-            ["title"] = "Hit Points",
-            ["type"] = "`$INTEGER`",
-            ["format"] = "int32",
-          },
-          {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$INTEGER`",
-            ["format"] = "int32",
-          },
-          {
-            ["name"] = "name",
-            ["title"] = "Name",
-            ["type"] = "`$STRING`",
-          },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
-        },
-        ["name"] = "moogle_api_web_features_monsters_get_all_monster_summary",
-        ["op"] = {
-          ["list"] = {
-            ["input"] = "data",
-            ["name"] = "list",
-            ["points"] = {
-              {
-                ["kind"] = "http",
-                ["method"] = "GET",
-                ["orig"] = "/api/monsters",
-                ["segments"] = {
-                  {
-                    ["lit"] = "api",
-                  },
-                  {
-                    ["lit"] = "monsters",
-                  },
-                },
-                ["parts"] = {
-                  "api",
-                  "monsters",
-                },
-                ["rename"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.items`",
-                },
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["name"] = "category",
-                      ["orig"] = "category",
-                      ["type"] = "`$STRING`",
-                      ["kind"] = "query",
-                    },
-                    {
-                      ["name"] = "game_id",
-                      ["orig"] = "game_id",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                    },
-                    {
-                      ["name"] = "page",
-                      ["orig"] = "page",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 1,
-                    },
-                    {
-                      ["name"] = "page_size",
-                      ["orig"] = "page_size",
-                      ["type"] = "`$INTEGER`",
-                      ["kind"] = "query",
-                      ["example"] = 20,
-                    },
-                  },
-                },
-                ["select"] = {
-                  ["exist"] = {
-                    "category",
-                    "game_id",
-                    "page",
-                    "page_size",
-                  },
-                },
-              },
-            },
-          },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
       ["moogle_api_web_features_monsters_get_get_monster"] = {
         ["fields"] = {
           {
@@ -737,6 +551,72 @@ local function make_config()
         },
         ["name"] = "moogle_api_web_features_monsters_get_get_monster",
         ["op"] = {
+          ["list"] = {
+            ["input"] = "data",
+            ["name"] = "list",
+            ["points"] = {
+              {
+                ["kind"] = "http",
+                ["method"] = "GET",
+                ["orig"] = "/api/monsters",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "monsters",
+                  },
+                },
+                ["parts"] = {
+                  "api",
+                  "monsters",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.items`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "category",
+                      ["orig"] = "category",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "game_id",
+                      ["orig"] = "gameId",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "page",
+                      ["orig"] = "page",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 1,
+                    },
+                    {
+                      ["name"] = "page_size",
+                      ["orig"] = "pageSize",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 20,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "category",
+                    "game_id",
+                    "page",
+                    "page_size",
+                  },
+                },
+              },
+            },
+          },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -870,7 +750,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "game_id",
-                      ["orig"] = "game_id",
+                      ["orig"] = "gameId",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                     },

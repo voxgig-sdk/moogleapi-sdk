@@ -41,23 +41,14 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewMoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
-		return entity.NewMoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity(client, entopts)
-	}
 	core.NewMoogleApiWebFeaturesCharactersGetGetCharacterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
 		return entity.NewMoogleApiWebFeaturesCharactersGetGetCharacterEntity(client, entopts)
 	}
 	core.NewMoogleApiWebFeaturesCharactersSearchSearchResultEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
 		return entity.NewMoogleApiWebFeaturesCharactersSearchSearchResultEntity(client, entopts)
 	}
-	core.NewMoogleApiWebFeaturesGamesGetAllGameSummaryEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
-		return entity.NewMoogleApiWebFeaturesGamesGetAllGameSummaryEntity(client, entopts)
-	}
 	core.NewMoogleApiWebFeaturesGamesGetGetGameEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
 		return entity.NewMoogleApiWebFeaturesGamesGetGetGameEntity(client, entopts)
-	}
-	core.NewMoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
-		return entity.NewMoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity(client, entopts)
 	}
 	core.NewMoogleApiWebFeaturesMonstersGetGetMonsterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
 		return entity.NewMoogleApiWebFeaturesMonstersGetGetMonsterEntity(client, entopts)

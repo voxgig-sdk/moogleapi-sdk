@@ -5,7 +5,7 @@
 The TypeScript SDK for the Moogleapi API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each with a small set of operations (`list`, `load`)
+`client.MoogleApiWebFeaturesCharactersGetGetCharacter()` — each with a small set of operations (`list`, `load`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/moogleapi-sdk/releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/moogleapi-sdk
+npm install ./moogleapi-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -35,17 +39,30 @@ const client = new MoogleapiSDK({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
+### 2. List moogleapiwebfeaturescharactersgetgetcharacter records
 
-`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetAllCharacterSummary ENTITIES — every operation
+`list()` resolves to an array of MoogleApiWebFeaturesCharactersGetGetCharacter ENTITIES — every operation
 resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const moogleapiwebfeaturescharactersgetallcharactersummarys = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
+const moogleapiwebfeaturescharactersgetgetcharacters = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
 
-for (const moogleapiwebfeaturescharactersgetallcharactersummary of moogleapiwebfeaturescharactersgetallcharactersummarys) {
-  console.log(moogleapiwebfeaturescharactersgetallcharactersummary)
+for (const moogleapiwebfeaturescharactersgetgetcharacter of moogleapiwebfeaturescharactersgetgetcharacters) {
+  console.log(moogleapiwebfeaturescharactersgetgetcharacter)
+}
+```
+
+### 3. Load a moogleapiwebfeaturescharactersgetgetcharacter
+
+`load()` returns the entity directly and throws on failure:
+
+```ts
+try {
+  const moogleapiwebfeaturescharactersgetgetcharacter = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 1 })
+  console.log(moogleapiwebfeaturescharactersgetgetcharacter)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -228,12 +245,9 @@ new MoogleapiSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data?)` | `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter(data?)` | `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult(data?)` | `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary(data?)` | `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame(data?)` | `MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data?)` | `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster(data?)` | `MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data?)` | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 | `tester(testopts?, sdkopts?)` | `MoogleapiSDK` | Create a test-mode client instance. |
@@ -303,20 +317,6 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `gameName` |  |
-| `id` |  |
-| `imageUrl` |  |
-| `name` |  |
-| `role` |  |
-
-Operations: list.
-
-API path: `/api/characters`
-
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 | Field | Description |
@@ -331,9 +331,9 @@ API path: `/api/characters`
 | `race` |  |
 | `role` |  |
 
-Operations: load.
+Operations: list, load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -350,19 +350,6 @@ Operations: list.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-| `name` |  |
-| `platform` |  |
-| `releaseYear` |  |
-
-Operations: list.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -375,23 +362,9 @@ API path: `/api/games`
 | `platform` |  |
 | `releaseYear` |  |
 
-Operations: load.
+Operations: list, load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `category` |  |
-| `gameName` |  |
-| `hitPoints` |  |
-| `id` |  |
-| `name` |  |
-
-Operations: list.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -404,9 +377,9 @@ API path: `/api/monsters`
 | `id` |  |
 | `name` |  |
 
-Operations: load.
+Operations: list, load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -428,33 +401,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `const moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `string` |  |
-| `id` | `number` |  |
-| `imageUrl` | `string` |  |
-| `name` | `string` |  |
-| `role` | `string` |  |
-
-#### Example: List
-
-```ts
-const moogle_api_web_features_characters_get_all_character_summarys = await client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `const moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()`
@@ -463,6 +409,7 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -483,6 +430,12 @@ Create an instance: `const moogle_api_web_features_characters_get_get_character 
 
 ```ts
 const moogle_api_web_features_characters_get_get_character = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id: 1 })
+```
+
+#### Example: List
+
+```ts
+const moogle_api_web_features_characters_get_get_characters = await client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
 ```
 
 
@@ -514,32 +467,6 @@ const moogle_api_web_features_characters_search_search_results = await client.Mo
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `const moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `releaseYear` | `number` |  |
-
-#### Example: List
-
-```ts
-const moogle_api_web_features_games_get_all_game_summarys = await client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `const moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()`
@@ -548,6 +475,7 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -568,31 +496,10 @@ Create an instance: `const moogle_api_web_features_games_get_get_game = client.M
 const moogle_api_web_features_games_get_get_game = await client.MoogleApiWebFeaturesGamesGetGetGame().load({ id: 1 })
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `const moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `string` |  |
-| `gameName` | `string` |  |
-| `hitPoints` | `number` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-
 #### Example: List
 
 ```ts
-const moogle_api_web_features_monsters_get_all_monster_summarys = await client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
+const moogle_api_web_features_games_get_get_games = await client.MoogleApiWebFeaturesGamesGetGetGame().list()
 ```
 
 
@@ -604,6 +511,7 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -621,6 +529,12 @@ Create an instance: `const moogle_api_web_features_monsters_get_get_monster = cl
 
 ```ts
 const moogle_api_web_features_monsters_get_get_monster = await client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id: 1 })
+```
+
+#### Example: List
+
+```ts
+const moogle_api_web_features_monsters_get_get_monsters = await client.MoogleApiWebFeaturesMonstersGetGetMonster().list()
 ```
 
 

@@ -6,31 +6,19 @@ A Final Fantasy data API, characters, monsters, and games.
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 8 entities and 8 HTTP routes. There are 6 SDK targets and 2 companion tools.
+The selected API surface contains 5 entities and 8 HTTP routes. There are 6 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
 ## What the API provides
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Results: Success.
-
-SDK operations: `list`.
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Results: Success.
 
-SDK operations: `load`.
+SDK operations: `list`, `load`.
 
 ### MoogleApiWebFeaturesCharactersSearchSearchResult
-
-Results: Success.
-
-SDK operations: `list`.
-
-### MoogleApiWebFeaturesGamesGetAllGameSummary
 
 Results: Success.
 
@@ -40,19 +28,13 @@ SDK operations: `list`.
 
 Results: Success.
 
-SDK operations: `load`.
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Results: Success.
-
-SDK operations: `list`.
+SDK operations: `list`, `load`.
 
 ### MoogleApiWebFeaturesMonstersGetGetMonster
 
 Results: Success.
 
-SDK operations: `load`.
+SDK operations: `list`, `load`.
 
 ### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -66,12 +48,12 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 | Entity | SDK operation | HTTP route | Authentication |
 | --- | --- | --- | --- |
-| MoogleApiWebFeaturesCharactersGetAllCharacterSummary | `list` | `GET /api/characters` | See reference |
+| MoogleApiWebFeaturesCharactersGetGetCharacter | `list` | `GET /api/characters` | See reference |
 | MoogleApiWebFeaturesCharactersGetGetCharacter | `load` | `GET /api/characters/{id}` | See reference |
 | MoogleApiWebFeaturesCharactersSearchSearchResult | `list` | `GET /api/characters/search` | See reference |
-| MoogleApiWebFeaturesGamesGetAllGameSummary | `list` | `GET /api/games` | See reference |
+| MoogleApiWebFeaturesGamesGetGetGame | `list` | `GET /api/games` | See reference |
 | MoogleApiWebFeaturesGamesGetGetGame | `load` | `GET /api/games/{id}` | See reference |
-| MoogleApiWebFeaturesMonstersGetAllMonsterSummary | `list` | `GET /api/monsters` | See reference |
+| MoogleApiWebFeaturesMonstersGetGetMonster | `list` | `GET /api/monsters` | See reference |
 | MoogleApiWebFeaturesMonstersGetGetMonster | `load` | `GET /api/monsters/{id}` | See reference |
 | MoogleApiWebFeaturesMonstersSearchMonsterSearchResult | `list` | `GET /api/monsters/search` | See reference |
 
@@ -125,7 +107,7 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `moogleapi_list`: List records for an entity. Supported entities: `moogle_api_web_features_characters_get_all_character_summary`, `moogle_api_web_features_characters_search_search_result`, `moogle_api_web_features_games_get_all_game_summary`, `moogle_api_web_features_monsters_get_all_monster_summary`, `moogle_api_web_features_monsters_search_monster_search_result`.
+- `moogleapi_list`: List records for an entity. Supported entities: `moogle_api_web_features_characters_get_get_character`, `moogle_api_web_features_characters_search_search_result`, `moogle_api_web_features_games_get_get_game`, `moogle_api_web_features_monsters_get_get_monster`, `moogle_api_web_features_monsters_search_monster_search_result`.
 - `moogleapi_load`: Load one record for an entity. Supported entities: `moogle_api_web_features_characters_get_get_character`, `moogle_api_web_features_games_get_get_game`, `moogle_api_web_features_monsters_get_get_monster`.
 
 ## Operational features

@@ -42,10 +42,6 @@ client = MoogleapiSDK.test()
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data=None)`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance. Pass `None` for no initial data.
-
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data=None)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` instance. Pass `None` for no initial data.
@@ -54,17 +50,9 @@ Create a new `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` instance. Pas
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance. Pass `None` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data=None)`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance. Pass `None` for no initial data.
-
 #### `MoogleApiWebFeaturesGamesGetGetGame(data=None)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGameEntity` instance. Pass `None` for no initial data.
-
-#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data=None)`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance. Pass `None` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data=None)`
 
@@ -106,63 +94,6 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-
-```python
-moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `gameName` | `str` | No |  |
-| `id` | `int` | No |  |
-| `imageUrl` | `str` | No |  |
-| `name` | `str` | No |  |
-| `role` | `str` | No |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
-for moogle_api_web_features_characters_get_all_character_summary in results:
-    print(moogle_api_web_features_characters_get_all_character_summary)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```python
@@ -184,6 +115,16 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 | `role` | `str` | No |  |
 
 ### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
+for moogle_api_web_features_characters_get_get_character in results:
+    print(moogle_api_web_features_characters_get_get_character)
+```
 
 #### `load(reqmatch, ctrl=None) -> dict`
 
@@ -280,62 +221,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-
-```python
-moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `platform` | `str` | No |  |
-| `releaseYear` | `int` | No |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
-for moogle_api_web_features_games_get_all_game_summary in results:
-    print(moogle_api_web_features_games_get_all_game_summary)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```python
@@ -355,6 +240,16 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 | `releaseYear` | `int` | No |  |
 
 ### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.MoogleApiWebFeaturesGamesGetGetGame().list()
+for moogle_api_web_features_games_get_get_game in results:
+    print(moogle_api_web_features_games_get_get_game)
+```
 
 #### `load(reqmatch, ctrl=None) -> dict`
 
@@ -393,63 +288,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-
-```python
-moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `category` | `str` | No |  |
-| `gameName` | `str` | No |  |
-| `hitPoints` | `int` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
-for moogle_api_web_features_monsters_get_all_monster_summary in results:
-    print(moogle_api_web_features_monsters_get_all_monster_summary)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```python
@@ -468,6 +306,16 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 | `name` | `str` | No |  |
 
 ### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.MoogleApiWebFeaturesMonstersGetGetMonster().list()
+for moogle_api_web_features_monsters_get_get_monster in results:
+    print(moogle_api_web_features_monsters_get_get_monster)
+```
 
 #### `load(reqmatch, ctrl=None) -> dict`
 

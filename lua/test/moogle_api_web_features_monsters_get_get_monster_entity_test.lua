@@ -15,11 +15,52 @@ describe("MoogleApiWebFeaturesMonstersGetGetMonsterEntity", function()
     assert.is_not_nil(ent)
   end)
 
+  -- Feature #4: the entity stream(action, ...) method runs the op pipeline and
+  -- returns an iterator over result items. With the streaming feature active it
+  -- yields the feature's incremental output; otherwise it falls back to the
+  -- materialised list so stream always yields.
+  it("should stream", function()
+    local seed = {
+      entity = {
+        ["moogle_api_web_features_monsters_get_get_monster"] = {
+          s1 = { id = "s1" },
+          s2 = { id = "s2" },
+          s3 = { id = "s3" },
+        },
+      },
+    }
+
+    -- Fallback: streaming inactive -> yields the materialised list items.
+    local base = sdk.test(seed, nil)
+    local seen = {}
+    for item in base:MoogleApiWebFeaturesMonstersGetGetMonster(nil):stream("list", nil, nil) do
+      table.insert(seen, item)
+    end
+    assert.are.equal(3, #seen)
+
+    -- Inbound: streaming active -> yields each item from the feature.
+    local config = require("config_shared")()
+    if type(config.feature) == "table" and config.feature.streaming ~= nil then
+      local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
+      local got = {}
+      for item in streamsdk:MoogleApiWebFeaturesMonstersGetGetMonster(nil):stream("list", nil, nil) do
+        if vs.islist(item) then
+          for _, sub in ipairs(item) do
+            table.insert(got, sub)
+          end
+        else
+          table.insert(got, item)
+        end
+      end
+      assert.are.equal(3, #got)
+    end
+  end)
+
   it("should run basic flow", function()
     local setup = moogle_api_web_features_monsters_get_get_monster_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"load"}) do
+    for _, _op in ipairs({"list", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "moogle_api_web_features_monsters_get_get_monster." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -42,8 +83,15 @@ describe("MoogleApiWebFeaturesMonstersGetGetMonsterEntity", function()
       moogle_api_web_features_monsters_get_get_monster_ref01_data = helpers.to_map(moogle_api_web_features_monsters_get_get_monster_ref01_data_raw[1][2])
     end
 
-    -- LOAD
+    -- LIST
     local moogle_api_web_features_monsters_get_get_monster_ref01_ent = client:MoogleApiWebFeaturesMonstersGetGetMonster(nil)
+    local moogle_api_web_features_monsters_get_get_monster_ref01_match = {}
+
+    local moogle_api_web_features_monsters_get_get_monster_ref01_list_result, err = moogle_api_web_features_monsters_get_get_monster_ref01_ent:list(moogle_api_web_features_monsters_get_get_monster_ref01_match, nil)
+    assert.is_nil(err)
+    assert.is_table(moogle_api_web_features_monsters_get_get_monster_ref01_list_result)
+
+    -- LOAD
     local moogle_api_web_features_monsters_get_get_monster_ref01_match_dt0 = {
       id = moogle_api_web_features_monsters_get_get_monster_ref01_data["id"],
     }

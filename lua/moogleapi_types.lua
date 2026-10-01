@@ -6,18 +6,6 @@
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
 
----@class MoogleApiWebFeaturesCharactersGetAllCharacterSummary
----@field gameName? string
----@field id? number
----@field imageUrl? string
----@field name? string
----@field role? string
-
----@class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch
----@field game_id? number
----@field page? number
----@field page_size? number
-
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacter
 ---@field affiliation? string
 ---@field description? string
@@ -32,6 +20,11 @@
 ---@class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch
 ---@field id number
 
+---@class MoogleApiWebFeaturesCharactersGetGetCharacterListMatch
+---@field game_id? number
+---@field page? number
+---@field page_size? number
+
 ---@class MoogleApiWebFeaturesCharactersSearchSearchResult
 ---@field description? string
 ---@field gameName? string
@@ -43,16 +36,6 @@
 ---@class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch
 ---@field game_id? number
 ---@field query string
-
----@class MoogleApiWebFeaturesGamesGetAllGameSummary
----@field id? number
----@field name? string
----@field platform? string
----@field releaseYear? number
-
----@class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch
----@field page? number
----@field page_size? number
 
 ---@class MoogleApiWebFeaturesGamesGetGetGame
 ---@field characterCount? number
@@ -66,16 +49,7 @@
 ---@class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
 ---@field id number
 
----@class MoogleApiWebFeaturesMonstersGetAllMonsterSummary
----@field category? string
----@field gameName? string
----@field hitPoints? number
----@field id? number
----@field name? string
-
----@class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch
----@field category? string
----@field game_id? number
+---@class MoogleApiWebFeaturesGamesGetGetGameListMatch
 ---@field page? number
 ---@field page_size? number
 
@@ -89,6 +63,12 @@
 
 ---@class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch
 ---@field id number
+
+---@class MoogleApiWebFeaturesMonstersGetGetMonsterListMatch
+---@field category? string
+---@field game_id? number
+---@field page? number
+---@field page_size? number
 
 ---@class MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 ---@field category? string

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 MoogleapiUtility.registrar = ->(u) {
   u.clean = MoogleapiUtilities::Clean
+  u.clean_add = MoogleapiUtilities::CleanAdd
+  u.clean_explain = MoogleapiUtilities::CleanExplain
   u.done = MoogleapiUtilities::Done
   u.make_error = MoogleapiUtilities::MakeError
   u.feature_add = MoogleapiUtilities::FeatureAdd

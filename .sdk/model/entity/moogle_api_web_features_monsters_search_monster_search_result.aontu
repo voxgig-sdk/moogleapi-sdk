@@ -73,7 +73,7 @@ main: kit: entity: moogle_api_web_features_monsters_search_monster_search_result
               {
                 k: "query"
                 n: "game_id"
-                or: "game_id"
+                or: "gameId"
                 r: false
                 t: "`$INTEGER`"
               }

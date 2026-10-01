@@ -12,24 +12,6 @@ declare(strict_types=1);
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
 
-/** MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity data model. */
-class MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-{
-    public ?string $gameName = null;
-    public ?int $id = null;
-    public ?string $imageUrl = null;
-    public ?string $name = null;
-    public ?string $role = null;
-}
-
-/** Request payload for MoogleApiWebFeaturesCharactersGetAllCharacterSummary#list. */
-class MoogleApiWebFeaturesCharactersGetAllCharacterSummaryListMatch
-{
-    public ?int $game_id = null;
-    public ?int $page = null;
-    public ?int $page_size = null;
-}
-
 /** MoogleApiWebFeaturesCharactersGetGetCharacter entity data model. */
 class MoogleApiWebFeaturesCharactersGetGetCharacter
 {
@@ -50,6 +32,14 @@ class MoogleApiWebFeaturesCharactersGetGetCharacterLoadMatch
     public int $id;
 }
 
+/** Request payload for MoogleApiWebFeaturesCharactersGetGetCharacter#list. */
+class MoogleApiWebFeaturesCharactersGetGetCharacterListMatch
+{
+    public ?int $game_id = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+}
+
 /** MoogleApiWebFeaturesCharactersSearchSearchResult entity data model. */
 class MoogleApiWebFeaturesCharactersSearchSearchResult
 {
@@ -66,22 +56,6 @@ class MoogleApiWebFeaturesCharactersSearchSearchResultListMatch
 {
     public ?int $game_id = null;
     public string $query;
-}
-
-/** MoogleApiWebFeaturesGamesGetAllGameSummary entity data model. */
-class MoogleApiWebFeaturesGamesGetAllGameSummary
-{
-    public ?int $id = null;
-    public ?string $name = null;
-    public ?string $platform = null;
-    public ?int $releaseYear = null;
-}
-
-/** Request payload for MoogleApiWebFeaturesGamesGetAllGameSummary#list. */
-class MoogleApiWebFeaturesGamesGetAllGameSummaryListMatch
-{
-    public ?int $page = null;
-    public ?int $page_size = null;
 }
 
 /** MoogleApiWebFeaturesGamesGetGetGame entity data model. */
@@ -102,21 +76,9 @@ class MoogleApiWebFeaturesGamesGetGetGameLoadMatch
     public int $id;
 }
 
-/** MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity data model. */
-class MoogleApiWebFeaturesMonstersGetAllMonsterSummary
+/** Request payload for MoogleApiWebFeaturesGamesGetGetGame#list. */
+class MoogleApiWebFeaturesGamesGetGetGameListMatch
 {
-    public ?string $category = null;
-    public ?string $gameName = null;
-    public ?int $hitPoints = null;
-    public ?int $id = null;
-    public ?string $name = null;
-}
-
-/** Request payload for MoogleApiWebFeaturesMonstersGetAllMonsterSummary#list. */
-class MoogleApiWebFeaturesMonstersGetAllMonsterSummaryListMatch
-{
-    public ?string $category = null;
-    public ?int $game_id = null;
     public ?int $page = null;
     public ?int $page_size = null;
 }
@@ -136,6 +98,15 @@ class MoogleApiWebFeaturesMonstersGetGetMonster
 class MoogleApiWebFeaturesMonstersGetGetMonsterLoadMatch
 {
     public int $id;
+}
+
+/** Request payload for MoogleApiWebFeaturesMonstersGetGetMonster#list. */
+class MoogleApiWebFeaturesMonstersGetGetMonsterListMatch
+{
+    public ?string $category = null;
+    public ?int $game_id = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
 }
 
 /** MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity data model. */

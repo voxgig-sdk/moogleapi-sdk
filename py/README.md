@@ -4,7 +4,7 @@
 
 The Python SDK for the Moogleapi API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.MoogleApiWebFeaturesCharactersGetGetCharacter()` — each
 carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -39,18 +39,30 @@ client = MoogleapiSDK({
 })
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
+### 2. List moogleapiwebfeaturescharactersgetgetcharacter records
 
 `list()` returns a `list` of records (each a `dict`) and raises on
 error — iterate it directly.
 
 ```python
 try:
-    moogleapiwebfeaturescharactersgetallcharactersummarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
-    for moogleapiwebfeaturescharactersgetallcharactersummary in moogleapiwebfeaturescharactersgetallcharactersummarys:
-        print(moogleapiwebfeaturescharactersgetallcharactersummary)
+    moogleapiwebfeaturescharactersgetgetcharacters = client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
+    for moogleapiwebfeaturescharactersgetgetcharacter in moogleapiwebfeaturescharactersgetgetcharacters:
+        print(moogleapiwebfeaturescharactersgetgetcharacter)
 except Exception as err:
     print(f"list failed: {err}")
+```
+
+### 3. Load a moogleapiwebfeaturescharactersgetgetcharacter
+
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
+
+```python
+try:
+    moogleapiwebfeaturescharactersgetgetcharacter = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": 1})
+    print(moogleapiwebfeaturescharactersgetgetcharacter)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -208,12 +220,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data) -> MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data) -> MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data) -> MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data) -> MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data) -> MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data) -> MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
@@ -252,20 +261,6 @@ On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `gameName` |  |
-| `id` |  |
-| `imageUrl` |  |
-| `name` |  |
-| `role` |  |
-
-Operations: List.
-
-API path: `/api/characters`
-
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 | Field | Description |
@@ -280,9 +275,9 @@ API path: `/api/characters`
 | `race` |  |
 | `role` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -299,19 +294,6 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-| `name` |  |
-| `platform` |  |
-| `releaseYear` |  |
-
-Operations: List.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -324,23 +306,9 @@ API path: `/api/games`
 | `platform` |  |
 | `releaseYear` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `category` |  |
-| `gameName` |  |
-| `hitPoints` |  |
-| `id` |  |
-| `name` |  |
-
-Operations: List.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -353,9 +321,9 @@ API path: `/api/monsters`
 | `id` |  |
 | `name` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -377,33 +345,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `moogle_api_web_features_characters_get_all_character_summary = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `str` |  |
-| `id` | `int` |  |
-| `imageUrl` | `str` |  |
-| `name` | `str` |  |
-| `role` | `str` |  |
-
-#### Example: List
-
-```python
-moogle_api_web_features_characters_get_all_character_summarys = client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter()`
@@ -412,6 +353,7 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 
 | Method | Description |
 | --- | --- |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -432,6 +374,12 @@ Create an instance: `moogle_api_web_features_characters_get_get_character = clie
 
 ```python
 moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": 1})
+```
+
+#### Example: List
+
+```python
+moogle_api_web_features_characters_get_get_characters = client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
 ```
 
 
@@ -463,32 +411,6 @@ moogle_api_web_features_characters_search_search_results = client.MoogleApiWebFe
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `moogle_api_web_features_games_get_all_game_summary = client.MoogleApiWebFeaturesGamesGetAllGameSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `str` |  |
-| `platform` | `str` |  |
-| `releaseYear` | `int` |  |
-
-#### Example: List
-
-```python
-moogle_api_web_features_games_get_all_game_summarys = client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame()`
@@ -497,6 +419,7 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 
 | Method | Description |
 | --- | --- |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -517,31 +440,10 @@ Create an instance: `moogle_api_web_features_games_get_get_game = client.MoogleA
 moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": 1})
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `moogle_api_web_features_monsters_get_all_monster_summary = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `str` |  |
-| `gameName` | `str` |  |
-| `hitPoints` | `int` |  |
-| `id` | `int` |  |
-| `name` | `str` |  |
-
 #### Example: List
 
 ```python
-moogle_api_web_features_monsters_get_all_monster_summarys = client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()
+moogle_api_web_features_games_get_get_games = client.MoogleApiWebFeaturesGamesGetGetGame().list()
 ```
 
 
@@ -553,6 +455,7 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 
 | Method | Description |
 | --- | --- |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -570,6 +473,12 @@ Create an instance: `moogle_api_web_features_monsters_get_get_monster = client.M
 
 ```python
 moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": 1})
+```
+
+#### Example: List
+
+```python
+moogle_api_web_features_monsters_get_get_monsters = client.MoogleApiWebFeaturesMonstersGetGetMonster().list()
 ```
 
 

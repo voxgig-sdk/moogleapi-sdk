@@ -2,12 +2,9 @@
 // Moogleapi Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.MoogleapiSDK = exports.MoogleapiEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
-const MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity");
 const MoogleApiWebFeaturesCharactersGetGetCharacterEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersGetGetCharacterEntity");
 const MoogleApiWebFeaturesCharactersSearchSearchResultEntity_1 = require("./entity/MoogleApiWebFeaturesCharactersSearchSearchResultEntity");
-const MoogleApiWebFeaturesGamesGetAllGameSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesGamesGetAllGameSummaryEntity");
 const MoogleApiWebFeaturesGamesGetGetGameEntity_1 = require("./entity/MoogleApiWebFeaturesGamesGetGetGameEntity");
-const MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity");
 const MoogleApiWebFeaturesMonstersGetGetMonsterEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity");
 const MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity_1 = require("./entity/MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity");
 const node_util_1 = require("node:util");
@@ -35,6 +32,11 @@ class MoogleapiSDK {
             shared: new WeakMap()
         });
         this._options = this._utility.makeOptions(this._rootctx);
+        for (const key of ['_options', '_rootctx', '_features']) {
+            Object.defineProperty(this, key, {
+                value: this[key], enumerable: false, writable: true, configurable: true
+            });
+        }
         const struct = this._utility.struct;
         const getpath = struct.getpath;
         if (true === getpath(this._options.feature, 'test.active')) {
@@ -151,7 +153,7 @@ class MoogleapiSDK {
                 return { ok: false, err: ctx.error('direct_no_response', 'response: undefined') };
             }
             else if (fetched instanceof Error) {
-                return { ok: false, err: fetched };
+                return { ok: false, err: utility.clean(ctx, fetched) };
             }
             const status = fetched.status;
             // No body responses (204 No Content, 304 Not Modified) and explicit
@@ -181,7 +183,7 @@ class MoogleapiSDK {
             };
         }
         catch (err) {
-            return { ok: false, err };
+            return { ok: false, err: utility.clean(ctx, err) };
         }
     }
     async graphql(query, variables, ctrl) {
@@ -217,13 +219,6 @@ class MoogleapiSDK {
         }
         return res;
     }
-    // Entity access: `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().list()` / `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesCharactersGetAllCharacterSummary(entopts) {
-        const self = this;
-        return new MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity_1.MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity(self, entopts);
-    }
     // Entity access: `client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()` / `client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -238,26 +233,12 @@ class MoogleapiSDK {
         const self = this;
         return new MoogleApiWebFeaturesCharactersSearchSearchResultEntity_1.MoogleApiWebFeaturesCharactersSearchSearchResultEntity(self, entopts);
     }
-    // Entity access: `client.MoogleApiWebFeaturesGamesGetAllGameSummary().list()` / `client.MoogleApiWebFeaturesGamesGetAllGameSummary().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesGamesGetAllGameSummary(entopts) {
-        const self = this;
-        return new MoogleApiWebFeaturesGamesGetAllGameSummaryEntity_1.MoogleApiWebFeaturesGamesGetAllGameSummaryEntity(self, entopts);
-    }
     // Entity access: `client.MoogleApiWebFeaturesGamesGetGetGame().list()` / `client.MoogleApiWebFeaturesGamesGetGetGame().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     MoogleApiWebFeaturesGamesGetGetGame(entopts) {
         const self = this;
         return new MoogleApiWebFeaturesGamesGetGetGameEntity_1.MoogleApiWebFeaturesGamesGetGetGameEntity(self, entopts);
-    }
-    // Entity access: `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().list()` / `client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MoogleApiWebFeaturesMonstersGetAllMonsterSummary(entopts) {
-        const self = this;
-        return new MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity_1.MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity(self, entopts);
     }
     // Entity access: `client.MoogleApiWebFeaturesMonstersGetGetMonster().list()` / `client.MoogleApiWebFeaturesMonstersGetGetMonster().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

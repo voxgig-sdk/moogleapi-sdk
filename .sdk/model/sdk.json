@@ -91,127 +91,6 @@
         "target": {}
       },
       "entity": {
-        "moogle_api_web_features_characters_get_all_character_summary": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": {
-            "gameName": {
-              "a": true,
-              "h": "Game Name",
-              "n": "gameName",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "id": {
-              "a": true,
-              "fo": "int32",
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$INTEGER`"
-            },
-            "imageUrl": {
-              "a": true,
-              "h": "Image Url",
-              "n": "imageUrl",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "name": {
-              "a": true,
-              "h": "Name",
-              "n": "name",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "role": {
-              "a": true,
-              "h": "Role",
-              "n": "role",
-              "r": false,
-              "t": "`$STRING`"
-            }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "moogle_api_web_features_characters_get_all_character_summary",
-          "op": {
-            "list": {
-              "input": "data",
-              "name": "list",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/characters",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "game_id",
-                        "or": "game_id",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 1,
-                        "k": "query",
-                        "n": "page",
-                        "or": "page",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 20,
-                        "k": "query",
-                        "n": "page_size",
-                        "or": "page_size",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/characters",
-                  "q": {
-                    "exist": [
-                      "game_id",
-                      "page",
-                      "page_size"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "characters"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.items`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
         "moogle_api_web_features_characters_get_get_character": {
           "active": true,
           "alias": {
@@ -289,6 +168,73 @@
           },
           "name": "moogle_api_web_features_characters_get_get_character",
           "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/characters",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "gameId",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "pageSize",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/characters",
+                  "q": {
+                    "exist": [
+                      "game_id",
+                      "page",
+                      "page_size"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "characters"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.items`"
+                  }
+                }
+              ]
+            },
             "load": {
               "input": "data",
               "name": "load",
@@ -417,7 +363,7 @@
                         "a": true,
                         "k": "query",
                         "n": "game_id",
-                        "or": "game_id",
+                        "or": "gameId",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -455,112 +401,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "moogle_api_web_features_games_get_all_game_summary": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": {
-            "id": {
-              "a": true,
-              "fo": "int32",
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$INTEGER`"
-            },
-            "name": {
-              "a": true,
-              "h": "Name",
-              "n": "name",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "platform": {
-              "a": true,
-              "h": "Platform",
-              "n": "platform",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "releaseYear": {
-              "a": true,
-              "fo": "int32",
-              "h": "Release Year",
-              "n": "releaseYear",
-              "r": false,
-              "t": "`$INTEGER`"
-            }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "moogle_api_web_features_games_get_all_game_summary",
-          "op": {
-            "list": {
-              "input": "data",
-              "name": "list",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/games",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": 1,
-                        "k": "query",
-                        "n": "page",
-                        "or": "page",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 20,
-                        "k": "query",
-                        "n": "page_size",
-                        "or": "page_size",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/games",
-                  "q": {
-                    "exist": [
-                      "page",
-                      "page_size"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "games"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.items`"
                   }
                 }
               ]
@@ -636,6 +476,64 @@
           },
           "name": "moogle_api_web_features_games_get_get_game",
           "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/games",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "pageSize",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/games",
+                  "q": {
+                    "exist": [
+                      "page",
+                      "page_size"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "games"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.items`"
+                  }
+                }
+              ]
+            },
             "load": {
               "input": "data",
               "name": "load",
@@ -682,137 +580,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "moogle_api_web_features_monsters_get_all_monster_summary": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": {
-            "category": {
-              "a": true,
-              "h": "Category",
-              "n": "category",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "gameName": {
-              "a": true,
-              "h": "Game Name",
-              "n": "gameName",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "hitPoints": {
-              "a": true,
-              "fo": "int32",
-              "h": "Hit Points",
-              "n": "hitPoints",
-              "r": false,
-              "t": "`$INTEGER`"
-            },
-            "id": {
-              "a": true,
-              "fo": "int32",
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$INTEGER`"
-            },
-            "name": {
-              "a": true,
-              "h": "Name",
-              "n": "name",
-              "r": false,
-              "t": "`$STRING`"
-            }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "moogle_api_web_features_monsters_get_all_monster_summary",
-          "op": {
-            "list": {
-              "input": "data",
-              "name": "list",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/monsters",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "category",
-                        "or": "category",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "game_id",
-                        "or": "game_id",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 1,
-                        "k": "query",
-                        "n": "page",
-                        "or": "page",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 20,
-                        "k": "query",
-                        "n": "page_size",
-                        "or": "page_size",
-                        "r": false,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/monsters",
-                  "q": {
-                    "exist": [
-                      "category",
-                      "game_id",
-                      "page",
-                      "page_size"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "monsters"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.items`"
                   }
                 }
               ]
@@ -879,6 +646,82 @@
           },
           "name": "moogle_api_web_features_monsters_get_get_monster",
           "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/monsters",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "game_id",
+                        "or": "gameId",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "pageSize",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/monsters",
+                  "q": {
+                    "exist": [
+                      "category",
+                      "game_id",
+                      "page",
+                      "page_size"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "monsters"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.items`"
+                  }
+                }
+              ]
+            },
             "load": {
               "input": "data",
               "name": "load",
@@ -1016,7 +859,7 @@
                         "a": true,
                         "k": "query",
                         "n": "game_id",
-                        "or": "game_id",
+                        "or": "gameId",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -1476,12 +1319,12 @@
         }
       },
       "flow": {
-        "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow": {
+        "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_characters_get_all_character_summary",
-          "key$": "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow",
+          "entity": "moogle_api_web_features_characters_get_get_character",
+          "key$": "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesCharactersGetAllCharacterSummaryFlow",
+          "name": "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
           "param": {},
           "step": [
             {
@@ -1495,21 +1338,11 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_characters_get_all_character_summary_ref01"
+                    "ref": "moogle_api_web_features_characters_get_get_character_ref01"
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow": {
-          "active": true,
-          "entity": "moogle_api_web_features_characters_get_get_character",
-          "key$": "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
-          "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
-          "param": {},
-          "step": [
+            },
             {
               "a": true,
               "d": {},
@@ -1560,12 +1393,12 @@
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow": {
+        "BasicMoogleApiWebFeaturesGamesGetGetGameFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_games_get_all_game_summary",
-          "key$": "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow",
+          "entity": "moogle_api_web_features_games_get_get_game",
+          "key$": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesGamesGetAllGameSummaryFlow",
+          "name": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow",
           "param": {},
           "step": [
             {
@@ -1579,21 +1412,11 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_games_get_all_game_summary_ref01"
+                    "ref": "moogle_api_web_features_games_get_get_game_ref01"
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicMoogleApiWebFeaturesGamesGetGetGameFlow": {
-          "active": true,
-          "entity": "moogle_api_web_features_games_get_get_game",
-          "key$": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow",
-          "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow",
-          "param": {},
-          "step": [
+            },
             {
               "a": true,
               "d": {},
@@ -1618,12 +1441,12 @@
             }
           ]
         },
-        "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow": {
+        "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow": {
           "active": true,
-          "entity": "moogle_api_web_features_monsters_get_all_monster_summary",
-          "key$": "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow",
+          "entity": "moogle_api_web_features_monsters_get_get_monster",
+          "key$": "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
           "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesMonstersGetAllMonsterSummaryFlow",
+          "name": "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
           "param": {},
           "step": [
             {
@@ -1637,21 +1460,11 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "moogle_api_web_features_monsters_get_all_monster_summary_ref01"
+                    "ref": "moogle_api_web_features_monsters_get_get_monster_ref01"
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow": {
-          "active": true,
-          "entity": "moogle_api_web_features_monsters_get_get_monster",
-          "key$": "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
-          "kind": "basic",
-          "name": "BasicMoogleApiWebFeaturesMonstersGetGetMonsterFlow",
-          "param": {},
-          "step": [
+            },
             {
               "a": true,
               "d": {},
@@ -1738,7 +1551,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

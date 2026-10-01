@@ -39,6 +39,11 @@
     }
   },
   "requests": {
+    "GET /api/monsters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/monsters/{id}": {
       "provenance": "operation-contract",
       "version": 2,

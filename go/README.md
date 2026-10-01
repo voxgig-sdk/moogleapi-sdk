@@ -4,7 +4,7 @@
 
 The Golang SDK for the Moogleapi API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
@@ -53,14 +53,21 @@ func main() {
         "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
     })
 
-    // List moogleApiWebFeaturesCharactersGetAllCharacterSummary records — the value is the array of records itself.
-    moogleApiWebFeaturesCharactersGetAllCharacterSummarys, err := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil).List(nil, nil)
+    // List moogleApiWebFeaturesCharactersGetGetCharacter records — the value is the array of records itself.
+    moogleApiWebFeaturesCharactersGetGetCharacters, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range moogleApiWebFeaturesCharactersGetAllCharacterSummarys.([]any) {
+    for _, item := range moogleApiWebFeaturesCharactersGetGetCharacters.([]any) {
         fmt.Println(item)
     }
+
+    // Load a single moogleApiWebFeaturesCharactersGetGetCharacter — the value is the loaded record.
+    moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": 1}, nil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter)
 }
 ```
 
@@ -225,12 +232,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
@@ -261,28 +265,14 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    moogleApiWebFeaturesCharactersGetAllCharacterSummary, err := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil).List(map[string]any{/* fields */}, nil)
+    moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // moogleApiWebFeaturesCharactersGetAllCharacterSummary is the returned record
+    // moogleApiWebFeaturesCharactersGetGetCharacter is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
-
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `"gameName"` |  |
-| `"id"` |  |
-| `"imageUrl"` |  |
-| `"name"` |  |
-| `"role"` |  |
-
-Operations: List.
-
-API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
@@ -298,9 +288,9 @@ API path: `/api/characters`
 | `"race"` |  |
 | `"role"` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -317,19 +307,6 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `"id"` |  |
-| `"name"` |  |
-| `"platform"` |  |
-| `"releaseYear"` |  |
-
-Operations: List.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -342,23 +319,9 @@ API path: `/api/games`
 | `"platform"` |  |
 | `"releaseYear"` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `"category"` |  |
-| `"gameName"` |  |
-| `"hitPoints"` |  |
-| `"id"` |  |
-| `"name"` |  |
-
-Operations: List.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -371,9 +334,9 @@ API path: `/api/monsters`
 | `"id"` |  |
 | `"name"` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -395,37 +358,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `moogleApiWebFeaturesCharactersGetAllCharacterSummary := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `string` |  |
-| `id` | `int` |  |
-| `imageUrl` | `string` |  |
-| `name` | `string` |  |
-| `role` | `string` |  |
-
-#### Example: List
-
-```go
-moogleApiWebFeaturesCharactersGetAllCharacterSummarys, err := client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(moogleApiWebFeaturesCharactersGetAllCharacterSummarys) // the array of records
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `moogleApiWebFeaturesCharactersGetGetCharacter := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)`
@@ -434,6 +366,7 @@ Create an instance: `moogleApiWebFeaturesCharactersGetGetCharacter := client.Moo
 
 | Method | Description |
 | --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -458,6 +391,16 @@ if err != nil {
     panic(err)
 }
 fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter) // the loaded record
+```
+
+#### Example: List
+
+```go
+moogleApiWebFeaturesCharactersGetGetCharacters, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacters) // the array of records
 ```
 
 
@@ -493,36 +436,6 @@ fmt.Println(moogleApiWebFeaturesCharactersSearchSearchResults) // the array of r
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `moogleApiWebFeaturesGamesGetAllGameSummary := client.MoogleApiWebFeaturesGamesGetAllGameSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `releaseYear` | `int` |  |
-
-#### Example: List
-
-```go
-moogleApiWebFeaturesGamesGetAllGameSummarys, err := client.MoogleApiWebFeaturesGamesGetAllGameSummary(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(moogleApiWebFeaturesGamesGetAllGameSummarys) // the array of records
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `moogleApiWebFeaturesGamesGetGetGame := client.MoogleApiWebFeaturesGamesGetGetGame(nil)`
@@ -531,6 +444,7 @@ Create an instance: `moogleApiWebFeaturesGamesGetGetGame := client.MoogleApiWebF
 
 | Method | Description |
 | --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -555,35 +469,14 @@ if err != nil {
 fmt.Println(moogleApiWebFeaturesGamesGetGetGame) // the loaded record
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `moogleApiWebFeaturesMonstersGetAllMonsterSummary := client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `string` |  |
-| `gameName` | `string` |  |
-| `hitPoints` | `int` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-
 #### Example: List
 
 ```go
-moogleApiWebFeaturesMonstersGetAllMonsterSummarys, err := client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil).List(nil, nil)
+moogleApiWebFeaturesGamesGetGetGames, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesMonstersGetAllMonsterSummarys) // the array of records
+fmt.Println(moogleApiWebFeaturesGamesGetGetGames) // the array of records
 ```
 
 
@@ -595,6 +488,7 @@ Create an instance: `moogleApiWebFeaturesMonstersGetGetMonster := client.MoogleA
 
 | Method | Description |
 | --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -616,6 +510,16 @@ if err != nil {
     panic(err)
 }
 fmt.Println(moogleApiWebFeaturesMonstersGetGetMonster) // the loaded record
+```
+
+#### Example: List
+
+```go
+moogleApiWebFeaturesMonstersGetGetMonsters, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(moogleApiWebFeaturesMonstersGetGetMonsters) // the array of records
 ```
 
 

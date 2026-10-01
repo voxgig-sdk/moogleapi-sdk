@@ -41,10 +41,6 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data)`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` entity instance. Pass `nil` for no initial data.
-
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter(data)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pass `nil` for no initial data.
@@ -53,17 +49,9 @@ Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pa
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGameSummary(data)`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummary` entity instance. Pass `nil` for no initial data.
-
 #### `MoogleApiWebFeaturesGamesGetGetGame(data)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance. Pass `nil` for no initial data.
-
-#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data)`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` entity instance. Pass `nil` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster(data)`
 
@@ -109,62 +97,6 @@ same parameters as `direct()`.
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-
-```lua
-local moogle_api_web_features_characters_get_all_character_summary = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `gameName` | `string` | No |  |
-| `id` | `number` | No |  |
-| `imageUrl` | `string` | No |  |
-| `name` | `string` | No |  |
-| `role` | `string` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:MoogleApiWebFeaturesCharactersGetAllCharacterSummary():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```lua
@@ -186,6 +118,14 @@ local moogle_api_web_features_characters_get_get_character = client:MoogleApiWeb
 | `role` | `string` | No |  |
 
 ### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():list()
+```
 
 #### `load(reqmatch, ctrl) -> any, err`
 
@@ -282,61 +222,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-
-```lua
-local moogle_api_web_features_games_get_all_game_summary = client:MoogleApiWebFeaturesGamesGetAllGameSummary(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `releaseYear` | `number` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:MoogleApiWebFeaturesGamesGetAllGameSummary():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```lua
@@ -356,6 +241,14 @@ local moogle_api_web_features_games_get_get_game = client:MoogleApiWebFeaturesGa
 | `releaseYear` | `number` | No |  |
 
 ### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:MoogleApiWebFeaturesGamesGetGetGame():list()
+```
 
 #### `load(reqmatch, ctrl) -> any, err`
 
@@ -395,62 +288,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-
-```lua
-local moogle_api_web_features_monsters_get_all_monster_summary = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `gameName` | `string` | No |  |
-| `hitPoints` | `number` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:MoogleApiWebFeaturesMonstersGetAllMonsterSummary():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```lua
@@ -469,6 +306,14 @@ local moogle_api_web_features_monsters_get_get_monster = client:MoogleApiWebFeat
 | `name` | `string` | No |  |
 
 ### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():list()
+```
 
 #### `load(reqmatch, ctrl) -> any, err`
 

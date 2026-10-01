@@ -72,18 +72,15 @@ declare class Config {
             "content-type": string;
         };
         entity: {
-            moogle_api_web_features_characters_get_all_character_summary: {};
             moogle_api_web_features_characters_get_get_character: {};
             moogle_api_web_features_characters_search_search_result: {};
-            moogle_api_web_features_games_get_all_game_summary: {};
             moogle_api_web_features_games_get_get_game: {};
-            moogle_api_web_features_monsters_get_all_monster_summary: {};
             moogle_api_web_features_monsters_get_get_monster: {};
             moogle_api_web_features_monsters_search_monster_search_result: {};
         };
     };
     entity: {
-        moogle_api_web_features_characters_get_all_character_summary: {
+        moogle_api_web_features_characters_get_get_character: {
             fields: ({
                 name: string;
                 title: string;
@@ -137,29 +134,6 @@ declare class Config {
                         };
                     }[];
                 };
-            };
-            relations: {
-                ancestors: never[];
-            };
-        };
-        moogle_api_web_features_characters_get_get_character: {
-            fields: ({
-                name: string;
-                title: string;
-                type: string;
-                format?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                format: string;
-            })[];
-            id: {
-                field: string;
-                name: string;
-            };
-            name: string;
-            op: {
                 load: {
                     input: string;
                     name: string;
@@ -258,7 +232,7 @@ declare class Config {
                 ancestors: never[];
             };
         };
-        moogle_api_web_features_games_get_all_game_summary: {
+        moogle_api_web_features_games_get_get_game: {
             fields: ({
                 name: string;
                 title: string;
@@ -306,29 +280,6 @@ declare class Config {
                         };
                     }[];
                 };
-            };
-            relations: {
-                ancestors: never[];
-            };
-        };
-        moogle_api_web_features_games_get_get_game: {
-            fields: ({
-                name: string;
-                title: string;
-                type: string;
-                format: string;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                format?: undefined;
-            })[];
-            id: {
-                field: string;
-                name: string;
-            };
-            name: string;
-            op: {
                 load: {
                     input: string;
                     name: string;
@@ -368,7 +319,7 @@ declare class Config {
                 ancestors: never[];
             };
         };
-        moogle_api_web_features_monsters_get_all_monster_summary: {
+        moogle_api_web_features_monsters_get_get_monster: {
             fields: ({
                 name: string;
                 title: string;
@@ -422,29 +373,6 @@ declare class Config {
                         };
                     }[];
                 };
-            };
-            relations: {
-                ancestors: never[];
-            };
-        };
-        moogle_api_web_features_monsters_get_get_monster: {
-            fields: ({
-                name: string;
-                title: string;
-                type: string;
-                format?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                format: string;
-            })[];
-            id: {
-                field: string;
-                name: string;
-            };
-            name: string;
-            op: {
                 load: {
                     input: string;
                     name: string;

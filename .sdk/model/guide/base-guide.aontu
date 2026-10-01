@@ -4,18 +4,15 @@
 #   guide.aontu
 
 guide: {
-  metrics: count: entity: 8
+  metrics: count: entity: 5
   metrics: count: path: 8
   metrics: count: method: 8
 
-  entity: moogle_api_web_features_characters_get_all_character_summary: {
+  entity: moogle_api_web_features_characters_get_get_character: {
     path: "/api/characters": {
       op: list: method: *GET
       op: list: transform: res: *("`body.items`")|top
     }
-  }
-
-  entity: moogle_api_web_features_characters_get_get_character: {
     path: "/api/characters/{id}": {
       op: load: method: *GET
     }
@@ -28,27 +25,21 @@ guide: {
     }
   }
 
-  entity: moogle_api_web_features_games_get_all_game_summary: {
+  entity: moogle_api_web_features_games_get_get_game: {
     path: "/api/games": {
       op: list: method: *GET
       op: list: transform: res: *("`body.items`")|top
     }
-  }
-
-  entity: moogle_api_web_features_games_get_get_game: {
     path: "/api/games/{id}": {
       op: load: method: *GET
     }
   }
 
-  entity: moogle_api_web_features_monsters_get_all_monster_summary: {
+  entity: moogle_api_web_features_monsters_get_get_monster: {
     path: "/api/monsters": {
       op: list: method: *GET
       op: list: transform: res: *("`body.items`")|top
     }
-  }
-
-  entity: moogle_api_web_features_monsters_get_get_monster: {
     path: "/api/monsters/{id}": {
       op: load: method: *GET
     }

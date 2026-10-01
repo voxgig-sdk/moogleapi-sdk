@@ -4,7 +4,7 @@
 
 The PHP SDK for the Moogleapi API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->MoogleApiWebFeaturesCharactersGetGetCharacter()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/moogleapi-sdk/releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/moogleapi-sdk
+composer config repositories.moogleapi-sdk path ./moogleapi-sdk/php
+composer require voxgig-sdk/moogleapi-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -33,16 +38,28 @@ $client = new MoogleapiSDK([
 ]);
 ```
 
-### 2. List moogleapiwebfeaturescharactersgetallcharactersummary records
+### 2. List moogleapiwebfeaturescharactersgetgetcharacter records
 
 ```php
 try {
     // list() returns entity instances; data_get() reads each record.
-    $moogleapiwebfeaturescharactersgetallcharactersummarys = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list();
-    foreach ($moogleapiwebfeaturescharactersgetallcharactersummarys as $record) {
+    $moogleapiwebfeaturescharactersgetgetcharacters = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
+    foreach ($moogleapiwebfeaturescharactersgetgetcharacters as $record) {
         $item = $record->data_get();
-        echo $item["id"] . " " . $item["gameName"] . "\n";
+        echo $item["id"] . " " . $item["affiliation"] . "\n";
     }
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+### 3. Load a moogleapiwebfeaturescharactersgetgetcharacter
+
+```php
+try {
+    // load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesCharactersGetGetCharacter record (throws on error).
+    $moogleapiwebfeaturescharactersgetgetcharacter = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->load(["id" => 1]);
+    print_r($moogleapiwebfeaturescharactersgetgetcharacter->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -131,10 +148,10 @@ $client = MoogleapiSDK::test([
     "entity" => ["moogleapiwebfeaturesgamesgetgetgame" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the ENTITY (throws on error);
+// list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$moogleapiwebfeaturesgamesgetgetgame = $client->MoogleApiWebFeaturesGamesGetGetGame()->load(["id" => "test01"]);
-print_r($moogleapiwebfeaturesgamesgetgetgame->data_get());
+$moogleapiwebfeaturesgamesgetgetgame = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
+print_r(array_map(fn($item) => $item->data_get(), $moogleapiwebfeaturesgamesgetgetgame));
 ```
 
 ### Use a custom fetch function
@@ -215,12 +232,9 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetAllCharacterSummary` | `($data): MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` | Create a MoogleApiWebFeaturesCharactersGetAllCharacterSummary entity instance. |
 | `MoogleApiWebFeaturesCharactersGetGetCharacter` | `($data): MoogleApiWebFeaturesCharactersGetGetCharacterEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
 | `MoogleApiWebFeaturesCharactersSearchSearchResult` | `($data): MoogleApiWebFeaturesCharactersSearchSearchResultEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetAllGameSummary` | `($data): MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` | Create a MoogleApiWebFeaturesGamesGetAllGameSummary entity instance. |
 | `MoogleApiWebFeaturesGamesGetGetGame` | `($data): MoogleApiWebFeaturesGamesGetGetGameEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetAllMonsterSummary` | `($data): MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` | Create a MoogleApiWebFeaturesMonstersGetAllMonsterSummary entity instance. |
 | `MoogleApiWebFeaturesMonstersGetGetMonster` | `($data): MoogleApiWebFeaturesMonstersGetGetMonsterEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
 | `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `($data): MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
@@ -259,20 +273,6 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-| Field | Description |
-| --- | --- |
-| `gameName` |  |
-| `id` |  |
-| `imageUrl` |  |
-| `name` |  |
-| `role` |  |
-
-Operations: List.
-
-API path: `/api/characters`
-
 #### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 | Field | Description |
@@ -287,9 +287,9 @@ API path: `/api/characters`
 | `race` |  |
 | `role` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/characters/{id}`
+API path: `/api/characters`
 
 #### MoogleApiWebFeaturesCharactersSearchSearchResult
 
@@ -306,19 +306,6 @@ Operations: List.
 
 API path: `/api/characters/search`
 
-#### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-| Field | Description |
-| --- | --- |
-| `id` |  |
-| `name` |  |
-| `platform` |  |
-| `releaseYear` |  |
-
-Operations: List.
-
-API path: `/api/games`
-
 #### MoogleApiWebFeaturesGamesGetGetGame
 
 | Field | Description |
@@ -331,23 +318,9 @@ API path: `/api/games`
 | `platform` |  |
 | `releaseYear` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/games/{id}`
-
-#### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-| Field | Description |
-| --- | --- |
-| `category` |  |
-| `gameName` |  |
-| `hitPoints` |  |
-| `id` |  |
-| `name` |  |
-
-Operations: List.
-
-API path: `/api/monsters`
+API path: `/api/games`
 
 #### MoogleApiWebFeaturesMonstersGetGetMonster
 
@@ -360,9 +333,9 @@ API path: `/api/monsters`
 | `id` |  |
 | `name` |  |
 
-Operations: Load.
+Operations: List, Load.
 
-API path: `/api/monsters/{id}`
+API path: `/api/monsters`
 
 #### MoogleApiWebFeaturesMonstersSearchMonsterSearchResult
 
@@ -384,34 +357,6 @@ API path: `/api/monsters/search`
 ## Entities
 
 
-### MoogleApiWebFeaturesCharactersGetAllCharacterSummary
-
-Create an instance: `$moogle_api_web_features_characters_get_all_character_summary = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `gameName` | `string` |  |
-| `id` | `int` |  |
-| `imageUrl` | `string` |  |
-| `name` | `string` |  |
-| `role` | `string` |  |
-
-#### Example: List
-
-```php
-// list() returns an array of MoogleApiWebFeaturesCharactersGetAllCharacterSummary records (throws on error).
-$moogle_api_web_features_characters_get_all_character_summarys = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list();
-```
-
-
 ### MoogleApiWebFeaturesCharactersGetGetCharacter
 
 Create an instance: `$moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFeaturesCharactersGetGetCharacter();`
@@ -420,6 +365,7 @@ Create an instance: `$moogle_api_web_features_characters_get_get_character = $cl
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -441,6 +387,13 @@ Create an instance: `$moogle_api_web_features_characters_get_get_character = $cl
 ```php
 // load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesCharactersGetGetCharacter record (throws on error).
 $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->load(["id" => 1]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of MoogleApiWebFeaturesCharactersGetGetCharacter records (throws on error).
+$moogle_api_web_features_characters_get_get_characters = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
 ```
 
 
@@ -473,33 +426,6 @@ $moogle_api_web_features_characters_search_search_results = $client->MoogleApiWe
 ```
 
 
-### MoogleApiWebFeaturesGamesGetAllGameSummary
-
-Create an instance: `$moogle_api_web_features_games_get_all_game_summary = $client->MoogleApiWebFeaturesGamesGetAllGameSummary();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `releaseYear` | `int` |  |
-
-#### Example: List
-
-```php
-// list() returns an array of MoogleApiWebFeaturesGamesGetAllGameSummary records (throws on error).
-$moogle_api_web_features_games_get_all_game_summarys = $client->MoogleApiWebFeaturesGamesGetAllGameSummary()->list();
-```
-
-
 ### MoogleApiWebFeaturesGamesGetGetGame
 
 Create an instance: `$moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGamesGetGetGame();`
@@ -508,6 +434,7 @@ Create an instance: `$moogle_api_web_features_games_get_get_game = $client->Moog
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -529,32 +456,11 @@ Create an instance: `$moogle_api_web_features_games_get_get_game = $client->Moog
 $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGamesGetGetGame()->load(["id" => 1]);
 ```
 
-
-### MoogleApiWebFeaturesMonstersGetAllMonsterSummary
-
-Create an instance: `$moogle_api_web_features_monsters_get_all_monster_summary = $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `category` | `string` |  |
-| `gameName` | `string` |  |
-| `hitPoints` | `int` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesMonstersGetAllMonsterSummary records (throws on error).
-$moogle_api_web_features_monsters_get_all_monster_summarys = $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary()->list();
+// list() returns an array of MoogleApiWebFeaturesGamesGetGetGame records (throws on error).
+$moogle_api_web_features_games_get_get_games = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
 ```
 
 
@@ -566,6 +472,7 @@ Create an instance: `$moogle_api_web_features_monsters_get_get_monster = $client
 
 | Method | Description |
 | --- | --- |
+| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -584,6 +491,13 @@ Create an instance: `$moogle_api_web_features_monsters_get_get_monster = $client
 ```php
 // load() returns the ENTITY — call data_get() for the MoogleApiWebFeaturesMonstersGetGetMonster record (throws on error).
 $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->load(["id" => 1]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of MoogleApiWebFeaturesMonstersGetGetMonster records (throws on error).
+$moogle_api_web_features_monsters_get_get_monsters = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list();
 ```
 
 

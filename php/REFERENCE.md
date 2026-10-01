@@ -42,10 +42,6 @@ $client = MoogleapiSDK::test();
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetAllCharacterSummary($data = null)`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance. Pass `null` for no initial data.
-
 #### `MoogleApiWebFeaturesCharactersGetGetCharacter($data = null)`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` instance. Pass `null` for no initial data.
@@ -54,17 +50,9 @@ Create a new `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` instance. Pas
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance. Pass `null` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetAllGameSummary($data = null)`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance. Pass `null` for no initial data.
-
 #### `MoogleApiWebFeaturesGamesGetGetGame($data = null)`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGameEntity` instance. Pass `null` for no initial data.
-
-#### `MoogleApiWebFeaturesMonstersGetAllMonsterSummary($data = null)`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance. Pass `null` for no initial data.
 
 #### `MoogleApiWebFeaturesMonstersGetGetMonster($data = null)`
 
@@ -111,62 +99,6 @@ Prepare a fetch definition without sending the request. Returns the
 
 ---
 
-## MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity
-
-```php
-$moogle_api_web_features_characters_get_all_character_summary = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `gameName` | `string` | No |  |
-| `id` | `int` | No |  |
-| `imageUrl` | `string` | No |  |
-| `name` | `string` | No |  |
-| `role` | `string` | No |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->MoogleApiWebFeaturesCharactersGetAllCharacterSummary()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity`
-
-Create a new `MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesCharactersGetGetCharacterEntity
 
 ```php
@@ -188,6 +120,14 @@ $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFea
 | `role` | `string` | No |  |
 
 ### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
+```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
@@ -284,61 +224,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesGamesGetAllGameSummaryEntity
-
-```php
-$moogle_api_web_features_games_get_all_game_summary = $client->MoogleApiWebFeaturesGamesGetAllGameSummary();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `releaseYear` | `int` | No |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->MoogleApiWebFeaturesGamesGetAllGameSummary()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MoogleApiWebFeaturesGamesGetAllGameSummaryEntity`
-
-Create a new `MoogleApiWebFeaturesGamesGetAllGameSummaryEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesGamesGetGetGameEntity
 
 ```php
@@ -358,6 +243,14 @@ $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGames
 | `releaseYear` | `int` | No |  |
 
 ### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
+```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
@@ -397,62 +290,6 @@ Return the entity name.
 
 ---
 
-## MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity
-
-```php
-$moogle_api_web_features_monsters_get_all_monster_summary = $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `gameName` | `string` | No |  |
-| `hitPoints` | `int` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->MoogleApiWebFeaturesMonstersGetAllMonsterSummary()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity`
-
-Create a new `MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## MoogleApiWebFeaturesMonstersGetGetMonsterEntity
 
 ```php
@@ -471,6 +308,14 @@ $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeature
 | `name` | `string` | No |  |
 
 ### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list();
+```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 

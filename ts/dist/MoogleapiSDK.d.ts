@@ -1,9 +1,6 @@
-import { MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity } from './entity/MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity';
 import { MoogleApiWebFeaturesCharactersGetGetCharacterEntity } from './entity/MoogleApiWebFeaturesCharactersGetGetCharacterEntity';
 import { MoogleApiWebFeaturesCharactersSearchSearchResultEntity } from './entity/MoogleApiWebFeaturesCharactersSearchSearchResultEntity';
-import { MoogleApiWebFeaturesGamesGetAllGameSummaryEntity } from './entity/MoogleApiWebFeaturesGamesGetAllGameSummaryEntity';
 import { MoogleApiWebFeaturesGamesGetGetGameEntity } from './entity/MoogleApiWebFeaturesGamesGetGetGameEntity';
-import { MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity } from './entity/MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity';
 import { MoogleApiWebFeaturesMonstersGetGetMonsterEntity } from './entity/MoogleApiWebFeaturesMonstersGetGetMonsterEntity';
 import { MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity } from './entity/MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity';
 export type * from './MoogleapiTypes';
@@ -26,37 +23,34 @@ declare class MoogleapiSDK {
     prepare(fetchargs?: any): Promise<any>;
     direct(fetchargs?: any): Promise<Error | {
         ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    } | {
-        ok: boolean;
         err: any;
         status?: undefined;
         headers?: undefined;
         data?: undefined;
+    } | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
     }>;
     _rawRequest(fetchargs?: any): Promise<Error | {
         ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    } | {
-        ok: boolean;
         err: any;
         status?: undefined;
         headers?: undefined;
         data?: undefined;
+    } | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
     }>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
-    MoogleApiWebFeaturesCharactersGetAllCharacterSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity;
     MoogleApiWebFeaturesCharactersGetGetCharacter(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersGetGetCharacterEntity;
     MoogleApiWebFeaturesCharactersSearchSearchResult(entopts?: Record<string, any>): MoogleApiWebFeaturesCharactersSearchSearchResultEntity;
-    MoogleApiWebFeaturesGamesGetAllGameSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesGamesGetAllGameSummaryEntity;
     MoogleApiWebFeaturesGamesGetGetGame(entopts?: Record<string, any>): MoogleApiWebFeaturesGamesGetGetGameEntity;
-    MoogleApiWebFeaturesMonstersGetAllMonsterSummary(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity;
     MoogleApiWebFeaturesMonstersGetGetMonster(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersGetGetMonsterEntity;
     MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(entopts?: Record<string, any>): MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): MoogleapiSDK;

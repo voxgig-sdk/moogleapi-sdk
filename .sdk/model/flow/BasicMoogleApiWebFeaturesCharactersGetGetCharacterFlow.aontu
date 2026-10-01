@@ -7,6 +7,18 @@ main: kit: flow: BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow:
   name: "BasicMoogleApiWebFeaturesCharactersGetGetCharacterFlow",
   step: [
     {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "moogle_api_web_features_characters_get_get_character_ref01"
+          }
+        }
+      ]
+    }
+
+    {
       i: {
         ref: "moogle_api_web_features_characters_get_get_character_ref01",
         srcdatavar: "moogle_api_web_features_characters_get_get_character_ref01_data",

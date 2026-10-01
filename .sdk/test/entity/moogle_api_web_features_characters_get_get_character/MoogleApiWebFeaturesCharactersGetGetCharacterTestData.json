@@ -51,6 +51,11 @@
     }
   },
   "requests": {
+    "GET /api/characters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/characters/{id}": {
       "provenance": "operation-contract",
       "version": 2,

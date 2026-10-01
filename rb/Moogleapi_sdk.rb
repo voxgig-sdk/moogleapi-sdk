@@ -95,6 +95,17 @@ class MoogleapiSDK
     @_rootctx
   end
 
+  # The options and the root context both hold the credential, so the
+  # client's printed form is its name alone; `options_map` is the
+  # documented way to read them back.
+  def to_s
+    "Moogleapi " + VoxgigStruct.jsonify({ "name" => "Moogleapi" })
+  end
+
+  def inspect
+    to_s
+  end
+
   def prepare(fetchargs = {})
     utility = @_utility
     fetchargs ||= {}
@@ -202,7 +213,7 @@ class MoogleapiSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err } if fetch_err
+    return { "ok" => false, "err" => utility.clean.call(ctx, fetch_err) } if fetch_err
 
     if fetched.nil?
       return {
@@ -289,13 +300,6 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.list / client.MoogleApiWebFeaturesCharactersGetAllCharacterSummary.load({ "id" => ... })
-  def MoogleApiWebFeaturesCharactersGetAllCharacterSummary(data = nil)
-    require_relative 'entity/moogle_api_web_features_characters_get_all_character_summary_entity'
-    MoogleApiWebFeaturesCharactersGetAllCharacterSummaryEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.MoogleApiWebFeaturesCharactersGetGetCharacter.list / client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => ... })
   def MoogleApiWebFeaturesCharactersGetGetCharacter(data = nil)
     require_relative 'entity/moogle_api_web_features_characters_get_get_character_entity'
@@ -310,24 +314,10 @@ class MoogleapiSDK
   end
 
 
-  # Canonical facade: client.MoogleApiWebFeaturesGamesGetAllGameSummary.list / client.MoogleApiWebFeaturesGamesGetAllGameSummary.load({ "id" => ... })
-  def MoogleApiWebFeaturesGamesGetAllGameSummary(data = nil)
-    require_relative 'entity/moogle_api_web_features_games_get_all_game_summary_entity'
-    MoogleApiWebFeaturesGamesGetAllGameSummaryEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.MoogleApiWebFeaturesGamesGetGetGame.list / client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => ... })
   def MoogleApiWebFeaturesGamesGetGetGame(data = nil)
     require_relative 'entity/moogle_api_web_features_games_get_get_game_entity'
     MoogleApiWebFeaturesGamesGetGetGameEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.list / client.MoogleApiWebFeaturesMonstersGetAllMonsterSummary.load({ "id" => ... })
-  def MoogleApiWebFeaturesMonstersGetAllMonsterSummary(data = nil)
-    require_relative 'entity/moogle_api_web_features_monsters_get_all_monster_summary_entity'
-    MoogleApiWebFeaturesMonstersGetAllMonsterSummaryEntity.new(self, data)
   end
 
 

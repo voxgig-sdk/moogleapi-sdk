@@ -86,116 +86,14 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
-				"moogle_api_web_features_characters_get_all_character_summary": map[string]any{},
 				"moogle_api_web_features_characters_get_get_character": map[string]any{},
 				"moogle_api_web_features_characters_search_search_result": map[string]any{},
-				"moogle_api_web_features_games_get_all_game_summary": map[string]any{},
 				"moogle_api_web_features_games_get_get_game": map[string]any{},
-				"moogle_api_web_features_monsters_get_all_monster_summary": map[string]any{},
 				"moogle_api_web_features_monsters_get_get_monster": map[string]any{},
 				"moogle_api_web_features_monsters_search_monster_search_result": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
-			"moogle_api_web_features_characters_get_all_character_summary": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "gameName",
-						"title": "Game Name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$INTEGER`",
-						"format": "int32",
-					},
-					map[string]any{
-						"name": "imageUrl",
-						"title": "Image Url",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "name",
-						"title": "Name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "role",
-						"title": "Role",
-						"type": "`$STRING`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "moogle_api_web_features_characters_get_all_character_summary",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/characters",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "characters",
-									},
-								},
-								"parts": []any{
-									"api",
-									"characters",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.items`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "game_id",
-											"orig": "game_id",
-											"type": "`$INTEGER`",
-											"kind": "query",
-										},
-										map[string]any{
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 1,
-										},
-										map[string]any{
-											"name": "page_size",
-											"orig": "page_size",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 20,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"game_id",
-										"page",
-										"page_size",
-									},
-								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
 			"moogle_api_web_features_characters_get_get_character": map[string]any{
 				"fields": []any{
 					map[string]any{
@@ -251,6 +149,65 @@ func MakeConfig() map[string]any {
 				},
 				"name": "moogle_api_web_features_characters_get_get_character",
 				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/characters",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "characters",
+									},
+								},
+								"parts": []any{
+									"api",
+									"characters",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.items`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "game_id",
+											"orig": "gameId",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "page_size",
+											"orig": "pageSize",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"game_id",
+										"page",
+										"page_size",
+									},
+								},
+							},
+						},
+					},
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -377,7 +334,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "game_id",
-											"orig": "game_id",
+											"orig": "gameId",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
@@ -394,94 +351,6 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"game_id",
 										"query",
-									},
-								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"moogle_api_web_features_games_get_all_game_summary": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$INTEGER`",
-						"format": "int32",
-					},
-					map[string]any{
-						"name": "name",
-						"title": "Name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "platform",
-						"title": "Platform",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "releaseYear",
-						"title": "Release Year",
-						"type": "`$INTEGER`",
-						"format": "int32",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "moogle_api_web_features_games_get_all_game_summary",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/games",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "games",
-									},
-								},
-								"parts": []any{
-									"api",
-									"games",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.items`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 1,
-										},
-										map[string]any{
-											"name": "page_size",
-											"orig": "page_size",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 20,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"page",
-										"page_size",
 									},
 								},
 							},
@@ -540,6 +409,58 @@ func MakeConfig() map[string]any {
 				},
 				"name": "moogle_api_web_features_games_get_get_game",
 				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/games",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "games",
+									},
+								},
+								"parts": []any{
+									"api",
+									"games",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.items`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "page_size",
+											"orig": "pageSize",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"page",
+										"page_size",
+									},
+								},
+							},
+						},
+					},
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -593,113 +514,6 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"moogle_api_web_features_monsters_get_all_monster_summary": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "category",
-						"title": "Category",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "gameName",
-						"title": "Game Name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "hitPoints",
-						"title": "Hit Points",
-						"type": "`$INTEGER`",
-						"format": "int32",
-					},
-					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$INTEGER`",
-						"format": "int32",
-					},
-					map[string]any{
-						"name": "name",
-						"title": "Name",
-						"type": "`$STRING`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "moogle_api_web_features_monsters_get_all_monster_summary",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/monsters",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "monsters",
-									},
-								},
-								"parts": []any{
-									"api",
-									"monsters",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.items`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "category",
-											"orig": "category",
-											"type": "`$STRING`",
-											"kind": "query",
-										},
-										map[string]any{
-											"name": "game_id",
-											"orig": "game_id",
-											"type": "`$INTEGER`",
-											"kind": "query",
-										},
-										map[string]any{
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 1,
-										},
-										map[string]any{
-											"name": "page_size",
-											"orig": "page_size",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"example": 20,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"category",
-										"game_id",
-										"page",
-										"page_size",
-									},
-								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
 			"moogle_api_web_features_monsters_get_get_monster": map[string]any{
 				"fields": []any{
 					map[string]any{
@@ -741,6 +555,72 @@ func MakeConfig() map[string]any {
 				},
 				"name": "moogle_api_web_features_monsters_get_get_monster",
 				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/monsters",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "monsters",
+									},
+								},
+								"parts": []any{
+									"api",
+									"monsters",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.items`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "category",
+											"orig": "category",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "game_id",
+											"orig": "gameId",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "page_size",
+											"orig": "pageSize",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"category",
+										"game_id",
+										"page",
+										"page_size",
+									},
+								},
+							},
+						},
+					},
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -874,7 +754,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "game_id",
-											"orig": "game_id",
+											"orig": "gameId",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},

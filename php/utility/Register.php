@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 MoogleapiUtility::setRegistrar(function (MoogleapiUtility $u): void {
     $u->clean = [MoogleapiClean::class, 'call'];
+    $u->clean_add = [MoogleapiClean::class, 'add'];
+    $u->clean_explain = [MoogleapiDone::class, 'clean_explain'];
     $u->done = [MoogleapiDone::class, 'call'];
     $u->make_error = [MoogleapiMakeError::class, 'call'];
     $u->feature_add = [MoogleapiFeatureAdd::class, 'call'];
