@@ -91,11 +91,9 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
           }
           m: "GET"
           o: "/api/games"
-          q: {
-            exist: [
-              "page"
-              "page_size"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -138,6 +136,10 @@ main: kit: entity: moogle_api_web_features_games_get_get_game: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -8,7 +8,7 @@
   },
   "servers": [
     {
-      "url": "https://www.moogleapi.com"
+      "url": "https://moogleapi.com"
     }
   ],
   "paths": {
@@ -26,7 +26,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "cloud"
           },
           {
             "name": "gameId",
@@ -251,7 +252,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "cloud"
           },
           {
             "name": "gameId",

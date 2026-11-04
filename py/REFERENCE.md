@@ -116,19 +116,19 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesCharactersGetGetCharacterEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.MoogleApiWebFeaturesCharactersGetGetCharacter().list()
 for moogle_api_web_features_characters_get_get_character in results:
-    print(moogle_api_web_features_characters_get_get_character)
+    print(moogle_api_web_features_characters_get_get_character.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> MoogleApiWebFeaturesCharactersGetGetCharacterEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.MoogleApiWebFeaturesCharactersGetGetCharacter().load({"id": 1})
@@ -182,14 +182,14 @@ moogle_api_web_features_characters_search_search_result = client.MoogleApiWebFea
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesCharactersSearchSearchResultEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.MoogleApiWebFeaturesCharactersSearchSearchResult().list({"query": "example"})
 for moogle_api_web_features_characters_search_search_result in results:
-    print(moogle_api_web_features_characters_search_search_result)
+    print(moogle_api_web_features_characters_search_search_result.data_get())
 ```
 
 ### Common Methods
@@ -241,19 +241,19 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesGamesGetGetGameEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.MoogleApiWebFeaturesGamesGetGetGame().list()
 for moogle_api_web_features_games_get_get_game in results:
-    print(moogle_api_web_features_games_get_get_game)
+    print(moogle_api_web_features_games_get_get_game.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> MoogleApiWebFeaturesGamesGetGetGameEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.MoogleApiWebFeaturesGamesGetGetGame().load({"id": 1})
@@ -307,19 +307,19 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesMonstersGetGetMonsterEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.MoogleApiWebFeaturesMonstersGetGetMonster().list()
 for moogle_api_web_features_monsters_get_get_monster in results:
-    print(moogle_api_web_features_monsters_get_get_monster)
+    print(moogle_api_web_features_monsters_get_get_monster.data_get())
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> MoogleApiWebFeaturesMonstersGetGetMonsterEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.MoogleApiWebFeaturesMonstersGetGetMonster().load({"id": 1})
@@ -373,14 +373,14 @@ moogle_api_web_features_monsters_search_monster_search_result = client.MoogleApi
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list({"query": "example"})
 for moogle_api_web_features_monsters_search_monster_search_result in results:
-    print(moogle_api_web_features_monsters_search_monster_search_result)
+    print(moogle_api_web_features_monsters_search_monster_search_result.data_get())
 ```
 
 ### Common Methods
@@ -569,6 +569,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

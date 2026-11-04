@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type MoogleapiEntity = core.MoogleapiEntity
+type MoogleapiEntityBase = core.MoogleapiEntityBase
+
+// Deprecated: use MoogleapiEntityBase.
+type MoogleapiEntity = core.MoogleapiEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,19 +46,19 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewMoogleApiWebFeaturesCharactersGetGetCharacterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
+	core.NewMoogleApiWebFeaturesCharactersGetGetCharacterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntityBase {
 		return entity.NewMoogleApiWebFeaturesCharactersGetGetCharacterEntity(client, entopts)
 	}
-	core.NewMoogleApiWebFeaturesCharactersSearchSearchResultEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
+	core.NewMoogleApiWebFeaturesCharactersSearchSearchResultEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntityBase {
 		return entity.NewMoogleApiWebFeaturesCharactersSearchSearchResultEntity(client, entopts)
 	}
-	core.NewMoogleApiWebFeaturesGamesGetGetGameEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
+	core.NewMoogleApiWebFeaturesGamesGetGetGameEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntityBase {
 		return entity.NewMoogleApiWebFeaturesGamesGetGetGameEntity(client, entopts)
 	}
-	core.NewMoogleApiWebFeaturesMonstersGetGetMonsterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
+	core.NewMoogleApiWebFeaturesMonstersGetGetMonsterEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntityBase {
 		return entity.NewMoogleApiWebFeaturesMonstersGetGetMonsterEntity(client, entopts)
 	}
-	core.NewMoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntity {
+	core.NewMoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntityFunc = func(client *core.MoogleapiSDK, entopts map[string]any) core.MoogleapiEntityBase {
 		return entity.NewMoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity(client, entopts)
 	}
 }

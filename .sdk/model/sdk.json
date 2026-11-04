@@ -24,6 +24,7 @@
         "repr": "auto"
       },
       "contributor": {},
+      "copies": "merge",
       "doc": {
         "active": true,
         "assets": {
@@ -212,14 +213,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/characters",
-                  "q": {
-                    "exist": [
-                      "game_id",
-                      "page",
-                      "page_size"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -267,6 +266,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -369,6 +372,7 @@
                       },
                       {
                         "a": true,
+                        "ex": "cloud",
                         "k": "query",
                         "n": "query",
                         "or": "query",
@@ -382,11 +386,14 @@
                   "o": "/api/characters/search",
                   "q": {
                     "exist": [
-                      "game_id",
                       "query"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -512,13 +519,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/games",
-                  "q": {
-                    "exist": [
-                      "page",
-                      "page_size"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -566,6 +572,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -698,15 +708,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/monsters",
-                  "q": {
-                    "exist": [
-                      "category",
-                      "game_id",
-                      "page",
-                      "page_size"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -754,6 +761,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -865,6 +876,7 @@
                       },
                       {
                         "a": true,
+                        "ex": "cloud",
                         "k": "query",
                         "n": "query",
                         "or": "query",
@@ -878,12 +890,14 @@
                   "o": "/api/monsters/search",
                   "q": {
                     "exist": [
-                      "category",
-                      "game_id",
                       "query"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1230,6 +1244,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -1528,7 +1543,7 @@
         },
         "servers": [
           {
-            "url": "https://www.moogleapi.com"
+            "url": "https://moogleapi.com"
           }
         ],
         "summary": "A Final Fantasy data API — characters, monsters, and games.",
@@ -1540,7 +1555,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1593,6 +1608,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1823,7 +1843,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -2200,6 +2223,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

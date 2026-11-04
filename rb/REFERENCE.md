@@ -124,15 +124,16 @@ moogle_api_web_features_characters_get_get_character = client.MoogleApiWebFeatur
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.MoogleApiWebFeaturesCharactersGetGetCharacter.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.MoogleApiWebFeaturesCharactersGetGetCharacter.load({ "id" => 1 })
@@ -189,10 +190,11 @@ moogle_api_web_features_characters_search_search_result = client.MoogleApiWebFea
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesCharactersSearchSearchResult.list
+results = client.MoogleApiWebFeaturesCharactersSearchSearchResult.list({ "query" => "example" })
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -247,15 +249,16 @@ moogle_api_web_features_games_get_get_game = client.MoogleApiWebFeaturesGamesGet
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.MoogleApiWebFeaturesGamesGetGetGame.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.MoogleApiWebFeaturesGamesGetGetGame.load({ "id" => 1 })
@@ -312,15 +315,16 @@ moogle_api_web_features_monsters_get_get_monster = client.MoogleApiWebFeaturesMo
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.MoogleApiWebFeaturesMonstersGetGetMonster.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.MoogleApiWebFeaturesMonstersGetGetMonster.load({ "id" => 1 })
@@ -377,10 +381,11 @@ moogle_api_web_features_monsters_search_monster_search_result = client.MoogleApi
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult.list
+results = client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult.list({ "query" => "example" })
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -570,6 +575,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

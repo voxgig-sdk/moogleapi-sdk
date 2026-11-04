@@ -78,6 +78,7 @@ main: kit: entity: moogle_api_web_features_monsters_search_monster_search_result
                 t: "`$INTEGER`"
               }
               {
+                ex: "cloud"
                 k: "query"
                 n: "query"
                 or: "query"
@@ -90,10 +91,12 @@ main: kit: entity: moogle_api_web_features_monsters_search_monster_search_result
           o: "/api/monsters/search"
           q: {
             exist: [
-              "category"
-              "game_id"
               "query"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

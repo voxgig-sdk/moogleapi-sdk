@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { MoogleapiSDK, BaseFeature, stdutil } from '../../..'
+import { MoogleapiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('MoogleApiWebFeaturesCharactersSearchSearchResultEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('moogle_api_web_features_characters_search_search_result hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of MoogleapiSDK.test(offline).MoogleApiWebFeaturesCharactersSearchSearchResult().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of MoogleapiSDK.test(offline).MoogleApiWebFeaturesCharactersSearchSearchResult()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = MoogleapiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.MoogleApiWebFeaturesCharactersSearchSearchResult().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of MoogleapiSDK.test().MoogleApiWebFeaturesCharactersSearchSearchResult().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new MoogleapiSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.MoogleApiWebFeaturesCharactersSearchSearchResult().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.MoogleApiWebFeaturesCharactersSearchSearchResult().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = MoogleapiSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.MoogleApiWebFeaturesCharactersSearchSearchResult().list({"game_id":"x","query":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.MOOGLEAPI_TEST_LIVE
@@ -51,7 +109,7 @@ describe('MoogleApiWebFeaturesCharactersSearchSearchResultEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"t":"`$STRING`","key$":"description","index$":0},"gameName":{"a":true,"h":"Game Name","n":"gameName","r":false,"t":"`$STRING`","key$":"gameName","index$":1},"id":{"a":true,"fo":"int32","h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":2},"imageUrl":{"a":true,"h":"Image Url","n":"imageUrl","r":false,"t":"`$STRING`","key$":"imageUrl","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":4},"role":{"a":true,"h":"Role","n":"role","r":false,"t":"`$STRING`","key$":"role","index$":5}},"id":{"field":"id","name":"id"},"name":"moogle_api_web_features_characters_search_search_result","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/characters/search","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"game_id","or":"gameId","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"query","or":"query","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/characters/search","q":{"exist":["game_id","query"]},"r":{},"s":[{"lit":"api"},{"lit":"characters"},{"lit":"search"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"moogle_api_web_features_characters_search_search_result","name__orig":"moogle_api_web_features_characters_search_search_result","Name":"MoogleApiWebFeaturesCharactersSearchSearchResult","name_":"moogle_api_web_features_characters_search_search_result","name-":"moogle-api-web-features-characters-search-search-result","NAME":"MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT","index$":1}, {"active":true,"entity":"moogle_api_web_features_characters_search_search_result","key$":"BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow","kind":"basic","name":"BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"moogle_api_web_features_characters_search_search_result_ref01"}}],"index$":0}]}, 'MoogleApiWebFeaturesCharactersSearchSearchResult', {"GET /api/characters/search":{"protocol":"http","parameters":[{"name":"query","in":"query","required":true,"schema":{"type":"string"},"index$":0},{"name":"gameId","in":"query","schema":{"type":"integer","format":"int32","nullable":true},"index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"t":"`$STRING`","key$":"description","index$":0},"gameName":{"a":true,"h":"Game Name","n":"gameName","r":false,"t":"`$STRING`","key$":"gameName","index$":1},"id":{"a":true,"fo":"int32","h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":2},"imageUrl":{"a":true,"h":"Image Url","n":"imageUrl","r":false,"t":"`$STRING`","key$":"imageUrl","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":4},"role":{"a":true,"h":"Role","n":"role","r":false,"t":"`$STRING`","key$":"role","index$":5}},"id":{"field":"id","name":"id"},"name":"moogle_api_web_features_characters_search_search_result","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/characters/search","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"game_id","or":"gameId","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":"cloud","k":"query","n":"query","or":"query","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/characters/search","q":{"exist":["query"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"characters"},{"lit":"search"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"moogle_api_web_features_characters_search_search_result","name__orig":"moogle_api_web_features_characters_search_search_result","Name":"MoogleApiWebFeaturesCharactersSearchSearchResult","name_":"moogle_api_web_features_characters_search_search_result","name-":"moogle-api-web-features-characters-search-search-result","NAME":"MOOGLE_API_WEB_FEATURES_CHARACTERS_SEARCH_SEARCH_RESULT","index$":1}, {"active":true,"entity":"moogle_api_web_features_characters_search_search_result","key$":"BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow","kind":"basic","name":"BasicMoogleApiWebFeaturesCharactersSearchSearchResultFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"moogle_api_web_features_characters_search_search_result_ref01"}}],"index$":0}]}, 'MoogleApiWebFeaturesCharactersSearchSearchResult', {"GET /api/characters/search":{"protocol":"http","parameters":[{"name":"query","in":"query","required":true,"schema":{"type":"string"},"example":"cloud","index$":0},{"name":"gameId","in":"query","schema":{"type":"integer","format":"int32","nullable":true},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('MoogleApiWebFeaturesCharactersSearchSearchResultEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

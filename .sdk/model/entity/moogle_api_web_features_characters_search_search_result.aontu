@@ -70,6 +70,7 @@ main: kit: entity: moogle_api_web_features_characters_search_search_result: {
                 t: "`$INTEGER`"
               }
               {
+                ex: "cloud"
                 k: "query"
                 n: "query"
                 or: "query"
@@ -82,9 +83,12 @@ main: kit: entity: moogle_api_web_features_characters_search_search_result: {
           o: "/api/characters/search"
           q: {
             exist: [
-              "game_id"
               "query"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

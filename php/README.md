@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/moogleapi-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -73,7 +73,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $moogleapiwebfeaturescharacterssearchsearchresults = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list();
+    $moogleapiwebfeaturescharacterssearchsearchresults = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list(["query" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -145,7 +145,7 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = MoogleapiSDK::test([
-    "entity" => ["moogleapiwebfeaturesgamesgetgetgame" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["moogle_api_web_features_games_get_get_game" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // list() returns entity instances (throws on error);
@@ -244,8 +244,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -255,9 +255,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -392,7 +392,7 @@ $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFea
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesCharactersGetGetCharacter records (throws on error).
+// list() returns an array of MoogleApiWebFeaturesCharactersGetGetCharacter entities, one per record (throws on error).
 $moogle_api_web_features_characters_get_get_characters = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
 ```
 
@@ -421,8 +421,8 @@ Create an instance: `$moogle_api_web_features_characters_search_search_result = 
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesCharactersSearchSearchResult records (throws on error).
-$moogle_api_web_features_characters_search_search_results = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list();
+// list() returns an array of MoogleApiWebFeaturesCharactersSearchSearchResult entities, one per record (throws on error).
+$moogle_api_web_features_characters_search_search_results = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list(["query" => "example"]);
 ```
 
 
@@ -459,7 +459,7 @@ $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGames
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesGamesGetGetGame records (throws on error).
+// list() returns an array of MoogleApiWebFeaturesGamesGetGetGame entities, one per record (throws on error).
 $moogle_api_web_features_games_get_get_games = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
 ```
 
@@ -496,7 +496,7 @@ $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeature
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesMonstersGetGetMonster records (throws on error).
+// list() returns an array of MoogleApiWebFeaturesMonstersGetGetMonster entities, one per record (throws on error).
 $moogle_api_web_features_monsters_get_get_monsters = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list();
 ```
 
@@ -525,8 +525,8 @@ Create an instance: `$moogle_api_web_features_monsters_search_monster_search_res
 #### Example: List
 
 ```php
-// list() returns an array of MoogleApiWebFeaturesMonstersSearchMonsterSearchResult records (throws on error).
-$moogle_api_web_features_monsters_search_monster_search_results = $client->MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()->list();
+// list() returns an array of MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entities, one per record (throws on error).
+$moogle_api_web_features_monsters_search_monster_search_results = $client->MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()->list(["query" => "example"]);
 ```
 
 ## Features
@@ -692,7 +692,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $moogleapiwebfeaturescharacterssearchsearchresult = $client->MoogleApiWebFeaturesCharactersSearchSearchResult();
-$moogleapiwebfeaturescharacterssearchsearchresult->list();
+$moogleapiwebfeaturescharacterssearchsearchresult->list(["query" => "example"]);
 
 // $moogleapiwebfeaturescharacterssearchsearchresult->data_get() now returns the moogleapiwebfeaturescharacterssearchsearchresult data from the last list
 // $moogleapiwebfeaturescharacterssearchsearchresult->match_get() returns the last match criteria

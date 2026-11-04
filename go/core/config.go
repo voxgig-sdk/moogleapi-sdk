@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -78,7 +79,7 @@ func MakeConfig() map[string]any {
 			},
 		},
 		"options": map[string]any{
-			"base": "https://www.moogleapi.com",
+			"base": "https://moogleapi.com",
 			"auth": map[string]any{
 				"prefix": "Bearer",
 			},
@@ -198,12 +199,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"game_id",
-										"page",
-										"page_size",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -252,6 +251,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -344,14 +347,18 @@ func MakeConfig() map[string]any {
 											"type": "`$STRING`",
 											"kind": "query",
 											"reqd": true,
+											"example": "cloud",
 										},
 									},
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"game_id",
 										"query",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -452,11 +459,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"page",
-										"page_size",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -505,6 +511,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -587,6 +597,7 @@ func MakeConfig() map[string]any {
 											"orig": "category",
 											"type": "`$STRING`",
 											"kind": "query",
+											"field": true,
 										},
 										map[string]any{
 											"name": "game_id",
@@ -610,13 +621,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"category",
-										"game_id",
-										"page",
-										"page_size",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -665,6 +673,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -751,6 +763,7 @@ func MakeConfig() map[string]any {
 											"orig": "category",
 											"type": "`$STRING`",
 											"kind": "query",
+											"field": true,
 										},
 										map[string]any{
 											"name": "game_id",
@@ -764,15 +777,18 @@ func MakeConfig() map[string]any {
 											"type": "`$STRING`",
 											"kind": "query",
 											"reqd": true,
+											"example": "cloud",
 										},
 									},
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"category",
-										"game_id",
 										"query",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

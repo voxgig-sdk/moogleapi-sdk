@@ -17,25 +17,43 @@ const PLAN: any[] = [
     "args": [],
     "select": {
       "game_id": "v1",
-      "page": "v1",
-      "page_size": "v1"
+      "page": 1,
+      "page_size": 20
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "gameId",
       "page",
       "pageSize"
+    ],
+    "queryArgs": [
+      {
+        "name": "game_id",
+        "wire": "gameId"
+      },
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "page_size",
+        "wire": "pageSize"
+      }
     ],
     "auth": [],
     "status": 200,
     "sample": {
       "items": [
         {
-          "gameName": "x",
           "id": 1,
-          "imageUrl": "x",
           "name": "x",
-          "role": "x"
+          "role": "x",
+          "imageUrl": "x",
+          "gameName": "x"
         }
       ],
       "totalCount": 1,
@@ -59,7 +77,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": [],
     "status": 200,
     "sample": {
@@ -83,25 +106,39 @@ const PLAN: any[] = [
     "path": "/api/characters/search",
     "args": [],
     "select": {
-      "game_id": "v1",
-      "query": "v1"
+      "query": "cloud",
+      "game_id": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "query",
       "gameId"
+    ],
+    "queryArgs": [
+      {
+        "name": "game_id",
+        "wire": "gameId"
+      },
+      {
+        "name": "query",
+        "wire": "query"
+      }
     ],
     "auth": [],
     "status": 200,
     "sample": {
       "results": [
         {
-          "description": "x",
-          "gameName": "x",
           "id": 1,
-          "imageUrl": "x",
           "name": "x",
-          "role": "x"
+          "role": "x",
+          "description": "x",
+          "imageUrl": "x",
+          "gameName": "x"
         }
       ]
     },
@@ -115,13 +152,27 @@ const PLAN: any[] = [
     "path": "/api/games",
     "args": [],
     "select": {
-      "page": "v1",
-      "page_size": "v1"
+      "page": 1,
+      "page_size": 20
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "page",
       "pageSize"
+    ],
+    "queryArgs": [
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "page_size",
+        "wire": "pageSize"
+      }
     ],
     "auth": [],
     "status": 200,
@@ -130,8 +181,8 @@ const PLAN: any[] = [
         {
           "id": 1,
           "name": "x",
-          "platform": "x",
-          "releaseYear": 1
+          "releaseYear": 1,
+          "platform": "x"
         }
       ],
       "totalCount": 1,
@@ -155,7 +206,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": [],
     "status": 200,
     "sample": {
@@ -179,26 +235,48 @@ const PLAN: any[] = [
     "select": {
       "category": "v1",
       "game_id": "v1",
-      "page": "v1",
-      "page_size": "v1"
+      "page": 1,
+      "page_size": 20
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "gameId",
       "category",
       "page",
       "pageSize"
     ],
+    "queryArgs": [
+      {
+        "name": "category",
+        "wire": "category"
+      },
+      {
+        "name": "game_id",
+        "wire": "gameId"
+      },
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "page_size",
+        "wire": "pageSize"
+      }
+    ],
     "auth": [],
     "status": 200,
     "sample": {
       "items": [
         {
-          "category": "x",
-          "gameName": "x",
-          "hitPoints": 1,
           "id": 1,
-          "name": "x"
+          "name": "x",
+          "category": "x",
+          "hitPoints": 1,
+          "gameName": "x"
         }
       ],
       "totalCount": 1,
@@ -222,7 +300,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": [],
     "status": 200,
     "sample": {
@@ -243,27 +326,45 @@ const PLAN: any[] = [
     "path": "/api/monsters/search",
     "args": [],
     "select": {
+      "query": "cloud",
       "category": "v1",
-      "game_id": "v1",
-      "query": "v1"
+      "game_id": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "query",
       "gameId",
       "category"
+    ],
+    "queryArgs": [
+      {
+        "name": "category",
+        "wire": "category"
+      },
+      {
+        "name": "game_id",
+        "wire": "gameId"
+      },
+      {
+        "name": "query",
+        "wire": "query"
+      }
     ],
     "auth": [],
     "status": 200,
     "sample": {
       "results": [
         {
-          "category": "x",
-          "description": "x",
-          "gameName": "x",
-          "hitPoints": 1,
           "id": 1,
-          "name": "x"
+          "name": "x",
+          "category": "x",
+          "hitPoints": 1,
+          "description": "x",
+          "gameName": "x"
         }
       ]
     },

@@ -93,6 +93,7 @@ class MoogleapiConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -100,7 +101,7 @@ class MoogleapiConfig
         ],
             ],
             "options" => [
-                "base" => "https://www.moogleapi.com",
+                "base" => "https://moogleapi.com",
                 "auth" => [
                     "prefix" => "Bearer",
                 ],
@@ -220,12 +221,10 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'game_id',
-                      'page',
-                      'page_size',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -274,6 +273,10 @@ class MoogleapiConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -366,14 +369,18 @@ class MoogleapiConfig
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'reqd' => true,
+                        'example' => 'cloud',
                       ],
                     ],
                   ],
                   'select' => [
                     'exist' => [
-                      'game_id',
                       'query',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -474,11 +481,10 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'page_size',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -527,6 +533,10 @@ class MoogleapiConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -609,6 +619,7 @@ class MoogleapiConfig
                         'orig' => 'category',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'game_id',
@@ -632,13 +643,10 @@ class MoogleapiConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'category',
-                      'game_id',
-                      'page',
-                      'page_size',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -687,6 +695,10 @@ class MoogleapiConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -773,6 +785,7 @@ class MoogleapiConfig
                         'orig' => 'category',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'game_id',
@@ -786,15 +799,18 @@ class MoogleapiConfig
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'reqd' => true,
+                        'example' => 'cloud',
                       ],
                     ],
                   ],
                   'select' => [
                     'exist' => [
-                      'category',
-                      'game_id',
                       'query',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

@@ -59,7 +59,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 ## Connect to the API
 
-- API server: `https://www.moogleapi.com`
+- API server: `https://moogleapi.com`
 
 The default credential is sent in the `Authorization` header with the `Bearer` prefix.
 

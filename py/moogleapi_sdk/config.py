@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -103,7 +104,7 @@ def make_config():
       },
         },
         "options": {
-            "base": "https://www.moogleapi.com",
+            "base": "https://moogleapi.com",
             "auth": {
                 "prefix": "Bearer",
             },
@@ -223,12 +224,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "game_id",
-                    "page",
-                    "page_size",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -277,6 +276,10 @@ def make_config():
                   "exist": [
                     "id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -369,14 +372,18 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "reqd": True,
+                      "example": "cloud",
                     },
                   ],
                 },
                 "select": {
                   "exist": [
-                    "game_id",
                     "query",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -477,11 +484,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "page",
-                    "page_size",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -530,6 +536,10 @@ def make_config():
                   "exist": [
                     "id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -612,6 +622,7 @@ def make_config():
                       "orig": "category",
                       "type": "`$STRING`",
                       "kind": "query",
+                      "field": True,
                     },
                     {
                       "name": "game_id",
@@ -635,13 +646,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "category",
-                    "game_id",
-                    "page",
-                    "page_size",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -690,6 +698,10 @@ def make_config():
                   "exist": [
                     "id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -776,6 +788,7 @@ def make_config():
                       "orig": "category",
                       "type": "`$STRING`",
                       "kind": "query",
+                      "field": True,
                     },
                     {
                       "name": "game_id",
@@ -789,15 +802,18 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "reqd": True,
+                      "example": "cloud",
                     },
                   ],
                 },
                 "select": {
                   "exist": [
-                    "category",
-                    "game_id",
                     "query",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

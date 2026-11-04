@@ -75,7 +75,7 @@ func runOp(client *sdk.MoogleapiSDK, op string, query *eng.Value, entityAtom eng
 
 // entityFor dispatches on the lowercase entity name. The generator
 // emits one `case "<name>":` per entity defined in the SDK model.
-func entityFor(client *sdk.MoogleapiSDK, name string) (sdk.MoogleapiEntity, error) {
+func entityFor(client *sdk.MoogleapiSDK, name string) (sdk.MoogleapiEntityBase, error) {
 	switch strings.ToLower(name) {
 	case "moogle_api_web_features_characters_get_get_character":
 		return client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil), nil

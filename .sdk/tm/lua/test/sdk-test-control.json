@@ -13,7 +13,7 @@
       }
     },
     "live": {
-      "delayMs": 500
+      "delayMs": 2000
     }
   }
 }

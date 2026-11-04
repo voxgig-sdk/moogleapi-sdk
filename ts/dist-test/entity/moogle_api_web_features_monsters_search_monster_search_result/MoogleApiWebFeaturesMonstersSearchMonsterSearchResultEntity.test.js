@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('moogle_api_web_features_monsters_search_monster_search_result hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.MoogleapiSDK.test(offline).MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.MoogleapiSDK.test(offline).MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.MoogleapiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.MoogleapiSDK.test().MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.MoogleapiSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.MoogleapiSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult().list({ "category": 1, "query": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MOOGLEAPI_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "category": { "a": true, "h": "Category", "n": "category", "r": false, "t": "`$STRING`", "key$": "category", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 1 }, "gameName": { "a": true, "h": "Game Name", "n": "gameName", "r": false, "t": "`$STRING`", "key$": "gameName", "index$": 2 }, "hitPoints": { "a": true, "fo": "int32", "h": "Hit Points", "n": "hitPoints", "r": false, "t": "`$INTEGER`", "key$": "hitPoints", "index$": 3 }, "id": { "a": true, "fo": "int32", "h": "Id", "n": "id", "r": false, "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "t": "`$STRING`", "key$": "name", "index$": 5 } }, "id": { "field": "id", "name": "id" }, "name": "moogle_api_web_features_monsters_search_monster_search_result", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/monsters/search", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "category", "or": "category", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "game_id", "or": "gameId", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "k": "query", "n": "query", "or": "query", "r": true, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/monsters/search", "q": { "exist": ["category", "game_id", "query"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "monsters" }, { "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "moogle_api_web_features_monsters_search_monster_search_result", "name__orig": "moogle_api_web_features_monsters_search_monster_search_result", "Name": "MoogleApiWebFeaturesMonstersSearchMonsterSearchResult", "name_": "moogle_api_web_features_monsters_search_monster_search_result", "name-": "moogle-api-web-features-monsters-search-monster-search-result", "NAME": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT", "index$": 4 }, { "active": true, "entity": "moogle_api_web_features_monsters_search_monster_search_result", "key$": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow", "kind": "basic", "name": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "moogle_api_web_features_monsters_search_monster_search_result_ref01" } }], "index$": 0 }] }, 'MoogleApiWebFeaturesMonstersSearchMonsterSearchResult', { "GET /api/monsters/search": { "protocol": "http", "parameters": [{ "name": "query", "in": "query", "required": true, "schema": { "type": "string" }, "index$": 0 }, { "name": "gameId", "in": "query", "schema": { "type": "integer", "format": "int32", "nullable": true }, "index$": 1 }, { "name": "category", "in": "query", "schema": { "type": "string", "nullable": true }, "index$": 2 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "category": { "a": true, "h": "Category", "n": "category", "r": false, "t": "`$STRING`", "key$": "category", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 1 }, "gameName": { "a": true, "h": "Game Name", "n": "gameName", "r": false, "t": "`$STRING`", "key$": "gameName", "index$": 2 }, "hitPoints": { "a": true, "fo": "int32", "h": "Hit Points", "n": "hitPoints", "r": false, "t": "`$INTEGER`", "key$": "hitPoints", "index$": 3 }, "id": { "a": true, "fo": "int32", "h": "Id", "n": "id", "r": false, "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "t": "`$STRING`", "key$": "name", "index$": 5 } }, "id": { "field": "id", "name": "id" }, "name": "moogle_api_web_features_monsters_search_monster_search_result", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/monsters/search", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "category", "or": "category", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "game_id", "or": "gameId", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "ex": "cloud", "k": "query", "n": "query", "or": "query", "r": true, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/monsters/search", "q": { "exist": ["query"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "monsters" }, { "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "moogle_api_web_features_monsters_search_monster_search_result", "name__orig": "moogle_api_web_features_monsters_search_monster_search_result", "Name": "MoogleApiWebFeaturesMonstersSearchMonsterSearchResult", "name_": "moogle_api_web_features_monsters_search_monster_search_result", "name-": "moogle-api-web-features-monsters-search-monster-search-result", "NAME": "MOOGLE_API_WEB_FEATURES_MONSTERS_SEARCH_MONSTER_SEARCH_RESULT", "index$": 4 }, { "active": true, "entity": "moogle_api_web_features_monsters_search_monster_search_result", "key$": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow", "kind": "basic", "name": "BasicMoogleApiWebFeaturesMonstersSearchMonsterSearchResultFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "moogle_api_web_features_monsters_search_monster_search_result_ref01" } }], "index$": 0 }] }, 'MoogleApiWebFeaturesMonstersSearchMonsterSearchResult', { "GET /api/monsters/search": { "protocol": "http", "parameters": [{ "name": "query", "in": "query", "required": true, "schema": { "type": "string" }, "example": "cloud", "index$": 0 }, { "name": "gameId", "in": "query", "schema": { "type": "integer", "format": "int32", "nullable": true }, "index$": 1 }, { "name": "category", "in": "query", "schema": { "type": "string", "nullable": true }, "index$": 2 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const moogle_api_web_features_monsters_search_monster_search_result_ref01_list = (await moogle_api_web_features_monsters_search_monster_search_result_ref01_ent.list(moogle_api_web_features_monsters_search_monster_search_result_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

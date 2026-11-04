@@ -123,7 +123,7 @@ $moogle_api_web_features_characters_get_get_character = $client->MoogleApiWebFea
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
@@ -131,7 +131,7 @@ $results = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->MoogleApiWebFeaturesCharactersGetGetCharacter()->load(["id" => 1]);
@@ -188,10 +188,10 @@ $moogle_api_web_features_characters_search_search_result = $client->MoogleApiWeb
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list();
+$results = $client->MoogleApiWebFeaturesCharactersSearchSearchResult()->list(["query" => "example"]);
 ```
 
 ### Common Methods
@@ -246,7 +246,7 @@ $moogle_api_web_features_games_get_get_game = $client->MoogleApiWebFeaturesGames
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
@@ -254,7 +254,7 @@ $results = $client->MoogleApiWebFeaturesGamesGetGetGame()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->MoogleApiWebFeaturesGamesGetGetGame()->load(["id" => 1]);
@@ -311,7 +311,7 @@ $moogle_api_web_features_monsters_get_get_monster = $client->MoogleApiWebFeature
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
 $results = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list();
@@ -319,7 +319,7 @@ $results = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->list();
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria. Throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
 $result = $client->MoogleApiWebFeaturesMonstersGetGetMonster()->load(["id" => 1]);
@@ -376,10 +376,10 @@ $moogle_api_web_features_monsters_search_monster_search_result = $client->Moogle
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()->list();
+$results = $client->MoogleApiWebFeaturesMonstersSearchMonsterSearchResult()->list(["query" => "example"]);
 ```
 
 ### Common Methods
@@ -569,6 +569,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

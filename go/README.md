@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/moogleapi-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/moogleapi-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/moogleapi-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -53,21 +54,21 @@ func main() {
         "apikey": os.Getenv("MOOGLEAPI_APIKEY"),
     })
 
-    // List moogleApiWebFeaturesCharactersGetGetCharacter records — the value is the array of records itself.
+    // List moogleApiWebFeaturesCharactersGetGetCharacter records — the value is a []any of entities, one per record.
     moogleApiWebFeaturesCharactersGetGetCharacters, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range moogleApiWebFeaturesCharactersGetGetCharacters.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 
-    // Load a single moogleApiWebFeaturesCharactersGetGetCharacter — the value is the loaded record.
+    // Load a single moogleApiWebFeaturesCharactersGetGetCharacter — the value is the entity; Data() reads its record.
     moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter)
+    fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter.(sdk.Entity).Data())
 }
 ```
 
@@ -78,7 +79,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-moogleapiwebfeaturescharacterssearchsearchresults, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(nil, nil)
+moogleapiwebfeaturescharacterssearchsearchresults, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(map[string]any{"query": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -147,13 +148,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-moogleApiWebFeaturesCharactersSearchSearchResult, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(
-    nil, nil,
+moogleApiWebFeaturesCharactersSearchSearchResults, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(
+    map[string]any{"query": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersSearchSearchResult) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range moogleApiWebFeaturesCharactersSearchSearchResults.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -232,20 +236,20 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
-| `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
-| `MoogleApiWebFeaturesGamesGetGetGame` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
-| `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
-| `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data map[string]any) MoogleapiEntity` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
+| `MoogleApiWebFeaturesCharactersGetGetCharacter` | `(data map[string]any) MoogleapiEntityBase` | Create a MoogleApiWebFeaturesCharactersGetGetCharacter entity instance. |
+| `MoogleApiWebFeaturesCharactersSearchSearchResult` | `(data map[string]any) MoogleapiEntityBase` | Create a MoogleApiWebFeaturesCharactersSearchSearchResult entity instance. |
+| `MoogleApiWebFeaturesGamesGetGetGame` | `(data map[string]any) MoogleapiEntityBase` | Create a MoogleApiWebFeaturesGamesGetGetGame entity instance. |
+| `MoogleApiWebFeaturesMonstersGetGetMonster` | `(data map[string]any) MoogleapiEntityBase` | Create a MoogleApiWebFeaturesMonstersGetGetMonster entity instance. |
+| `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` | `(data map[string]any) MoogleapiEntityBase` | Create a MoogleApiWebFeaturesMonstersSearchMonsterSearchResult entity instance. |
 
-### Entity interface (MoogleapiEntity)
+### Entity interface (MoogleapiEntityBase)
 
-All entities implement the `MoogleapiEntity` interface.
+All entities implement the `MoogleapiEntityBase` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -253,21 +257,21 @@ All entities implement the `MoogleapiEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(map[string]any{/* fields */}, nil)
+    moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // moogleApiWebFeaturesCharactersGetGetCharacter is the returned record
+    // moogleApiWebFeaturesCharactersGetGetCharacter is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -390,7 +394,7 @@ moogleApiWebFeaturesCharactersGetGetCharacter, err := client.MoogleApiWebFeature
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter) // the loaded record
+fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -400,7 +404,10 @@ moogleApiWebFeaturesCharactersGetGetCharacters, err := client.MoogleApiWebFeatur
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacters) // the array of records
+// A []any of entities, one per record.
+for _, item := range moogleApiWebFeaturesCharactersGetGetCharacters.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -428,11 +435,14 @@ Create an instance: `moogleApiWebFeaturesCharactersSearchSearchResult := client.
 #### Example: List
 
 ```go
-moogleApiWebFeaturesCharactersSearchSearchResults, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(nil, nil)
+moogleApiWebFeaturesCharactersSearchSearchResults, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(map[string]any{"query": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesCharactersSearchSearchResults) // the array of records
+// A []any of entities, one per record.
+for _, item := range moogleApiWebFeaturesCharactersSearchSearchResults.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -466,7 +476,7 @@ moogleApiWebFeaturesGamesGetGetGame, err := client.MoogleApiWebFeaturesGamesGetG
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesGamesGetGetGame) // the loaded record
+fmt.Println(moogleApiWebFeaturesGamesGetGetGame.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -476,7 +486,10 @@ moogleApiWebFeaturesGamesGetGetGames, err := client.MoogleApiWebFeaturesGamesGet
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesGamesGetGetGames) // the array of records
+// A []any of entities, one per record.
+for _, item := range moogleApiWebFeaturesGamesGetGetGames.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -509,7 +522,7 @@ moogleApiWebFeaturesMonstersGetGetMonster, err := client.MoogleApiWebFeaturesMon
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesMonstersGetGetMonster) // the loaded record
+fmt.Println(moogleApiWebFeaturesMonstersGetGetMonster.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -519,7 +532,10 @@ moogleApiWebFeaturesMonstersGetGetMonsters, err := client.MoogleApiWebFeaturesMo
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesMonstersGetGetMonsters) // the array of records
+// A []any of entities, one per record.
+for _, item := range moogleApiWebFeaturesMonstersGetGetMonsters.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -547,11 +563,14 @@ Create an instance: `moogleApiWebFeaturesMonstersSearchMonsterSearchResult := cl
 #### Example: List
 
 ```go
-moogleApiWebFeaturesMonstersSearchMonsterSearchResults, err := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil).List(nil, nil)
+moogleApiWebFeaturesMonstersSearchMonsterSearchResults, err := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil).List(map[string]any{"query": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(moogleApiWebFeaturesMonstersSearchMonsterSearchResults) // the array of records
+// A []any of entities, one per record.
+for _, item := range moogleApiWebFeaturesMonstersSearchMonsterSearchResults.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -688,7 +707,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 
@@ -713,7 +734,7 @@ stores the returned data and match criteria internally.
 
 ```go
 moogleapiwebfeaturescharacterssearchsearchresult := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil)
-moogleapiwebfeaturescharacterssearchsearchresult.List(nil, nil)
+moogleapiwebfeaturescharacterssearchsearchresult.List(map[string]any{"query": "example"}, nil)
 
 // moogleapiwebfeaturescharacterssearchsearchresult.Data() now returns the moogleapiwebfeaturescharacterssearchsearchresult data from the last list
 // moogleapiwebfeaturescharacterssearchsearchresult.Match() returns the last match criteria

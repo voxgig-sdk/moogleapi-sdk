@@ -48,23 +48,23 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `MoogleApiWebFeaturesCharactersGetGetCharacter(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesCharactersGetGetCharacter(data map[string]any) MoogleapiEntityBase`
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacter` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesCharactersSearchSearchResult(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesCharactersSearchSearchResult(data map[string]any) MoogleapiEntityBase`
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResult` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesGamesGetGetGame(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesGamesGetGetGame(data map[string]any) MoogleapiEntityBase`
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGame` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersGetGetMonster(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesMonstersGetGetMonster(data map[string]any) MoogleapiEntityBase`
 
 Create a new `MoogleApiWebFeaturesMonstersGetGetMonster` entity instance. Pass `nil` for no initial data.
 
-#### `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data map[string]any) MoogleapiEntity`
+#### `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(data map[string]any) MoogleapiEntityBase`
 
 Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResult` entity instance. Pass `nil` for no initial data.
 
@@ -129,26 +129,28 @@ fmt.Println(moogleApiWebFeaturesCharactersGetGetCharacter.GetName()) // "moogle_
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
 results, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -167,6 +169,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `MoogleApiWebFeaturesCharactersGetGetCharacterEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -197,14 +207,16 @@ fmt.Println(moogleApiWebFeaturesCharactersSearchSearchResult.GetName()) // "moog
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
-results, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesCharactersSearchSearchResult(nil).List(map[string]any{"query": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Common Methods
@@ -223,6 +235,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `MoogleApiWebFeaturesCharactersSearchSearchResultEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -254,26 +274,28 @@ fmt.Println(moogleApiWebFeaturesGamesGetGetGame.GetName()) // "moogle_api_web_fe
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
 results, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.MoogleApiWebFeaturesGamesGetGetGame(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -292,6 +314,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `MoogleApiWebFeaturesGamesGetGetGameEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -322,26 +352,28 @@ fmt.Println(moogleApiWebFeaturesMonstersGetGetMonster.GetName()) // "moogle_api_
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
 results, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.MoogleApiWebFeaturesMonstersGetGetMonster(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -360,6 +392,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `MoogleApiWebFeaturesMonstersGetGetMonsterEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -390,14 +430,16 @@ fmt.Println(moogleApiWebFeaturesMonstersSearchMonsterSearchResult.GetName()) // 
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
-results, err := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil).List(nil, nil)
+results, err := client.MoogleApiWebFeaturesMonstersSearchMonsterSearchResult(nil).List(map[string]any{"query": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+for _, item := range results.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Common Methods
@@ -416,6 +458,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `MoogleApiWebFeaturesMonstersSearchMonsterSearchResultEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -581,6 +631,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

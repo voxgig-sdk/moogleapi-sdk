@@ -15,6 +15,26 @@ import (
 	vs "github.com/voxgig-sdk/moogleapi-sdk/go/utility/struct"
 )
 
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const moogle_api_web_features_characters_get_get_characterEntityLiveStrict = true
+
+
+type moogle_api_web_features_characters_get_get_characterFailHook struct {
+	sdk.BaseFeature
+	unexpected int
+}
+
+func (f *moogle_api_web_features_characters_get_get_characterFailHook) PreSpec(ctx *sdk.Context) {
+	panic("moogle_api_web_features_characters_get_get_character hook failed")
+}
+
+func (f *moogle_api_web_features_characters_get_get_characterFailHook) PreUnexpected(ctx *sdk.Context) {
+	f.unexpected++
+}
+
 func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 	t.Run("instance", func(t *testing.T) {
 		testsdk := sdk.TestSDK(nil, nil)
@@ -42,8 +62,11 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		// Fallback: streaming inactive -> yields the materialised list items.
 		base := sdk.TestSDK(seed, nil)
 		var seen []any
-		for item := range base.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
-			seen = append(seen, item)
+		for si := range base.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
+			if si.Err != nil {
+				t.Fatalf("stream failed: %v", si.Err)
+			}
+			seen = append(seen, si.Item)
 		}
 		if len(seen) != 3 {
 			t.Fatalf("expected 3 streamed items, got %d", len(seen))
@@ -59,11 +82,14 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 				"feature": map[string]any{"streaming": map[string]any{"active": true}},
 			})
 			var got []any
-			for item := range streamSdk.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
-				if sub, ok := item.([]any); ok {
+			for si := range streamSdk.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
+				if si.Err != nil {
+					t.Fatalf("stream failed: %v", si.Err)
+				}
+				if sub, ok := si.Item.([]any); ok {
 					got = append(got, sub...)
 				} else {
-					got = append(got, item)
+					got = append(got, si.Item)
 				}
 			}
 			if len(got) != 3 {
@@ -72,7 +98,91 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		}
 	})
 
-	t.Run("basic", func(t *testing.T) {
+	t.Run("stream-error", func(t *testing.T) {
+		offline := map[string]any{"net": map[string]any{"offline": true}}
+		var streamerr error
+		for si := range sdk.TestSDK(offline, nil).MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
+			if si.Err != nil {
+				streamerr = si.Err
+			}
+		}
+		if nil == streamerr || !strings.Contains(streamerr.Error(), "offline") {
+			t.Fatalf("expected the transport failure as a stream value, got %v", streamerr)
+		}
+
+		quiet := map[string]any{"ctrl": map[string]any{"throw": false}}
+		for si := range sdk.TestSDK(offline, nil).MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, quiet) {
+			if si.Err != nil {
+				t.Fatalf("throw false: expected no error value, got %v", si.Err)
+			}
+		}
+
+		if fhHasFeature("rbac") {
+			denied := sdk.TestSDK(nil, map[string]any{
+				"feature": map[string]any{"rbac": map[string]any{"active": true, "deny": true}},
+			})
+			var denyerr error
+			for si := range denied.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, nil) {
+				if si.Err != nil {
+					denyerr = si.Err
+				}
+			}
+			if sdkerr, ok := denyerr.(*core.MoogleapiError); !ok || "rbac_denied" != sdkerr.Code {
+				t.Fatalf("expected the rbac denial as a stream value, got %v", denyerr)
+			}
+		}
+	})
+
+	t.Run("stream-ctrl", func(t *testing.T) {
+		explain := map[string]any{}
+		ctrl := map[string]any{"explain": explain}
+		for range sdk.TestSDK(nil, nil).MoogleApiWebFeaturesCharactersGetGetCharacter(nil).Stream("list", nil, map[string]any{"ctrl": ctrl}) {
+		}
+		if _, has := ctrl["stream"]; has || 1 != len(ctrl) {
+			t.Fatalf("the stream changed the caller's ctrl")
+		}
+		if 0 == len(explain) {
+			t.Fatalf("the caller's explain record was not filled")
+		}
+	})
+
+	t.Run("unexpected", func(t *testing.T) {
+		hook := &moogle_api_web_features_characters_get_get_characterFailHook{
+			BaseFeature: sdk.BaseFeature{Version: "0.0.1", Name: "failhook", Active: true}}
+		client := sdk.TestSDK(nil, map[string]any{"extend": []any{hook}})
+
+		_, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, nil)
+		if nil == err || !strings.Contains(err.Error(), "hook failed") {
+			t.Fatalf("expected the hook's failure, got %v", err)
+		}
+		if 0 == hook.unexpected {
+			t.Fatalf("PreUnexpected did not fire")
+		}
+
+		fired := hook.unexpected
+		if _, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(nil, map[string]any{"throw": false}); nil != err {
+			t.Fatalf("throw false: expected no error, got %v", err)
+		}
+		if fired == hook.unexpected {
+			t.Fatalf("throw false: PreUnexpected did not fire")
+		}
+	})
+
+	t.Run("validate", func(t *testing.T) {
+		if !fhHasFeature("validate") {
+			t.Skip("feature not present in this SDK: validate")
+		}
+		client := sdk.TestSDK(nil, map[string]any{
+			"feature": map[string]any{"validate": map[string]any{"active": true}},
+		})
+		_, err := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(map[string]any{"game_id": "x"}, nil)
+		if sdkerr, ok := err.(*core.MoogleapiError); !ok || "validate_failed" != sdkerr.Code {
+			t.Fatalf("expected validate_failed, got %v", err)
+		}
+	})
+
+	t.Run("basic", func(tt *testing.T) {
+		var t testing.TB = tt
 		setup := moogle_api_web_features_characters_get_get_characterBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
 		// with multiple ops; skipping any op skips the whole flow.
@@ -89,13 +199,19 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 				return
 			}
 		}
-		// The basic flow consumes synthetic IDs from the fixture. In live mode
-		// without an *_ENTID env override, those IDs hit the live API and 4xx.
-		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID JSON to run live")
-			return
-		}
 		client := setup.client
+		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["moogle_api_web_features_characters_get_get_character01"]
+			}
+			livePace()
+			liveExisting(t, moogle_api_web_features_characters_get_get_characterEntityLiveStrict, setup.data, "moogle_api_web_features_characters_get_get_character", "id", _liveId,
+				func() (any, error) {
+					return client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil).List(map[string]any{}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		moogleApiWebFeaturesCharactersGetGetCharacterRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.moogle_api_web_features_characters_get_get_character")))
@@ -107,6 +223,9 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = moogleApiWebFeaturesCharactersGetGetCharacterRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		moogleApiWebFeaturesCharactersGetGetCharacterRef01Ent := client.MoogleApiWebFeaturesCharactersGetGetCharacter(nil)
 		moogleApiWebFeaturesCharactersGetGetCharacterRef01Match := map[string]any{}
@@ -120,6 +239,9 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 			t.Fatalf("expected list result to be an array, got %T", moogleApiWebFeaturesCharactersGetGetCharacterRef01ListResult)
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		moogleApiWebFeaturesCharactersGetGetCharacterRef01MatchDt0 := map[string]any{
 			"id": moogleApiWebFeaturesCharactersGetGetCharacterRef01Data["id"],
@@ -132,7 +254,7 @@ func TestMoogleApiWebFeaturesCharactersGetGetCharacterEntity(t *testing.T) {
 		if moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}
-		if moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult["id"] != moogleApiWebFeaturesCharactersGetGetCharacterRef01Data["id"] {
+		if !liveSameId(moogleApiWebFeaturesCharactersGetGetCharacterRef01DataDt0LoadResult["id"], moogleApiWebFeaturesCharactersGetGetCharacterRef01Data["id"]) {
 			t.Fatal("expected load result id to match")
 		}
 
@@ -173,9 +295,8 @@ func moogle_api_web_features_characters_get_get_characterBasicSetup(extra map[st
 		},
 	)
 
-	// Detect ENTID env override before envOverride consumes it. When live
-	// mode is on without a real override, the basic test runs against synthetic
-	// IDs from the fixture and 4xx's. Surface this so the test can skip.
+	// Whether *_ENTID supplied the idmap, read before envOverride consumes it:
+	// without it, the ids a live flow binds are the fixture's synthetic ones.
 	entidEnvRaw := os.Getenv("MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_CHARACTERS_GET_GET_CHARACTER_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 

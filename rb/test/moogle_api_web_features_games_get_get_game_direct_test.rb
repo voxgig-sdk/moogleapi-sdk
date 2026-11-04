@@ -6,6 +6,17 @@ require_relative "../Moogleapi_sdk"
 require_relative "runner"
 
 class MoogleApiWebFeaturesGamesGetGetGameDirectTest < Minitest::Test
+  # main.kit.test.live.strict is true (the default is true): a live
+  # request that fails, or a live test missing an input it needs,
+  # fails the test.
+  # An account with no record for a test to read skips it either way.
+  LIVE_STRICT = true
+
+  def live_ok(result)
+    status = Helpers.to_int(result["status"])
+    result["err"].nil? && result["ok"] && status >= 200 && status < 300
+  end
+
   def test_direct_list_moogle_api_web_features_games_get_get_game
     setup = moogle_api_web_features_games_get_get_game_direct_setup([
       { "id" => "direct01" },
@@ -16,31 +27,26 @@ class MoogleApiWebFeaturesGamesGetGetGameDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    Runner.live_pace if setup[:live]
     client = setup[:client]
 
+    params = {}
+    query = {}
 
     result = client.direct({
       "path" => "api/games",
       "method" => "GET",
-      "params" => {},
+      "params" => params,
+      "query" => query,
     })
     if setup[:live]
-      # Live mode is lenient: synthetic IDs frequently 4xx and the list-
-      # response shape varies wildly across public APIs. Skip rather than
-      # fail when the call doesn't return a usable list.
-      if !result["err"].nil?
-        skip("list call failed (likely synthetic IDs against live API): #{result["err"]}")
-        return
+      unless live_ok(result)
+        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
       end
-      unless result["ok"]
-        skip("list call not ok (likely synthetic IDs against live API)")
-        return
+      if Runner.live_list(result["data"]).nil?
+        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
       end
-      status = Helpers.to_int(result["status"])
-      if status < 200 || status >= 300
-        skip("expected 2xx status, got #{status}")
-        return
-      end
+      assert Runner.live_list(result["data"]).is_a?(Array)
     else
       assert_nil result["err"]
       assert result["ok"]
@@ -58,15 +64,34 @@ class MoogleApiWebFeaturesGamesGetGetGameDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
-    if setup[:live]
-      skip "live direct-load needs real ID — set *_ENTID env var with real IDs to run"
-      return
-    end
+    Runner.live_pace if setup[:live]
     client = setup[:client]
 
     params = {}
     query = {}
-    unless setup[:live]
+    if setup[:live]
+      list_result = client.direct({
+        "path" => "api/games",
+        "method" => "GET",
+        "params" => {},
+      })
+      unless live_ok(list_result)
+        Runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + Runner.live_describe(list_result))
+      end
+      records = Runner.live_list(list_result["data"])
+      if records.nil?
+        Runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + Runner.live_describe(list_result))
+      end
+      if records.empty?
+        Runner.live_empty("The account has no moogle_api_web_features_games_get_get_game record to load")
+      end
+      first = records[0].is_a?(Hash) ? records[0] : {}
+      found = first["id"]
+      if found.nil?
+        Runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
+      end
+      params["id"] = found
+    else
       params["id"] = "direct01"
     end
 
@@ -77,22 +102,13 @@ class MoogleApiWebFeaturesGamesGetGetGameDirectTest < Minitest::Test
       "query" => query,
     })
     if setup[:live]
-      # Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
-      # than fail when the load endpoint isn't reachable with the IDs
-      # we can construct from setup.idmap.
-      if !result["err"].nil?
-        skip("load call failed (likely synthetic IDs against live API): #{result["err"]}")
-        return
+      unless live_ok(result)
+        Runner.live_miss(LIVE_STRICT, "Live load failed: " + Runner.live_describe(result))
       end
-      unless result["ok"]
-        skip("load call not ok (likely synthetic IDs against live API)")
-        return
+      if result["data"].nil?
+        Runner.live_miss(LIVE_STRICT, "Live load returned no data: " + Runner.live_describe(result))
       end
-      status = Helpers.to_int(result["status"])
-      if status < 200 || status >= 300
-        skip("expected 2xx status, got #{status}")
-        return
-      end
+      assert !result["data"].nil?
     else
       assert_nil result["err"]
       assert result["ok"]
@@ -128,11 +144,12 @@ def moogle_api_web_features_games_get_get_game_direct_setup(mockres)
       "apikey" => env["MOOGLEAPI_APIKEY"],
     })
     client = MoogleapiSDK.new(merged_opts)
+    idmap = env["MOOGLEAPI_TEST_MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME_ENTID"]
     return {
       client: client,
       calls: calls,
       live: true,
-      idmap: {},
+      idmap: idmap.is_a?(Hash) ? idmap : {},
     }
   end
 

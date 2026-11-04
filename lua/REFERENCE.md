@@ -121,7 +121,7 @@ local moogle_api_web_features_characters_get_get_character = client:MoogleApiWeb
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():list()
@@ -129,7 +129,7 @@ local results, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():list
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:MoogleApiWebFeaturesCharactersGetGetCharacter():load({ id = 1 })
@@ -186,10 +186,10 @@ local moogle_api_web_features_characters_search_search_result = client:MoogleApi
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list()
+local results, err = client:MoogleApiWebFeaturesCharactersSearchSearchResult():list({ query = "example" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ local moogle_api_web_features_games_get_get_game = client:MoogleApiWebFeaturesGa
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:MoogleApiWebFeaturesGamesGetGetGame():list()
@@ -252,7 +252,7 @@ local results, err = client:MoogleApiWebFeaturesGamesGetGetGame():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:MoogleApiWebFeaturesGamesGetGetGame():load({ id = 1 })
@@ -309,7 +309,7 @@ local moogle_api_web_features_monsters_get_get_monster = client:MoogleApiWebFeat
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():list()
@@ -317,7 +317,7 @@ local results, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:MoogleApiWebFeaturesMonstersGetGetMonster():load({ id = 1 })
@@ -374,10 +374,10 @@ local moogle_api_web_features_monsters_search_monster_search_result = client:Moo
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():list()
+local results, err = client:MoogleApiWebFeaturesMonstersSearchMonsterSearchResult():list({ query = "example" })
 ```
 
 ### Common Methods
@@ -567,6 +567,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

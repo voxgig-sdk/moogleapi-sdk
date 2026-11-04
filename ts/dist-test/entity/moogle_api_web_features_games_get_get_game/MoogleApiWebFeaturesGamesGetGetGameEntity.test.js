@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.MoogleApiWebFeaturesGamesGetGetGame();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('moogle_api_web_features_games_get_get_game hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.MoogleapiSDK.test(offline).MoogleApiWebFeaturesGamesGetGetGame().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.MoogleapiSDK.test(offline).MoogleApiWebFeaturesGamesGetGetGame()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.MoogleapiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.MoogleApiWebFeaturesGamesGetGetGame().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.MoogleapiSDK.test().MoogleApiWebFeaturesGamesGetGetGame().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.MoogleapiSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.MoogleApiWebFeaturesGamesGetGetGame().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.MoogleApiWebFeaturesGamesGetGetGame().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.MoogleapiSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.MoogleApiWebFeaturesGamesGetGetGame().list({ "page": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MOOGLEAPI_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "characterCount": { "a": true, "fo": "int32", "h": "Character Count", "n": "characterCount", "r": false, "t": "`$INTEGER`", "key$": "characterCount", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "fo": "int32", "h": "Id", "n": "id", "r": false, "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "monsterCount": { "a": true, "fo": "int32", "h": "Monster Count", "n": "monsterCount", "r": false, "t": "`$INTEGER`", "key$": "monsterCount", "index$": 3 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "t": "`$STRING`", "key$": "name", "index$": 4 }, "platform": { "a": true, "h": "Platform", "n": "platform", "r": false, "t": "`$STRING`", "key$": "platform", "index$": 5 }, "releaseYear": { "a": true, "fo": "int32", "h": "Release Year", "n": "releaseYear", "r": false, "t": "`$INTEGER`", "key$": "releaseYear", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "moogle_api_web_features_games_get_get_game", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/games", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": 20, "k": "query", "n": "page_size", "or": "pageSize", "r": false, "t": "`$INTEGER`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/games", "q": { "exist": ["page", "page_size"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "games" }], "t": { "req": "`reqdata`", "res": "`body.items`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/games/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/games/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "games" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "moogle_api_web_features_games_get_get_game", "name__orig": "moogle_api_web_features_games_get_get_game", "Name": "MoogleApiWebFeaturesGamesGetGetGame", "name_": "moogle_api_web_features_games_get_get_game", "name-": "moogle-api-web-features-games-get-get-game", "NAME": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME", "index$": 2 }, { "active": true, "entity": "moogle_api_web_features_games_get_get_game", "key$": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow", "kind": "basic", "name": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "moogle_api_web_features_games_get_get_game_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "moogle_api_web_features_games_get_get_game_ref01", "srcdatavar": "moogle_api_web_features_games_get_get_game_ref01_data", "suffix": "_dt0" }, "m": { "id": "moogle_api_web_features_games_get_get_game01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-moogle_api_web_features_games_get_get_game_ref01" } }], "index$": 1 }] }, 'MoogleApiWebFeaturesGamesGetGetGame', { "GET /api/games": { "protocol": "http", "parameters": [{ "name": "page", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 1, "nullable": false }, "index$": 0 }, { "name": "pageSize", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 20, "nullable": false }, "index$": 1 }] }, "GET /api/games/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "characterCount": { "a": true, "fo": "int32", "h": "Character Count", "n": "characterCount", "r": false, "t": "`$INTEGER`", "key$": "characterCount", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "fo": "int32", "h": "Id", "n": "id", "r": false, "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "monsterCount": { "a": true, "fo": "int32", "h": "Monster Count", "n": "monsterCount", "r": false, "t": "`$INTEGER`", "key$": "monsterCount", "index$": 3 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "t": "`$STRING`", "key$": "name", "index$": 4 }, "platform": { "a": true, "h": "Platform", "n": "platform", "r": false, "t": "`$STRING`", "key$": "platform", "index$": 5 }, "releaseYear": { "a": true, "fo": "int32", "h": "Release Year", "n": "releaseYear", "r": false, "t": "`$INTEGER`", "key$": "releaseYear", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "moogle_api_web_features_games_get_get_game", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/games", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": 20, "k": "query", "n": "page_size", "or": "pageSize", "r": false, "t": "`$INTEGER`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/games", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "games" }], "t": { "req": "`reqdata`", "res": "`body.items`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/games/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/games/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "games" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "moogle_api_web_features_games_get_get_game", "name__orig": "moogle_api_web_features_games_get_get_game", "Name": "MoogleApiWebFeaturesGamesGetGetGame", "name_": "moogle_api_web_features_games_get_get_game", "name-": "moogle-api-web-features-games-get-get-game", "NAME": "MOOGLE_API_WEB_FEATURES_GAMES_GET_GET_GAME", "index$": 2 }, { "active": true, "entity": "moogle_api_web_features_games_get_get_game", "key$": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow", "kind": "basic", "name": "BasicMoogleApiWebFeaturesGamesGetGetGameFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "moogle_api_web_features_games_get_get_game_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "moogle_api_web_features_games_get_get_game_ref01", "srcdatavar": "moogle_api_web_features_games_get_get_game_ref01_data", "suffix": "_dt0" }, "m": { "id": "moogle_api_web_features_games_get_get_game01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-moogle_api_web_features_games_get_get_game_ref01" } }], "index$": 1, "route": "GET /api/games/{id}", "record": {} }] }, 'MoogleApiWebFeaturesGamesGetGetGame', { "GET /api/games": { "protocol": "http", "parameters": [{ "name": "page", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 1, "nullable": false }, "index$": 0 }, { "name": "pageSize", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 20, "nullable": false }, "index$": 1 }] }, "GET /api/games/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(moogle_api_web_features_games_get_get_game_ref01_data_dt0.id === moogle_api_web_features_games_get_get_game_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -74,7 +75,7 @@ local function make_config()
       },
     },
     options = {
-      base = "https://www.moogleapi.com",
+      base = "https://moogleapi.com",
       auth = {
         prefix = "Bearer",
       },
@@ -194,12 +195,10 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "game_id",
-                    "page",
-                    "page_size",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -248,6 +247,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -340,14 +343,18 @@ local function make_config()
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["reqd"] = true,
+                      ["example"] = "cloud",
                     },
                   },
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "game_id",
                     "query",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -448,11 +455,10 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "page",
-                    "page_size",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -501,6 +507,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -583,6 +593,7 @@ local function make_config()
                       ["orig"] = "category",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
+                      ["field"] = true,
                     },
                     {
                       ["name"] = "game_id",
@@ -606,13 +617,10 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "category",
-                    "game_id",
-                    "page",
-                    "page_size",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -661,6 +669,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -747,6 +759,7 @@ local function make_config()
                       ["orig"] = "category",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
+                      ["field"] = true,
                     },
                     {
                       ["name"] = "game_id",
@@ -760,15 +773,18 @@ local function make_config()
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["reqd"] = true,
+                      ["example"] = "cloud",
                     },
                   },
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "category",
-                    "game_id",
                     "query",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },

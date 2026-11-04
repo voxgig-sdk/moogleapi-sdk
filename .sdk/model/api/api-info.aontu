@@ -14,7 +14,7 @@ main: {
       }
       servers: [
         {
-          url: "https://www.moogleapi.com"
+          url: "https://moogleapi.com"
         }
       ]
       summary: "A Final Fantasy data API — characters, monsters, and games."

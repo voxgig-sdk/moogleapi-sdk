@@ -97,13 +97,9 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
           }
           m: "GET"
           o: "/api/monsters"
-          q: {
-            exist: [
-              "category"
-              "game_id"
-              "page"
-              "page_size"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -146,6 +142,10 @@ main: kit: entity: moogle_api_web_features_monsters_get_get_monster: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

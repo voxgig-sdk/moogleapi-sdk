@@ -3,5 +3,12 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "A Final Fantasy data API, characters, monsters, and games.",
+      "Enter a JWT token to authorize the requests...",
+      "Success"
+    ]
+  }
 }
